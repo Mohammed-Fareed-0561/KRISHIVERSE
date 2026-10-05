@@ -1,0 +1,11 @@
+{
+  "id": "synthetic_crop_verified_a",
+  "name": "Verified Crop A",
+  "category": "test",
+  "source": "TNAU Test",
+  "sourceUrl": "https://test.example.com",
+  "verified": true,
+  "recordKind": "crop",
+  "status": "active",
+  "searchable": true
+}

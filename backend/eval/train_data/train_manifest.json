@@ -1,0 +1,48 @@
+{
+  "runAt": "2026-08-19T08:19:57.566Z",
+  "perClass": 300,
+  "summary": [
+    {
+      "dir": "Tomato___Early_blight",
+      "sourceClass": "Tomato___Early_blight",
+      "ok": 300,
+      "fail": 0,
+      "files": 300
+    },
+    {
+      "dir": "Tomato___Late_blight",
+      "sourceClass": "Tomato___Late_blight",
+      "ok": 300,
+      "fail": 0,
+      "files": 300
+    },
+    {
+      "dir": "Tomato___healthy",
+      "sourceClass": "Tomato___healthy",
+      "ok": 300,
+      "fail": 0,
+      "files": 300
+    },
+    {
+      "dir": "Potato___Early_blight",
+      "sourceClass": "Potato___Early_blight",
+      "ok": 300,
+      "fail": 0,
+      "files": 300
+    },
+    {
+      "dir": "Potato___Late_blight",
+      "sourceClass": "Potato___Late_blight",
+      "ok": 300,
+      "fail": 0,
+      "files": 300
+    },
+    {
+      "dir": "Pepper__bell___Bacterial_spot",
+      "sourceClass": "Pepper,_bell___Bacterial_spot",
+      "ok": 300,
+      "fail": 0,
+      "files": 300
+    }
+  ]
+}

@@ -1,0 +1,413 @@
+[
+  {
+    "id": "pm-kisan",
+    "name": "PM-KISAN",
+    "fullName": "Pradhan Mantri Kisan Samman Nidhi",
+    "category": "Income Support",
+    "summary": "₹6,000/year direct income support in 3 instalments to all land-holding farmer families.",
+    "benefits": [
+      "₹2,000 every 4 months directly to bank account",
+      "No middlemen — transferred via Direct Benefit Transfer",
+      "Applicable to all small & marginal farmers"
+    ],
+    "eligibility": "All farmer families with cultivable land. Excludes income-tax payers and government employees.",
+    "howToApply": "Visit nearest Common Service Centre (CSC) or apply at pmkisan.gov.in with Aadhaar and bank details.",
+    "documents": ["Aadhaar Card", "Land Records / Patta", "Bank Account linked to Aadhaar"],
+    "deadline": "Ongoing",
+    "status": "active",
+    "link": "https://pmkisan.gov.in",
+    "tags": ["income", "direct-benefit", "small-farmers"]
+  },
+  {
+    "id": "pmfby",
+    "name": "PMFBY",
+    "fullName": "Pradhan Mantri Fasal Bima Yojana",
+    "category": "Crop Insurance",
+    "summary": "Subsidised crop insurance covering losses due to natural calamities, pests, and diseases.",
+    "benefits": [
+      "Premium as low as 1.5% for Rabi, 2% for Kharif crops",
+      "Full coverage even for prevented sowing",
+      "Claims settled within 2 months of harvest loss"
+    ],
+    "eligibility": "All farmers growing notified crops. Compulsory for loanee farmers, voluntary for others.",
+    "howToApply": "Apply through nearest bank, CSC, or insurance company before crop sowing deadline.",
+    "documents": ["Aadhaar Card", "Land Records", "Bank Account", "Sowing Certificate"],
+    "deadline": "Kharif: July 31 | Rabi: December 31",
+    "status": "active",
+    "link": "https://pmfby.gov.in",
+    "tags": ["insurance", "kharif", "rabi", "crop-loss"]
+  },
+  {
+    "id": "pmksy",
+    "name": "PMKSY",
+    "fullName": "Pradhan Mantri Krishi Sinchayee Yojana",
+    "category": "Irrigation",
+    "summary": "Ensures water to every farm — 'Har Khet Ko Pani, More Crop Per Drop'.",
+    "benefits": [
+      "55% subsidy on drip/sprinkler irrigation for small & marginal farmers",
+      "45% subsidy for other farmers",
+      "Installation support and training provided"
+    ],
+    "eligibility": "All farmers. Priority for water-stressed regions and SC/ST communities.",
+    "howToApply": "Contact District Agriculture Officer or apply via state agriculture portal.",
+    "documents": ["Aadhaar Card", "Land Records", "Bank Account", "Farmer ID"],
+    "deadline": "Ongoing — apply before Kharif season",
+    "status": "active",
+    "link": "https://pmksy.gov.in",
+    "tags": ["irrigation", "drip", "sprinkler", "water"]
+  },
+  {
+    "id": "kcc",
+    "name": "KCC",
+    "fullName": "Kisan Credit Card",
+    "category": "Credit & Finance",
+    "summary": "Flexible credit up to ₹3 lakh at 4% interest per year for farming needs.",
+    "benefits": [
+      "Credit up to ₹3 lakh at just 4% annual interest",
+      "Covers seeds, fertilisers, pesticides, equipment",
+      "Flexible repayment aligned to harvest cycle",
+      "Includes personal accident insurance cover"
+    ],
+    "eligibility": "All farmers, sharecroppers, oral lessees, and SHG members in agriculture.",
+    "howToApply": "Apply at any nationalised bank, cooperative bank, or Regional Rural Bank.",
+    "documents": ["Aadhaar Card", "PAN Card", "Land Records", "Passport Photo"],
+    "deadline": "Ongoing",
+    "status": "active",
+    "link": "https://www.nabard.org/content1.aspx?id=572",
+    "tags": ["credit", "loan", "4-percent", "input-cost"]
+  },
+  {
+    "id": "tnau-seed-subsidy",
+    "name": "TNAU Seed Subsidy",
+    "fullName": "Tamil Nadu Agriculture University Certified Seed Distribution",
+    "category": "Seeds & Inputs",
+    "summary": "Subsidised high-yield certified seeds for paddy, pulses, oilseeds, and vegetables.",
+    "benefits": [
+      "Up to 50% subsidy on TNAU certified seeds",
+      "High-yield, disease-resistant varieties",
+      "Available for Kharif and Rabi seasons"
+    ],
+    "eligibility": "All farmers in Tamil Nadu with valid Uzhavar Seithigal (Farmer ID) card.",
+    "howToApply": "Contact nearest District Agriculture office or Primary Agriculture Cooperative Society (PACS).",
+    "documents": ["Farmer ID / Uzhavar Seithigal Card", "Aadhaar Card", "Land Records"],
+    "deadline": "Season-based — contact local office",
+    "status": "active",
+    "link": "https://www.tnau.ac.in",
+    "tags": ["seeds", "tamil-nadu", "subsidy", "paddy", "pulses"]
+  },
+  {
+    "id": "smam",
+    "name": "SMAM",
+    "fullName": "Sub-Mission on Agricultural Mechanisation",
+    "category": "Equipment",
+    "summary": "Subsidy on farm machinery — tractors, tillers, harvesters, pump sets and more.",
+    "benefits": [
+      "40–50% subsidy on approved farm equipment",
+      "Additional 10% for SC/ST farmers",
+      "Custom Hiring Centres set up in villages"
+    ],
+    "eligibility": "Individual farmers and Farmer Producer Organisations (FPOs).",
+    "howToApply": "Apply online at agrimachinery.nic.in or at District Agriculture office.",
+    "documents": ["Aadhaar Card", "Land Records", "Bank Account", "Caste Certificate if SC/ST"],
+    "deadline": "Ongoing — subject to annual allocation",
+    "status": "active",
+    "link": "https://agrimachinery.nic.in",
+    "tags": ["equipment", "tractor", "subsidy", "mechanisation"]
+  },
+  {
+    "id": "soil-health-card",
+    "name": "Soil Health Card",
+    "fullName": "Soil Health Card Scheme",
+    "category": "Soil & Fertiliser",
+    "summary": "Free soil testing and personalised fertiliser recommendations for your farm.",
+    "benefits": [
+      "Free soil sample testing every 2 years",
+      "Card showing NPK and micronutrient levels",
+      "Crop-specific fertiliser recommendations",
+      "Reduces input costs by 10–20%"
+    ],
+    "eligibility": "All farmers across India. No restrictions.",
+    "howToApply": "Contact local Agriculture Extension Officer or visit soilhealth.dac.gov.in.",
+    "documents": ["Aadhaar Card", "Land details — village and survey number"],
+    "deadline": "Ongoing",
+    "status": "active",
+    "link": "https://soilhealth.dac.gov.in",
+    "tags": ["soil", "fertility", "fertiliser", "free", "npk"]
+  },
+  {
+    "id": "tn-horticulture",
+    "name": "TN Horticulture Subsidy",
+    "fullName": "Tamil Nadu Horticulture Development Agency Schemes",
+    "category": "Horticulture",
+    "summary": "Subsidies for banana, coconut, mango, flower, and vegetable cultivation in Tamil Nadu.",
+    "benefits": [
+      "50–75% subsidy on planting material",
+      "Support for drip irrigation in orchards",
+      "Post-harvest infrastructure support"
+    ],
+    "eligibility": "Farmers in Tamil Nadu cultivating horticultural crops.",
+    "howToApply": "Contact District Horticulture Officer or TANHODA office.",
+    "documents": ["Farmer ID", "Land Records", "Aadhaar Card"],
+    "deadline": "Season-based — apply before planting season",
+    "status": "active",
+    "link": "https://www.tn.gov.in/dept/horticulture",
+    "tags": ["horticulture", "banana", "coconut", "mango", "tamil-nadu"]
+  },
+  {
+    "id": "pmmsy",
+    "name": "PMMSY",
+    "fullName": "Pradhan Mantri Matsya Sampada Yojana",
+    "category": "Allied Farming",
+    "summary": "Support for fisheries and aquaculture — boats, nets, and pond construction subsidies.",
+    "benefits": [
+      "40% subsidy (general), 60% subsidy for SC/ST/Women",
+      "Covers fish pond construction, aerators, and feed",
+      "Insurance coverage for fishing vessels"
+    ],
+    "eligibility": "Fishers, fish farmers, SHGs, FPOs engaged in fisheries.",
+    "howToApply": "Apply via state fisheries department or pmmsy.gov.in.",
+    "documents": ["Aadhaar Card", "Land/Pond records", "Bank Account"],
+    "deadline": "Ongoing",
+    "status": "active",
+    "link": "https://pmmsy.dof.gov.in",
+    "tags": ["fisheries", "aquaculture", "allied-farming", "subsidy"]
+  },
+  {
+    "id": "rkvy",
+    "name": "RKVY",
+    "fullName": "Rashtriya Krishi Vikas Yojana",
+    "category": "Development",
+    "summary": "State-level agricultural development — farm ponds, storage, technology, and FPO support.",
+    "benefits": [
+      "Funding for farm ponds and storage structures",
+      "Technology demonstrations and FPO support",
+      "Agriculture extension and training programmes"
+    ],
+    "eligibility": "Benefits reach farmers through state-implemented projects.",
+    "howToApply": "Contact District Agriculture offices and state agriculture departments.",
+    "documents": ["Contact local agriculture office for specific project requirements"],
+    "deadline": "Ongoing — project-based",
+    "status": "active",
+    "link": "https://rkvy.nic.in",
+    "tags": ["development", "infrastructure", "training", "fpo"]
+  },
+  {
+    "id": "rythu-bandhu",
+    "name": "Rythu Bandhu",
+    "fullName": "Agriculture Investment Support Scheme (Telangana)",
+    "category": "Income Support",
+    "summary": "₹10,000 per acre per year to farmers in Telangana for investment support.",
+    "benefits": [
+      "₹5,000 per acre for Kharif season",
+      "₹5,000 per acre for Rabi season",
+      "Direct Bank Transfer to farmers"
+    ],
+    "eligibility": "All land-owning farmers in Telangana.",
+    "howToApply": "Submit land ownership proof (Pattadar Passbook) to local agriculture extension officer.",
+    "documents": ["Pattadar Passbook", "Aadhaar Card", "Bank Details"],
+    "deadline": "Season-based",
+    "status": "active",
+    "link": "http://rythubandhu.telangana.gov.in/",
+    "tags": ["telangana", "income", "investment"]
+  },
+  {
+    "id": "kalia",
+    "name": "KALIA",
+    "fullName": "Krushak Assistance for Livelihood and Income Augmentation (Odisha)",
+    "category": "Income Support",
+    "summary": "Financial support to small/marginal farmers, landless agricultural households, and vulnerable agricultural families in Odisha.",
+    "benefits": [
+      "₹4,000 per year for small/marginal farmers",
+      "₹12,500 for landless agricultural households",
+      "Life insurance cover of ₹2 Lakh"
+    ],
+    "eligibility": "Small/marginal farmers, landless agricultural workers in Odisha.",
+    "howToApply": "Apply online at kalia.odisha.gov.in or through Gram Panchayat.",
+    "documents": ["Aadhaar Card", "Ration Card", "Bank Passbook"],
+    "deadline": "Ongoing",
+    "status": "active",
+    "link": "https://kalia.odisha.gov.in/",
+    "tags": ["odisha", "income", "landless-farmers"]
+  },
+  {
+    "id": "bhavantar-bhugtan",
+    "name": "Bhavantar Bhugtan Yojna",
+    "fullName": "Bhavantar Bhugtan Yojna (Madhya Pradesh)",
+    "category": "Market Intervention",
+    "summary": "Compensates farmers for the difference between the Minimum Support Price (MSP) and the actual selling price in mandis.",
+    "benefits": [
+      "Price deficit directly credited to bank accounts",
+      "Reduces market risk for selected crops"
+    ],
+    "eligibility": "Farmers in Madhya Pradesh selling registered crops in APMC mandis.",
+    "howToApply": "Register on MP E-Uparjan portal during the registration window.",
+    "documents": ["Aadhaar Card", "Bank Account Details", "Land Records (Khasra)"],
+    "deadline": "Announced seasonally by the state government",
+    "status": "active",
+    "link": "http://mpeuparjan.nic.in/",
+    "tags": ["mp", "msp", "price-support"]
+  },
+  {
+    "id": "mukhyamantri-krushi-udyog",
+    "name": "MKUY",
+    "fullName": "Mukhyamantri Krushi Udyog Yojana (Odisha)",
+    "category": "Agri-Business",
+    "summary": "Capital investment subsidy for setting up commercial agro-enterprises.",
+    "benefits": [
+      "Capital subsidy up to ₹50 Lakh",
+      "Encourages food processing, dairy, and poultry ventures"
+    ],
+    "eligibility": "Individuals, partnerships, FPOs, and NGOs in Odisha.",
+    "howToApply": "Apply online through APICOL portal.",
+    "documents": ["Detailed Project Report (DPR)", "Land Document / Lease Deed", "Aadhaar Card", "Bank Consent Letter"],
+    "deadline": "Ongoing",
+    "status": "active",
+    "link": "https://www.apicol.nic.in/",
+    "tags": ["odisha", "subsidy", "agro-industry", "business"]
+  },
+  {
+    "id": "saur-sujala",
+    "name": "Saur Sujala Yojana",
+    "fullName": "Saur Sujala Yojana (Chhattisgarh)",
+    "category": "Irrigation",
+    "summary": "Provides solar-powered irrigation pumps to farmers at highly subsidized rates.",
+    "benefits": [
+      "Subsidized solar pumps (3HP and 5HP)",
+      "Reduced dependence on grid electricity and diesel"
+    ],
+    "eligibility": "Farmers in Chhattisgarh with existing borewells/open wells without grid connection.",
+    "howToApply": "Submit application to the state's agriculture department or CREDA office.",
+    "documents": ["Aadhaar", "Land Records", "Water Source Certificate"],
+    "deadline": "Ongoing as per target allocation",
+    "status": "active",
+    "link": "https://creda.co.in/",
+    "tags": ["chhattisgarh", "solar", "pump", "irrigation", "subsidy"]
+  },
+  {
+    "id": "mukhya-mantri-krishi-ashirwad",
+    "name": "MMKAY",
+    "fullName": "Mukhya Mantri Krishi Ashirwad Yojana (Jharkhand)",
+    "category": "Income Support",
+    "summary": "Financial assistance to farmers to improve agricultural production and reduce debt dependence.",
+    "benefits": [
+      "₹5,000 per acre (up to 5 acres, max ₹25,000) per year directly to bank account"
+    ],
+    "eligibility": "Small and marginal farmers holding land up to 5 acres in Jharkhand.",
+    "howToApply": "Apply via CSC centers or local block agriculture office.",
+    "documents": ["Aadhaar Card", "Bank Account Details", "Land Documents"],
+    "deadline": "Ongoing",
+    "status": "active",
+    "link": "https://mmkay.jharkhand.gov.in/",
+    "tags": ["jharkhand", "income-support", "direct-transfer"]
+  },
+  {
+    "id": "ySR-rythu-bharosa",
+    "name": "YSR Rythu Bharosa",
+    "fullName": "YSR Rythu Bharosa (Andhra Pradesh)",
+    "category": "Income Support",
+    "summary": "Financial assistance for farmer families, integrating PM-KISAN funds.",
+    "benefits": [
+      "Total ₹13,500 per year per farmer family",
+      "Includes tenant farmers and ROFR cultivators"
+    ],
+    "eligibility": "Land-owning farmers, tenant farmers, and forest land cultivators in AP.",
+    "howToApply": "Register at the local Village Secretariat.",
+    "documents": ["Aadhaar Card", "Bank Passbook", "Land Proof / Tenant Agreement"],
+    "deadline": "Ongoing",
+    "status": "active",
+    "link": "https://ysrrythubharosa.ap.gov.in/",
+    "tags": ["ap", "income", "tenant-farmers"]
+  },
+  {
+    "id": "punjab-pani-bachao",
+    "name": "Pani Bachao, Paisa Kamao",
+    "fullName": "Pani Bachao, Paisa Kamao Scheme (Punjab)",
+    "category": "Conservation",
+    "summary": "Incentivizes farmers to save electricity (and thus groundwater) in agriculture.",
+    "benefits": [
+      "Direct cash transfer for electricity saved below a fixed limit",
+      "Encourages crop diversification and micro-irrigation"
+    ],
+    "eligibility": "Farmers connected to selected agricultural feeders in Punjab.",
+    "howToApply": "Enroll at PSPCL offices.",
+    "documents": ["Aadhaar Card", "Agri Power Connection Details", "Bank Account"],
+    "deadline": "Ongoing on pilot feeders",
+    "status": "active",
+    "link": "https://pspcl.in/",
+    "tags": ["punjab", "water-conservation", "electricity-saving"]
+  },
+  {
+    "id": "kisan-sarathi",
+    "name": "Kisan Sarathi",
+    "fullName": "Kisan Sarathi ICT Platform",
+    "category": "Digital Agriculture",
+    "summary": "Information and communication technology platform providing right information at the right time in the farmer's desired language.",
+    "benefits": [
+      "Personalized advisory directly from scientists of Krishi Vigyan Kendras (KVKs)",
+      "Timely alerts on weather and pests via SMS/WhatsApp"
+    ],
+    "eligibility": "All farmers.",
+    "howToApply": "Register via the Kisan Sarathi portal or through local KVKs.",
+    "documents": ["Mobile Number for Registration"],
+    "deadline": "Ongoing",
+    "status": "active",
+    "link": "https://icar.org.in/",
+    "tags": ["advisory", "digital", "kvk", "sms"]
+  },
+  {
+    "id": "nmoop",
+    "name": "NMOOP",
+    "fullName": "National Mission on Oilseeds and Oil Palm",
+    "category": "Crop Promotion",
+    "summary": "Promotes the cultivation of oilseeds and oil palm to increase vegetable oil production.",
+    "benefits": [
+      "Subsidies on seeds, fertilizers, and planting materials for oil palm",
+      "Assistance for borewells, drip irrigation, and harvesting tools for oil palm farmers"
+    ],
+    "eligibility": "Farmers growing oil seeds or interested in taking up oil palm cultivation.",
+    "howToApply": "Apply through State Department of Agriculture / Horticulture.",
+    "documents": ["Land Records", "Aadhaar Card", "Bank Account"],
+    "deadline": "Ongoing",
+    "status": "active",
+    "link": "https://nmoop.gov.in/",
+    "tags": ["oilseeds", "oil-palm", "subsidy", "edible-oil"]
+  },
+  {
+    "id": "pm-kmy",
+    "name": "PM-KMY",
+    "fullName": "Pradhan Mantri Kisan Maandhan Yojana",
+    "category": "Pension",
+    "summary": "Old age pension scheme for all small and marginal farmers (SMFs) in the country.",
+    "benefits": [
+      "Minimum assured pension of ₹3,000/- per month on attaining the age of 60 years",
+      "Family pension equal to 50% of the pension in case of subscriber's death",
+      "Matching contribution by the Central Government"
+    ],
+    "eligibility": "Small and Marginal Farmers (SMFs) between 18 to 40 years of age.",
+    "howToApply": "Enroll through Common Service Centres (CSCs) or State Nodal Officers (SNOs).",
+    "documents": ["Aadhaar Card", "Savings Bank Account details", "Land holding docs"],
+    "deadline": "Ongoing",
+    "status": "active",
+    "link": "https://maandhan.in/kisan",
+    "tags": ["pension", "old-age", "small-farmers"]
+  },
+  {
+    "id": "pm-mudra",
+    "name": "PMMY",
+    "fullName": "Pradhan Mantri Mudra Yojana",
+    "category": "Credit & Finance",
+    "summary": "Loans up to ₹10 lakh to non-corporate, non-farm small/micro enterprises. Agriculture-allied activities are also eligible.",
+    "benefits": [
+      "Shishu: Loans up to ₹50,000",
+      "Kishore: Loans from ₹50,001 to ₹5,00,000",
+      "Tarun: Loans from ₹5,00,001 to ₹10,00,000"
+    ],
+    "eligibility": "Individuals carrying out allied agricultural activities like dairy, poultry, beekeeping, etc.",
+    "howToApply": "Apply at banks, NBFCs, MFIs or online at Udyamimitra portal.",
+    "documents": ["Aadhaar Card", "PAN/Voter ID", "Business Plan (if required)", "Proof of Category"],
+    "deadline": "Ongoing",
+    "status": "active",
+    "link": "https://www.mudra.org.in/",
+    "tags": ["loan", "credit", "micro-finance", "allied-activities"]
+  }
+]

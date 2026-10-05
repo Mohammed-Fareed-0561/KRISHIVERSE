@@ -1,0 +1,7 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="512" height="512" viewBox="0 0 512 512">
+  <rect width="512" height="512" rx="96" fill="#22C55E"/>
+  <circle cx="256" cy="256" r="168" fill="#FFFFFF" opacity="0.12"/>
+  <path d="M256 144c48 26 76 70 76 120 0 62-44 114-98 126-6 2-12 2-18 0-54-12-98-64-98-126 0-50 28-94 76-120 18-10 44-10 62 0z" fill="#FFFFFF"/>
+  <text x="256" y="326" font-family="Arial, sans-serif" font-size="64" font-weight="700" text-anchor="middle" fill="#14532D">KV</text>
+</svg>
+

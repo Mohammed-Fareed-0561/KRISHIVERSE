@@ -1,0 +1,23 @@
+Traceback (most recent call last):
+  File "C:\Users\mrjmo\Downloads\krishiverse version 2.0 - Final_v2.0\backend\eval\train_efficientnet.py", line 241, in <module>
+    train(args)
+    ~~~~~^^^^^^
+  File "C:\Users\mrjmo\Downloads\krishiverse version 2.0 - Final_v2.0\backend\eval\train_efficientnet.py", line 153, in train
+    torch.onnx.export(
+    ~~~~~~~~~~~~~~~~~^
+        model, dummy, onnx_path,
+        ^^^^^^^^^^^^^^^^^^^^^^^^
+    ...<2 lines>...
+        dynamic_axes={"input": {0: "batch"}, "logits": {0: "batch"}},
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "C:\Users\mrjmo\AppData\Roaming\Python\Python314\site-packages\torch\onnx\__init__.py", line 286, in export
+    from torch.onnx._internal.exporter import _compat
+  File "C:\Users\mrjmo\AppData\Roaming\Python\Python314\site-packages\torch\onnx\_internal\exporter\_compat.py", line 16, in <module>
+    from torch.onnx._internal.exporter import (
+    ...<6 lines>...
+    )
+  File "C:\Users\mrjmo\AppData\Roaming\Python\Python314\site-packages\torch\onnx\_internal\exporter\_core.py", line 19, in <module>
+    import onnxscript
+ModuleNotFoundError: No module named 'onnxscript'

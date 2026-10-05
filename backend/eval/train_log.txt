@@ -1,0 +1,11 @@
+train=1530 val=270
+epoch 1/8 loss=0.8179 train_acc=0.6954 val_acc=0.8444 (153s)
+epoch 2/8 loss=0.6211 train_acc=0.8778 val_acc=0.8815 (111s)
+epoch 3/8 loss=0.4331 train_acc=0.9026 val_acc=0.9111 (108s)
+epoch 4/8 loss=0.2344 train_acc=0.9085 val_acc=0.8926 (108s)
+epoch 5/8 loss=0.2962 train_acc=0.9000 val_acc=0.9111 (109s)
+epoch 6/8 loss=0.4177 train_acc=0.9163 val_acc=0.9148 (115s)
+epoch 7/8 loss=0.2476 train_acc=0.9163 val_acc=0.9185 (117s)
+epoch 8/8 loss=0.2611 train_acc=0.9275 val_acc=0.9074 (108s)
+ft epoch 1/2 loss=0.3658 train_acc=0.9229 (101s)
+ft epoch 2/2 loss=0.2056 train_acc=0.9137 (98s)

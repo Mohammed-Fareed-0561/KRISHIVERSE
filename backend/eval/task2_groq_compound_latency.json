@@ -1,0 +1,218 @@
+{
+  "runAt": "2026-08-19T13:52:27.264Z",
+  "model": "groq/compound",
+  "note": "router -> llama-3.3-70b-versatile + openai/gpt-oss-120b",
+  "n": 30,
+  "log": [
+    {
+      "i": 1,
+      "status": 413,
+      "ms": 13093.61,
+      "model": null,
+      "errMsg": "Request Entity Too Large"
+    },
+    {
+      "i": 2,
+      "status": 413,
+      "ms": 11000.91,
+      "model": null,
+      "errMsg": "Request Entity Too Large"
+    },
+    {
+      "i": 3,
+      "status": 413,
+      "ms": 6552.1,
+      "model": null,
+      "errMsg": "Request Entity Too Large"
+    },
+    {
+      "i": 4,
+      "status": 413,
+      "ms": 13330.61,
+      "model": null,
+      "errMsg": "Request Entity Too Large"
+    },
+    {
+      "i": 5,
+      "status": 413,
+      "ms": 7807.17,
+      "model": null,
+      "errMsg": "Request Entity Too Large"
+    },
+    {
+      "i": 6,
+      "status": 413,
+      "ms": 10368.09,
+      "model": null,
+      "errMsg": "Request Entity Too Large"
+    },
+    {
+      "i": 7,
+      "status": 413,
+      "ms": 7439.38,
+      "model": null,
+      "errMsg": "Request Entity Too Large"
+    },
+    {
+      "i": 8,
+      "status": 200,
+      "ms": 13653.91,
+      "model": "groq/compound",
+      "errMsg": null
+    },
+    {
+      "i": 9,
+      "status": 413,
+      "ms": 9095.75,
+      "model": null,
+      "errMsg": "Request Entity Too Large"
+    },
+    {
+      "i": 10,
+      "status": 413,
+      "ms": 7403.08,
+      "model": null,
+      "errMsg": "Request Entity Too Large"
+    },
+    {
+      "i": 11,
+      "status": 429,
+      "ms": 1726.35,
+      "model": null,
+      "errMsg": "Rate limit reached for model `openai/gpt-oss-120b` in organization `org_01kn16qgtvevs9nq9331wf9pkk` service tier `on_demand` on tokens per minute (TPM): Limit 8000, Used 3952, Requested 6681. Please try again in 19.7475s. Need more tokens? Upgrade to Dev Tier today at https://console.groq.com/settings/billing"
+    },
+    {
+      "i": 12,
+      "status": 413,
+      "ms": 12373.78,
+      "model": null,
+      "errMsg": "Request Entity Too Large"
+    },
+    {
+      "i": 13,
+      "status": 200,
+      "ms": 9541.65,
+      "model": "groq/compound",
+      "errMsg": null
+    },
+    {
+      "i": 14,
+      "status": 200,
+      "ms": 7633.87,
+      "model": "groq/compound",
+      "errMsg": null
+    },
+    {
+      "i": 15,
+      "status": 429,
+      "ms": 41261.36,
+      "model": null,
+      "errMsg": "Rate limit reached for model `meta-llama/llama-4-scout-17b-16e-instruct` in organization `org_01kn16qgtvevs9nq9331wf9pkk` service tier `on_demand` on tokens per minute (TPM): Limit 30000, Used 20162, Requested 14098. Please try again in 8.52s. Need more tokens? Upgrade to Dev Tier today at https://console.groq.com/settings/billing"
+    },
+    {
+      "i": 16,
+      "status": 413,
+      "ms": 7996.47,
+      "model": null,
+      "errMsg": "Request Entity Too Large"
+    },
+    {
+      "i": 17,
+      "status": 200,
+      "ms": 3820.81,
+      "model": "groq/compound",
+      "errMsg": null
+    },
+    {
+      "i": 18,
+      "status": 413,
+      "ms": 9970.44,
+      "model": null,
+      "errMsg": "Request Entity Too Large"
+    },
+    {
+      "i": 19,
+      "status": 200,
+      "ms": 5052.55,
+      "model": "groq/compound",
+      "errMsg": null
+    },
+    {
+      "i": 20,
+      "status": 413,
+      "ms": 8281.5,
+      "model": null,
+      "errMsg": "Request Entity Too Large"
+    },
+    {
+      "i": 21,
+      "status": 413,
+      "ms": 7388.91,
+      "model": null,
+      "errMsg": "Request Entity Too Large"
+    },
+    {
+      "i": 22,
+      "status": 413,
+      "ms": 8907.01,
+      "model": null,
+      "errMsg": "Request Entity Too Large"
+    },
+    {
+      "i": 23,
+      "status": 413,
+      "ms": 5566.51,
+      "model": null,
+      "errMsg": "Request Entity Too Large"
+    },
+    {
+      "i": 24,
+      "status": 200,
+      "ms": 7883.63,
+      "model": "groq/compound",
+      "errMsg": null
+    },
+    {
+      "i": 25,
+      "status": 413,
+      "ms": 6689.47,
+      "model": null,
+      "errMsg": "Request Entity Too Large"
+    },
+    {
+      "i": 26,
+      "status": 200,
+      "ms": 9748.69,
+      "model": "groq/compound",
+      "errMsg": null
+    },
+    {
+      "i": 27,
+      "status": 413,
+      "ms": 7464.15,
+      "model": null,
+      "errMsg": "Request Entity Too Large"
+    },
+    {
+      "i": 28,
+      "status": 429,
+      "ms": 3403.03,
+      "model": null,
+      "errMsg": "Rate limit reached for model `openai/gpt-oss-120b` in organization `org_01kn16qgtvevs9nq9331wf9pkk` service tier `on_demand` on tokens per minute (TPM): Limit 8000, Used 3275, Requested 5299. Please try again in 4.305s. Need more tokens? Upgrade to Dev Tier today at https://console.groq.com/settings/billing"
+    },
+    {
+      "i": 29,
+      "status": 413,
+      "ms": 6966.53,
+      "model": null,
+      "errMsg": "Request Entity Too Large"
+    },
+    {
+      "i": 30,
+      "status": 200,
+      "ms": 8812.2,
+      "model": "groq/compound",
+      "errMsg": null
+    }
+  ]
+}

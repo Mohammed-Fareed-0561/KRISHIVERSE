@@ -1,0 +1,4 @@
+id,name,type,source,sourceUrl,verified,recordKind
+synthetic_pest_mites,Synthetic Mite Pest,pest,synthetic test,synthetic.example.com,false,crop
+synthetic_symptom_spots,Synthetic Leaf Spots,symptom,synthetic test,synthetic.example.com,false,crop
+synthetic_treatment_chemical,Synthetic Chemical Treatment,treatment,synthetic test,synthetic.example.com,false,crop

@@ -1,0 +1,11 @@
+{
+  "id": "synthetic_crop_verified_c",
+  "name": "Verified Crop C",
+  "category": "test",
+  "source": "Some Source",
+  "sourceUrl": "",
+  "verified": true,
+  "recordKind": "crop",
+  "status": "active",
+  "searchable": true
+}

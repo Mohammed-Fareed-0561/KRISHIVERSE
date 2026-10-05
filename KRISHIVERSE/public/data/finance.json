@@ -1,0 +1,77 @@
+{
+  "fetchedAt": "2026-07-08T08:00:00Z",
+  "creditProfile": {
+    "baseScore": 680,
+    "preApprovedLimit": 25000,
+    "nextTierLimit": 50000,
+    "transactionsForNextTier": 3,
+    "scorePerTransaction": 20
+  },
+  "loans": [
+    {
+      "id": "emergency-seed",
+      "type": "Emergency Seed Loan",
+      "amount": 5000,
+      "rate": "2% p.a.",
+      "description": "Quick credit for seeds and inputs during sowing season.",
+      "eligible": true,
+      "action": "eligible"
+    },
+    {
+      "id": "kcc",
+      "type": "Kisan Credit Card (KCC)",
+      "amount": 50000,
+      "rate": "4% p.a.",
+      "description": "Flexible revolving credit for farming and allied activities.",
+      "eligible": true,
+      "action": "apply"
+    },
+    {
+      "id": "rabi-input",
+      "type": "Rabi Season Input Loan",
+      "amount": 15000,
+      "rate": "3% p.a.",
+      "description": "Low-interest loan for fertilisers and pesticides.",
+      "eligible": false,
+      "action": "locked",
+      "unlockHint": "Reach credit score of 750 to unlock"
+    }
+  ],
+  "promo": {
+    "title": "Low Interest Seeds Loan",
+    "message": "Available for the upcoming Rabi season. Apply before the deadline.",
+    "deadline": "2026-08-15"
+  },
+  "enrollments": [
+    {
+      "id": "pm-kisan",
+      "schemeId": "pm-kisan",
+      "name": "PM-Kisan Samman Nidhi",
+      "status": "active",
+      "nextInstallment": "2026-08-01",
+      "amount": 2000,
+      "referenceId": "PMK-2025-4821"
+    },
+    {
+      "id": "pmfby",
+      "schemeId": "pmfby",
+      "name": "Crop Insurance (PMFBY)",
+      "status": "pending",
+      "deadline": "2026-07-31",
+      "amount": null,
+      "referenceId": "PMFBY-2025-1193"
+    }
+  ],
+  "marketForecast": {
+    "crop": "Onion",
+    "summary": "Expect a price surge in Onions next week due to Maharashtra rain delay.",
+    "confidence": 88,
+    "impact": "high",
+    "profitAlert": {
+      "crop": "Wheat",
+      "market": "Neemuch",
+      "message": "Wheat prices in Neemuch mandi are 8% higher than local average."
+    }
+  },
+  "defaultWatchlist": ["Wheat", "Mustard", "Potato"]
+}

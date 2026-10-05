@@ -1,0 +1,32 @@
+[
+  {
+    "id": "1",
+    "content": "Bundle audit: check @xenova/transformers usage, remove if unused, run build size check",
+    "status": "pending"
+  },
+  {
+    "id": "2",
+    "content": "Lazy-load all route pages with React.lazy + Suspense in App.jsx",
+    "status": "pending"
+  },
+  {
+    "id": "3",
+    "content": "Lazy-load TensorFlow.js + Leaflet in their respective pages (dynamic import)",
+    "status": "pending"
+  },
+  {
+    "id": "4",
+    "content": "Add CalendarPage to Home.jsx QUICK_ACTIONS grid",
+    "status": "pending"
+  },
+  {
+    "id": "5",
+    "content": "Complete voice TTS — speak() AI responses on AskPage + stop button",
+    "status": "pending"
+  },
+  {
+    "id": "6",
+    "content": "PWA install banner component — hook into beforeinstallprompt event",
+    "status": "pending"
+  }
+]

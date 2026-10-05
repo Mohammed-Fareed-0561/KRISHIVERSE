@@ -1,0 +1,217 @@
+{
+  "runAt": "2026-08-19T06:27:52.090Z",
+  "model": "llama-3.3-70b-versatile",
+  "n": 30,
+  "log": [
+    {
+      "i": 1,
+      "status": 404,
+      "ms": 282.81,
+      "model": null,
+      "errMsg": "The model `llama-3.3-70b-versatile` does not exist or you do not have access to it."
+    },
+    {
+      "i": 2,
+      "status": 404,
+      "ms": 66.26,
+      "model": null,
+      "errMsg": "The model `llama-3.3-70b-versatile` does not exist or you do not have access to it."
+    },
+    {
+      "i": 3,
+      "status": 404,
+      "ms": 67.74,
+      "model": null,
+      "errMsg": "The model `llama-3.3-70b-versatile` does not exist or you do not have access to it."
+    },
+    {
+      "i": 4,
+      "status": 404,
+      "ms": 78.08,
+      "model": null,
+      "errMsg": "The model `llama-3.3-70b-versatile` does not exist or you do not have access to it."
+    },
+    {
+      "i": 5,
+      "status": 404,
+      "ms": 71.18,
+      "model": null,
+      "errMsg": "The model `llama-3.3-70b-versatile` does not exist or you do not have access to it."
+    },
+    {
+      "i": 6,
+      "status": 404,
+      "ms": 73.79,
+      "model": null,
+      "errMsg": "The model `llama-3.3-70b-versatile` does not exist or you do not have access to it."
+    },
+    {
+      "i": 7,
+      "status": 404,
+      "ms": 63.78,
+      "model": null,
+      "errMsg": "The model `llama-3.3-70b-versatile` does not exist or you do not have access to it."
+    },
+    {
+      "i": 8,
+      "status": 404,
+      "ms": 73.48,
+      "model": null,
+      "errMsg": "The model `llama-3.3-70b-versatile` does not exist or you do not have access to it."
+    },
+    {
+      "i": 9,
+      "status": 404,
+      "ms": 77.84,
+      "model": null,
+      "errMsg": "The model `llama-3.3-70b-versatile` does not exist or you do not have access to it."
+    },
+    {
+      "i": 10,
+      "status": 404,
+      "ms": 62.74,
+      "model": null,
+      "errMsg": "The model `llama-3.3-70b-versatile` does not exist or you do not have access to it."
+    },
+    {
+      "i": 11,
+      "status": 404,
+      "ms": 65.63,
+      "model": null,
+      "errMsg": "The model `llama-3.3-70b-versatile` does not exist or you do not have access to it."
+    },
+    {
+      "i": 12,
+      "status": 404,
+      "ms": 78.36,
+      "model": null,
+      "errMsg": "The model `llama-3.3-70b-versatile` does not exist or you do not have access to it."
+    },
+    {
+      "i": 13,
+      "status": 404,
+      "ms": 73.68,
+      "model": null,
+      "errMsg": "The model `llama-3.3-70b-versatile` does not exist or you do not have access to it."
+    },
+    {
+      "i": 14,
+      "status": 404,
+      "ms": 61.45,
+      "model": null,
+      "errMsg": "The model `llama-3.3-70b-versatile` does not exist or you do not have access to it."
+    },
+    {
+      "i": 15,
+      "status": 404,
+      "ms": 78.59,
+      "model": null,
+      "errMsg": "The model `llama-3.3-70b-versatile` does not exist or you do not have access to it."
+    },
+    {
+      "i": 16,
+      "status": 404,
+      "ms": 68.44,
+      "model": null,
+      "errMsg": "The model `llama-3.3-70b-versatile` does not exist or you do not have access to it."
+    },
+    {
+      "i": 17,
+      "status": 404,
+      "ms": 68.78,
+      "model": null,
+      "errMsg": "The model `llama-3.3-70b-versatile` does not exist or you do not have access to it."
+    },
+    {
+      "i": 18,
+      "status": 404,
+      "ms": 60.86,
+      "model": null,
+      "errMsg": "The model `llama-3.3-70b-versatile` does not exist or you do not have access to it."
+    },
+    {
+      "i": 19,
+      "status": 404,
+      "ms": 89.4,
+      "model": null,
+      "errMsg": "The model `llama-3.3-70b-versatile` does not exist or you do not have access to it."
+    },
+    {
+      "i": 20,
+      "status": 404,
+      "ms": 56.67,
+      "model": null,
+      "errMsg": "The model `llama-3.3-70b-versatile` does not exist or you do not have access to it."
+    },
+    {
+      "i": 21,
+      "status": 404,
+      "ms": 63.97,
+      "model": null,
+      "errMsg": "The model `llama-3.3-70b-versatile` does not exist or you do not have access to it."
+    },
+    {
+      "i": 22,
+      "status": 404,
+      "ms": 92.45,
+      "model": null,
+      "errMsg": "The model `llama-3.3-70b-versatile` does not exist or you do not have access to it."
+    },
+    {
+      "i": 23,
+      "status": 404,
+      "ms": 77.8,
+      "model": null,
+      "errMsg": "The model `llama-3.3-70b-versatile` does not exist or you do not have access to it."
+    },
+    {
+      "i": 24,
+      "status": 404,
+      "ms": 67.62,
+      "model": null,
+      "errMsg": "The model `llama-3.3-70b-versatile` does not exist or you do not have access to it."
+    },
+    {
+      "i": 25,
+      "status": 404,
+      "ms": 78.32,
+      "model": null,
+      "errMsg": "The model `llama-3.3-70b-versatile` does not exist or you do not have access to it."
+    },
+    {
+      "i": 26,
+      "status": 404,
+      "ms": 68.62,
+      "model": null,
+      "errMsg": "The model `llama-3.3-70b-versatile` does not exist or you do not have access to it."
+    },
+    {
+      "i": 27,
+      "status": 404,
+      "ms": 80.08,
+      "model": null,
+      "errMsg": "The model `llama-3.3-70b-versatile` does not exist or you do not have access to it."
+    },
+    {
+      "i": 28,
+      "status": 404,
+      "ms": 64.84,
+      "model": null,
+      "errMsg": "The model `llama-3.3-70b-versatile` does not exist or you do not have access to it."
+    },
+    {
+      "i": 29,
+      "status": 404,
+      "ms": 67.31,
+      "model": null,
+      "errMsg": "The model `llama-3.3-70b-versatile` does not exist or you do not have access to it."
+    },
+    {
+      "i": 30,
+      "status": 404,
+      "ms": 70.73,
+      "model": null,
+      "errMsg": "The model `llama-3.3-70b-versatile` does not exist or you do not have access to it."
+    }
+  ]
+}

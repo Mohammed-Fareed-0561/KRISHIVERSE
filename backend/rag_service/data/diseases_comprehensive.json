@@ -1,0 +1,124 @@
+[
+  {
+    "id": "late_blight_potato",
+    "name": "Late Blight",
+    "nameHindi": "अंगमारी रोग",
+    "nameTamil": "இறுதி எரிப்பு நோய்",
+    "crops": ["potato", "tomato"],
+    "pathogen": "Phytophthora infestans",
+    "symptoms": [
+      "Water-soaked lesions on leaves",
+      "Brown to black patches on foliage",
+      "White fuzzy growth on undersides of leaves during humid conditions",
+      "Rapid wilting and death of affected parts",
+      "Tuber rot with brown discoloration"
+    ],
+    "causes": ["Cool temperatures (10-25°C)", "High humidity (>90%)", "Frequent rain or dew", "Dense planting", "Poor air circulation"],
+    "organicTreatments": [
+      "Copper-based fungicides (Bordeaux mixture)",
+      "Neem oil spray (10ml/liter water)",
+      "Baking soda solution (5g/liter + liquid soap)",
+      "Removal and destruction of infected plants",
+      "Mulching to prevent soil splash"
+    ],
+    "chemicalTreatments": [
+      "Mancozeb 75% WP @ 2.5g/liter",
+      "Metalaxyl + Mancozeb @ 2g/liter",
+      "Dimethomorph 50% WP @ 1g/liter",
+      "Apply at 7-10 day intervals during disease pressure"
+    ],
+    "prevention": [
+      "Plant resistant varieties",
+      "Proper spacing (45-60cm between plants)",
+      "Avoid overhead irrigation",
+      "Remove crop debris after harvest",
+      "Rotate with non-host crops for 2-3 years",
+      "Start spraying preventively before disease appears"
+    ],
+    "severity": "high",
+    "affectedArea": "Leaves, stems, tubers",
+    "spreadRate": "Very fast in favorable conditions",
+    "economicImpact": "Can cause 100% crop loss if untreated"
+  },
+  {
+    "id": "brown_spot_rice",
+    "name": "Brown Spot",
+    "nameHindi": "भूरा धब्बा रोग",
+    "nameTamil": "பழுப்பு புள்ளி நோய்",
+    "crops": ["rice", "paddy"],
+    "pathogen": "Bipolaris oryzae (Helminthosporium oryzae)",
+    "symptoms": [
+      "Circular to oval brown spots on leaves",
+      "Spots have dark brown margins and grayish centers",
+      "Size: 1-10mm diameter",
+      "Spots coalesce causing leaf death",
+      "Affects grains causing discoloration and reduced quality"
+    ],
+    "causes": ["Nutrient deficiency (especially potassium)", "Poor soil fertility", "Water stress", "High temperature with intermittent rain", "Old or damaged seeds"],
+    "organicTreatments": [
+      "Neem cake application @ 200kg/acre",
+      "Pseudomonas fluorescens @ 10g/liter water",
+      "Trichoderma viride seed treatment",
+      "Cow urine + neem leaf extract spray",
+      "Balanced organic manuring"
+    ],
+    "chemicalTreatments": [
+      "Carbendazim 50% WP @ 1g/liter",
+      "Propiconazole 25% EC @ 1ml/liter",
+      "Edifenphos 50% EC @ 1ml/liter",
+      "Spray at booting and flowering stages"
+    ],
+    "prevention": [
+      "Use certified disease-free seeds",
+      "Seed treatment with Carbendazim @ 2g/kg",
+      "Balanced fertilizer application (NPK 120:60:40 kg/ha)",
+      "Ensure adequate potassium supply",
+      "Proper water management - avoid water stress",
+      "Remove infected stubble after harvest"
+    ],
+    "severity": "medium",
+    "affectedArea": "Leaves, leaf sheaths, panicles, grains",
+    "spreadRate": "Moderate",
+    "economicImpact": "10-50% yield loss, quality deterioration"
+  },
+  {
+    "id": "bacterial_wilt_tomato",
+    "name": "Bacterial Wilt",
+    "nameHindi": "जीवाणु मुरझान",
+    "nameTamil": "பாக்டீரியா வாடல்",
+    "crops": ["tomato", "potato", "brinjal", "chilli"],
+    "pathogen": "Ralstonia solanacearum",
+    "symptoms": [
+      "Sudden wilting of entire plant despite adequate soil moisture",
+      "Wilting starts from lower leaves",
+      "Leaves remain green even while wilting",
+      "Brown discoloration of vascular tissue",
+      "Bacterial ooze when stem is cut and placed in water"
+    ],
+    "causes": ["Soil-borne bacteria", "High soil moisture", "Temperature 24-35°C", "Poor drainage", "Infected transplants", "Contaminated tools"],
+    "organicTreatments": [
+      "No effective organic cure once infected",
+      "Remove and burn infected plants immediately",
+      "Soil solarization for 4-6 weeks",
+      "Trichoderma application to suppress bacteria",
+      "Mustard cake amendment @ 500kg/ha"
+    ],
+    "chemicalTreatments": [
+      "Streptocycline 100ppm + Copper oxychloride 0.3%",
+      "Bleaching powder @ 10kg/ha soil drench",
+      "Soil treatment with formaldehyde before planting"
+    ],
+    "prevention": [
+      "Plant resistant varieties (Kashi Amrit, Arka Rakshak)",
+      "Raised bed planting for better drainage",
+      "Crop rotation with non-solanaceous crops for 3-4 years",
+      "Use disease-free transplants",
+      "Avoid working in fields when plants are wet",
+      "Sterilize tools between plants"
+    ],
+    "severity": "very_high",
+    "affectedArea": "Entire plant vascular system",
+    "spreadRate": "Fast, especially in warm wet conditions",
+    "economicImpact": "Can cause 100% loss in affected areas"
+  }
+]

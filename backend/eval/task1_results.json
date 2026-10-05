@@ -1,0 +1,250 @@
+{
+  "model": "llama-4-scout-17b-16e",
+  "runAt": "2026-08-19T05:25:26.259Z",
+  "accuracy": 0,
+  "total": 30,
+  "classified": 0,
+  "errors": [
+    {
+      "path": "C:\\Users\\Administrator\\OneDrive\\documents\\krishiverse version 2.0 - Final_v2.0\\backend\\eval\\dataset\\Pepper__bell___Bacterial_spot\\img1.jpg",
+      "gt": "Pepper Bell Bacterial Spot",
+      "dir": "Pepper__bell___Bacterial_spot",
+      "file": "img1.jpg",
+      "error": "Request failed with status code 404",
+      "ms": 299
+    },
+    {
+      "path": "C:\\Users\\Administrator\\OneDrive\\documents\\krishiverse version 2.0 - Final_v2.0\\backend\\eval\\dataset\\Pepper__bell___Bacterial_spot\\img2.jpg",
+      "gt": "Pepper Bell Bacterial Spot",
+      "dir": "Pepper__bell___Bacterial_spot",
+      "file": "img2.jpg",
+      "error": "Request failed with status code 404",
+      "ms": 94
+    },
+    {
+      "path": "C:\\Users\\Administrator\\OneDrive\\documents\\krishiverse version 2.0 - Final_v2.0\\backend\\eval\\dataset\\Pepper__bell___Bacterial_spot\\img3.jpg",
+      "gt": "Pepper Bell Bacterial Spot",
+      "dir": "Pepper__bell___Bacterial_spot",
+      "file": "img3.jpg",
+      "error": "Request failed with status code 404",
+      "ms": 86
+    },
+    {
+      "path": "C:\\Users\\Administrator\\OneDrive\\documents\\krishiverse version 2.0 - Final_v2.0\\backend\\eval\\dataset\\Pepper__bell___Bacterial_spot\\img4.jpg",
+      "gt": "Pepper Bell Bacterial Spot",
+      "dir": "Pepper__bell___Bacterial_spot",
+      "file": "img4.jpg",
+      "error": "Request failed with status code 404",
+      "ms": 102
+    },
+    {
+      "path": "C:\\Users\\Administrator\\OneDrive\\documents\\krishiverse version 2.0 - Final_v2.0\\backend\\eval\\dataset\\Pepper__bell___Bacterial_spot\\img5.jpg",
+      "gt": "Pepper Bell Bacterial Spot",
+      "dir": "Pepper__bell___Bacterial_spot",
+      "file": "img5.jpg",
+      "error": "Request failed with status code 404",
+      "ms": 93
+    },
+    {
+      "path": "C:\\Users\\Administrator\\OneDrive\\documents\\krishiverse version 2.0 - Final_v2.0\\backend\\eval\\dataset\\Potato___Early_blight\\img1.jpg",
+      "gt": "Potato Early Blight",
+      "dir": "Potato___Early_blight",
+      "file": "img1.jpg",
+      "error": "Request failed with status code 404",
+      "ms": 79
+    },
+    {
+      "path": "C:\\Users\\Administrator\\OneDrive\\documents\\krishiverse version 2.0 - Final_v2.0\\backend\\eval\\dataset\\Potato___Early_blight\\img2.jpg",
+      "gt": "Potato Early Blight",
+      "dir": "Potato___Early_blight",
+      "file": "img2.jpg",
+      "error": "Request failed with status code 404",
+      "ms": 86
+    },
+    {
+      "path": "C:\\Users\\Administrator\\OneDrive\\documents\\krishiverse version 2.0 - Final_v2.0\\backend\\eval\\dataset\\Potato___Early_blight\\img3.jpg",
+      "gt": "Potato Early Blight",
+      "dir": "Potato___Early_blight",
+      "file": "img3.jpg",
+      "error": "Request failed with status code 404",
+      "ms": 80
+    },
+    {
+      "path": "C:\\Users\\Administrator\\OneDrive\\documents\\krishiverse version 2.0 - Final_v2.0\\backend\\eval\\dataset\\Potato___Early_blight\\img4.jpg",
+      "gt": "Potato Early Blight",
+      "dir": "Potato___Early_blight",
+      "file": "img4.jpg",
+      "error": "Request failed with status code 404",
+      "ms": 93
+    },
+    {
+      "path": "C:\\Users\\Administrator\\OneDrive\\documents\\krishiverse version 2.0 - Final_v2.0\\backend\\eval\\dataset\\Potato___Early_blight\\img5.jpg",
+      "gt": "Potato Early Blight",
+      "dir": "Potato___Early_blight",
+      "file": "img5.jpg",
+      "error": "Request failed with status code 404",
+      "ms": 89
+    },
+    {
+      "path": "C:\\Users\\Administrator\\OneDrive\\documents\\krishiverse version 2.0 - Final_v2.0\\backend\\eval\\dataset\\Potato___Late_blight\\img1.jpg",
+      "gt": "Potato Late Blight",
+      "dir": "Potato___Late_blight",
+      "file": "img1.jpg",
+      "error": "Request failed with status code 404",
+      "ms": 87
+    },
+    {
+      "path": "C:\\Users\\Administrator\\OneDrive\\documents\\krishiverse version 2.0 - Final_v2.0\\backend\\eval\\dataset\\Potato___Late_blight\\img2.jpg",
+      "gt": "Potato Late Blight",
+      "dir": "Potato___Late_blight",
+      "file": "img2.jpg",
+      "error": "Request failed with status code 404",
+      "ms": 71
+    },
+    {
+      "path": "C:\\Users\\Administrator\\OneDrive\\documents\\krishiverse version 2.0 - Final_v2.0\\backend\\eval\\dataset\\Potato___Late_blight\\img3.jpg",
+      "gt": "Potato Late Blight",
+      "dir": "Potato___Late_blight",
+      "file": "img3.jpg",
+      "error": "Request failed with status code 404",
+      "ms": 89
+    },
+    {
+      "path": "C:\\Users\\Administrator\\OneDrive\\documents\\krishiverse version 2.0 - Final_v2.0\\backend\\eval\\dataset\\Potato___Late_blight\\img4.jpg",
+      "gt": "Potato Late Blight",
+      "dir": "Potato___Late_blight",
+      "file": "img4.jpg",
+      "error": "Request failed with status code 404",
+      "ms": 70
+    },
+    {
+      "path": "C:\\Users\\Administrator\\OneDrive\\documents\\krishiverse version 2.0 - Final_v2.0\\backend\\eval\\dataset\\Potato___Late_blight\\img5.jpg",
+      "gt": "Potato Late Blight",
+      "dir": "Potato___Late_blight",
+      "file": "img5.jpg",
+      "error": "Request failed with status code 404",
+      "ms": 97
+    },
+    {
+      "path": "C:\\Users\\Administrator\\OneDrive\\documents\\krishiverse version 2.0 - Final_v2.0\\backend\\eval\\dataset\\Tomato___Early_blight\\img1.jpg",
+      "gt": "Tomato Early Blight",
+      "dir": "Tomato___Early_blight",
+      "file": "img1.jpg",
+      "error": "Request failed with status code 404",
+      "ms": 86
+    },
+    {
+      "path": "C:\\Users\\Administrator\\OneDrive\\documents\\krishiverse version 2.0 - Final_v2.0\\backend\\eval\\dataset\\Tomato___Early_blight\\img2.jpg",
+      "gt": "Tomato Early Blight",
+      "dir": "Tomato___Early_blight",
+      "file": "img2.jpg",
+      "error": "Request failed with status code 404",
+      "ms": 78
+    },
+    {
+      "path": "C:\\Users\\Administrator\\OneDrive\\documents\\krishiverse version 2.0 - Final_v2.0\\backend\\eval\\dataset\\Tomato___Early_blight\\img3.jpg",
+      "gt": "Tomato Early Blight",
+      "dir": "Tomato___Early_blight",
+      "file": "img3.jpg",
+      "error": "Request failed with status code 404",
+      "ms": 85
+    },
+    {
+      "path": "C:\\Users\\Administrator\\OneDrive\\documents\\krishiverse version 2.0 - Final_v2.0\\backend\\eval\\dataset\\Tomato___Early_blight\\img4.jpg",
+      "gt": "Tomato Early Blight",
+      "dir": "Tomato___Early_blight",
+      "file": "img4.jpg",
+      "error": "Request failed with status code 404",
+      "ms": 82
+    },
+    {
+      "path": "C:\\Users\\Administrator\\OneDrive\\documents\\krishiverse version 2.0 - Final_v2.0\\backend\\eval\\dataset\\Tomato___Early_blight\\img5.jpg",
+      "gt": "Tomato Early Blight",
+      "dir": "Tomato___Early_blight",
+      "file": "img5.jpg",
+      "error": "Request failed with status code 404",
+      "ms": 83
+    },
+    {
+      "path": "C:\\Users\\Administrator\\OneDrive\\documents\\krishiverse version 2.0 - Final_v2.0\\backend\\eval\\dataset\\Tomato___healthy\\img1.jpg",
+      "gt": "Tomato Healthy",
+      "dir": "Tomato___healthy",
+      "file": "img1.jpg",
+      "error": "Request failed with status code 404",
+      "ms": 74
+    },
+    {
+      "path": "C:\\Users\\Administrator\\OneDrive\\documents\\krishiverse version 2.0 - Final_v2.0\\backend\\eval\\dataset\\Tomato___healthy\\img2.jpg",
+      "gt": "Tomato Healthy",
+      "dir": "Tomato___healthy",
+      "file": "img2.jpg",
+      "error": "Request failed with status code 404",
+      "ms": 94
+    },
+    {
+      "path": "C:\\Users\\Administrator\\OneDrive\\documents\\krishiverse version 2.0 - Final_v2.0\\backend\\eval\\dataset\\Tomato___healthy\\img3.jpg",
+      "gt": "Tomato Healthy",
+      "dir": "Tomato___healthy",
+      "file": "img3.jpg",
+      "error": "Request failed with status code 404",
+      "ms": 97
+    },
+    {
+      "path": "C:\\Users\\Administrator\\OneDrive\\documents\\krishiverse version 2.0 - Final_v2.0\\backend\\eval\\dataset\\Tomato___healthy\\img4.jpg",
+      "gt": "Tomato Healthy",
+      "dir": "Tomato___healthy",
+      "file": "img4.jpg",
+      "error": "Request failed with status code 404",
+      "ms": 78
+    },
+    {
+      "path": "C:\\Users\\Administrator\\OneDrive\\documents\\krishiverse version 2.0 - Final_v2.0\\backend\\eval\\dataset\\Tomato___healthy\\img5.jpg",
+      "gt": "Tomato Healthy",
+      "dir": "Tomato___healthy",
+      "file": "img5.jpg",
+      "error": "Request failed with status code 404",
+      "ms": 82
+    },
+    {
+      "path": "C:\\Users\\Administrator\\OneDrive\\documents\\krishiverse version 2.0 - Final_v2.0\\backend\\eval\\dataset\\Tomato___Late_blight\\img1.jpg",
+      "gt": "Tomato Late Blight",
+      "dir": "Tomato___Late_blight",
+      "file": "img1.jpg",
+      "error": "Request failed with status code 404",
+      "ms": 81
+    },
+    {
+      "path": "C:\\Users\\Administrator\\OneDrive\\documents\\krishiverse version 2.0 - Final_v2.0\\backend\\eval\\dataset\\Tomato___Late_blight\\img2.jpg",
+      "gt": "Tomato Late Blight",
+      "dir": "Tomato___Late_blight",
+      "file": "img2.jpg",
+      "error": "Request failed with status code 404",
+      "ms": 77
+    },
+    {
+      "path": "C:\\Users\\Administrator\\OneDrive\\documents\\krishiverse version 2.0 - Final_v2.0\\backend\\eval\\dataset\\Tomato___Late_blight\\img3.jpg",
+      "gt": "Tomato Late Blight",
+      "dir": "Tomato___Late_blight",
+      "file": "img3.jpg",
+      "error": "Request failed with status code 404",
+      "ms": 87
+    },
+    {
+      "path": "C:\\Users\\Administrator\\OneDrive\\documents\\krishiverse version 2.0 - Final_v2.0\\backend\\eval\\dataset\\Tomato___Late_blight\\img4.jpg",
+      "gt": "Tomato Late Blight",
+      "dir": "Tomato___Late_blight",
+      "file": "img4.jpg",
+      "error": "Request failed with status code 404",
+      "ms": 92
+    },
+    {
+      "path": "C:\\Users\\Administrator\\OneDrive\\documents\\krishiverse version 2.0 - Final_v2.0\\backend\\eval\\dataset\\Tomato___Late_blight\\img5.jpg",
+      "gt": "Tomato Late Blight",
+      "dir": "Tomato___Late_blight",
+      "file": "img5.jpg",
+      "error": "Request failed with status code 404",
+      "ms": 90
+    }
+  ],
+  "rows": []
+}

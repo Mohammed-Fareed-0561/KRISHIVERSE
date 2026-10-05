@@ -1,0 +1,523 @@
+{
+ "generatedAt": "2026-10-01T08:55:58.492Z",
+ "origin": "synthetic-screening on 13 curated records (NOT ground truth, small-n)",
+ "uncoveredTopics": [
+  "fertilizer",
+  "pest",
+  "cultivation"
+ ],
+ "overall": {
+  "n": 44,
+  "recallAt1": 0.909,
+  "recallAt3": 1,
+  "recallAt5": 1,
+  "mrr": 0.955
+ },
+ "byLanguage": {
+  "en": {
+   "n": 18,
+   "recallAt1": 0.778,
+   "recallAt3": 1,
+   "recallAt5": 1,
+   "mrr": 0.889
+  },
+  "ta": {
+   "n": 13,
+   "recallAt1": 1,
+   "recallAt3": 1,
+   "recallAt5": 1,
+   "mrr": 1
+  },
+  "hi": {
+   "n": 13,
+   "recallAt1": 1,
+   "recallAt3": 1,
+   "recallAt5": 1,
+   "mrr": 1
+  }
+ },
+ "byTopic": {
+  "general": {
+   "n": 12,
+   "recallAt1": 0.833,
+   "recallAt3": 1,
+   "recallAt5": 1,
+   "mrr": 0.917
+  },
+  "disease": {
+   "n": 8,
+   "recallAt1": 0.75,
+   "recallAt3": 1,
+   "recallAt5": 1,
+   "mrr": 0.875
+  },
+  "symptom": {
+   "n": 15,
+   "recallAt1": 1,
+   "recallAt3": 1,
+   "recallAt5": 1,
+   "mrr": 1
+  },
+  "treatment": {
+   "n": 6,
+   "recallAt1": 1,
+   "recallAt3": 1,
+   "recallAt5": 1,
+   "mrr": 1
+  },
+  "prevention": {
+   "n": 3,
+   "recallAt1": 1,
+   "recallAt3": 1,
+   "recallAt5": 1,
+   "mrr": 1
+  }
+ },
+ "latencyMs": {
+  "avg": 3.1295454545454544,
+  "max": 11.3
+ },
+ "failures": [],
+ "rows": [
+  {
+   "id": "ret-crop-tomato-en",
+   "language": "en",
+   "topic": "general",
+   "rank": 1,
+   "recallAt1": true,
+   "recallAt3": true,
+   "recallAt5": true,
+   "ms": 4.4
+  },
+  {
+   "id": "ret-crop-tomato-ta",
+   "language": "ta",
+   "topic": "general",
+   "rank": 1,
+   "recallAt1": true,
+   "recallAt3": true,
+   "recallAt5": true,
+   "ms": 2.7
+  },
+  {
+   "id": "ret-crop-tomato-hi",
+   "language": "hi",
+   "topic": "general",
+   "rank": 1,
+   "recallAt1": true,
+   "recallAt3": true,
+   "recallAt5": true,
+   "ms": 2.5
+  },
+  {
+   "id": "ret-crop-tomato-alias",
+   "language": "en",
+   "topic": "general",
+   "rank": 2,
+   "recallAt1": false,
+   "recallAt3": true,
+   "recallAt5": true,
+   "ms": 2.4
+  },
+  {
+   "id": "ret-crop-rice-en",
+   "language": "en",
+   "topic": "general",
+   "rank": 1,
+   "recallAt1": true,
+   "recallAt3": true,
+   "recallAt5": true,
+   "ms": 2.7
+  },
+  {
+   "id": "ret-crop-rice-ta",
+   "language": "ta",
+   "topic": "general",
+   "rank": 1,
+   "recallAt1": true,
+   "recallAt3": true,
+   "recallAt5": true,
+   "ms": 7.4
+  },
+  {
+   "id": "ret-crop-rice-hi",
+   "language": "hi",
+   "topic": "general",
+   "rank": 1,
+   "recallAt1": true,
+   "recallAt3": true,
+   "recallAt5": true,
+   "ms": 2.4
+  },
+  {
+   "id": "ret-crop-rice-alias",
+   "language": "en",
+   "topic": "general",
+   "rank": 1,
+   "recallAt1": true,
+   "recallAt3": true,
+   "recallAt5": true,
+   "ms": 2.3
+  },
+  {
+   "id": "ret-crop-chilli-en",
+   "language": "en",
+   "topic": "general",
+   "rank": 1,
+   "recallAt1": true,
+   "recallAt3": true,
+   "recallAt5": true,
+   "ms": 2.4
+  },
+  {
+   "id": "ret-crop-chilli-ta",
+   "language": "ta",
+   "topic": "general",
+   "rank": 1,
+   "recallAt1": true,
+   "recallAt3": true,
+   "recallAt5": true,
+   "ms": 2.4
+  },
+  {
+   "id": "ret-crop-chilli-hi",
+   "language": "hi",
+   "topic": "general",
+   "rank": 1,
+   "recallAt1": true,
+   "recallAt3": true,
+   "recallAt5": true,
+   "ms": 2.4
+  },
+  {
+   "id": "ret-crop-chilli-alias",
+   "language": "en",
+   "topic": "general",
+   "rank": 2,
+   "recallAt1": false,
+   "recallAt3": true,
+   "recallAt5": true,
+   "ms": 2.4
+  },
+  {
+   "id": "ret-dis-eb-en",
+   "language": "en",
+   "topic": "disease",
+   "rank": 1,
+   "recallAt1": true,
+   "recallAt3": true,
+   "recallAt5": true,
+   "ms": 2.4
+  },
+  {
+   "id": "ret-dis-eb-ta",
+   "language": "ta",
+   "topic": "disease",
+   "rank": 1,
+   "recallAt1": true,
+   "recallAt3": true,
+   "recallAt5": true,
+   "ms": 2.4
+  },
+  {
+   "id": "ret-dis-eb-hi",
+   "language": "hi",
+   "topic": "disease",
+   "rank": 1,
+   "recallAt1": true,
+   "recallAt3": true,
+   "recallAt5": true,
+   "ms": 2.4
+  },
+  {
+   "id": "ret-dis-eb-symptom",
+   "language": "en",
+   "topic": "disease",
+   "rank": 2,
+   "recallAt1": false,
+   "recallAt3": true,
+   "recallAt5": true,
+   "ms": 1.8
+  },
+  {
+   "id": "ret-dis-curl-en",
+   "language": "en",
+   "topic": "disease",
+   "rank": 1,
+   "recallAt1": true,
+   "recallAt3": true,
+   "recallAt5": true,
+   "ms": 1.9
+  },
+  {
+   "id": "ret-dis-curl-ta",
+   "language": "ta",
+   "topic": "disease",
+   "rank": 1,
+   "recallAt1": true,
+   "recallAt3": true,
+   "recallAt5": true,
+   "ms": 1.8
+  },
+  {
+   "id": "ret-dis-curl-hi",
+   "language": "hi",
+   "topic": "disease",
+   "rank": 1,
+   "recallAt1": true,
+   "recallAt3": true,
+   "recallAt5": true,
+   "ms": 11.1
+  },
+  {
+   "id": "ret-dis-curl-symptom",
+   "language": "en",
+   "topic": "disease",
+   "rank": 2,
+   "recallAt1": false,
+   "recallAt3": true,
+   "recallAt5": true,
+   "ms": 2.6
+  },
+  {
+   "id": "ret-sym-rings-en",
+   "language": "en",
+   "topic": "symptom",
+   "rank": 1,
+   "recallAt1": true,
+   "recallAt3": true,
+   "recallAt5": true,
+   "ms": 2
+  },
+  {
+   "id": "ret-sym-rings-ta",
+   "language": "ta",
+   "topic": "symptom",
+   "rank": 1,
+   "recallAt1": true,
+   "recallAt3": true,
+   "recallAt5": true,
+   "ms": 2.4
+  },
+  {
+   "id": "ret-sym-rings-hi",
+   "language": "hi",
+   "topic": "symptom",
+   "rank": 1,
+   "recallAt1": true,
+   "recallAt3": true,
+   "recallAt5": true,
+   "ms": 2.2
+  },
+  {
+   "id": "ret-sym-lower-en",
+   "language": "en",
+   "topic": "symptom",
+   "rank": 1,
+   "recallAt1": true,
+   "recallAt3": true,
+   "recallAt5": true,
+   "ms": 2.4
+  },
+  {
+   "id": "ret-sym-lower-ta",
+   "language": "ta",
+   "topic": "symptom",
+   "rank": 1,
+   "recallAt1": true,
+   "recallAt3": true,
+   "recallAt5": true,
+   "ms": 2.6
+  },
+  {
+   "id": "ret-sym-lower-hi",
+   "language": "hi",
+   "topic": "symptom",
+   "rank": 1,
+   "recallAt1": true,
+   "recallAt3": true,
+   "recallAt5": true,
+   "ms": 2.3
+  },
+  {
+   "id": "ret-sym-curl-en",
+   "language": "en",
+   "topic": "symptom",
+   "rank": 1,
+   "recallAt1": true,
+   "recallAt3": true,
+   "recallAt5": true,
+   "ms": 2.2
+  },
+  {
+   "id": "ret-sym-curl-ta",
+   "language": "ta",
+   "topic": "symptom",
+   "rank": 1,
+   "recallAt1": true,
+   "recallAt3": true,
+   "recallAt5": true,
+   "ms": 2.2
+  },
+  {
+   "id": "ret-sym-curl-hi",
+   "language": "hi",
+   "topic": "symptom",
+   "rank": 1,
+   "recallAt1": true,
+   "recallAt3": true,
+   "recallAt5": true,
+   "ms": 9.6
+  },
+  {
+   "id": "ret-sym-stunt-en",
+   "language": "en",
+   "topic": "symptom",
+   "rank": 1,
+   "recallAt1": true,
+   "recallAt3": true,
+   "recallAt5": true,
+   "ms": 1.9
+  },
+  {
+   "id": "ret-sym-stunt-ta",
+   "language": "ta",
+   "topic": "symptom",
+   "rank": 1,
+   "recallAt1": true,
+   "recallAt3": true,
+   "recallAt5": true,
+   "ms": 2.4
+  },
+  {
+   "id": "ret-sym-stunt-hi",
+   "language": "hi",
+   "topic": "symptom",
+   "rank": 1,
+   "recallAt1": true,
+   "recallAt3": true,
+   "recallAt5": true,
+   "ms": 2.4
+  },
+  {
+   "id": "ret-sym-veins-en",
+   "language": "en",
+   "topic": "symptom",
+   "rank": 1,
+   "recallAt1": true,
+   "recallAt3": true,
+   "recallAt5": true,
+   "ms": 2.2
+  },
+  {
+   "id": "ret-sym-veins-ta",
+   "language": "ta",
+   "topic": "symptom",
+   "rank": 1,
+   "recallAt1": true,
+   "recallAt3": true,
+   "recallAt5": true,
+   "ms": 2.2
+  },
+  {
+   "id": "ret-sym-veins-hi",
+   "language": "hi",
+   "topic": "symptom",
+   "rank": 1,
+   "recallAt1": true,
+   "recallAt3": true,
+   "recallAt5": true,
+   "ms": 2.5
+  },
+  {
+   "id": "ret-tx-neem-en",
+   "language": "en",
+   "topic": "treatment",
+   "rank": 1,
+   "recallAt1": true,
+   "recallAt3": true,
+   "recallAt5": true,
+   "ms": 2.6
+  },
+  {
+   "id": "ret-tx-neem-ta",
+   "language": "ta",
+   "topic": "treatment",
+   "rank": 1,
+   "recallAt1": true,
+   "recallAt3": true,
+   "recallAt5": true,
+   "ms": 2.3
+  },
+  {
+   "id": "ret-tx-neem-hi",
+   "language": "hi",
+   "topic": "treatment",
+   "rank": 1,
+   "recallAt1": true,
+   "recallAt3": true,
+   "recallAt5": true,
+   "ms": 2.3
+  },
+  {
+   "id": "ret-tx-copper-en",
+   "language": "en",
+   "topic": "treatment",
+   "rank": 1,
+   "recallAt1": true,
+   "recallAt3": true,
+   "recallAt5": true,
+   "ms": 2.3
+  },
+  {
+   "id": "ret-tx-copper-ta",
+   "language": "ta",
+   "topic": "treatment",
+   "rank": 1,
+   "recallAt1": true,
+   "recallAt3": true,
+   "recallAt5": true,
+   "ms": 2.2
+  },
+  {
+   "id": "ret-tx-copper-hi",
+   "language": "hi",
+   "topic": "treatment",
+   "rank": 1,
+   "recallAt1": true,
+   "recallAt3": true,
+   "recallAt5": true,
+   "ms": 11.3
+  },
+  {
+   "id": "ret-tx-whitefly-en",
+   "language": "en",
+   "topic": "prevention",
+   "rank": 1,
+   "recallAt1": true,
+   "recallAt3": true,
+   "recallAt5": true,
+   "ms": 3.4
+  },
+  {
+   "id": "ret-tx-whitefly-ta",
+   "language": "ta",
+   "topic": "prevention",
+   "rank": 1,
+   "recallAt1": true,
+   "recallAt3": true,
+   "recallAt5": true,
+   "ms": 3.5
+  },
+  {
+   "id": "ret-tx-whitefly-hi",
+   "language": "hi",
+   "topic": "prevention",
+   "rank": 1,
+   "recallAt1": true,
+   "recallAt3": true,
+   "recallAt5": true,
+   "ms": 3.5
+  }
+ ]
+}

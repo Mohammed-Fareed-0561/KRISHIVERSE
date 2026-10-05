@@ -1,0 +1,359 @@
+[
+  {
+    "id": "rice_blast",
+    "name": "Rice Blast (Blast Disease)",
+    "nameHindi": "धान का झुलसा रोग",
+    "nameTamil": "நெல் வெடிப்பு நோய்",
+    "crop": "rice",
+    "cropAliases": ["rice", "paddy", "dhan", "நெல்", "धान"],
+    "pathogen": "Magnaporthe oryzae",
+    "symptoms": [
+      "Diamond-shaped lesions with gray centers and brown margins on leaves",
+      "Whitish-gray spots with brown edges",
+      "Leaf blast - small brown spots that enlarge",
+      "Neck blast - blackening of neck region causing panicle to fall",
+      "Node blast - blackening of nodes"
+    ],
+    "organicTreatment": [
+      "Neem oil spray @ 5ml/liter water",
+      "Pseudomonas fluorescens @ 10g/liter spray",
+      "Trichoderma viride seed treatment and foliar spray",
+      "Remove and destroy infected plant parts"
+    ],
+    "chemicalTreatment": [
+      "Tricyclazole 75% WP @ 0.6g/liter water",
+      "Carbendazim 50% WP @ 1g/liter",
+      "Isoprothiolane 40% EC @ 1.5ml/liter",
+      "Spray at tillering, booting, and flowering stages"
+    ],
+    "prevention": [
+      "Use resistant varieties like IR-64, Jaya, Swarna",
+      "Balanced fertilization - avoid excess nitrogen",
+      "Proper water management",
+      "Seed treatment with Carbendazim",
+      "Maintain field hygiene"
+    ],
+    "severity": "very_high"
+  },
+  {
+    "id": "rice_bacterial_blight",
+    "name": "Bacterial Leaf Blight",
+    "nameHindi": "जीवाणु पत्ती झुलसा",
+    "nameTamil": "பாக்டீரியா இலை எரிச்சல்",
+    "crop": "rice",
+    "cropAliases": ["rice", "paddy", "dhan", "நெல்", "धान"],
+    "pathogen": "Xanthomonas oryzae",
+    "symptoms": [
+      "Water-soaked lesions on leaf tips and margins",
+      "Yellowing then whitening of affected areas",
+      "Wavy leaf margins (kresek symptom)",
+      "Milky bacterial ooze when cut",
+      "Wilting of young leaves"
+    ],
+    "organicTreatment": [
+      "Copper hydroxide spray @ 3g/liter",
+      "Pseudomonas fluorescens application",
+      "Maintain proper drainage",
+      "Remove infected plants immediately"
+    ],
+    "chemicalTreatment": [
+      "Streptocycline 15% + Copper oxychloride 50% @ 2g/liter",
+      "Copper hydroxide 77% WP @ 3g/liter",
+      "Spray twice at 10-day intervals"
+    ],
+    "prevention": [
+      "Plant resistant varieties",
+      "Use healthy seeds",
+      "Avoid excess nitrogen",
+      "Proper water management - avoid deep flooding",
+      "Clean cultivation tools"
+    ],
+    "severity": "high"
+  },
+  {
+    "id": "rice_sheath_blight",
+    "name": "Sheath Blight",
+    "nameHindi": "म्यान झुलसा",
+    "nameTamil": "உறை எரிப்பு நோய்",
+    "crop": "rice",
+    "cropAliases": ["rice", "paddy", "dhan", "நெல்", "धान"],
+    "pathogen": "Rhizoctonia solani",
+    "symptoms": [
+      "Greenish-gray oval lesions on leaf sheath near water level",
+      "Spots with brown margins and white centers",
+      "Lesions coalesce and move upward",
+      "Snake-skin pattern on stems",
+      "Affected tillers turn yellow and die"
+    ],
+    "organicTreatment": [
+      "Pseudomonas fluorescens @ 2.5kg/ha mixed in FYM",
+      "Neem cake @ 250kg/ha",
+      "Trichoderma harzianum soil application",
+      "Maintain proper water level"
+    ],
+    "chemicalTreatment": [
+      "Validamycin 3% L @ 2.5ml/liter",
+      "Hexaconazole 5% SC @ 2ml/liter",
+      "Propiconazole 25% EC @ 1ml/liter",
+      "Spray twice at flowering stage"
+    ],
+    "prevention": [
+      "Avoid excess nitrogen fertilization",
+      "Proper plant spacing",
+      "Drain water periodically",
+      "Use balanced fertilizer",
+      "Remove crop residues"
+    ],
+    "severity": "medium"
+  },
+  {
+    "id": "rice_yellow_spots_tungro",
+    "name": "Tungro Disease (Yellow Spots)",
+    "nameHindi": "टंगरो रोग",
+    "nameTamil": "துங்க்ரோ நோய்",
+    "crop": "rice",
+    "cropAliases": ["rice", "paddy", "dhan", "நெல்", "धான"],
+    "pathogen": "Rice tungro virus (transmitted by green leafhoppers)",
+    "symptoms": [
+      "Yellow or orange-yellow discoloration of leaves",
+      "Yellow spots and streaks on leaves",
+      "Stunted growth and reduced tillering",
+      "Delayed flowering",
+      "Mottled and twisted leaves"
+    ],
+    "organicTreatment": [
+      "Control green leafhopper vectors with neem spray",
+      "Remove and destroy infected plants immediately",
+      "Use yellow sticky traps for leafhopper control",
+      "Neem oil @ 5ml/liter + soap solution"
+    ],
+    "chemicalTreatment": [
+      "No direct cure - focus on vector control",
+      "Imidacloprid 17.8% SL @ 0.3ml/liter for leafhopper control",
+      "Thiamethoxam 25% WG @ 0.2g/liter",
+      "Spray at early tillering stage"
+    ],
+    "prevention": [
+      "Plant resistant varieties like TKM-6, Vikram",
+      "Control green leafhoppers",
+      "Avoid staggered planting",
+      "Roguing of infected plants",
+      "Use virus-free seeds"
+    ],
+    "severity": "very_high"
+  },
+  {
+    "id": "tomato_early_blight",
+    "name": "Early Blight",
+    "nameHindi": "आरंभिक अंगमारी",
+    "nameTamil": "ஆரம்ப எரிப்பு",
+    "crop": "tomato",
+    "cropAliases": ["tomato", "tamatar", "தக்காளி", "टमाटर"],
+    "pathogen": "Alternaria solani",
+    "symptoms": [
+      "Dark brown spots with concentric rings (target board pattern)",
+      "Yellowing around spots",
+      "Lower leaves affected first",
+      "Premature leaf drop",
+      "Stem lesions with similar pattern"
+    ],
+    "organicTreatment": [
+      "Copper fungicide spray @ 3g/liter",
+      "Baking soda solution @ 5g/liter + soap",
+      "Neem oil @ 10ml/liter",
+      "Remove infected lower leaves"
+    ],
+    "chemicalTreatment": [
+      "Mancozeb 75% WP @ 2.5g/liter",
+      "Chlorothalonil 75% WP @ 2g/liter",
+      "Difenoconazole 25% EC @ 1ml/liter",
+      "Spray every 7-10 days"
+    ],
+    "prevention": [
+      "Crop rotation with non-solanaceous crops",
+      "Stake plants for air circulation",
+      "Mulching to prevent soil splash",
+      "Drip irrigation instead of overhead",
+      "Remove crop debris"
+    ],
+    "severity": "medium"
+  },
+  {
+    "id": "cotton_wilt",
+    "name": "Cotton Wilt",
+    "nameHindi": "कपास म्लानि",
+    "nameTamil": "பருத்தி வாடல்",
+    "crop": "cotton",
+    "cropAliases": ["cotton", "kapas", "பருத்தி", "कपास"],
+    "pathogen": "Fusarium oxysporum f.sp. vasinfectum",
+    "symptoms": [
+      "Yellowing and drooping of leaves",
+      "Wilting of entire plant",
+      "Brown discoloration of vascular tissue",
+      "One-sided wilting common",
+      "Stunted growth"
+    ],
+    "organicTreatment": [
+      "Trichoderma viride seed treatment @ 10g/kg seed",
+      "Soil application of Pseudomonas @ 2.5kg/ha",
+      "Neem cake @ 500kg/ha",
+      "No cure once infected - focus on prevention"
+    ],
+    "chemicalTreatment": [
+      "Carbendazim 50% WP @ 2g/kg seed treatment",
+      "Soil drenching with Carbendazim @ 2g/liter",
+      "Metalaxyl + Mancozeb soil drench"
+    ],
+    "prevention": [
+      "Plant resistant varieties like Bunny Bt, RCH-2",
+      "Crop rotation with cereals",
+      "Deep summer ploughing",
+      "Balanced fertilization",
+      "Avoid waterlogging"
+    ],
+    "severity": "very_high"
+  },
+  {
+    "id": "chilli_leaf_curl",
+    "name": "Chilli Leaf Curl",
+    "nameHindi": "मिर्च पत्ती मोड़",
+    "nameTamil": "மிளகாய் இலை சுருட்டல்",
+    "crop": "chilli",
+    "cropAliases": ["chilli", "chili", "mirchi", "மிளகாய்", "मिर्च"],
+    "pathogen": "Chilli leaf curl virus (transmitted by whitefly)",
+    "symptoms": [
+      "Upward curling of leaves",
+      "Yellowing and puckering of leaves",
+      "Stunted plant growth",
+      "Reduced flowering and fruiting",
+      "Small and distorted fruits"
+    ],
+    "organicTreatment": [
+      "Control whiteflies with neem oil @ 5ml/liter",
+      "Yellow sticky traps for whitefly monitoring",
+      "Remove and destroy infected plants",
+      "Spray neem + soap solution weekly"
+    ],
+    "chemicalTreatment": [
+      "Imidacloprid 17.8% SL @ 0.5ml/liter for whitefly control",
+      "Thiamethoxam 25% WG @ 0.2g/liter",
+      "Acetamiprid 20% SP @ 0.2g/liter",
+      "Spray at 10-day intervals"
+    ],
+    "prevention": [
+      "Plant resistant varieties",
+      "Control whitefly population",
+      "Remove infected plants immediately",
+      "Mulching with silver plastic",
+      "Avoid mixed cropping with cucurbits"
+    ],
+    "severity": "high"
+  },
+  {
+    "id": "banana_panama_wilt",
+    "name": "Panama Wilt (Fusarium Wilt)",
+    "nameHindi": "केला मुरझान",
+    "nameTamil": "வாழை வாடல் நோய்",
+    "crop": "banana",
+    "cropAliases": ["banana", "kela", "வாழை", "केला"],
+    "pathogen": "Fusarium oxysporum f.sp. cubense",
+    "symptoms": [
+      "Yellowing of older leaves first",
+      "Splitting of leaf sheaths",
+      "Wilting and drooping of leaves",
+      "Brown discoloration of pseudostem",
+      "Plant death within weeks"
+    ],
+    "organicTreatment": [
+      "No cure - remove infected plants",
+      "Soil solarization",
+      "Trichoderma application @ 5kg/ha",
+      "Organic matter addition",
+      "Crop rotation impossible as banana is perennial"
+    ],
+    "chemicalTreatment": [
+      "Carbendazim soil drench @ 2g/liter",
+      "Propiconazole @ 1ml/liter soil drench",
+      "Preventive only - no cure once infected"
+    ],
+    "prevention": [
+      "Plant disease-free suckers",
+      "Use tissue culture plants",
+      "Plant resistant varieties like Dwarf Cavendish",
+      "Avoid waterlogging",
+      "Quarantine infected areas"
+    ],
+    "severity": "very_high"
+  },
+  {
+    "id": "wheat_rust",
+    "name": "Wheat Rust (Brown/Yellow Rust)",
+    "nameHindi": "गेहूं का रतुआ",
+    "nameTamil": "கோதுமை துருப்பிடிப்பு",
+    "crop": "wheat",
+    "cropAliases": ["wheat", "gehun", "கோதுமை", "गेहूं"],
+    "pathogen": "Puccinia triticina (brown rust), P. striiformis (yellow rust)",
+    "symptoms": [
+      "Orange-brown pustules on leaves (brown rust)",
+      "Yellow stripes on leaves (yellow rust)",
+      "Premature leaf drying",
+      "Reduced grain filling",
+      "Black pustules at maturity"
+    ],
+    "organicTreatment": [
+      "Sulfur dust @ 20kg/ha",
+      "Copper oxychloride @ 3g/liter spray",
+      "Remove alternate hosts (barberry)",
+      "Early sowing to escape disease"
+    ],
+    "chemicalTreatment": [
+      "Propiconazole 25% EC @ 1ml/liter",
+      "Tebuconazole 25% EC @ 1ml/liter",
+      "Mancozeb + Carbendazim @ 2g/liter",
+      "Spray at first sign of disease"
+    ],
+    "prevention": [
+      "Plant resistant varieties like HD-2967, PBW-343",
+      "Early sowing (October-November)",
+      "Avoid excess nitrogen",
+      "Timely irrigation",
+      "Destroy crop residues"
+    ],
+    "severity": "high"
+  },
+  {
+    "id": "sugarcane_red_rot",
+    "name": "Red Rot",
+    "nameHindi": "गन्ना लाल सड़न",
+    "nameTamil": "கரும்பு சிவப்பு அழுகல்",
+    "crop": "sugarcane",
+    "cropAliases": ["sugarcane", "ganna", "கரும்பு", "गन्ना"],
+    "pathogen": "Colletotrichum falcatum",
+    "symptoms": [
+      "Reddening of internal tissue",
+      "White patches with red margins inside stem",
+      "Drying of leaves from tips",
+      "Side shoots from nodes",
+      "Sour smell from affected stalks"
+    ],
+    "organicTreatment": [
+      "Use disease-free setts for planting",
+      "Hot water treatment of setts (52°C for 30 min)",
+      "Trichoderma seed treatment",
+      "Remove and burn infected plants"
+    ],
+    "chemicalTreatment": [
+      "Carbendazim 50% WP @ 2g/liter sett treatment",
+      "Copper oxychloride + Mancozeb foliar spray",
+      "Propiconazole @ 1ml/liter spray"
+    ],
+    "prevention": [
+      "Plant resistant varieties like Co-86032",
+      "Hot water treatment of setts",
+      "Roguing of diseased clumps",
+      "Crop rotation",
+      "Avoid waterlogging"
+    ],
+    "severity": "very_high"
+  }
+]

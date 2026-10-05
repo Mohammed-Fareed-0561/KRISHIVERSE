@@ -1,0 +1,252 @@
+{
+  "runAt": "2026-08-19T06:27:39.543Z",
+  "baseline": {
+    "host": "api.groq.com",
+    "minMs": 20,
+    "maxMs": 32,
+    "avgMs": 26
+  },
+  "n": 30,
+  "log": [
+    {
+      "i": 1,
+      "status": 503,
+      "ms": 1690.99,
+      "model": null,
+      "source": null,
+      "errMsg": "No AI providers configured. Add GROQ_API_KEY or GEMINI_API_KEY to .env"
+    },
+    {
+      "i": 2,
+      "status": 503,
+      "ms": 110.25,
+      "model": null,
+      "source": null,
+      "errMsg": "No AI providers configured. Add GROQ_API_KEY or GEMINI_API_KEY to .env"
+    },
+    {
+      "i": 3,
+      "status": 503,
+      "ms": 404.1,
+      "model": null,
+      "source": null,
+      "errMsg": "No AI providers configured. Add GROQ_API_KEY or GEMINI_API_KEY to .env"
+    },
+    {
+      "i": 4,
+      "status": 503,
+      "ms": 92.06,
+      "model": null,
+      "source": null,
+      "errMsg": "No AI providers configured. Add GROQ_API_KEY or GEMINI_API_KEY to .env"
+    },
+    {
+      "i": 5,
+      "status": 503,
+      "ms": 98.03,
+      "model": null,
+      "source": null,
+      "errMsg": "No AI providers configured. Add GROQ_API_KEY or GEMINI_API_KEY to .env"
+    },
+    {
+      "i": 6,
+      "status": 503,
+      "ms": 390.69,
+      "model": null,
+      "source": null,
+      "errMsg": "No AI providers configured. Add GROQ_API_KEY or GEMINI_API_KEY to .env"
+    },
+    {
+      "i": 7,
+      "status": 503,
+      "ms": 97.61,
+      "model": null,
+      "source": null,
+      "errMsg": "No AI providers configured. Add GROQ_API_KEY or GEMINI_API_KEY to .env"
+    },
+    {
+      "i": 8,
+      "status": 503,
+      "ms": 91.08,
+      "model": null,
+      "source": null,
+      "errMsg": "No AI providers configured. Add GROQ_API_KEY or GEMINI_API_KEY to .env"
+    },
+    {
+      "i": 9,
+      "status": 503,
+      "ms": 103.75,
+      "model": null,
+      "source": null,
+      "errMsg": "No AI providers configured. Add GROQ_API_KEY or GEMINI_API_KEY to .env"
+    },
+    {
+      "i": 10,
+      "status": 503,
+      "ms": 111.65,
+      "model": null,
+      "source": null,
+      "errMsg": "No AI providers configured. Add GROQ_API_KEY or GEMINI_API_KEY to .env"
+    },
+    {
+      "i": 11,
+      "status": 503,
+      "ms": 88.29,
+      "model": null,
+      "source": null,
+      "errMsg": "No AI providers configured. Add GROQ_API_KEY or GEMINI_API_KEY to .env"
+    },
+    {
+      "i": 12,
+      "status": 503,
+      "ms": 134.78,
+      "model": null,
+      "source": null,
+      "errMsg": "No AI providers configured. Add GROQ_API_KEY or GEMINI_API_KEY to .env"
+    },
+    {
+      "i": 13,
+      "status": 503,
+      "ms": 140.88,
+      "model": null,
+      "source": null,
+      "errMsg": "No AI providers configured. Add GROQ_API_KEY or GEMINI_API_KEY to .env"
+    },
+    {
+      "i": 14,
+      "status": 503,
+      "ms": 106.4,
+      "model": null,
+      "source": null,
+      "errMsg": "No AI providers configured. Add GROQ_API_KEY or GEMINI_API_KEY to .env"
+    },
+    {
+      "i": 15,
+      "status": 503,
+      "ms": 137.41,
+      "model": null,
+      "source": null,
+      "errMsg": "No AI providers configured. Add GROQ_API_KEY or GEMINI_API_KEY to .env"
+    },
+    {
+      "i": 16,
+      "status": 503,
+      "ms": 79.2,
+      "model": null,
+      "source": null,
+      "errMsg": "No AI providers configured. Add GROQ_API_KEY or GEMINI_API_KEY to .env"
+    },
+    {
+      "i": 17,
+      "status": 503,
+      "ms": 84.98,
+      "model": null,
+      "source": null,
+      "errMsg": "No AI providers configured. Add GROQ_API_KEY or GEMINI_API_KEY to .env"
+    },
+    {
+      "i": 18,
+      "status": 503,
+      "ms": 86.34,
+      "model": null,
+      "source": null,
+      "errMsg": "No AI providers configured. Add GROQ_API_KEY or GEMINI_API_KEY to .env"
+    },
+    {
+      "i": 19,
+      "status": 503,
+      "ms": 121.44,
+      "model": null,
+      "source": null,
+      "errMsg": "No AI providers configured. Add GROQ_API_KEY or GEMINI_API_KEY to .env"
+    },
+    {
+      "i": 20,
+      "status": 503,
+      "ms": 90.41,
+      "model": null,
+      "source": null,
+      "errMsg": "No AI providers configured. Add GROQ_API_KEY or GEMINI_API_KEY to .env"
+    },
+    {
+      "i": 21,
+      "status": 503,
+      "ms": 136.76,
+      "model": null,
+      "source": null,
+      "errMsg": "No AI providers configured. Add GROQ_API_KEY or GEMINI_API_KEY to .env"
+    },
+    {
+      "i": 22,
+      "status": 503,
+      "ms": 90.41,
+      "model": null,
+      "source": null,
+      "errMsg": "No AI providers configured. Add GROQ_API_KEY or GEMINI_API_KEY to .env"
+    },
+    {
+      "i": 23,
+      "status": 503,
+      "ms": 411.04,
+      "model": null,
+      "source": null,
+      "errMsg": "No AI providers configured. Add GROQ_API_KEY or GEMINI_API_KEY to .env"
+    },
+    {
+      "i": 24,
+      "status": 503,
+      "ms": 119.3,
+      "model": null,
+      "source": null,
+      "errMsg": "No AI providers configured. Add GROQ_API_KEY or GEMINI_API_KEY to .env"
+    },
+    {
+      "i": 25,
+      "status": 503,
+      "ms": 89.54,
+      "model": null,
+      "source": null,
+      "errMsg": "No AI providers configured. Add GROQ_API_KEY or GEMINI_API_KEY to .env"
+    },
+    {
+      "i": 26,
+      "status": 503,
+      "ms": 154.65,
+      "model": null,
+      "source": null,
+      "errMsg": "No AI providers configured. Add GROQ_API_KEY or GEMINI_API_KEY to .env"
+    },
+    {
+      "i": 27,
+      "status": 503,
+      "ms": 141.71,
+      "model": null,
+      "source": null,
+      "errMsg": "No AI providers configured. Add GROQ_API_KEY or GEMINI_API_KEY to .env"
+    },
+    {
+      "i": 28,
+      "status": 503,
+      "ms": 96.5,
+      "model": null,
+      "source": null,
+      "errMsg": "No AI providers configured. Add GROQ_API_KEY or GEMINI_API_KEY to .env"
+    },
+    {
+      "i": 29,
+      "status": 503,
+      "ms": 81.44,
+      "model": null,
+      "source": null,
+      "errMsg": "No AI providers configured. Add GROQ_API_KEY or GEMINI_API_KEY to .env"
+    },
+    {
+      "i": 30,
+      "status": 503,
+      "ms": 118.74,
+      "model": null,
+      "source": null,
+      "errMsg": "No AI providers configured. Add GROQ_API_KEY or GEMINI_API_KEY to .env"
+    }
+  ]
+}

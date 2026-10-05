@@ -1,0 +1,156 @@
+{
+  "note": "Static fallback data for offline use — Tamil Nadu major agricultural locations",
+  "fetchedAt": "2026-04-10T00:00:00.000Z",
+  "places": [
+    {
+      "id": "static-1",
+      "name": "Coimbatore Agricultural Market (APMC)",
+      "type": "mandi",
+      "lat": 11.0071,
+      "lon": 76.9799,
+      "address": "Market Road, Coimbatore",
+      "phone": "0422-2301234",
+      "website": null
+    },
+    {
+      "id": "static-2",
+      "name": "Coimbatore Krishi Vigyan Kendra",
+      "type": "education",
+      "lat": 11.0211,
+      "lon": 77.0026,
+      "address": "Mettupalayam Road, Coimbatore",
+      "phone": "0422-2610344",
+      "website": "https://kvk.icar.gov.in"
+    },
+    {
+      "id": "static-3",
+      "name": "Tamil Nadu Agriculture Department Office",
+      "type": "office",
+      "lat": 11.0117,
+      "lon": 76.9983,
+      "address": "Race Course, Coimbatore",
+      "phone": "0422-2301567",
+      "website": null
+    },
+    {
+      "id": "static-4",
+      "name": "IFFCO Fertilizer Depot Coimbatore",
+      "type": "fertilizer",
+      "lat": 10.9824,
+      "lon": 76.9608,
+      "address": "Ganapathy, Coimbatore",
+      "phone": "0422-2664321",
+      "website": "https://www.iffco.in"
+    },
+    {
+      "id": "static-5",
+      "name": "Tamil Nadu Seed Corporation",
+      "type": "seeds",
+      "lat": 11.0315,
+      "lon": 77.0126,
+      "address": "Saibaba Colony, Coimbatore",
+      "phone": "0422-2443210",
+      "website": null
+    },
+    {
+      "id": "static-6",
+      "name": "Salem APMC Mandi",
+      "type": "mandi",
+      "lat": 11.6511,
+      "lon": 78.1582,
+      "address": "Mango Market, Salem",
+      "phone": "0427-2414567",
+      "website": null
+    },
+    {
+      "id": "static-7",
+      "name": "Erode Agricultural Market",
+      "type": "mandi",
+      "lat": 11.3391,
+      "lon": 77.7167,
+      "address": "Surampatti, Erode",
+      "phone": "0424-2225678",
+      "website": null
+    },
+    {
+      "id": "static-8",
+      "name": "Tirupur District Krishi Vigyan Kendra",
+      "type": "education",
+      "lat": 11.1085,
+      "lon": 77.3411,
+      "address": "Mudalipalayam, Tirupur",
+      "phone": "04212-255001",
+      "website": null
+    },
+    {
+      "id": "static-9",
+      "name": "KVK Namakkal Agri Research Station",
+      "type": "education",
+      "lat": 11.2189,
+      "lon": 78.1677,
+      "address": "Mohanur Road, Namakkal",
+      "phone": "04286-281234",
+      "website": null
+    },
+    {
+      "id": "static-10",
+      "name": "TNAU Soil Testing Laboratory",
+      "type": "soillab",
+      "lat": 11.0131,
+      "lon": 77.0001,
+      "address": "TNAU Campus, Coimbatore",
+      "phone": "0422-6611234",
+      "website": "https://www.tnau.ac.in"
+    },
+    {
+      "id": "static-11",
+      "name": "Dindigul District Agriculture Office",
+      "type": "office",
+      "lat": 10.3624,
+      "lon": 77.9695,
+      "address": "Collectorate Complex, Dindigul",
+      "phone": "0451-2431234",
+      "website": null
+    },
+    {
+      "id": "static-12",
+      "name": "Madurai APMC Farmers Market",
+      "type": "mandi",
+      "lat": 9.9252,
+      "lon": 78.1198,
+      "address": "Surveyor Colony, Madurai",
+      "phone": "0452-2601234",
+      "website": null
+    },
+    {
+      "id": "static-13",
+      "name": "Trichy Krishna Seeds Store",
+      "type": "seeds",
+      "lat": 10.7905,
+      "lon": 78.7047,
+      "address": "Thillai Nagar, Trichy",
+      "phone": "0431-2741234",
+      "website": null
+    },
+    {
+      "id": "static-14",
+      "name": "Vellore Agri Equipment Depot",
+      "type": "equipment",
+      "lat": 12.9165,
+      "lon": 79.1325,
+      "address": "Katpadi Road, Vellore",
+      "phone": "0416-2201234",
+      "website": null
+    },
+    {
+      "id": "static-15",
+      "name": "Tamil Nadu Debt Relief Krishi Bank",
+      "type": "bank",
+      "lat": 11.0097,
+      "lon": 76.9656,
+      "address": "Ganapathy, Coimbatore",
+      "phone": "0422-2664999",
+      "website": null
+    }
+  ]
+}

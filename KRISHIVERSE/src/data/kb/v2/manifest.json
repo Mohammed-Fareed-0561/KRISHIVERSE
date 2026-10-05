@@ -1,0 +1,2396 @@
+{
+  "version": 2,
+  "generatedAt": "2026-08-19T16:59:59.539Z",
+  "inputChecksum": "3cbcf0769a77e6a2",
+  "recordCount": 15021,
+  "report": {
+    "version": 2,
+    "total": 15021,
+    "curated": 21,
+    "synthetic": 15000,
+    "community": 0,
+    "unknown": 0,
+    "quarantined": 15000,
+    "conflictCount": 393,
+    "conflicts": [
+      {
+        "id": "treatment_3645",
+        "field": "diseaseId",
+        "existing": "disease_1813",
+        "edge": "disease_255"
+      },
+      {
+        "id": "disease_845",
+        "field": "cropId",
+        "existing": "crop_188",
+        "edge": "crop_221"
+      },
+      {
+        "id": "treatment_2395",
+        "field": "diseaseId",
+        "existing": "disease_1385",
+        "edge": "disease_2442"
+      },
+      {
+        "id": "treatment_451",
+        "field": "diseaseId",
+        "existing": "disease_2066",
+        "edge": "disease_592"
+      },
+      {
+        "id": "disease_820",
+        "field": "cropId",
+        "existing": "crop_479",
+        "edge": "crop_50"
+      },
+      {
+        "id": "treatment_2876",
+        "field": "diseaseId",
+        "existing": "disease_1517",
+        "edge": "disease_2096"
+      },
+      {
+        "id": "treatment_2182",
+        "field": "diseaseId",
+        "existing": "disease_7",
+        "edge": "disease_41"
+      },
+      {
+        "id": "treatment_3742",
+        "field": "diseaseId",
+        "existing": "disease_2926",
+        "edge": "disease_867"
+      },
+      {
+        "id": "treatment_961",
+        "field": "diseaseId",
+        "existing": "disease_2333",
+        "edge": "disease_934"
+      },
+      {
+        "id": "disease_1278",
+        "field": "cropId",
+        "existing": "crop_261",
+        "edge": "crop_454"
+      },
+      {
+        "id": "disease_1304",
+        "field": "cropId",
+        "existing": "crop_91",
+        "edge": "crop_251"
+      },
+      {
+        "id": "treatment_3538",
+        "field": "diseaseId",
+        "existing": "disease_573",
+        "edge": "disease_1299"
+      },
+      {
+        "id": "disease_2659",
+        "field": "cropId",
+        "existing": "crop_279",
+        "edge": "crop_39"
+      },
+      {
+        "id": "treatment_1470",
+        "field": "diseaseId",
+        "existing": "disease_42",
+        "edge": "disease_442"
+      },
+      {
+        "id": "treatment_2813",
+        "field": "diseaseId",
+        "existing": "disease_488",
+        "edge": "disease_1025"
+      },
+      {
+        "id": "disease_680",
+        "field": "cropId",
+        "existing": "crop_291",
+        "edge": "crop_214"
+      },
+      {
+        "id": "disease_2297",
+        "field": "cropId",
+        "existing": "crop_146",
+        "edge": "crop_461"
+      },
+      {
+        "id": "treatment_738",
+        "field": "diseaseId",
+        "existing": "disease_88",
+        "edge": "disease_1549"
+      },
+      {
+        "id": "treatment_1248",
+        "field": "diseaseId",
+        "existing": "disease_2673",
+        "edge": "disease_2958"
+      },
+      {
+        "id": "treatment_3573",
+        "field": "diseaseId",
+        "existing": "disease_2777",
+        "edge": "disease_1191"
+      },
+      {
+        "id": "disease_1278",
+        "field": "cropId",
+        "existing": "crop_261",
+        "edge": "crop_235"
+      },
+      {
+        "id": "treatment_718",
+        "field": "diseaseId",
+        "existing": "disease_343",
+        "edge": "disease_2934"
+      },
+      {
+        "id": "treatment_3831",
+        "field": "diseaseId",
+        "existing": "disease_77",
+        "edge": "disease_515"
+      },
+      {
+        "id": "treatment_2656",
+        "field": "diseaseId",
+        "existing": "disease_2238",
+        "edge": "disease_2008"
+      },
+      {
+        "id": "disease_2743",
+        "field": "cropId",
+        "existing": "crop_368",
+        "edge": "crop_261"
+      },
+      {
+        "id": "disease_1504",
+        "field": "cropId",
+        "existing": "crop_345",
+        "edge": "crop_481"
+      },
+      {
+        "id": "treatment_585",
+        "field": "diseaseId",
+        "existing": "disease_1749",
+        "edge": "disease_2880"
+      },
+      {
+        "id": "disease_1439",
+        "field": "cropId",
+        "existing": "crop_117",
+        "edge": "crop_247"
+      },
+      {
+        "id": "treatment_2301",
+        "field": "diseaseId",
+        "existing": "disease_2945",
+        "edge": "disease_2921"
+      },
+      {
+        "id": "treatment_1795",
+        "field": "diseaseId",
+        "existing": "disease_937",
+        "edge": "disease_1178"
+      },
+      {
+        "id": "disease_2355",
+        "field": "cropId",
+        "existing": "crop_279",
+        "edge": "crop_337"
+      },
+      {
+        "id": "disease_224",
+        "field": "cropId",
+        "existing": "crop_307",
+        "edge": "crop_284"
+      },
+      {
+        "id": "disease_1901",
+        "field": "cropId",
+        "existing": "crop_57",
+        "edge": "crop_141"
+      },
+      {
+        "id": "disease_845",
+        "field": "cropId",
+        "existing": "crop_188",
+        "edge": "crop_372"
+      },
+      {
+        "id": "treatment_1533",
+        "field": "diseaseId",
+        "existing": "disease_668",
+        "edge": "disease_1345"
+      },
+      {
+        "id": "treatment_99",
+        "field": "diseaseId",
+        "existing": "disease_2399",
+        "edge": "disease_2991"
+      },
+      {
+        "id": "treatment_384",
+        "field": "diseaseId",
+        "existing": "disease_947",
+        "edge": "disease_1356"
+      },
+      {
+        "id": "treatment_2978",
+        "field": "diseaseId",
+        "existing": "disease_1786",
+        "edge": "disease_1101"
+      },
+      {
+        "id": "treatment_2906",
+        "field": "diseaseId",
+        "existing": "disease_367",
+        "edge": "disease_2873"
+      },
+      {
+        "id": "disease_580",
+        "field": "cropId",
+        "existing": "crop_347",
+        "edge": "crop_39"
+      },
+      {
+        "id": "treatment_1745",
+        "field": "diseaseId",
+        "existing": "disease_814",
+        "edge": "disease_2413"
+      },
+      {
+        "id": "treatment_716",
+        "field": "diseaseId",
+        "existing": "disease_1110",
+        "edge": "disease_1842"
+      },
+      {
+        "id": "treatment_2143",
+        "field": "diseaseId",
+        "existing": "disease_843",
+        "edge": "disease_492"
+      },
+      {
+        "id": "disease_1951",
+        "field": "cropId",
+        "existing": "crop_204",
+        "edge": "crop_75"
+      },
+      {
+        "id": "disease_2806",
+        "field": "cropId",
+        "existing": "crop_295",
+        "edge": "crop_455"
+      },
+      {
+        "id": "disease_1743",
+        "field": "cropId",
+        "existing": "crop_355",
+        "edge": "crop_465"
+      },
+      {
+        "id": "treatment_3232",
+        "field": "diseaseId",
+        "existing": "disease_1409",
+        "edge": "disease_1692"
+      },
+      {
+        "id": "treatment_3781",
+        "field": "diseaseId",
+        "existing": "disease_2737",
+        "edge": "disease_2396"
+      },
+      {
+        "id": "treatment_1690",
+        "field": "diseaseId",
+        "existing": "disease_556",
+        "edge": "disease_2394"
+      },
+      {
+        "id": "disease_1694",
+        "field": "cropId",
+        "existing": "crop_443",
+        "edge": "crop_373"
+      },
+      {
+        "id": "treatment_1579",
+        "field": "diseaseId",
+        "existing": "disease_2744",
+        "edge": "disease_1002"
+      },
+      {
+        "id": "disease_74",
+        "field": "cropId",
+        "existing": "crop_187",
+        "edge": "crop_40"
+      },
+      {
+        "id": "treatment_2928",
+        "field": "diseaseId",
+        "existing": "disease_241",
+        "edge": "disease_2581"
+      },
+      {
+        "id": "treatment_3036",
+        "field": "diseaseId",
+        "existing": "disease_1224",
+        "edge": "disease_1914"
+      },
+      {
+        "id": "treatment_3810",
+        "field": "diseaseId",
+        "existing": "disease_2625",
+        "edge": "disease_2038"
+      },
+      {
+        "id": "disease_10",
+        "field": "cropId",
+        "existing": "crop_305",
+        "edge": "crop_315"
+      },
+      {
+        "id": "disease_1072",
+        "field": "cropId",
+        "existing": "crop_129",
+        "edge": "crop_218"
+      },
+      {
+        "id": "treatment_1572",
+        "field": "diseaseId",
+        "existing": "disease_1775",
+        "edge": "disease_2597"
+      },
+      {
+        "id": "treatment_2134",
+        "field": "diseaseId",
+        "existing": "disease_154",
+        "edge": "disease_1642"
+      },
+      {
+        "id": "disease_347",
+        "field": "cropId",
+        "existing": "crop_50",
+        "edge": "crop_11"
+      },
+      {
+        "id": "treatment_3517",
+        "field": "diseaseId",
+        "existing": "disease_746",
+        "edge": "disease_77"
+      },
+      {
+        "id": "treatment_406",
+        "field": "diseaseId",
+        "existing": "disease_567",
+        "edge": "disease_2838"
+      },
+      {
+        "id": "disease_287",
+        "field": "cropId",
+        "existing": "crop_393",
+        "edge": "crop_256"
+      },
+      {
+        "id": "disease_1035",
+        "field": "cropId",
+        "existing": "crop_341",
+        "edge": "crop_85"
+      },
+      {
+        "id": "treatment_3715",
+        "field": "diseaseId",
+        "existing": "disease_2364",
+        "edge": "disease_919"
+      },
+      {
+        "id": "disease_1856",
+        "field": "cropId",
+        "existing": "crop_148",
+        "edge": "crop_185"
+      },
+      {
+        "id": "disease_810",
+        "field": "cropId",
+        "existing": "crop_292",
+        "edge": "crop_338"
+      },
+      {
+        "id": "disease_162",
+        "field": "cropId",
+        "existing": "crop_324",
+        "edge": "crop_181"
+      },
+      {
+        "id": "disease_1904",
+        "field": "cropId",
+        "existing": "crop_404",
+        "edge": "crop_18"
+      },
+      {
+        "id": "disease_1929",
+        "field": "cropId",
+        "existing": "crop_416",
+        "edge": "crop_490"
+      },
+      {
+        "id": "disease_617",
+        "field": "cropId",
+        "existing": "crop_110",
+        "edge": "crop_247"
+      },
+      {
+        "id": "treatment_1846",
+        "field": "diseaseId",
+        "existing": "disease_1539",
+        "edge": "disease_2172"
+      },
+      {
+        "id": "disease_418",
+        "field": "cropId",
+        "existing": "crop_465",
+        "edge": "crop_455"
+      },
+      {
+        "id": "treatment_2315",
+        "field": "diseaseId",
+        "existing": "disease_300",
+        "edge": "disease_1114"
+      },
+      {
+        "id": "disease_2307",
+        "field": "cropId",
+        "existing": "crop_186",
+        "edge": "crop_485"
+      },
+      {
+        "id": "disease_1120",
+        "field": "cropId",
+        "existing": "crop_386",
+        "edge": "crop_48"
+      },
+      {
+        "id": "disease_1609",
+        "field": "cropId",
+        "existing": "crop_296",
+        "edge": "crop_174"
+      },
+      {
+        "id": "disease_1929",
+        "field": "cropId",
+        "existing": "crop_416",
+        "edge": "crop_344"
+      },
+      {
+        "id": "treatment_2299",
+        "field": "diseaseId",
+        "existing": "disease_1741",
+        "edge": "disease_2030"
+      },
+      {
+        "id": "treatment_792",
+        "field": "diseaseId",
+        "existing": "disease_214",
+        "edge": "disease_765"
+      },
+      {
+        "id": "disease_2471",
+        "field": "cropId",
+        "existing": "crop_178",
+        "edge": "crop_443"
+      },
+      {
+        "id": "treatment_1006",
+        "field": "diseaseId",
+        "existing": "disease_1637",
+        "edge": "disease_977"
+      },
+      {
+        "id": "disease_2596",
+        "field": "cropId",
+        "existing": "crop_49",
+        "edge": "crop_391"
+      },
+      {
+        "id": "treatment_3053",
+        "field": "diseaseId",
+        "existing": "disease_581",
+        "edge": "disease_2096"
+      },
+      {
+        "id": "treatment_947",
+        "field": "diseaseId",
+        "existing": "disease_1454",
+        "edge": "disease_2064"
+      },
+      {
+        "id": "treatment_1768",
+        "field": "diseaseId",
+        "existing": "disease_2004",
+        "edge": "disease_2247"
+      },
+      {
+        "id": "disease_1284",
+        "field": "cropId",
+        "existing": "crop_212",
+        "edge": "crop_408"
+      },
+      {
+        "id": "disease_1446",
+        "field": "cropId",
+        "existing": "crop_358",
+        "edge": "crop_481"
+      },
+      {
+        "id": "disease_65",
+        "field": "cropId",
+        "existing": "crop_388",
+        "edge": "crop_465"
+      },
+      {
+        "id": "treatment_206",
+        "field": "diseaseId",
+        "existing": "disease_1197",
+        "edge": "disease_1637"
+      },
+      {
+        "id": "disease_65",
+        "field": "cropId",
+        "existing": "crop_388",
+        "edge": "crop_491"
+      },
+      {
+        "id": "disease_1812",
+        "field": "cropId",
+        "existing": "crop_493",
+        "edge": "crop_224"
+      },
+      {
+        "id": "disease_1540",
+        "field": "cropId",
+        "existing": "crop_148",
+        "edge": "crop_17"
+      },
+      {
+        "id": "treatment_2168",
+        "field": "diseaseId",
+        "existing": "disease_1295",
+        "edge": "disease_434"
+      },
+      {
+        "id": "disease_65",
+        "field": "cropId",
+        "existing": "crop_388",
+        "edge": "crop_251"
+      },
+      {
+        "id": "disease_1811",
+        "field": "cropId",
+        "existing": "crop_45",
+        "edge": "crop_310"
+      },
+      {
+        "id": "disease_368",
+        "field": "cropId",
+        "existing": "crop_322",
+        "edge": "crop_470"
+      },
+      {
+        "id": "treatment_720",
+        "field": "diseaseId",
+        "existing": "disease_2958",
+        "edge": "disease_959"
+      },
+      {
+        "id": "disease_793",
+        "field": "cropId",
+        "existing": "crop_336",
+        "edge": "crop_272"
+      },
+      {
+        "id": "disease_2844",
+        "field": "cropId",
+        "existing": "crop_204",
+        "edge": "crop_49"
+      },
+      {
+        "id": "treatment_2573",
+        "field": "diseaseId",
+        "existing": "disease_1184",
+        "edge": "disease_2701"
+      },
+      {
+        "id": "disease_1035",
+        "field": "cropId",
+        "existing": "crop_341",
+        "edge": "crop_19"
+      },
+      {
+        "id": "disease_434",
+        "field": "cropId",
+        "existing": "crop_381",
+        "edge": "crop_396"
+      },
+      {
+        "id": "disease_1556",
+        "field": "cropId",
+        "existing": "crop_264",
+        "edge": "crop_482"
+      },
+      {
+        "id": "disease_2368",
+        "field": "cropId",
+        "existing": "crop_332",
+        "edge": "crop_98"
+      },
+      {
+        "id": "disease_994",
+        "field": "cropId",
+        "existing": "crop_286",
+        "edge": "crop_46"
+      },
+      {
+        "id": "disease_253",
+        "field": "cropId",
+        "existing": "crop_301",
+        "edge": "crop_219"
+      },
+      {
+        "id": "disease_2288",
+        "field": "cropId",
+        "existing": "crop_260",
+        "edge": "crop_270"
+      },
+      {
+        "id": "disease_680",
+        "field": "cropId",
+        "existing": "crop_291",
+        "edge": "crop_195"
+      },
+      {
+        "id": "treatment_2978",
+        "field": "diseaseId",
+        "existing": "disease_1786",
+        "edge": "disease_628"
+      },
+      {
+        "id": "disease_236",
+        "field": "cropId",
+        "existing": "crop_480",
+        "edge": "crop_126"
+      },
+      {
+        "id": "disease_1382",
+        "field": "cropId",
+        "existing": "crop_9",
+        "edge": "crop_292"
+      },
+      {
+        "id": "disease_2355",
+        "field": "cropId",
+        "existing": "crop_279",
+        "edge": "crop_346"
+      },
+      {
+        "id": "disease_2232",
+        "field": "cropId",
+        "existing": "crop_122",
+        "edge": "crop_99"
+      },
+      {
+        "id": "treatment_2617",
+        "field": "diseaseId",
+        "existing": "disease_523",
+        "edge": "disease_1862"
+      },
+      {
+        "id": "treatment_2051",
+        "field": "diseaseId",
+        "existing": "disease_2934",
+        "edge": "disease_2752"
+      },
+      {
+        "id": "treatment_1159",
+        "field": "diseaseId",
+        "existing": "disease_2009",
+        "edge": "disease_39"
+      },
+      {
+        "id": "disease_2506",
+        "field": "cropId",
+        "existing": "crop_128",
+        "edge": "crop_315"
+      },
+      {
+        "id": "disease_2251",
+        "field": "cropId",
+        "existing": "crop_319",
+        "edge": "crop_61"
+      },
+      {
+        "id": "disease_792",
+        "field": "cropId",
+        "existing": "crop_428",
+        "edge": "crop_402"
+      },
+      {
+        "id": "disease_1709",
+        "field": "cropId",
+        "existing": "crop_207",
+        "edge": "crop_113"
+      },
+      {
+        "id": "disease_226",
+        "field": "cropId",
+        "existing": "crop_323",
+        "edge": "crop_337"
+      },
+      {
+        "id": "treatment_661",
+        "field": "diseaseId",
+        "existing": "disease_2929",
+        "edge": "disease_1887"
+      },
+      {
+        "id": "treatment_2638",
+        "field": "diseaseId",
+        "existing": "disease_210",
+        "edge": "disease_2910"
+      },
+      {
+        "id": "disease_1178",
+        "field": "cropId",
+        "existing": "crop_132",
+        "edge": "crop_294"
+      },
+      {
+        "id": "treatment_3575",
+        "field": "diseaseId",
+        "existing": "disease_2988",
+        "edge": "disease_241"
+      },
+      {
+        "id": "disease_1335",
+        "field": "cropId",
+        "existing": "crop_488",
+        "edge": "crop_468"
+      },
+      {
+        "id": "disease_1323",
+        "field": "cropId",
+        "existing": "crop_459",
+        "edge": "crop_444"
+      },
+      {
+        "id": "disease_786",
+        "field": "cropId",
+        "existing": "crop_348",
+        "edge": "crop_295"
+      },
+      {
+        "id": "treatment_535",
+        "field": "diseaseId",
+        "existing": "disease_1646",
+        "edge": "disease_2236"
+      },
+      {
+        "id": "disease_954",
+        "field": "cropId",
+        "existing": "crop_251",
+        "edge": "crop_59"
+      },
+      {
+        "id": "disease_1956",
+        "field": "cropId",
+        "existing": "crop_321",
+        "edge": "crop_65"
+      },
+      {
+        "id": "disease_2317",
+        "field": "cropId",
+        "existing": "crop_329",
+        "edge": "crop_247"
+      },
+      {
+        "id": "disease_1642",
+        "field": "cropId",
+        "existing": "crop_56",
+        "edge": "crop_375"
+      },
+      {
+        "id": "treatment_356",
+        "field": "diseaseId",
+        "existing": "disease_39",
+        "edge": "disease_1145"
+      },
+      {
+        "id": "disease_659",
+        "field": "cropId",
+        "existing": "crop_327",
+        "edge": "crop_225"
+      },
+      {
+        "id": "treatment_1348",
+        "field": "diseaseId",
+        "existing": "disease_1325",
+        "edge": "disease_479"
+      },
+      {
+        "id": "treatment_2231",
+        "field": "diseaseId",
+        "existing": "disease_1657",
+        "edge": "disease_1635"
+      },
+      {
+        "id": "treatment_3060",
+        "field": "diseaseId",
+        "existing": "disease_2985",
+        "edge": "disease_1530"
+      },
+      {
+        "id": "treatment_1009",
+        "field": "diseaseId",
+        "existing": "disease_2282",
+        "edge": "disease_1988"
+      },
+      {
+        "id": "treatment_1061",
+        "field": "diseaseId",
+        "existing": "disease_763",
+        "edge": "disease_168"
+      },
+      {
+        "id": "disease_1698",
+        "field": "cropId",
+        "existing": "crop_200",
+        "edge": "crop_149"
+      },
+      {
+        "id": "treatment_3437",
+        "field": "diseaseId",
+        "existing": "disease_2510",
+        "edge": "disease_2376"
+      },
+      {
+        "id": "treatment_3117",
+        "field": "diseaseId",
+        "existing": "disease_2658",
+        "edge": "disease_2842"
+      },
+      {
+        "id": "disease_1756",
+        "field": "cropId",
+        "existing": "crop_102",
+        "edge": "crop_186"
+      },
+      {
+        "id": "disease_754",
+        "field": "cropId",
+        "existing": "crop_138",
+        "edge": "crop_491"
+      },
+      {
+        "id": "treatment_1848",
+        "field": "diseaseId",
+        "existing": "disease_2324",
+        "edge": "disease_2629"
+      },
+      {
+        "id": "disease_235",
+        "field": "cropId",
+        "existing": "crop_71",
+        "edge": "crop_217"
+      },
+      {
+        "id": "treatment_531",
+        "field": "diseaseId",
+        "existing": "disease_1252",
+        "edge": "disease_95"
+      },
+      {
+        "id": "disease_2406",
+        "field": "cropId",
+        "existing": "crop_494",
+        "edge": "crop_486"
+      },
+      {
+        "id": "treatment_360",
+        "field": "diseaseId",
+        "existing": "disease_181",
+        "edge": "disease_981"
+      },
+      {
+        "id": "treatment_1848",
+        "field": "diseaseId",
+        "existing": "disease_2324",
+        "edge": "disease_233"
+      },
+      {
+        "id": "disease_1936",
+        "field": "cropId",
+        "existing": "crop_424",
+        "edge": "crop_225"
+      },
+      {
+        "id": "treatment_3912",
+        "field": "diseaseId",
+        "existing": "disease_1830",
+        "edge": "disease_2915"
+      },
+      {
+        "id": "disease_808",
+        "field": "cropId",
+        "existing": "crop_269",
+        "edge": "crop_225"
+      },
+      {
+        "id": "disease_2444",
+        "field": "cropId",
+        "existing": "crop_412",
+        "edge": "crop_191"
+      },
+      {
+        "id": "treatment_2692",
+        "field": "diseaseId",
+        "existing": "disease_909",
+        "edge": "disease_188"
+      },
+      {
+        "id": "disease_793",
+        "field": "cropId",
+        "existing": "crop_336",
+        "edge": "crop_219"
+      },
+      {
+        "id": "treatment_2995",
+        "field": "diseaseId",
+        "existing": "disease_771",
+        "edge": "disease_2979"
+      },
+      {
+        "id": "treatment_572",
+        "field": "diseaseId",
+        "existing": "disease_1075",
+        "edge": "disease_2826"
+      },
+      {
+        "id": "disease_963",
+        "field": "cropId",
+        "existing": "crop_470",
+        "edge": "crop_203"
+      },
+      {
+        "id": "disease_833",
+        "field": "cropId",
+        "existing": "crop_354",
+        "edge": "crop_374"
+      },
+      {
+        "id": "treatment_319",
+        "field": "diseaseId",
+        "existing": "disease_2341",
+        "edge": "disease_353"
+      },
+      {
+        "id": "treatment_2936",
+        "field": "diseaseId",
+        "existing": "disease_1621",
+        "edge": "disease_2009"
+      },
+      {
+        "id": "disease_1249",
+        "field": "cropId",
+        "existing": "crop_322",
+        "edge": "crop_435"
+      },
+      {
+        "id": "disease_1536",
+        "field": "cropId",
+        "existing": "crop_45",
+        "edge": "crop_62"
+      },
+      {
+        "id": "disease_1913",
+        "field": "cropId",
+        "existing": "crop_215",
+        "edge": "crop_360"
+      },
+      {
+        "id": "disease_2288",
+        "field": "cropId",
+        "existing": "crop_260",
+        "edge": "crop_367"
+      },
+      {
+        "id": "treatment_82",
+        "field": "diseaseId",
+        "existing": "disease_2898",
+        "edge": "disease_488"
+      },
+      {
+        "id": "treatment_630",
+        "field": "diseaseId",
+        "existing": "disease_1808",
+        "edge": "disease_761"
+      },
+      {
+        "id": "treatment_1041",
+        "field": "diseaseId",
+        "existing": "disease_11",
+        "edge": "disease_2435"
+      },
+      {
+        "id": "treatment_1248",
+        "field": "diseaseId",
+        "existing": "disease_2673",
+        "edge": "disease_2217"
+      },
+      {
+        "id": "treatment_3533",
+        "field": "diseaseId",
+        "existing": "disease_2357",
+        "edge": "disease_2699"
+      },
+      {
+        "id": "disease_963",
+        "field": "cropId",
+        "existing": "crop_470",
+        "edge": "crop_496"
+      },
+      {
+        "id": "disease_2657",
+        "field": "cropId",
+        "existing": "crop_261",
+        "edge": "crop_366"
+      },
+      {
+        "id": "treatment_574",
+        "field": "diseaseId",
+        "existing": "disease_855",
+        "edge": "disease_204"
+      },
+      {
+        "id": "treatment_2593",
+        "field": "diseaseId",
+        "existing": "disease_2626",
+        "edge": "disease_640"
+      },
+      {
+        "id": "treatment_3577",
+        "field": "diseaseId",
+        "existing": "disease_1904",
+        "edge": "disease_1097"
+      },
+      {
+        "id": "treatment_1896",
+        "field": "diseaseId",
+        "existing": "disease_1600",
+        "edge": "disease_1290"
+      },
+      {
+        "id": "treatment_2943",
+        "field": "diseaseId",
+        "existing": "disease_860",
+        "edge": "disease_219"
+      },
+      {
+        "id": "disease_881",
+        "field": "cropId",
+        "existing": "crop_487",
+        "edge": "crop_314"
+      },
+      {
+        "id": "disease_401",
+        "field": "cropId",
+        "existing": "crop_221",
+        "edge": "crop_354"
+      },
+      {
+        "id": "treatment_1873",
+        "field": "diseaseId",
+        "existing": "disease_1019",
+        "edge": "disease_1699"
+      },
+      {
+        "id": "treatment_636",
+        "field": "diseaseId",
+        "existing": "disease_537",
+        "edge": "disease_2827"
+      },
+      {
+        "id": "disease_2128",
+        "field": "cropId",
+        "existing": "crop_475",
+        "edge": "crop_422"
+      },
+      {
+        "id": "disease_2987",
+        "field": "cropId",
+        "existing": "crop_192",
+        "edge": "crop_452"
+      },
+      {
+        "id": "disease_900",
+        "field": "cropId",
+        "existing": "crop_154",
+        "edge": "crop_93"
+      },
+      {
+        "id": "disease_307",
+        "field": "cropId",
+        "existing": "crop_149",
+        "edge": "crop_248"
+      },
+      {
+        "id": "disease_1707",
+        "field": "cropId",
+        "existing": "crop_6",
+        "edge": "crop_126"
+      },
+      {
+        "id": "disease_2917",
+        "field": "cropId",
+        "existing": "crop_247",
+        "edge": "crop_92"
+      },
+      {
+        "id": "treatment_2957",
+        "field": "diseaseId",
+        "existing": "disease_1385",
+        "edge": "disease_483"
+      },
+      {
+        "id": "treatment_718",
+        "field": "diseaseId",
+        "existing": "disease_343",
+        "edge": "disease_1660"
+      },
+      {
+        "id": "treatment_3940",
+        "field": "diseaseId",
+        "existing": "disease_997",
+        "edge": "disease_1180"
+      },
+      {
+        "id": "disease_1508",
+        "field": "cropId",
+        "existing": "crop_93",
+        "edge": "crop_356"
+      },
+      {
+        "id": "treatment_1830",
+        "field": "diseaseId",
+        "existing": "disease_236",
+        "edge": "disease_1615"
+      },
+      {
+        "id": "disease_606",
+        "field": "cropId",
+        "existing": "crop_419",
+        "edge": "crop_341"
+      },
+      {
+        "id": "treatment_3502",
+        "field": "diseaseId",
+        "existing": "disease_700",
+        "edge": "disease_2502"
+      },
+      {
+        "id": "disease_1259",
+        "field": "cropId",
+        "existing": "crop_21",
+        "edge": "crop_493"
+      },
+      {
+        "id": "treatment_319",
+        "field": "diseaseId",
+        "existing": "disease_2341",
+        "edge": "disease_162"
+      },
+      {
+        "id": "treatment_781",
+        "field": "diseaseId",
+        "existing": "disease_738",
+        "edge": "disease_135"
+      },
+      {
+        "id": "treatment_1259",
+        "field": "diseaseId",
+        "existing": "disease_2309",
+        "edge": "disease_2428"
+      },
+      {
+        "id": "disease_793",
+        "field": "cropId",
+        "existing": "crop_336",
+        "edge": "crop_116"
+      },
+      {
+        "id": "treatment_3696",
+        "field": "diseaseId",
+        "existing": "disease_2011",
+        "edge": "disease_2498"
+      },
+      {
+        "id": "treatment_2652",
+        "field": "diseaseId",
+        "existing": "disease_2798",
+        "edge": "disease_239"
+      },
+      {
+        "id": "disease_273",
+        "field": "cropId",
+        "existing": "crop_408",
+        "edge": "crop_327"
+      },
+      {
+        "id": "disease_214",
+        "field": "cropId",
+        "existing": "crop_11",
+        "edge": "crop_146"
+      },
+      {
+        "id": "disease_2728",
+        "field": "cropId",
+        "existing": "crop_208",
+        "edge": "crop_389"
+      },
+      {
+        "id": "disease_1815",
+        "field": "cropId",
+        "existing": "crop_175",
+        "edge": "crop_342"
+      },
+      {
+        "id": "disease_1641",
+        "field": "cropId",
+        "existing": "crop_407",
+        "edge": "crop_409"
+      },
+      {
+        "id": "disease_710",
+        "field": "cropId",
+        "existing": "crop_442",
+        "edge": "crop_213"
+      },
+      {
+        "id": "treatment_2830",
+        "field": "diseaseId",
+        "existing": "disease_1962",
+        "edge": "disease_1400"
+      },
+      {
+        "id": "disease_513",
+        "field": "cropId",
+        "existing": "crop_118",
+        "edge": "crop_68"
+      },
+      {
+        "id": "treatment_82",
+        "field": "diseaseId",
+        "existing": "disease_2898",
+        "edge": "disease_1695"
+      },
+      {
+        "id": "disease_359",
+        "field": "cropId",
+        "existing": "crop_22",
+        "edge": "crop_269"
+      },
+      {
+        "id": "treatment_1769",
+        "field": "diseaseId",
+        "existing": "disease_2620",
+        "edge": "disease_1131"
+      },
+      {
+        "id": "disease_877",
+        "field": "cropId",
+        "existing": "crop_171",
+        "edge": "crop_63"
+      },
+      {
+        "id": "disease_1721",
+        "field": "cropId",
+        "existing": "crop_232",
+        "edge": "crop_260"
+      },
+      {
+        "id": "disease_399",
+        "field": "cropId",
+        "existing": "crop_247",
+        "edge": "crop_456"
+      },
+      {
+        "id": "disease_2118",
+        "field": "cropId",
+        "existing": "crop_218",
+        "edge": "crop_419"
+      },
+      {
+        "id": "disease_1834",
+        "field": "cropId",
+        "existing": "crop_48",
+        "edge": "crop_469"
+      },
+      {
+        "id": "treatment_3876",
+        "field": "diseaseId",
+        "existing": "disease_2400",
+        "edge": "disease_456"
+      },
+      {
+        "id": "treatment_2076",
+        "field": "diseaseId",
+        "existing": "disease_720",
+        "edge": "disease_2136"
+      },
+      {
+        "id": "treatment_2825",
+        "field": "diseaseId",
+        "existing": "disease_1514",
+        "edge": "disease_1679"
+      },
+      {
+        "id": "disease_314",
+        "field": "cropId",
+        "existing": "crop_479",
+        "edge": "crop_475"
+      },
+      {
+        "id": "treatment_3696",
+        "field": "diseaseId",
+        "existing": "disease_2011",
+        "edge": "disease_1333"
+      },
+      {
+        "id": "treatment_3540",
+        "field": "diseaseId",
+        "existing": "disease_2184",
+        "edge": "disease_1350"
+      },
+      {
+        "id": "disease_650",
+        "field": "cropId",
+        "existing": "crop_303",
+        "edge": "crop_176"
+      },
+      {
+        "id": "disease_1392",
+        "field": "cropId",
+        "existing": "crop_102",
+        "edge": "crop_19"
+      },
+      {
+        "id": "disease_931",
+        "field": "cropId",
+        "existing": "crop_59",
+        "edge": "crop_396"
+      },
+      {
+        "id": "disease_617",
+        "field": "cropId",
+        "existing": "crop_110",
+        "edge": "crop_142"
+      },
+      {
+        "id": "treatment_1574",
+        "field": "diseaseId",
+        "existing": "disease_2119",
+        "edge": "disease_1122"
+      },
+      {
+        "id": "treatment_3970",
+        "field": "diseaseId",
+        "existing": "disease_2390",
+        "edge": "disease_1759"
+      },
+      {
+        "id": "disease_2041",
+        "field": "cropId",
+        "existing": "crop_94",
+        "edge": "crop_114"
+      },
+      {
+        "id": "disease_1093",
+        "field": "cropId",
+        "existing": "crop_267",
+        "edge": "crop_194"
+      },
+      {
+        "id": "disease_2518",
+        "field": "cropId",
+        "existing": "crop_195",
+        "edge": "crop_223"
+      },
+      {
+        "id": "treatment_2601",
+        "field": "diseaseId",
+        "existing": "disease_2341",
+        "edge": "disease_917"
+      },
+      {
+        "id": "disease_674",
+        "field": "cropId",
+        "existing": "crop_189",
+        "edge": "crop_111"
+      },
+      {
+        "id": "treatment_61",
+        "field": "diseaseId",
+        "existing": "disease_899",
+        "edge": "disease_2233"
+      },
+      {
+        "id": "disease_273",
+        "field": "cropId",
+        "existing": "crop_408",
+        "edge": "crop_351"
+      },
+      {
+        "id": "disease_2266",
+        "field": "cropId",
+        "existing": "crop_328",
+        "edge": "crop_450"
+      },
+      {
+        "id": "treatment_1837",
+        "field": "diseaseId",
+        "existing": "disease_2413",
+        "edge": "disease_1771"
+      },
+      {
+        "id": "disease_2948",
+        "field": "cropId",
+        "existing": "crop_261",
+        "edge": "crop_424"
+      },
+      {
+        "id": "treatment_3315",
+        "field": "diseaseId",
+        "existing": "disease_1576",
+        "edge": "disease_1245"
+      },
+      {
+        "id": "treatment_2397",
+        "field": "diseaseId",
+        "existing": "disease_2846",
+        "edge": "disease_1354"
+      },
+      {
+        "id": "disease_1987",
+        "field": "cropId",
+        "existing": "crop_357",
+        "edge": "crop_400"
+      },
+      {
+        "id": "treatment_3181",
+        "field": "diseaseId",
+        "existing": "disease_233",
+        "edge": "disease_319"
+      },
+      {
+        "id": "disease_2021",
+        "field": "cropId",
+        "existing": "crop_114",
+        "edge": "crop_136"
+      },
+      {
+        "id": "disease_2806",
+        "field": "cropId",
+        "existing": "crop_295",
+        "edge": "crop_238"
+      },
+      {
+        "id": "disease_2741",
+        "field": "cropId",
+        "existing": "crop_463",
+        "edge": "crop_50"
+      },
+      {
+        "id": "disease_1057",
+        "field": "cropId",
+        "existing": "crop_381",
+        "edge": "crop_81"
+      },
+      {
+        "id": "disease_1694",
+        "field": "cropId",
+        "existing": "crop_443",
+        "edge": "crop_327"
+      },
+      {
+        "id": "treatment_250",
+        "field": "diseaseId",
+        "existing": "disease_398",
+        "edge": "disease_1764"
+      },
+      {
+        "id": "disease_1871",
+        "field": "cropId",
+        "existing": "crop_483",
+        "edge": "crop_451"
+      },
+      {
+        "id": "disease_2720",
+        "field": "cropId",
+        "existing": "crop_494",
+        "edge": "crop_112"
+      },
+      {
+        "id": "disease_1446",
+        "field": "cropId",
+        "existing": "crop_358",
+        "edge": "crop_259"
+      },
+      {
+        "id": "disease_1385",
+        "field": "cropId",
+        "existing": "crop_353",
+        "edge": "crop_313"
+      },
+      {
+        "id": "disease_1218",
+        "field": "cropId",
+        "existing": "crop_496",
+        "edge": "crop_214"
+      },
+      {
+        "id": "disease_1146",
+        "field": "cropId",
+        "existing": "crop_49",
+        "edge": "crop_7"
+      },
+      {
+        "id": "treatment_3474",
+        "field": "diseaseId",
+        "existing": "disease_2157",
+        "edge": "disease_700"
+      },
+      {
+        "id": "treatment_2048",
+        "field": "diseaseId",
+        "existing": "disease_1807",
+        "edge": "disease_1562"
+      },
+      {
+        "id": "treatment_1141",
+        "field": "diseaseId",
+        "existing": "disease_2532",
+        "edge": "disease_2805"
+      },
+      {
+        "id": "disease_410",
+        "field": "cropId",
+        "existing": "crop_427",
+        "edge": "crop_9"
+      },
+      {
+        "id": "disease_534",
+        "field": "cropId",
+        "existing": "crop_461",
+        "edge": "crop_168"
+      },
+      {
+        "id": "disease_2844",
+        "field": "cropId",
+        "existing": "crop_204",
+        "edge": "crop_455"
+      },
+      {
+        "id": "disease_397",
+        "field": "cropId",
+        "existing": "crop_263",
+        "edge": "crop_215"
+      },
+      {
+        "id": "treatment_71",
+        "field": "diseaseId",
+        "existing": "disease_2583",
+        "edge": "disease_1123"
+      },
+      {
+        "id": "treatment_2123",
+        "field": "diseaseId",
+        "existing": "disease_2045",
+        "edge": "disease_2457"
+      },
+      {
+        "id": "disease_214",
+        "field": "cropId",
+        "existing": "crop_11",
+        "edge": "crop_116"
+      },
+      {
+        "id": "disease_2092",
+        "field": "cropId",
+        "existing": "crop_269",
+        "edge": "crop_19"
+      },
+      {
+        "id": "disease_675",
+        "field": "cropId",
+        "existing": "crop_473",
+        "edge": "crop_467"
+      },
+      {
+        "id": "treatment_1023",
+        "field": "diseaseId",
+        "existing": "disease_405",
+        "edge": "disease_920"
+      },
+      {
+        "id": "disease_2765",
+        "field": "cropId",
+        "existing": "crop_370",
+        "edge": "crop_237"
+      },
+      {
+        "id": "disease_1812",
+        "field": "cropId",
+        "existing": "crop_493",
+        "edge": "crop_273"
+      },
+      {
+        "id": "disease_1298",
+        "field": "cropId",
+        "existing": "crop_362",
+        "edge": "crop_47"
+      },
+      {
+        "id": "disease_151",
+        "field": "cropId",
+        "existing": "crop_119",
+        "edge": "crop_155"
+      },
+      {
+        "id": "disease_789",
+        "field": "cropId",
+        "existing": "crop_115",
+        "edge": "crop_168"
+      },
+      {
+        "id": "disease_909",
+        "field": "cropId",
+        "existing": "crop_111",
+        "edge": "crop_207"
+      },
+      {
+        "id": "treatment_1697",
+        "field": "diseaseId",
+        "existing": "disease_815",
+        "edge": "disease_117"
+      },
+      {
+        "id": "disease_287",
+        "field": "cropId",
+        "existing": "crop_393",
+        "edge": "crop_268"
+      },
+      {
+        "id": "treatment_3300",
+        "field": "diseaseId",
+        "existing": "disease_1519",
+        "edge": "disease_2790"
+      },
+      {
+        "id": "treatment_1830",
+        "field": "diseaseId",
+        "existing": "disease_236",
+        "edge": "disease_998"
+      },
+      {
+        "id": "disease_2947",
+        "field": "cropId",
+        "existing": "crop_152",
+        "edge": "crop_366"
+      },
+      {
+        "id": "disease_2565",
+        "field": "cropId",
+        "existing": "crop_177",
+        "edge": "crop_314"
+      },
+      {
+        "id": "treatment_1365",
+        "field": "diseaseId",
+        "existing": "disease_971",
+        "edge": "disease_2152"
+      },
+      {
+        "id": "disease_2434",
+        "field": "cropId",
+        "existing": "crop_248",
+        "edge": "crop_311"
+      },
+      {
+        "id": "disease_533",
+        "field": "cropId",
+        "existing": "crop_80",
+        "edge": "crop_385"
+      },
+      {
+        "id": "disease_2557",
+        "field": "cropId",
+        "existing": "crop_252",
+        "edge": "crop_446"
+      },
+      {
+        "id": "treatment_1572",
+        "field": "diseaseId",
+        "existing": "disease_1775",
+        "edge": "disease_1854"
+      },
+      {
+        "id": "disease_804",
+        "field": "cropId",
+        "existing": "crop_211",
+        "edge": "crop_429"
+      },
+      {
+        "id": "treatment_1983",
+        "field": "diseaseId",
+        "existing": "disease_2728",
+        "edge": "disease_2957"
+      },
+      {
+        "id": "disease_253",
+        "field": "cropId",
+        "existing": "crop_301",
+        "edge": "crop_442"
+      },
+      {
+        "id": "disease_2987",
+        "field": "cropId",
+        "existing": "crop_192",
+        "edge": "crop_408"
+      },
+      {
+        "id": "treatment_384",
+        "field": "diseaseId",
+        "existing": "disease_947",
+        "edge": "disease_2014"
+      },
+      {
+        "id": "disease_637",
+        "field": "cropId",
+        "existing": "crop_89",
+        "edge": "crop_471"
+      },
+      {
+        "id": "disease_588",
+        "field": "cropId",
+        "existing": "crop_283",
+        "edge": "crop_177"
+      },
+      {
+        "id": "disease_845",
+        "field": "cropId",
+        "existing": "crop_188",
+        "edge": "crop_163"
+      },
+      {
+        "id": "disease_1724",
+        "field": "cropId",
+        "existing": "crop_256",
+        "edge": "crop_480"
+      },
+      {
+        "id": "disease_2627",
+        "field": "cropId",
+        "existing": "crop_461",
+        "edge": "crop_143"
+      },
+      {
+        "id": "treatment_1934",
+        "field": "diseaseId",
+        "existing": "disease_1971",
+        "edge": "disease_89"
+      },
+      {
+        "id": "disease_1737",
+        "field": "cropId",
+        "existing": "crop_164",
+        "edge": "crop_193"
+      },
+      {
+        "id": "disease_755",
+        "field": "cropId",
+        "existing": "crop_296",
+        "edge": "crop_444"
+      },
+      {
+        "id": "treatment_2333",
+        "field": "diseaseId",
+        "existing": "disease_1077",
+        "edge": "disease_2361"
+      },
+      {
+        "id": "treatment_679",
+        "field": "diseaseId",
+        "existing": "disease_2195",
+        "edge": "disease_643"
+      },
+      {
+        "id": "treatment_2233",
+        "field": "diseaseId",
+        "existing": "disease_814",
+        "edge": "disease_958"
+      },
+      {
+        "id": "treatment_2735",
+        "field": "diseaseId",
+        "existing": "disease_2892",
+        "edge": "disease_12"
+      },
+      {
+        "id": "disease_495",
+        "field": "cropId",
+        "existing": "crop_435",
+        "edge": "crop_382"
+      },
+      {
+        "id": "disease_2118",
+        "field": "cropId",
+        "existing": "crop_218",
+        "edge": "crop_53"
+      },
+      {
+        "id": "disease_1573",
+        "field": "cropId",
+        "existing": "crop_64",
+        "edge": "crop_496"
+      },
+      {
+        "id": "treatment_1330",
+        "field": "diseaseId",
+        "existing": "disease_508",
+        "edge": "disease_1831"
+      },
+      {
+        "id": "disease_2709",
+        "field": "cropId",
+        "existing": "crop_24",
+        "edge": "crop_62"
+      },
+      {
+        "id": "disease_711",
+        "field": "cropId",
+        "existing": "crop_220",
+        "edge": "crop_424"
+      },
+      {
+        "id": "treatment_2912",
+        "field": "diseaseId",
+        "existing": "disease_204",
+        "edge": "disease_2067"
+      },
+      {
+        "id": "disease_1663",
+        "field": "cropId",
+        "existing": "crop_229",
+        "edge": "crop_15"
+      },
+      {
+        "id": "disease_109",
+        "field": "cropId",
+        "existing": "crop_137",
+        "edge": "crop_91"
+      },
+      {
+        "id": "disease_2409",
+        "field": "cropId",
+        "existing": "crop_484",
+        "edge": "crop_37"
+      },
+      {
+        "id": "disease_1770",
+        "field": "cropId",
+        "existing": "crop_313",
+        "edge": "crop_111"
+      },
+      {
+        "id": "disease_1654",
+        "field": "cropId",
+        "existing": "crop_267",
+        "edge": "crop_406"
+      },
+      {
+        "id": "disease_689",
+        "field": "cropId",
+        "existing": "crop_279",
+        "edge": "crop_228"
+      },
+      {
+        "id": "disease_1073",
+        "field": "cropId",
+        "existing": "crop_301",
+        "edge": "crop_89"
+      },
+      {
+        "id": "disease_134",
+        "field": "cropId",
+        "existing": "crop_376",
+        "edge": "crop_340"
+      },
+      {
+        "id": "treatment_459",
+        "field": "diseaseId",
+        "existing": "disease_1920",
+        "edge": "disease_954"
+      },
+      {
+        "id": "disease_2622",
+        "field": "cropId",
+        "existing": "crop_124",
+        "edge": "crop_41"
+      },
+      {
+        "id": "treatment_463",
+        "field": "diseaseId",
+        "existing": "disease_1662",
+        "edge": "disease_1065"
+      },
+      {
+        "id": "treatment_675",
+        "field": "diseaseId",
+        "existing": "disease_2086",
+        "edge": "disease_1618"
+      },
+      {
+        "id": "treatment_2300",
+        "field": "diseaseId",
+        "existing": "disease_2931",
+        "edge": "disease_2974"
+      },
+      {
+        "id": "disease_2440",
+        "field": "cropId",
+        "existing": "crop_373",
+        "edge": "crop_327"
+      },
+      {
+        "id": "treatment_571",
+        "field": "diseaseId",
+        "existing": "disease_1840",
+        "edge": "disease_1535"
+      },
+      {
+        "id": "disease_550",
+        "field": "cropId",
+        "existing": "crop_496",
+        "edge": "crop_267"
+      },
+      {
+        "id": "treatment_1091",
+        "field": "diseaseId",
+        "existing": "disease_998",
+        "edge": "disease_2700"
+      },
+      {
+        "id": "treatment_2927",
+        "field": "diseaseId",
+        "existing": "disease_1721",
+        "edge": "disease_2253"
+      },
+      {
+        "id": "disease_1365",
+        "field": "cropId",
+        "existing": "crop_136",
+        "edge": "crop_360"
+      },
+      {
+        "id": "disease_2988",
+        "field": "cropId",
+        "existing": "crop_156",
+        "edge": "crop_139"
+      },
+      {
+        "id": "disease_902",
+        "field": "cropId",
+        "existing": "crop_56",
+        "edge": "crop_180"
+      },
+      {
+        "id": "disease_1403",
+        "field": "cropId",
+        "existing": "crop_247",
+        "edge": "crop_392"
+      },
+      {
+        "id": "disease_2182",
+        "field": "cropId",
+        "existing": "crop_58",
+        "edge": "crop_98"
+      },
+      {
+        "id": "disease_2711",
+        "field": "cropId",
+        "existing": "crop_337",
+        "edge": "crop_437"
+      },
+      {
+        "id": "treatment_1367",
+        "field": "diseaseId",
+        "existing": "disease_972",
+        "edge": "disease_1953"
+      },
+      {
+        "id": "treatment_1817",
+        "field": "diseaseId",
+        "existing": "disease_2617",
+        "edge": "disease_1963"
+      },
+      {
+        "id": "treatment_634",
+        "field": "diseaseId",
+        "existing": "disease_719",
+        "edge": "disease_2929"
+      },
+      {
+        "id": "disease_913",
+        "field": "cropId",
+        "existing": "crop_130",
+        "edge": "crop_307"
+      },
+      {
+        "id": "disease_909",
+        "field": "cropId",
+        "existing": "crop_111",
+        "edge": "crop_357"
+      },
+      {
+        "id": "treatment_3931",
+        "field": "diseaseId",
+        "existing": "disease_232",
+        "edge": "disease_892"
+      },
+      {
+        "id": "treatment_173",
+        "field": "diseaseId",
+        "existing": "disease_2630",
+        "edge": "disease_2903"
+      },
+      {
+        "id": "treatment_3403",
+        "field": "diseaseId",
+        "existing": "disease_1579",
+        "edge": "disease_102"
+      },
+      {
+        "id": "disease_1059",
+        "field": "cropId",
+        "existing": "crop_408",
+        "edge": "crop_20"
+      },
+      {
+        "id": "disease_2506",
+        "field": "cropId",
+        "existing": "crop_128",
+        "edge": "crop_407"
+      },
+      {
+        "id": "disease_425",
+        "field": "cropId",
+        "existing": "crop_122",
+        "edge": "crop_415"
+      },
+      {
+        "id": "disease_1403",
+        "field": "cropId",
+        "existing": "crop_247",
+        "edge": "crop_203"
+      },
+      {
+        "id": "treatment_1980",
+        "field": "diseaseId",
+        "existing": "disease_903",
+        "edge": "disease_2891"
+      },
+      {
+        "id": "disease_1074",
+        "field": "cropId",
+        "existing": "crop_158",
+        "edge": "crop_196"
+      },
+      {
+        "id": "disease_707",
+        "field": "cropId",
+        "existing": "crop_284",
+        "edge": "crop_192"
+      },
+      {
+        "id": "disease_2517",
+        "field": "cropId",
+        "existing": "crop_346",
+        "edge": "crop_416"
+      },
+      {
+        "id": "treatment_1600",
+        "field": "diseaseId",
+        "existing": "disease_597",
+        "edge": "disease_2828"
+      },
+      {
+        "id": "disease_2426",
+        "field": "cropId",
+        "existing": "crop_130",
+        "edge": "crop_353"
+      },
+      {
+        "id": "disease_1998",
+        "field": "cropId",
+        "existing": "crop_421",
+        "edge": "crop_382"
+      },
+      {
+        "id": "disease_808",
+        "field": "cropId",
+        "existing": "crop_269",
+        "edge": "crop_440"
+      },
+      {
+        "id": "disease_1130",
+        "field": "cropId",
+        "existing": "crop_148",
+        "edge": "crop_147"
+      },
+      {
+        "id": "treatment_3573",
+        "field": "diseaseId",
+        "existing": "disease_2777",
+        "edge": "disease_2520"
+      },
+      {
+        "id": "disease_279",
+        "field": "cropId",
+        "existing": "crop_165",
+        "edge": "crop_494"
+      },
+      {
+        "id": "disease_951",
+        "field": "cropId",
+        "existing": "crop_17",
+        "edge": "crop_332"
+      },
+      {
+        "id": "treatment_2255",
+        "field": "diseaseId",
+        "existing": "disease_2209",
+        "edge": "disease_2729"
+      },
+      {
+        "id": "disease_2453",
+        "field": "cropId",
+        "existing": "crop_121",
+        "edge": "crop_197"
+      },
+      {
+        "id": "treatment_2972",
+        "field": "diseaseId",
+        "existing": "disease_2246",
+        "edge": "disease_2857"
+      },
+      {
+        "id": "treatment_3163",
+        "field": "diseaseId",
+        "existing": "disease_2244",
+        "edge": "disease_1908"
+      },
+      {
+        "id": "disease_2880",
+        "field": "cropId",
+        "existing": "crop_239",
+        "edge": "crop_245"
+      },
+      {
+        "id": "disease_863",
+        "field": "cropId",
+        "existing": "crop_371",
+        "edge": "crop_464"
+      },
+      {
+        "id": "disease_2741",
+        "field": "cropId",
+        "existing": "crop_463",
+        "edge": "crop_100"
+      },
+      {
+        "id": "disease_636",
+        "field": "cropId",
+        "existing": "crop_250",
+        "edge": "crop_365"
+      },
+      {
+        "id": "treatment_2822",
+        "field": "diseaseId",
+        "existing": "disease_1424",
+        "edge": "disease_2879"
+      },
+      {
+        "id": "disease_1657",
+        "field": "cropId",
+        "existing": "crop_147",
+        "edge": "crop_47"
+      },
+      {
+        "id": "treatment_14",
+        "field": "diseaseId",
+        "existing": "disease_2110",
+        "edge": "disease_1183"
+      },
+      {
+        "id": "disease_85",
+        "field": "cropId",
+        "existing": "crop_214",
+        "edge": "crop_314"
+      },
+      {
+        "id": "disease_534",
+        "field": "cropId",
+        "existing": "crop_461",
+        "edge": "crop_204"
+      },
+      {
+        "id": "disease_614",
+        "field": "cropId",
+        "existing": "crop_165",
+        "edge": "crop_394"
+      },
+      {
+        "id": "treatment_2061",
+        "field": "diseaseId",
+        "existing": "disease_1278",
+        "edge": "disease_2479"
+      },
+      {
+        "id": "treatment_1887",
+        "field": "diseaseId",
+        "existing": "disease_857",
+        "edge": "disease_80"
+      },
+      {
+        "id": "treatment_186",
+        "field": "diseaseId",
+        "existing": "disease_31",
+        "edge": "disease_1899"
+      },
+      {
+        "id": "treatment_1805",
+        "field": "diseaseId",
+        "existing": "disease_607",
+        "edge": "disease_2629"
+      },
+      {
+        "id": "disease_1461",
+        "field": "cropId",
+        "existing": "crop_99",
+        "edge": "crop_365"
+      },
+      {
+        "id": "disease_427",
+        "field": "cropId",
+        "existing": "crop_118",
+        "edge": "crop_481"
+      },
+      {
+        "id": "disease_2395",
+        "field": "cropId",
+        "existing": "crop_433",
+        "edge": "crop_58"
+      },
+      {
+        "id": "disease_2565",
+        "field": "cropId",
+        "existing": "crop_177",
+        "edge": "crop_452"
+      },
+      {
+        "id": "disease_2798",
+        "field": "cropId",
+        "existing": "crop_335",
+        "edge": "crop_423"
+      },
+      {
+        "id": "treatment_3350",
+        "field": "diseaseId",
+        "existing": "disease_2431",
+        "edge": "disease_2928"
+      },
+      {
+        "id": "treatment_1028",
+        "field": "diseaseId",
+        "existing": "disease_2516",
+        "edge": "disease_1945"
+      },
+      {
+        "id": "disease_756",
+        "field": "cropId",
+        "existing": "crop_40",
+        "edge": "crop_489"
+      },
+      {
+        "id": "disease_180",
+        "field": "cropId",
+        "existing": "crop_269",
+        "edge": "crop_93"
+      },
+      {
+        "id": "treatment_1308",
+        "field": "diseaseId",
+        "existing": "disease_898",
+        "edge": "disease_631"
+      },
+      {
+        "id": "disease_151",
+        "field": "cropId",
+        "existing": "crop_119",
+        "edge": "crop_134"
+      },
+      {
+        "id": "treatment_1068",
+        "field": "diseaseId",
+        "existing": "disease_2384",
+        "edge": "disease_1743"
+      },
+      {
+        "id": "treatment_391",
+        "field": "diseaseId",
+        "existing": "disease_1362",
+        "edge": "disease_248"
+      },
+      {
+        "id": "disease_2931",
+        "field": "cropId",
+        "existing": "crop_468",
+        "edge": "crop_219"
+      },
+      {
+        "id": "disease_1642",
+        "field": "cropId",
+        "existing": "crop_56",
+        "edge": "crop_177"
+      }
+    ],
+    "recordsWithSource": 0,
+    "recordsWithSourceUrl": 0,
+    "verifiedRecords": 0,
+    "withCropId": 1031,
+    "withDiseaseId": 1082,
+    "orphanTreatments": 2921,
+    "resolvedTreatmentLinks": 1079,
+    "resolvedCropLinks": 1029,
+    "resolvedSymptomLinks": 1258,
+    "unresolvedEdges": 8,
+    "recordsWithDosage": 2,
+    "verifiedDosage": 0,
+    "unverifiedDosage": 2,
+    "englishCoverage": 13,
+    "tamilCoverage": 13,
+    "hindiCoverage": 13,
+    "needingEnrichment": 0,
+    "duplicates": 0,
+    "missingFields": 0,
+    "invalidReferences": 8
+  }
+}

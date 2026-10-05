@@ -1,0 +1,119 @@
+[
+  {
+    "crop": "rice",
+    "waterRequirement": "1200-1500mm total",
+    "criticalStages": ["Transplanting", "Tillering", "Flowering", "Grain filling"],
+    "methods": {
+      "continuous_flooding": {
+        "description": "Traditional method - field kept flooded 5-10cm",
+        "waterUse": "High (1200-1500mm)",
+        "advantages": ["Weed suppression", "Traditional", "Easy management"],
+        "disadvantages": ["High water use", "Methane emissions", "Not suitable for water-scarce areas"]
+      },
+      "alternate_wetting_drying": {
+        "description": "Field dried 15cm below surface, then re-flooded",
+        "waterUse": "Medium (800-1000mm)",
+        "advantages": ["30% water saving", "Reduced methane", "Better root development"],
+        "disadvantages": ["Requires monitoring", "Risk if dried too long"]
+      },
+      "drip_irrigation": {
+        "description": "For aerobic rice varieties",
+        "waterUse": "Low (600-800mm)",
+        "advantages": ["50% water saving", "Suitable for water-scarce areas"],
+        "disadvantages": ["Needs specific varieties", "Higher initial cost"]
+      }
+    },
+    "schedule": [
+      {"stage": "Land preparation", "frequency": "Saturate soil", "depth": "10-15cm"},
+      {"stage": "Transplanting (0-5 days)", "frequency": "Keep flooded", "depth": "2-5cm"},
+      {"stage": "Tillering (6-40 days)", "frequency": "AWD - dry and re-flood", "depth": "5cm when flooded"},
+      {"stage": "Panicle initiation (41-60 days)", "frequency": "Keep continuously flooded", "depth": "5-10cm"},
+      {"stage": "Flowering (61-80 days)", "frequency": "Keep flooded", "depth": "5cm"},
+      {"stage": "Grain filling (81-100 days)", "frequency": "AWD or reduce to field capacity", "depth": "Moist"},
+      {"stage": "Maturity (101-120 days)", "frequency": "Drain field 10-15 days before harvest", "depth": "0cm"}
+    ],
+    "waterStressSymptoms": ["Leaf rolling", "Yellowing of older leaves", "Reduced tillering", "Panicle sterility"],
+    "tips": [
+      "Use tube well scheduling app to optimize pumping",
+      "Install tensiometers to monitor soil moisture",
+      "Mulch bunds to reduce seepage",
+      "Laser land leveling saves 20-30% water",
+      "Collect rainwater in farm pond for supplemental irrigation"
+    ]
+  },
+  {
+    "crop": "tomato",
+    "waterRequirement": "400-600mm total",
+    "criticalStages": ["Flowering", "Fruit setting", "Fruit development"],
+    "methods": {
+      "drip_irrigation": {
+        "description": "Best method for tomato",
+        "waterUse": "Low (400-500mm)",
+        "advantages": ["Precise water delivery", "Fertigation possible", "Disease prevention", "50% water saving"],
+        "disadvantages": ["Initial investment", "Clogging risk", "Maintenance needed"]
+      },
+      "furrow_irrigation": {
+        "description": "Water flows in furrows between beds",
+        "waterUse": "Medium-High (600-800mm)",
+        "advantages": ["Low cost", "Simple", "Traditional"],
+        "disadvantages": ["Water wastage", "Disease spread", "Uneven water distribution"]
+      }
+    },
+    "schedule": [
+      {"stage": "Transplanting", "frequency": "Daily for 7-10 days", "amount": "Light irrigation"},
+      {"stage": "Vegetative (11-30 days)", "frequency": "Every 3-4 days", "amount": "4-5 liters/plant/day"},
+      {"stage": "Flowering (31-50 days)", "frequency": "Every 2-3 days", "amount": "5-6 liters/plant/day"},
+      {"stage": "Fruit development (51-90 days)", "frequency": "Every 2-3 days", "amount": "6-8 liters/plant/day"},
+      {"stage": "Ripening (91-120 days)", "frequency": "Every 3-4 days", "amount": "Reduce to 4-5 liters/plant/day"}
+    ],
+    "waterStressSymptoms": ["Blossom end rot", "Fruit cracking", "Wilting during hot hours", "Leaf curling", "Reduced fruit size"],
+    "tips": [
+      "Mulch with straw or plastic to conserve moisture",
+      "Irrigate in early morning or late evening",
+      "Avoid wetting foliage to prevent diseases",
+      "Use moisture sensors for precise irrigation",
+      "Drip irrigation + mulch can save 60% water"
+    ]
+  },
+  {
+    "crop": "cotton",
+    "waterRequirement": "700-1300mm depending on variety and climate",
+    "criticalStages": ["Germination", "Flowering", "Boll development"],
+    "methods": {
+      "drip_irrigation": {
+        "description": "Increasingly popular for cotton",
+        "waterUse": "Medium (700-900mm)",
+        "advantages": ["40-50% water saving", "Better lint quality", "Uniform growth"],
+        "disadvantages": ["Higher cost", "Requires good water quality"]
+      },
+      "sprinkler_irrigation": {
+        "description": "Overhead sprinklers",
+        "waterUse": "Medium-High (900-1100mm)",
+        "advantages": ["Uniform coverage", "Can apply chemicals"],
+        "disadvantages": ["Wind interference", "Energy intensive"]
+      },
+      "furrow_irrigation": {
+        "description": "Traditional method",
+        "waterUse": "High (1100-1300mm)",
+        "advantages": ["Simple", "Low initial cost"],
+        "disadvantages": ["High water use", "Labor intensive"]
+      }
+    },
+    "schedule": [
+      {"stage": "Sowing to emergence (0-15 days)", "frequency": "Pre-sowing irrigation + light irrigation at 7-10 days", "amount": "Critical for germination"},
+      {"stage": "Seedling (16-30 days)", "frequency": "Every 10-15 days", "amount": "Light irrigation"},
+      {"stage": "Vegetative (31-60 days)", "frequency": "Every 7-10 days", "amount": "Moderate irrigation"},
+      {"stage": "Flowering (61-90 days)", "frequency": "Every 5-7 days", "amount": "Heavy irrigation - most critical"},
+      {"stage": "Boll development (91-120 days)", "frequency": "Every 7-10 days", "amount": "Moderate to heavy"},
+      {"stage": "Boll opening (121-150 days)", "frequency": "Stop irrigation 2-3 weeks before first picking", "amount": "Allow plants to dry"}
+    ],
+    "waterStressSymptoms": ["Square and boll shedding", "Reduced boll size", "Premature boll opening", "Leaf yellowing", "Stunted growth"],
+    "tips": [
+      "Cotton is drought-tolerant during early vegetative stage",
+      "Most sensitive to water stress during flowering and boll formation",
+      "Deficit irrigation strategy: reduce water during vegetative stage",
+      "Use soil moisture sensors at 15-30cm depth",
+      "Intercropping with short-duration crops reduces water stress"
+    ]
+  }
+]

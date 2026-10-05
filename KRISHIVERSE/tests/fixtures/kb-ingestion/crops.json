@@ -1,0 +1,19 @@
+[
+  {
+    "id": "synthetic_crop_rice",
+    "name": "Synthetic Rice",
+    "category": "grain",
+    "source": "synthetic test source",
+    "sourceUrl": "https://synthetic.example.com/rice",
+    "verified": false,
+    "recordKind": "crop",
+    "status": "active",
+    "searchable": true,
+    "confidence": 0.5,
+    "languages": {
+      "en": true,
+      "ta": false,
+      "hi": false
+    }
+  }
+]

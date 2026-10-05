@@ -1,0 +1,12 @@
+Traceback (most recent call last):
+  File "C:\Users\Administrator\OneDrive\documents\krishiverse version 2.0 - Final_v2.0\backend\eval\train_efficientnet.py", line 194, in <module>
+    train(args)
+  File "C:\Users\Administrator\OneDrive\documents\krishiverse version 2.0 - Final_v2.0\backend\eval\train_efficientnet.py", line 137, in train
+    torch.onnx.export(
+  File "C:\Users\Administrator\OneDrive\documents\krishiverse version 2.0 - Final_v2.0\backend\rag_service\venv\lib\site-packages\torch\onnx\__init__.py", line 286, in export
+    from torch.onnx._internal.exporter import _compat
+  File "C:\Users\Administrator\OneDrive\documents\krishiverse version 2.0 - Final_v2.0\backend\rag_service\venv\lib\site-packages\torch\onnx\_internal\exporter\_compat.py", line 16, in <module>
+    from torch.onnx._internal.exporter import (
+  File "C:\Users\Administrator\OneDrive\documents\krishiverse version 2.0 - Final_v2.0\backend\rag_service\venv\lib\site-packages\torch\onnx\_internal\exporter\_core.py", line 19, in <module>
+    import onnxscript
+ModuleNotFoundError: No module named 'onnxscript'

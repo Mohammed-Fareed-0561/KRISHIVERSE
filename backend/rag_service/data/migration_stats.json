@@ -1,0 +1,22 @@
+{
+  "total": 10,
+  "successful": 10,
+  "failed": 0,
+  "crops": [
+    "banana",
+    "chilli",
+    "cotton",
+    "rice",
+    "sugarcane",
+    "tomato",
+    "wheat"
+  ],
+  "categories": [
+    "cereal",
+    "fiber",
+    "fruit",
+    "plantation",
+    "vegetable"
+  ],
+  "errors": []
+}

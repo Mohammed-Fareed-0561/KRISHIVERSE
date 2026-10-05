@@ -1,0 +1,121 @@
+{
+ "generatedAt": "2026-10-01T08:55:50.706Z",
+ "origin": "synthetic-screening + real file inventory + recorded eval rows (NOT expert ground truth)",
+ "rows": [
+  {
+   "id": "text-rice-blast",
+   "ms": 2.1,
+   "error": null,
+   "top1": "rice_blast",
+   "top3": [
+    "rice_blast",
+    "rice_yellow_spots",
+    "rice_brown_spot"
+   ],
+   "top3Ok": true
+  },
+  {
+   "id": "text-rice-yellow",
+   "ms": 0.2,
+   "error": null,
+   "top1": "rice_yellow_spots",
+   "top3": [
+    "rice_yellow_spots"
+   ],
+   "top3Ok": true
+  },
+  {
+   "id": "text-unknown-crop",
+   "ms": 0.5,
+   "error": null,
+   "top1": null,
+   "top3": [],
+   "top1Ok": true
+  },
+  {
+   "id": "text-empty-desc",
+   "ms": 0.1,
+   "error": null,
+   "top1": null,
+   "top3": [],
+   "top1Ok": true
+  },
+  {
+   "id": "rules-deterministic",
+   "deterministic": true,
+   "rules": 3
+  },
+  {
+   "id": "rules-unknown-ignored",
+   "empty": true
+  },
+  {
+   "id": "softmax-topk",
+   "sumsToOne": true,
+   "top3Ordered": true,
+   "top1Index": 0
+  },
+  {
+   "id": "null-file-rejected",
+   "rejected": true
+  },
+  {
+   "id": "labeled-inventory",
+   "present": true,
+   "classes": {
+    "Pepper__bell___Bacterial_spot": 20,
+    "Potato___Early_blight": 20,
+    "Potato___Late_blight": 20,
+    "Tomato___Early_blight": 20,
+    "Tomato___healthy": 20,
+    "Tomato___Late_blight": 20
+   },
+   "totalImages": 120
+  },
+  {
+   "id": "recorded-onnx-120",
+   "runAt": "2026-08-27T11:15:16Z",
+   "model": "efficientnet_b0_plantvillage.onnx",
+   "top1": 0.95,
+   "correct": 114,
+   "total": 120,
+   "perClass": {
+    "0": "18/20",
+    "1": "17/20",
+    "2": "20/20",
+    "3": "19/20",
+    "4": "20/20",
+    "5": "20/20"
+   },
+   "confusion": {
+    "0→Tomato___Early_blight": 18,
+    "0→Tomato___Late_blight": 2,
+    "1→Tomato___Late_blight": 17,
+    "1→Tomato___Early_blight": 3,
+    "2→Tomato___healthy": 20,
+    "3→Potato___Early_blight": 19,
+    "3→Tomato___Early_blight": 1,
+    "4→Potato___Late_blight": 20,
+    "5→Pepper__bell___Bacterial_spot": 20
+   },
+   "wilson_ci_95": [
+    0.8951958053541377,
+    0.9768859506955258
+   ]
+  },
+  {
+   "id": "abstention-rate",
+   "probes": 5,
+   "abstained": 5
+  },
+  {
+   "id": "repeatability",
+   "textDetectStable": true
+  }
+ ],
+ "notes": [
+  "Recorded ONNX rows recomputed above from models/onnx_eval_results.json (2026-08-27, 114/120); live re-measurement reproduced 114/120 exactly on 2026-10-01 (see docs/cropdoctor/current-pipeline.md §ONNX).",
+  "Image path is deterministic since Phase 2/3A (former Math.random mocks replaced; demo random-diagnosis pages deleted).",
+  "No expert-labelled field data exists — see docs/cropdoctor/dataset-spec.md for the blocker contract."
+ ]
+}

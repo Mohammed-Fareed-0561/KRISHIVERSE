@@ -1,0 +1,19 @@
+{
+  "id": "synthetic_treatment_chemical",
+  "name": "Chemical X @ 2g/L",
+  "type": "chemical",
+  "diseaseId": "synthetic_disease_blight",
+  "cropId": "synthetic_crop_rice",
+  "immediateAction": "Apply Chemical X",
+  "chemicalControl": "Chemical X @ 2g/L spray",
+  "organicRemedy": null,
+  "biologicalControl": null,
+  "source": "unknown source",
+  "sourceUrl": null,
+  "verified": false,
+  "recordKind": "treatment",
+  "status": "active",
+  "searchable": true,
+  "highRisk": true,
+  "dosageType": "numeric"
+}

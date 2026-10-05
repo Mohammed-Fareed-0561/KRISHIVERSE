@@ -1,0 +1,394 @@
+{
+ "generatedAt": "2026-10-01T08:55:51.075Z",
+ "origin": "synthetic-screening (NOT ground truth)",
+ "cases": 35,
+ "scored": 33,
+ "passed": 33,
+ "accuracy": 1,
+ "byLanguage": {
+  "en": {
+   "n": 24,
+   "pass": 24
+  },
+  "ta": {
+   "n": 5,
+   "pass": 5
+  },
+  "hi": {
+   "n": 3,
+   "pass": 3
+  },
+  "tanglish": {
+   "n": 1,
+   "pass": 1
+  }
+ },
+ "latencyMs": {
+  "avg": 10.780000000000005,
+  "max": 104.5
+ },
+ "failures": [],
+ "rows": [
+  {
+   "id": "int-en-disease",
+   "type": "intent",
+   "language": "en",
+   "origin": "synthetic-screening",
+   "intentOk": true,
+   "intent": "disease",
+   "cropOk": true,
+   "crop": "tomato",
+   "ms": 104.5
+  },
+  {
+   "id": "int-en-fertilizer",
+   "type": "intent",
+   "language": "en",
+   "origin": "synthetic-screening",
+   "intentOk": true,
+   "intent": "fertilizer",
+   "cropOk": true,
+   "crop": "rice",
+   "ms": 47.1
+  },
+  {
+   "id": "int-en-scheme",
+   "type": "intent",
+   "language": "en",
+   "origin": "synthetic-screening",
+   "intentOk": true,
+   "intent": "scheme",
+   "ms": 20.7
+  },
+  {
+   "id": "int-en-weather",
+   "type": "intent",
+   "language": "en",
+   "origin": "synthetic-screening",
+   "intentOk": true,
+   "intent": "weather",
+   "ms": 4.8
+  },
+  {
+   "id": "int-en-price",
+   "type": "intent",
+   "language": "en",
+   "origin": "synthetic-screening",
+   "intentOk": true,
+   "intent": "price",
+   "cropOk": true,
+   "crop": "onion",
+   "ms": 4.9
+  },
+  {
+   "id": "int-en-help",
+   "type": "intent",
+   "language": "en",
+   "origin": "synthetic-screening",
+   "intentOk": true,
+   "intent": "help",
+   "ms": 0.4
+  },
+  {
+   "id": "int-en-greeting",
+   "type": "intent",
+   "language": "en",
+   "origin": "synthetic-screening",
+   "intentOk": true,
+   "intent": "greeting",
+   "ms": 2.3
+  },
+  {
+   "id": "int-ta-greeting",
+   "type": "intent",
+   "language": "ta",
+   "origin": "synthetic-screening",
+   "intentOk": true,
+   "intent": "greeting",
+   "ms": 95
+  },
+  {
+   "id": "int-en-whatis",
+   "type": "intent",
+   "language": "en",
+   "origin": "synthetic-screening",
+   "intentOk": true,
+   "intent": "what_is",
+   "cropOk": true,
+   "crop": "rice",
+   "ms": 0.6
+  },
+  {
+   "id": "int-ta-whatis",
+   "type": "intent",
+   "language": "ta",
+   "origin": "synthetic-screening",
+   "intentOk": true,
+   "intent": "what_is",
+   "cropOk": true,
+   "crop": "rice",
+   "ms": 3.7
+  },
+  {
+   "id": "int-hi-whatis",
+   "type": "intent",
+   "language": "hi",
+   "origin": "synthetic-screening",
+   "intentOk": true,
+   "intent": "what_is",
+   "ms": 6
+  },
+  {
+   "id": "int-en-treatment",
+   "type": "intent",
+   "language": "en",
+   "origin": "synthetic-screening",
+   "intentOk": true,
+   "intent": "treatment",
+   "cropOk": true,
+   "crop": "tomato",
+   "ms": 0.6
+  },
+  {
+   "id": "int-en-unknown",
+   "type": "intent",
+   "language": "en",
+   "origin": "synthetic-screening",
+   "intentOk": true,
+   "intent": "unknown",
+   "ms": 2.7
+  },
+  {
+   "id": "int-ta-disease",
+   "type": "intent",
+   "language": "ta",
+   "origin": "synthetic-screening",
+   "intentOk": true,
+   "intent": "disease",
+   "cropOk": true,
+   "crop": "tomato",
+   "ms": 3.5
+  },
+  {
+   "id": "int-tanglish-disease",
+   "type": "intent",
+   "language": "tanglish",
+   "origin": "repo-test-expectation",
+   "intentOk": true,
+   "intent": "disease",
+   "cropOk": true,
+   "crop": "tomato",
+   "ms": 0.6
+  },
+  {
+   "id": "int-hi-disease",
+   "type": "intent",
+   "language": "hi",
+   "origin": "synthetic-screening",
+   "intentOk": true,
+   "intent": "disease",
+   "cropOk": true,
+   "crop": "tomato",
+   "ms": 3.6
+  },
+  {
+   "id": "int-hi-fertilizer",
+   "type": "intent",
+   "language": "hi",
+   "origin": "synthetic-screening",
+   "intentOk": true,
+   "intent": "fertilizer",
+   "cropOk": true,
+   "crop": "rice",
+   "ms": 1.7
+  },
+  {
+   "id": "chat-en-simple",
+   "type": "chatbot",
+   "language": "en",
+   "origin": "synthetic-screening",
+   "intentOk": true,
+   "intent": "what_is",
+   "cropOk": true,
+   "crop": "rice",
+   "needsOk": true,
+   "ms": 12
+  },
+  {
+   "id": "chat-en-ambiguous",
+   "type": "chatbot",
+   "language": "en",
+   "origin": "synthetic-screening",
+   "intentOk": true,
+   "intent": "unknown",
+   "needsOk": true,
+   "ms": 4.4
+  },
+  {
+   "id": "chat-ta-disease",
+   "type": "chatbot",
+   "language": "ta",
+   "origin": "synthetic-screening",
+   "intentOk": true,
+   "intent": "disease",
+   "cropOk": true,
+   "crop": "tomato",
+   "ms": 4
+  },
+  {
+   "id": "rag-en-tomato-blight",
+   "type": "rag",
+   "language": "en",
+   "origin": "synthetic-screening",
+   "recallOk": true,
+   "topIds": [
+    "dp_tomato_early_blight",
+    "crop_tomato",
+    "symp_yellow_concentric_rings"
+   ],
+   "groundingVerdict": "cautious",
+   "ms": 10.3
+  },
+  {
+   "id": "rag-en-leaf-curl",
+   "type": "rag",
+   "language": "en",
+   "origin": "synthetic-screening",
+   "recallOk": true,
+   "topIds": [
+    "dp_chilli_leaf_curl",
+    "crop_chilli",
+    "symp_stunted_growth",
+    "symp_thick_veins",
+    "tr_tomato_blight_organic"
+   ],
+   "groundingVerdict": "cautious",
+   "ms": 4.7
+  },
+  {
+   "id": "rag-ta-tomato",
+   "type": "rag",
+   "language": "ta",
+   "origin": "synthetic-screening",
+   "recallOk": true,
+   "topIds": [
+    "dp_tomato_early_blight",
+    "crop_tomato",
+    "dp_chilli_leaf_curl"
+   ],
+   "groundingVerdict": "cautious",
+   "ms": 18.8
+  },
+  {
+   "id": "rag-en-rice-crop",
+   "type": "rag",
+   "language": "en",
+   "origin": "synthetic-screening",
+   "recallOk": true,
+   "topIds": [
+    "crop_rice",
+    "crop_tomato",
+    "crop_chilli"
+   ],
+   "groundingVerdict": "safe",
+   "ms": 10.1
+  },
+  {
+   "id": "dis-rice-blast",
+   "type": "disease",
+   "language": "en",
+   "origin": "synthetic-screening",
+   "skipped": "covered by cropdoctor eval",
+   "ms": 0
+  },
+  {
+   "id": "dis-unknown-crop",
+   "type": "disease",
+   "language": "en",
+   "origin": "repo-test-expectation",
+   "skipped": "covered by cropdoctor eval",
+   "ms": 0
+  },
+  {
+   "id": "dec-intent-clear",
+   "type": "decision",
+   "language": "en",
+   "origin": "synthetic-screening",
+   "decisionOk": true,
+   "engine": "local",
+   "ms": 0.9
+  },
+  {
+   "id": "dec-clarify-vague",
+   "type": "decision",
+   "language": "en",
+   "origin": "synthetic-screening",
+   "decisionOk": true,
+   "engine": "local",
+   "ms": 4.5
+  },
+  {
+   "id": "dec-clarify-short",
+   "type": "decision",
+   "language": "en",
+   "origin": "synthetic-screening",
+   "decisionOk": true,
+   "engine": "local",
+   "ms": 0.8
+  },
+  {
+   "id": "dec-cand-valid",
+   "type": "decision",
+   "language": "en",
+   "origin": "synthetic-screening",
+   "decisionOk": true,
+   "engine": "local",
+   "ms": 1.5
+  },
+  {
+   "id": "dec-cand-invalid",
+   "type": "decision",
+   "language": "en",
+   "origin": "repo-test-expectation",
+   "decisionOk": true,
+   "engine": "local",
+   "ms": 2.1
+  },
+  {
+   "id": "saf-dosage-blocked",
+   "type": "safety",
+   "language": "en",
+   "origin": "repo-test-expectation",
+   "verdictOk": true,
+   "verdict": "blocked",
+   "ms": 0.2
+  },
+  {
+   "id": "saf-laya-conf",
+   "type": "safety",
+   "language": "en",
+   "origin": "repo-test-expectation",
+   "verdictOk": true,
+   "verdict": "blocked",
+   "ms": 0.1
+  },
+  {
+   "id": "saf-info-safe",
+   "type": "safety",
+   "language": "en",
+   "origin": "synthetic-screening",
+   "verdictOk": true,
+   "verdict": "safe",
+   "ms": 0.1
+  },
+  {
+   "id": "saf-urea-highrisk",
+   "type": "safety",
+   "language": "en",
+   "origin": "synthetic-screening",
+   "verdictOk": true,
+   "verdict": "blocked",
+   "ms": 0.1
+  }
+ ]
+}

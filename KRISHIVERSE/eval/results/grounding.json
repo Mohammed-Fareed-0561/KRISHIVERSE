@@ -1,0 +1,58 @@
+{
+ "generatedAt": "2026-10-01T08:56:19.590Z",
+ "origin": "synthetic-screening trace (substring only — NOT semantic entailment)",
+ "queries": 4,
+ "scored": 4,
+ "grounded": 4,
+ "limitation": "Substring matching cannot detect cherry-picking, contradiction, or hallucinated detail around a named entity.",
+ "rows": [
+  {
+   "query": "tomato early blight concentric rings",
+   "type": "comprehensive_disease_diagnosis",
+   "names": [
+    "early blight",
+    "tomato"
+   ],
+   "matched": [
+    "early blight",
+    "tomato"
+   ],
+   "grounded": true
+  },
+  {
+   "query": "chilli leaf curl virus stunted growth",
+   "type": "comprehensive_disease_diagnosis",
+   "names": [
+    "chilli leaf curl virus",
+    "chilli"
+   ],
+   "matched": [
+    "chilli leaf curl virus",
+    "chilli"
+   ],
+   "grounded": true
+  },
+  {
+   "query": "paddy rice crop information",
+   "type": "crop_info",
+   "names": [
+    "paddy (rice)"
+   ],
+   "matched": [
+    "paddy (rice)"
+   ],
+   "grounded": true
+  },
+  {
+   "query": "தக்காளி கருகல் நோய்",
+   "type": "disease_info",
+   "names": [
+    "early blight"
+   ],
+   "matched": [
+    "early blight"
+   ],
+   "grounded": true
+  }
+ ]
+}

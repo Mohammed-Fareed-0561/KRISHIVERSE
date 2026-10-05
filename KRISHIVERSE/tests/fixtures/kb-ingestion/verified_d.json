@@ -1,0 +1,11 @@
+{
+  "id": "synthetic_crop_verified_d",
+  "name": "Unverified Crop D",
+  "category": "test",
+  "source": "Some Source",
+  "sourceUrl": "https://test.example.com",
+  "verified": false,
+  "recordKind": "crop",
+  "status": "active",
+  "searchable": true
+}

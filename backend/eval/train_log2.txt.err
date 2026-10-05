@@ -1,0 +1,25 @@
+C:\Users\Administrator\OneDrive\documents\krishiverse version 2.0 - Final_v2.0\backend\eval\train_efficientnet.py:142: UserWarning: # 'dynamic_axes' is not recommended when dynamo=True, and may lead to 'torch._dynamo.exc.UserError: Constraints violated.' Supply the 'dynamic_shapes' argument instead if export is unsuccessful.
+  torch.onnx.export(
+W0819 14:45:24.378000 14028 Lib\site-packages\torch\onnx\_internal\exporter\_compat.py:133] Setting ONNX exporter to use operator set version 18 because the requested opset_version 17 is a lower version than we have implementations for. Automatic version conversion will be performed, which may not be successful at converting to the requested version. If version conversion is unsuccessful, the opset version of the exported model will be kept at 18. Please consider setting opset_version >=18 to leverage latest ONNX features
+Traceback (most recent call last):
+  File "C:\Users\Administrator\OneDrive\documents\krishiverse version 2.0 - Final_v2.0\backend\eval\train_efficientnet.py", line 199, in <module>
+    train(args)
+  File "C:\Users\Administrator\OneDrive\documents\krishiverse version 2.0 - Final_v2.0\backend\eval\train_efficientnet.py", line 142, in train
+    torch.onnx.export(
+  File "C:\Users\Administrator\OneDrive\documents\krishiverse version 2.0 - Final_v2.0\backend\rag_service\venv\lib\site-packages\torch\onnx\__init__.py", line 291, in export
+    return _compat.export_compat(
+  File "C:\Users\Administrator\OneDrive\documents\krishiverse version 2.0 - Final_v2.0\backend\rag_service\venv\lib\site-packages\torch\onnx\_internal\exporter\_compat.py", line 161, in export_compat
+    onnx_program = _core.export(
+  File "C:\Users\Administrator\OneDrive\documents\krishiverse version 2.0 - Final_v2.0\backend\rag_service\venv\lib\site-packages\torch\onnx\_internal\exporter\_flags.py", line 27, in wrapper
+    return func(*args, **kwargs)
+  File "C:\Users\Administrator\OneDrive\documents\krishiverse version 2.0 - Final_v2.0\backend\rag_service\venv\lib\site-packages\torch\onnx\_internal\exporter\_core.py", line 1421, in export
+    result = strategy(model, args, kwargs, dynamic_shapes=dynamic_shapes)
+  File "C:\Users\Administrator\OneDrive\documents\krishiverse version 2.0 - Final_v2.0\backend\rag_service\venv\lib\site-packages\torch\onnx\_internal\exporter\_capture_strategies.py", line 148, in __call__
+    self._success(model)
+  File "C:\Users\Administrator\OneDrive\documents\krishiverse version 2.0 - Final_v2.0\backend\rag_service\venv\lib\site-packages\torch\onnx\_internal\exporter\_capture_strategies.py", line 274, in _success
+    self._verbose_print(
+  File "C:\Users\Administrator\OneDrive\documents\krishiverse version 2.0 - Final_v2.0\backend\rag_service\venv\lib\site-packages\torch\onnx\_internal\exporter\_capture_strategies.py", line 31, in <lambda>
+    return lambda *args, **kwargs: print("[torch.onnx]", *args, **kwargs)
+  File "C:\Users\Administrator\AppData\Local\Programs\Python\Python310\lib\encodings\cp1252.py", line 19, in encode
+    return codecs.charmap_encode(input,self.errors,encoding_table)[0]
+UnicodeEncodeError: 'charmap' codec can't encode character '\u2705' in position 93: character maps to <undefined>

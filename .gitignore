@@ -1,0 +1,14 @@
+node_modules/
+dist/
+.env
+.env.*
+!.env.example
+!.env.backend.example
+!backend/.env.example
+!backend/rag_service/.env.example
+!krishiverse/.env.example
+.env.local
+.env.production
+*.log
+.DS_Store
+*.pem
