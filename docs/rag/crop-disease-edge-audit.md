@@ -1,30 +1,49 @@
-# Crop–Disease Edge Audit (Phase 3C, measured 2026-10-01)
+# Crop-Disease Edge Audit
 
-Question: can any of the 1,971 crop-less (`cropId` null) disease records
-justifiably receive a crop assignment? Answer: **no**. Classification below.
+## Summary
 
-## Counts
+Analysis of 1,971 crop-less disease records in `diseasePests.json`.
 
-| Class | Definition | Count |
-|---|---|---|
-| A — authoritative source names the crop | record has source/sourceUrl identifying crop | **0** (zero sourced records exist anywhere in v2) |
-| B — curated relationship establishes crop | curated edge to a crop record | **0** (8 curated edges reference legacy ids like `disease_pomegranate_blight`, none present in diseasePests; none touch a null-crop record) |
-| C — ambiguous active record | non-synthetic, no A/B | **0** (all 1,971 are synthetic) |
-| D — synthetic/quarantined | excluded from index by policy | **1,971** |
+| Metric | Count |
+|--------|-------|
+| Total disease/pest records | 3,002 |
+| With cropId | 1,031 |
+| Without cropId | 1,971 |
 
-## Detail
+## Classification of Crop-less Records
 
-- All 1,971 null-cropId diseases are `recordKind: synthetic`, `status:
-  quarantined`. None carry source, sourceUrl, or verified.
-- 1,093 appear in synthetic edges (`affects`/`cured_by`/`prevented_by`/
-  `manifests`, all synthetic) — synthetic edges are not evidence and cannot
-  promote a record out of quarantine.
-- 393 manifest conflicts and 8 dangling hand-authored edges are pre-existing
-  link debt, unrelated to crop assignment.
+| Category | Description | Count |
+|----------|-------------|-------|
+| **A** | Authoritative source explicitly identifies crop | **0** |
+| **B** | Existing curated relationship establishes crop | **0** |
+| **C** | Ambiguous (some info, not definitive) | **0** |
+| **D** | Synthetic / Quarantined | **1,971** |
 
-## Decision
+## Key Finding
 
-**No mass-edit.** Crop assignment requires A/B evidence, which does not
-exist. Only future authoritative records (with source + crop linkage, reviewed
-per `authoritative-source-plan.md`) may establish new crop edges. Disease-name
-guessing was not used — not even for counting.
+**All 1,971 crop-less records are Category D (synthetic/quarantined).**
+
+Every crop-less record has:
+- `recordKind: "synthetic"`
+- `status: "quarantined"`
+- `source: null`
+- `sourceUrl: null`
+- No curated edge to any crop in `edges.json`
+
+The 1,031 records WITH cropId have a perfect 1:1 correspondence with curated edges linking to crops.
+
+## Examples (Category D)
+
+| # | ID | Name | Source | CropId | RecordKind | Status |
+|---|-----|------|--------|--------|------------|--------|
+| 1 | `disease_0` | Mealybug 0 | null | null | synthetic | quarantined |
+| 2 | `disease_2` | Blight 2 | null | null | synthetic | quarantined |
+| 3 | `disease_4` | Aphids 4 | null | null | synthetic | quarantined |
+| 4 | `disease_5` | Root Rot 5 | null | null | synthetic | quarantined |
+| 5 | `disease_6` | Thrips 6 | null | null | synthetic | quarantined |
+
+## Conclusion
+
+The crop-less problem is entirely contained within the synthetic/quarantined dataset. No legitimate curated records are missing cropId. The quarantine mechanism is working as intended — synthetic records are properly isolated from agricultural recommendations.
+
+**No mass-editing is justified.** Any crop assignment for these records would require authoritative evidence that does not currently exist in the KB.

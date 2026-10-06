@@ -1,0 +1,50 @@
+{
+  "documentsImported": 8,
+  "recordsCreated": 7,
+  "recordsUpdated": 0,
+  "recordsSkipped": 6,
+  "duplicates": 3,
+  "invalidRecords": 3,
+  "unverifiedRecords": 7,
+  "verifiedRecords": 0,
+  "highRiskRecords": 0,
+  "missingProvenance": 4,
+  "brokenRelationships": 0,
+  "details": {
+    "byRecordKind": {
+      "unknown": 7
+    },
+    "bySource": {},
+    "validation": {
+      "errors": [
+        "Treatment record has unrecognized diseaseId: synthetic_disease_blight",
+        "Record marked verified but missing source or sourceUrl - provenance incomplete",
+        "Record marked verified but missing source or sourceUrl - provenance incomplete"
+      ],
+      "warnings": [
+        "Chemical dosage present without full provenance - ResponseValidator will block dosage, Treatment has source but no sourceUrl - verification incomplete, Unrecognized cropId: synthetic_crop_rice, Unrecognized diseaseId: synthetic_disease_blight, Treatment diseaseId format may not match KB v2: synthetic_disease_blight, Unverified chemical dosage claim - ResponseValidator will block at UI",
+        "0 unverified high-risk records detected - ResponseValidator will block at UI"
+      ],
+      "infos": []
+    },
+    "dedup": {
+      "exactDuplicates": 1,
+      "cropDiseaseDuplicates": 0,
+      "cropPestDuplicates": 0,
+      "diseaseSymptomDuplicates": 0,
+      "nearNameDuplicates": 2
+    },
+    "provenance": {
+      "recordsWithSource": 0,
+      "recordsWithSourceUrl": 0,
+      "recordsVerified": 0,
+      "recordsUnverified": 7,
+      "sourceBreakdown": {}
+    },
+    "relationships": {
+      "totalChecked": 7,
+      "validRelationships": 0,
+      "brokenRelationships": 0
+    }
+  }
+}

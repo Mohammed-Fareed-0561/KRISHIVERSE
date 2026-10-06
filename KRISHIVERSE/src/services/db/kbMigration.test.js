@@ -122,16 +122,18 @@ describe("migrateDataset pipeline (Phases 3-13)", () => {
 
   it("reports counts and provenance exactly", () => {
     const { report } = migrateDataset(raw);
-    expect(report.total).toBe(15021);
+    expect(report.total).toBe(15023); // 15021 + tnau_rice_blast (3E.1) + tnau_rice_blast_treatment (3E.2)
     expect(report.synthetic).toBe(15000);
     expect(report.quarantined).toBe(15000);
-    expect(report.curated).toBe(21);
-    expect(report.recordsWithSource).toBe(0);
-    expect(report.recordsWithSourceUrl).toBe(0);
-    expect(report.verifiedRecords).toBe(0);
-    expect(report.recordsWithDosage).toBe(2);
-    expect(report.verifiedDosage).toBe(0);
-    expect(report.unverifiedDosage).toBe(2);
+    expect(report.curated).toBe(23); // 21 + tnau_rice_blast (3E.1) + tnau_rice_blast_treatment (3E.2)
+    // Phase 3E.1: exactly one record carried provenance. Phase 3E.2 activates
+    // the dose-bearing treatment with the same verified TNAU source URL.
+    expect(report.recordsWithSource).toBe(2);
+    expect(report.recordsWithSourceUrl).toBe(2);
+    expect(report.verifiedRecords).toBe(2);
+    expect(report.recordsWithDosage).toBe(3); // 2 unsourced curated + the activated TNAU record
+    expect(report.verifiedDosage).toBe(1);    // earned: verified===true AND source AND sourceUrl
+    expect(report.unverifiedDosage).toBe(2);  // the two unsourced curated treatments
   });
 
   it("links treatments to diseases only via valid cured_by edges (Phase 8)", () => {
@@ -156,15 +158,25 @@ describe("migrateDataset pipeline (Phases 3-13)", () => {
     expect(forgedCrops.length).toBe(0);
   });
 
-  it("flags high-risk records (dosages, chemical products) as unverified (Phase 11)", () => {
+  it("flags high-risk records (dosages, chemical products) as provenance-gated (Phase 11, 3E.2)", () => {
     const { stores, report } = migrateDataset(raw);
     const risky = stores.treatments.filter((t) => t.highRisk);
-    expect(risky.length).toBeGreaterThanOrEqual(2);
-    expect(risky.every((t) => t.verified === false)).toBe(true);
-    expect(risky.every((t) => t.source === null)).toBe(true);
-    expect(report.recordsWithDosage).toBe(2); // only 2 numeric-dosage records
-    expect(report.verifiedDosage).toBe(0);   // none may claim verification
+    expect(risky.length).toBeGreaterThanOrEqual(3);
+    // A high-risk record may only be verified when it carries FULL provenance
+    // (verified === true + source + sourceUrl). Everything else must hold zero
+    // provenance — never partially verified, never "verified by source label".
+    const earned = risky.filter((t) => t.verified === true || t.source || t.sourceUrl);
+    expect(earned.map((t) => t.id)).toEqual(["tnau_rice_blast_treatment"]);
+    expect(earned[0].verified).toBe(true);
+    expect(earned[0].source).toBe("TNAU");
+    expect(earned[0].sourceUrl).toBeTruthy();
+    const others = risky.filter((t) => !earned.includes(t));
+    expect(others.length).toBeGreaterThanOrEqual(2);
+    expect(others.every((t) => t.verified === false && t.source === null && t.sourceUrl == null)).toBe(true);
+    expect(report.recordsWithDosage).toBe(3); // numeric-dosage records
+    expect(report.verifiedDosage).toBe(1);    // only the fully-provenanced one
     expect(report.unverifiedDosage).toBe(2);
+    expect(report.recordsWithDosage).toBe(report.verifiedDosage + report.unverifiedDosage);
   });
 
   it("builds a safe relationship index without wiring it into retrieval (Phase 9)", () => {
@@ -179,10 +191,16 @@ describe("migrateDataset pipeline (Phases 3-13)", () => {
   it("reports multilingual coverage only for non-quarantined content (Phase 12)", () => {
     const { stores } = migrateDataset(raw);
     const cov = computeCoverage(stores);
-    expect(cov.counts.en).toBe(13); // 3 crops + 5 symptoms + 2 diseases + 3 treatments
+    expect(cov.counts.en).toBe(15); // 3 crops + 5 symptoms + 3 diseases + 4 treatments
     expect(cov.counts.ta).toBe(13);
     expect(cov.counts.hi).toBe(13);
-    expect(cov.needingEnrichment.length).toBe(0);
+    // Phase 3E.1/3E.2: the activated English-only TNAU records honestly flag
+    // their missing name_ta/name_hi (and method_ta/method_hi) instead of
+    // shipping fabricated translations.
+    expect(cov.needingEnrichment.map((e) => e.id).sort()).toEqual([
+      "tnau_rice_blast",
+      "tnau_rice_blast_treatment",
+    ]);
   });
 });
 
@@ -229,7 +247,7 @@ describe("runtime migration on IndexedDB (Phase 2, 5, 8)", () => {
   it("links synthetic treatments via cured_by edges in the live store", async () => {
     const treatments = await dbGetAll(DB_STORES.treatments);
     const linked = treatments.filter((t) => t.diseaseId);
-    expect(linked.length).toBe(1082);
+    expect(linked.length).toBe(1083); // 1082 + tnau_rice_blast_treatment (Phase 3E.2)
     const t100 = treatments.find((t) => t.id === "treatment_0");
     expect(t100).toBeTruthy();
     if (t100) expect(t100.recordKind).toBe("synthetic");
@@ -256,7 +274,7 @@ describe("runtime migration on IndexedDB (Phase 2, 5, 8)", () => {
     expect(all.some((r) => syntheticIds.has(r.record.id))).toBe(true);
   }, 120000);
 
-  it("keeps zero provenance after migration (Phase 10)", async () => {
+  it("keeps provenance exactly on the earned records and nowhere else (Phase 10, 3E.1, 3E.2)", async () => {
     const stores = await Promise.all([
       dbGetAll(DB_STORES.crops),
       dbGetAll(DB_STORES.symptoms),
@@ -264,9 +282,28 @@ describe("runtime migration on IndexedDB (Phase 2, 5, 8)", () => {
       dbGetAll(DB_STORES.treatments),
     ]);
     const all = stores.flat();
-    expect(all.filter((r) => r.source).length).toBe(0);
-    expect(all.filter((r) => r.sourceUrl).length).toBe(0);
-    expect(all.filter((r) => r.verified).length).toBe(0);
+    // Exactly two records in the entire KB may carry provenance — the Phase
+    // 3E.1 activated TNAU disease record and the Phase 3E.2 dose-bearing
+    // treatment — and no other record may inherit source/sourceUrl/verified
+    // through normalization (never fabricated).
+    const EARNED = ["tnau_rice_blast", "tnau_rice_blast_treatment"];
+    const withSource = all.filter((r) => r.source);
+    expect(withSource.map((r) => r.id).sort()).toEqual([...EARNED].sort());
+    expect(all.filter((r) => r.sourceUrl).map((r) => r.id).sort()).toEqual([...EARNED].sort());
+    const verified = all.filter((r) => r.verified);
+    expect(verified.map((r) => r.id).sort()).toEqual([...EARNED].sort());
+    for (const r of verified) {
+      expect(r.source).toBeTruthy();
+      expect(r.sourceUrl).toBe(
+        "https://agritech.tnau.ac.in/expert_system/paddy/cpdisblast.html"
+      );
+      expect(r.region).toBeNull(); // region never inferred
+      expect(r.status).toBe("active");
+      expect(r.recordKind).toBe("curated");
+    }
+    // The dose-bearing one is the only verified dosage record in the KB.
+    const verifiedDosage = verified.filter((t) => /(\d+(\.\d+)?\s*(g|ml|l|%))/i.test(String(t.method || "")));
+    expect(verifiedDosage.map((t) => t.id)).toEqual(["tnau_rice_blast_treatment"]);
   }, 120000);
 });
 

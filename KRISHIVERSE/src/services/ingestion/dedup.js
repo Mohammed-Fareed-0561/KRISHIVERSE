@@ -132,12 +132,11 @@ function detectDuplicates(records, options = {}) {
 
   // --- Exact id duplicates ---
   if (opts.exactId) {
-    for (const [id, matches] of seenById) {
+    for (const [, matches] of seenById) {
       if (matches.length > 1) {
         // All records with the same id are duplicates of each other
         // Keep the first as "unique", mark the rest as duplicates
         const first = matches[0];
-        isDuplicate.add(recordIndices.get(first));
 
         for (let i = 1; i < matches.length; i++) {
           const dup = matches[i];
@@ -150,12 +149,11 @@ function detectDuplicates(records, options = {}) {
 
   // --- Crop + disease duplicates ---
   if (opts.cropDisease) {
-    for (const [key, matches] of seenByCropDisease) {
+    for (const [, matches] of seenByCropDisease) {
       if (matches.length > 1) {
         // All records with same crop + disease are duplicates
         // Keep first as unique, rest as duplicates
         const first = matches[0];
-        isDuplicate.add(recordIndices.get(first));
 
         for (let i = 1; i < matches.length; i++) {
           const dup = matches[i];
@@ -168,10 +166,9 @@ function detectDuplicates(records, options = {}) {
 
   // --- Crop + pest duplicates ---
   if (opts.cropPest) {
-    for (const [key, matches] of seenByCropPest) {
+    for (const [, matches] of seenByCropPest) {
       if (matches.length > 1) {
         const first = matches[0];
-        isDuplicate.add(recordIndices.get(first));
 
         for (let i = 1; i < matches.length; i++) {
           const dup = matches[i];
@@ -184,10 +181,9 @@ function detectDuplicates(records, options = {}) {
 
   // --- Disease + symptom duplicates ---
   if (opts.diseaseSymptom) {
-    for (const [key, matches] of seenByDiseaseSymptom) {
+    for (const [, matches] of seenByDiseaseSymptom) {
       if (matches.length > 1) {
         const first = matches[0];
-        isDuplicate.add(recordIndices.get(first));
 
         for (let i = 1; i < matches.length; i++) {
           const dup = matches[i];
@@ -200,60 +196,58 @@ function detectDuplicates(records, options = {}) {
 
   // --- Near name duplicates ---
   // Compare names using simple similarity (Jaccard on character trigrams, or simple starts/ends)
-  if (true) { // always run name comparison for thoroughness
-    const nameCandidates = [];
+  const nameCandidates = [];
 
-    for (const record of records) {
-      // Skip if already marked as exact duplicate (same id)
-      if (isDuplicate.has(recordIndices.get(record))) continue;
+  for (const record of records) {
+    // Skip if already marked as exact duplicate (same id)
+    if (isDuplicate.has(recordIndices.get(record))) continue;
 
-      // Collect records with name fields for comparison
-      if (record.name && typeof record.name === 'string' && record.name.length > 0) {
-        nameCandidates.push({ record, name: record.name.toLowerCase().trim() });
-      }
-      // Also check scientificName
-      if (record.scientificName && typeof record.scientificName === 'string' && record.scientificName.length > 0) {
-        nameCandidates.push({ record, name: record.scientificName.toLowerCase().trim() });
-      }
+    // Collect records with name fields for comparison
+    if (record.name && typeof record.name === 'string' && record.name.length > 0) {
+      nameCandidates.push({ record, name: record.name.toLowerCase().trim() });
     }
+    // Also check scientificName
+    if (record.scientificName && typeof record.scientificName === 'string' && record.scientificName.length > 0) {
+      nameCandidates.push({ record, name: record.scientificName.toLowerCase().trim() });
+    }
+  }
 
-    // Compare all pairs
-    for (let i = 0; i < nameCandidates.length; i++) {
-      for (let j = i + 1; j < nameCandidates.length; j++) {
-        const r1 = nameCandidates[i];
-        const r2 = nameCandidates[j];
+  // Compare all pairs
+  for (let i = 0; i < nameCandidates.length; i++) {
+    for (let j = i + 1; j < nameCandidates.length; j++) {
+      const r1 = nameCandidates[i];
+      const r2 = nameCandidates[j];
 
-        // Skip if either record already has a duplicate of higher priority
-        if (isDuplicate.has(recordIndices.get(r1.record)) || isDuplicate.has(recordIndices.get(r2.record))) {
-          continue;
-        }
+      // Skip if either record already has a duplicate of higher priority
+      if (isDuplicate.has(recordIndices.get(r1.record)) || isDuplicate.has(recordIndices.get(r2.record))) {
+        continue;
+      }
 
-        const similarity = nameSimilarity(r1.name, r2.name);
+      const similarity = nameSimilarity(r1.name, r2.name);
 
-        if (similarity >= opts.nameSimilarityThreshold) {
-          // This is a near duplicate - mark the second one
-          // But only if neither has been captured by a higher-priority duplicate type
-          // Check if already in a higher-priority list
-          const alreadyCaptured =
-            results.exactDuplicates.some(d => d.record === r1.record ||
-                                            d.record === r2.record) ||
-            results.cropDiseaseDuplicates.some(d => d.record === r1.record ||
-                                                d.record === r2.record) ||
-            results.cropPestDuplicates.some(d => d.record === r1.record ||
-                                               d.record === r2.record) ||
-            results.diseaseSymptomDuplicates.some(d => d.record === r1.record ||
-                                                   d.record === r2.record);
+      if (similarity >= opts.nameSimilarityThreshold) {
+        // This is a near duplicate - mark the second one
+        // But only if neither has been captured by a higher-priority duplicate type
+        // Check if already in a higher-priority list
+        const alreadyCaptured =
+          results.exactDuplicates.some(d => d.record === r1.record ||
+                                          d.record === r2.record) ||
+          results.cropDiseaseDuplicates.some(d => d.record === r1.record ||
+                                              d.record === r2.record) ||
+          results.cropPestDuplicates.some(d => d.record === r1.record ||
+                                             d.record === r2.record) ||
+          results.diseaseSymptomDuplicates.some(d => d.record === r1.record ||
+                                                 d.record === r2.record);
 
-          if (!alreadyCaptured) {
-            // Determine which record is "second" based on id order
-            const idx1 = recordIndices.get(r1.record);
-            const idx2 = recordIndices.get(r2.record);
-            const second = idx1 < idx2 ? r2.record : r1.record;
-            const first = idx1 < idx2 ? r1.record : r2.record;
+        if (!alreadyCaptured) {
+          // Determine which record is "second" based on id order
+          const idx1 = recordIndices.get(r1.record);
+          const idx2 = recordIndices.get(r2.record);
+          const second = idx1 < idx2 ? r2.record : r1.record;
+          const first = idx1 < idx2 ? r1.record : r2.record;
 
-            results.nearNameDuplicates.push(new DuplicateResult(second, first, 'near_name', similarity));
-            isDuplicate.add(recordIndices.get(second));
-          }
+          results.nearNameDuplicates.push(new DuplicateResult(second, first, 'near_name', similarity));
+          isDuplicate.add(recordIndices.get(second));
         }
       }
     }

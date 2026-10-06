@@ -1,46 +1,114 @@
-# Authoritative Source Plan (Phase 3C — plan only, no ingestion)
+# Authoritative Source Plan
 
-Controlled, review-gated ingestion. No automatic bulk download. Every batch:
-dry-run → human review of the ingestion report → explicit approval → import.
-`verified:true` is accepted ONLY from these classes with a traceable
-reference (URL or document id); everything else enters unverified.
+## Purpose
 
-## Source classes
+Define a controlled ingestion plan for expanding the active KB with authoritative agricultural data. No automatic bulk download.
 
-### TNAU (Tamil Nadu Agricultural University)
-- Content: crop production guides, pest/disease management, varieties.
-- Provenance: source="TNAU", sourceUrl=<agritech.tnau.ac.in page>, verified
-  only with agronomist sign-off recorded in verifiedBy/verifiedDate.
-- Format: curated JSON (preferred) or headed markdown; crop/disease names as
-  in the KB registry. Language: EN + TA where published; record missing
-  translations via enrichmentRequired, never machine-fill.
-- Coverage: start rice/tomato/chilli (existing curated core), expand by crop.
+## Source Classes
 
-### ICAR (institutes + KVKs)
-- Content: package of practices, pest alerts, variety releases.
-- Provenance: source="ICAR <institute>", sourceUrl=<icar.gov.in page>.
-  KVK items: source="KVK <name>". Language: EN/HI mostly; TA where available.
+### 1. TNAU (Tamil Nadu Agricultural University)
 
-### Tamil Nadu agriculture / state sources
-- Content: state schemes, season advisories, district alerts.
-- Provenance: source="TN Agri Dept", sourceUrl=<tnagrisnet page>. Schemes
-  additionally keep application pointers (URLs), never invented amounts —
-  amounts require the source page revision/date in notes.
+| Attribute | Value |
+|-----------|-------|
+| **URL** | [agritech.tnau.ac.in](https://agritech.tnau.ac.in) |
+| **Content** | Crop cultivation practices, disease management, pest control, fertilizer recommendations |
+| **Allowed provenance** | `source: "TNAU"`, `sourceUrl: <specific page URL>` |
+| **Ingestion format** | Markdown (structured documents) |
+| **Review requirement** | Expert review before `verified: true` |
+| **Language** | English, Tamil |
+| **Crop/topic coverage** | All major Tamil Nadu crops (rice, cotton, sugarcane, groundnut, etc.) |
 
-### Government agricultural sources (Centre)
-- Content: PM-KISAN/PMFBY/KCC norms, MSP, IMD agro-advisories.
-- Provenance: source="Government of India <scheme>", sourceUrl=<official
-  .gov.in page>. Dynamic figures (rates, deadlines) carry lastUpdated and a
-  re-verify interval; stale figures are removed, not guessed.
+### 2. ICAR (Indian Council of Agricultural Research)
 
-## Per-batch review requirement (mandatory)
+| Attribute | Value |
+|-----------|-------|
+| **URL** | [icar.gov.in](https://icar.gov.in) |
+| **Content** | Research-based agricultural practices, variety recommendations, pest/disease management |
+| **Allowed provenance** | `source: "ICAR"`, `sourceUrl: <specific publication URL>` |
+| **Ingestion format** | Markdown or JSON (structured publications) |
+| **Review requirement** | Expert review before `verified: true` |
+| **Language** | English, Hindi |
+| **Crop/topic coverage** | National coverage, all major crops |
 
-1. `npm run kb:ingest -- --source <dir> --source-name "<Name>" --dry-run`.
-2. Reviewer checks: 0 invalid0304 unexpected; dedup reviewReport empty or
-   adjudicated; high-risk list contains ONLY provenance-complete dosages;
-   source/sourceUrl present on every record claimed verified.
-3. Known pipeline gaps to watch (see `authoritative-ingestion.md`): UPPERCASE
-   id warnings, ASCII-only markdown keys, naive CSV commas, single-quote
-   interpolation bug in the report line (cosmetic).
-4. Approval recorded (who/when/source-revision) before any write path is
-   ever built. No write path exists today by design.
+### 3. KVK (Krishi Vigyan Kendra)
+
+| Attribute | Value |
+|-----------|-------|
+| **URL** | [kvk.icar.gov.in](https://kvk.icar.gov.in) |
+| **Content** | District-specific agricultural advisories, soil health, weather-based recommendations |
+| **Allowed provenance** | `source: "KVK"`, `sourceUrl: <specific KVK page URL>` |
+| **Ingestion format** | Markdown |
+| **Review requirement** | Expert review before `verified: true` |
+| **Language** | English, Tamil, Telugu, Kannada, Hindi |
+| **Crop/topic coverage** | District-specific, localized recommendations |
+
+### 4. Government Agricultural Sources
+
+| Attribute | Value |
+|-----------|-------|
+| **Examples** | PMKSY, PM-KISAN, Soil Health Card, AGMARK |
+| **Content** | Scheme details, subsidy information, market prices, policy updates |
+| **Allowed provenance** | `source: "GovtOfIndia"`, `sourceUrl: <specific scheme page URL>` |
+| **Ingestion format** | JSON (structured scheme data) |
+| **Review requirement** | Policy expert review before `verified: true` |
+| **Language** | English, Hindi, Tamil |
+| **Crop/topic coverage** | All government agricultural schemes |
+
+## Ingestion Workflow
+
+```
+1. Source Identification
+   └─> Identify specific authoritative document/page
+
+2. Document Preparation
+   └─> Convert to Markdown or JSON with proper structure
+   └─> Include source, sourceUrl in front matter or metadata
+
+3. Dry-Run Ingestion
+   └─> Run kb-ingest.mjs --dry-run
+   └─> Review report for validation errors/warnings
+
+4. Expert Review
+   └─> Domain expert reviews all records
+   └─> Verify factual accuracy against source
+   └─> Approve or reject each record
+
+5. Provenance Assignment
+   └─> Set verified: true ONLY for expert-approved records
+   └─> Ensure source + sourceUrl are present and valid
+
+6. KB Update
+   └─> Merge approved records into KB v2
+   └─> Run full test suite
+   └─> Update manifest
+```
+
+## Review Requirements
+
+- **Who**: Domain expert (agricultural scientist, KVK scientist, or TNAU/ICAR researcher)
+- **What**: Verify factual accuracy, check for outdated information, confirm dosages
+- **When**: Before any record is marked `verified: true`
+- **How**: Document review with sign-off
+
+## Language Priority
+
+1. Tamil (primary — largest user base)
+2. English (secondary — widely understood)
+3. Telugu, Kannada, Hindi (tertiary — regional coverage)
+
+## Crop Priority
+
+1. Rice (largest cultivated area in Tamil Nadu)
+2. Cotton (major cash crop)
+3. Sugarcane (major cash crop)
+4. Groundnut (major oilseed)
+5. All other crops (progressive coverage)
+
+## Constraints
+
+- No automatic bulk download
+- No web scraping without explicit permission
+- No fabrication of agricultural data
+- No fabrication of provenance
+- No marking records verified from model confidence
+- No mass-ingest of uncontrolled web data

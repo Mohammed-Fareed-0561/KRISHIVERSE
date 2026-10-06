@@ -84,7 +84,7 @@ export async function diagnoseFromGuide({ crop, symptom, severity, rawText = '' 
   const { records: diseaseHits } = fastSearch(query, { type: 'disease', limit: 6 });
   const { records: treatHits }   = fastSearch(query, { type: 'treatment', limit: 8 });
 
-  if (diseaseHits.length === 0) return buildNoMatchResponse(crop, symptom, severity);
+  if (diseaseHits.length === 0) return buildNoMatchResponse(crop, symptom);
 
   // Pair each disease with relevant treatments
   const results = diseaseHits.slice(0, 4).map(({ record: disease, score }) => {
@@ -126,7 +126,7 @@ export async function answerFreeText(question, context = {}) {
   if (isDiseaseSymptomQuery(trimmed)) {
     const diseaseResults = ComprehensiveDiseaseDetector.detect(trimmed, parsed.crop || '', context.language || 'en');
     if (diseaseResults.length > 0 && diseaseResults[0].confidence > 50) {
-      return buildComprehensiveDiseaseResponse(diseaseResults, trimmed, parsed, context);
+      return buildComprehensiveDiseaseResponse(diseaseResults);
     }
   }
 
@@ -145,23 +145,23 @@ export async function answerFreeText(question, context = {}) {
   // so definitions and advice come from records, not templates.)
   if (intent === 'fertilizer') {
     const fertHits = fastSearch(trimmed + ' fertilizer nutrition nutrient', { limit: 5 });
-    return buildFertilizerResponse(trimmed, fertHits.records, parsed, context);
+    return buildFertilizerResponse(trimmed, fertHits.records, parsed);
   }
 
   if (intent === 'scheme') {
-    return buildSchemeResponse(trimmed, context);
+    return buildSchemeResponse();
   }
 
   if (intent === 'weather') {
-    return buildWeatherResponse(context);
+    return buildWeatherResponse();
   }
 
   if (intent === 'price') {
-    return buildPriceResponse(trimmed, context);
+    return buildPriceResponse();
   }
 
   if (intent === 'cultivation') {
-    return buildCultivationResponse(trimmed, topCrop?.record, context);
+    return buildCultivationResponse(trimmed, topCrop?.record);
   }
 
   // Disease intent (default)
@@ -177,7 +177,7 @@ export async function answerFreeText(question, context = {}) {
   }
 
   if (topCrop?.score > 0) {
-    return buildCropInfoResponse(topCrop.record, diseaseResult.records.map((r) => r.record), context);
+    return buildCropInfoResponse(topCrop.record, diseaseResult.records.map((r) => r.record));
   }
 
   if (topSymptom?.score > 0) {
@@ -209,7 +209,7 @@ export function treatmentMethod(treatment, language) {
   return treatment.description || treatment.method || treatment.action || treatment.name || "";
 }
 
-function buildDiagnosisResponse({ results, crop, symptom, severity }) {
+function buildDiagnosisResponse({ results, crop, severity }) {
   const top       = results[0];
   const disease   = top.disease;
   const treatments = top.treatments || [];
@@ -248,7 +248,7 @@ ${txLines}${disease.prevention ? `\n\n### 🛡️ Prevention\n${disease.preventi
   };
 }
 
-function buildNoMatchResponse(crop, symptom, severity) {
+function buildNoMatchResponse(crop, symptom) {
   const cropName = crop ? ` on **${crop}**` : '';
   return {
     type: 'no_match',
@@ -278,7 +278,7 @@ function buildDiseaseOnlyResponse(disease, treatments, parsed, context) {
   };
 }
 
-function buildCropInfoResponse(crop, diseases, context) {
+function buildCropInfoResponse(crop, diseases) {
   const threatList = diseases.slice(0, 3).map((d) => `• ${d.name}`).join('\n')
     || '• No specific active threats. Follow standard IPM practices.';
   return {
@@ -290,31 +290,37 @@ function buildCropInfoResponse(crop, diseases, context) {
   };
 }
 
-function buildFertilizerResponse(query, hits, parsed, context) {
+function buildFertilizerResponse(query, hits, parsed) {
   const cropName = parsed.crop || 'your crop';
   const hitLines = hits.slice(0, 3).map((h) => {
     const r = h.record;
-    return `• **${r.name || r.action}**: ${r.description || r.action || ''}`;
-  }).join('\n') || '• Apply NPK 120:60:60 kg/ha as base dose. Adjust per soil test.';
+    const sourceTag = r.verified ? '✓' : (r.source ? '⚠' : '');
+    return `• **${r.name || r.action}**: ${r.description || r.action || ''} ${sourceTag}`;
+  }).join('\n');
+
+  const hasKbEvidence = hitLines.length > 0;
+  const fallbackText = hasKbEvidence
+    ? ''
+    : '• Apply NPK 120:60:60 kg/ha as base dose. Adjust per soil test. *(general guidance — verify with soil test)*';
 
   return {
     type: 'fertilizer_info',
-    response: `## 💊 Fertilizer Guide — ${cropName.replace(/^\w/, (c) => c.toUpperCase())}\n\n${hitLines}\n\n### General NPK Recommendations\n• **Nitrogen (N):** For leaf growth — apply Urea or CAN\n• **Phosphorus (P):** For roots — apply DAP or SSP\n• **Potassium (K):** For fruit/grain quality — apply MOP\n\n> 💡 **Always do a soil test first.** Free soil testing at nearest KVK.\n\n📞 Kisan Call Centre: **1800-180-1551**\n\n*HSAID v2.0 offline knowledge base.*`,
-    confidence: 0.8,
+    response: `## 💊 Fertilizer Guide — ${cropName.replace(/^\w/, (c) => c.toUpperCase())}\n\n${hitLines}${fallbackText}\n\n### General NPK Recommendations\n• **Nitrogen (N):** For leaf growth — apply Urea or CAN\n• **Phosphorus (P):** For roots — apply DAP or SSP\n• **Potassium (K):** For fruit/grain quality — apply MOP\n\n> 💡 **Always do a soil test first.** Free soil testing at nearest KVK.\n\n📞 Kisan Call Centre: **1800-180-1551**\n\n*HSAID v2.0 offline knowledge base.${hasKbEvidence ? ' Evidence source: KB records.' : ' General guidance only — no KB evidence found.'}*`,
+    confidence: hasKbEvidence ? 0.8 : 0.5,
     suggestions: ['Soil test locations', 'Organic alternatives', 'Ask about deficiency symptoms'],
   };
 }
 
-function buildSchemeResponse(query, context) {
+function buildSchemeResponse() {
   return {
     type: 'scheme_info',
-    response: `## 🏛️ Government Schemes for Farmers\n\n### Top Schemes\n• **PM-KISAN** — ₹6,000/year direct benefit. Register at [pmkisan.gov.in](https://pmkisan.gov.in)\n• **PMFBY** — Crop insurance at low premium. Contact nearest bank branch.\n• **KCC (Kisan Credit Card)** — Short-term farm loans at 4% interest\n• **Soil Health Card** — Free soil testing every 2 years\n• **eNAM** — Sell produce online at better prices: [enam.gov.in](https://enam.gov.in)\n• **PM Kusum** — Solar pump subsidy up to 60%\n\n### How to apply\n1. Visit nearest **CSC (Common Service Centre)**\n2. Bring: Aadhaar, Bank passbook, Land documents\n3. Or call **1800-180-1551** (free, 24/7)\n\n*Check [agricoop.nic.in](https://agricoop.nic.in) for latest schemes.*`,
-    confidence: 0.9,
+    response: `## 🏛️ Government Schemes for Farmers\n\n### Top Schemes\n• **PM-KISAN** — ₹6,000/year direct benefit. Register at [pmkisan.gov.in](https://pmkisan.gov.in)\n• **PMFBY** — Crop insurance at low premium. Contact nearest bank branch.\n• **KCC (Kisan Credit Card)** — Short-term farm loans at 4% interest\n• **Soil Health Card** — Free soil testing every 2 years\n• **eNAM** — Sell produce online at better prices: [enam.gov.in](https://enam.gov.in)\n• **PM Kusum** — Solar pump subsidy up to 60%\n\n### How to apply\n1. Visit nearest **CSC (Common Service Centre)**\n2. Bring: Aadhaar, Bank passbook, Land documents\n3. Or call **1800-180-1551** (free, 24/7)\n\n*Check [agricoop.nic.in](https://agricoop.nic.in) for latest schemes. Scheme details are general guidance — verify current benefits on official portals.*`,
+    confidence: 0.7,
     suggestions: ['PM-KISAN eligibility', 'Crop insurance guide', 'KCC application process'],
   };
 }
 
-function buildWeatherResponse(context) {
+function buildWeatherResponse() {
   return {
     type: 'weather_advice',
     response: `## 🌤️ Farm Weather Advisory\n\nFor accurate local weather:\n• 📱 Check the **Weather** tab in this app for your location forecast\n• 🌐 [imd.gov.in](https://imd.gov.in) — India Meteorological Department\n• 📞 Agro-Met Advisory: **1800-180-1551**\n\n### General Precautions\n• 🌧️ **Before rain:** Avoid pesticide spraying 24hrs prior\n• ☀️ **Summer:** Water fields in the evening to reduce evaporation\n• 🌫️ **High humidity:** Watch for fungal disease outbreaks\n• 🌵 **Drought stress:** Apply mulching to retain soil moisture`,
@@ -323,7 +329,7 @@ function buildWeatherResponse(context) {
   };
 }
 
-function buildPriceResponse(query, context) {
+function buildPriceResponse() {
   return {
     type: 'price_info',
     response: `## 💰 Market Price Information\n\nFor today's mandi rates:\n• 📱 Check the **Prices** tab in this app for your nearest mandi\n• 🌐 [agmarknet.gov.in](https://agmarknet.gov.in) — National daily prices\n• 📱 **eNAM app** — Online agricultural market\n• 📞 **1800-180-1551** — Ask for local price advisory\n\n### Sell Smarter\n• Compare prices across **3–5 mandis** before selling\n• Check MSP (Minimum Support Price) — government guarantees these rates\n• Use FPOs (Farmer Producer Organisations) for better bargaining power`,
@@ -332,12 +338,13 @@ function buildPriceResponse(query, context) {
   };
 }
 
-function buildCultivationResponse(query, crop, context) {
+function buildCultivationResponse(query, crop) {
   const name = crop?.name || 'the crop';
+  const hasKbRecord = !!crop;
   return {
     type: 'cultivation_info',
-    response: `## 🌱 Cultivation Guide — ${name}\n\n${crop?.description || ''}\n${crop?.season ? `**Best Season:** ${crop.season}\n` : ''}${crop?.soilType ? `**Ideal Soil:** ${crop.soilType}\n` : ''}${crop?.spacing ? `**Plant Spacing:** ${crop.spacing}\n` : ''}${crop?.waterReq ? `**Water Needs:** ${crop.waterReq}\n` : ''}${crop?.duration ? `**Crop Duration:** ${crop.duration}\n` : ''}\n### Key Steps\n1. **Land preparation** — Deep ploughing 2–3 times\n2. **Seed treatment** — Use Trichoderma or Thiram\n3. **Sowing** — Follow spacing guide for your variety\n4. **Fertilization** — Apply base dose at sowing\n5. **Irrigation** — Critical at flowering and grain filling stages\n6. **Pest monitoring** — Scout weekly from germination\n7. **Harvest** — At correct maturity for best quality\n\n> 📞 Contact your nearest KVK for location-specific advice.\n\n*HSAID v2.0 offline knowledge base.*`,
-    confidence: 0.8,
+    response: `## 🌱 Cultivation Guide — ${name}\n\n${crop?.description || ''}\n${crop?.season ? `**Best Season:** ${crop.season}\n` : ''}${crop?.soilType ? `**Ideal Soil:** ${crop.soilType}\n` : ''}${crop?.spacing ? `**Plant Spacing:** ${crop.spacing}\n` : ''}${crop?.waterReq ? `**Water Needs:** ${crop.waterReq}\n` : ''}${crop?.duration ? `**Crop Duration:** ${crop.duration}\n` : ''}\n### Key Steps *(general guidance)*\n1. **Land preparation** — Deep ploughing 2–3 times\n2. **Seed treatment** — Use Trichoderma or Thiram\n3. **Sowing** — Follow spacing guide for your variety\n4. **Fertilization** — Apply base dose at sowing\n5. **Irrigation** — Critical at flowering and grain filling stages\n6. **Pest monitoring** — Scout weekly from germination\n7. **Harvest** — At correct maturity for best quality\n\n> 📞 Contact your nearest KVK for location-specific advice.\n\n*HSAID v2.0 offline knowledge base.${hasKbRecord ? ' Crop data from KB.' : ' No KB record found — general guidance only.'}*`,
+    confidence: hasKbRecord ? 0.8 : 0.5,
     suggestions: ['Best varieties', 'Disease calendar', 'Post-harvest storage tips'],
   };
 }
@@ -440,7 +447,7 @@ function isDiseaseSymptomQuery(query) {
   return diseaseKeywords.some(kw => lowerQuery.includes(kw));
 }
 
-function buildComprehensiveDiseaseResponse(diseaseResults, query, parsed, context) {
+function buildComprehensiveDiseaseResponse(diseaseResults) {
   const topResult = diseaseResults[0];
   const disease = topResult.disease;
   const treatment = topResult.treatment;

@@ -1,0 +1,137 @@
+{
+  "pilotId": "tnau-pilot-001",
+  "phase": "Phase 3E.2 — claim adjudication + first verified dose-bearing activation",
+  "sourceName": "TNAU",
+  "sourceOrganization": "TNAU",
+  "region": null,
+  "rationale": "Small pilot against a clearly identifiable authoritative TNAU subset. Records originally derived from the local Stack B dataset backend/rag_service/data/all_crop_diseases_v2.json (source_organization: TNAU, reference_url null). In Phase 3E.1 authentic TNAU URLs were captured from the official TNAU Agritech Portal via site navigation and content-verified claim-by-claim; no URL was guessed or constructed. In Phase 3E.2 every remaining claim in rice-blast-treatment.md was adjudicated against the same fetched pages plus the TNAU CPPS crop-protection publication (pdf/8.pdf, downloaded and text-extracted); unsupported claims were removed or replaced with source wording, and the record was activated only after the full gate passed.",
+  "documents": [
+    { "file": "rice-blast.md", "kind": "disease", "purpose": "primary TNAU disease record — URL captured, content verified, activated to seed (Phase 3E.1)" },
+    { "file": "rice-blast-duplicate.md", "kind": "disease", "purpose": "exact-duplicate dedup probe (same id as rice-blast.md; content frozen in Phase 3D state on purpose — never cited, never activated)" },
+    { "file": "rice-blast-treatment.md", "kind": "treatment", "purpose": "dosage-bearing treatment record — Phase 3E.2 claim audit complete, sourceUrl assigned, verified=true, activated to seed as the first verified dose-bearing record" }
+  ],
+  "expectedReportFields": [
+    "records extracted",
+    "records normalized",
+    "records rejected",
+    "duplicates",
+    "provenance completeness (source / sourceUrl)",
+    "sourceOrganization",
+    "region",
+    "verified status",
+    "dosage-bearing records",
+    "relationships created"
+  ],
+  "provenancePolicy": {
+    "source": "TNAU — taken from source dataset source.organization",
+    "sourceUrl": "https://agritech.tnau.ac.in/expert_system/paddy/cpdisblast.html",
+    "sourceUrlReason": "Captured in Phase 3E.1 from the official TNAU Agritech Portal (HTTP 200 on 2026-10-05). Not guessed: found by navigating official TNAU pages and verified to contain the record's claims.",
+    "region": null,
+    "regionReason": "Source dataset location is null. Region must never be inferred.",
+    "verifiedRule": "verified may only be true when source AND sourceUrl are both present (existing project policy) AND the official page content supports every stored claim (Phase 3E.1 gate).",
+    "activationRule": "Only records satisfying the verification rules are activated, via the existing mechanism: v1 seed files + KNOWN_CURATED + npm run migrate:kb. The ingestion CLI stays dry-run-only and writes nothing."
+  },
+  "verification": {
+    "date": "2026-10-06",
+    "method": "webfetch of official agritech.tnau.ac.in pages + HTTP status checks + download/text-extraction of the TNAU CPPS publication (pdf/8.pdf) + claim-by-claim text comparison. A sourceOrganization label alone never counts as evidence; every stored claim must appear in fetched page/PDF text.",
+    "urls": [
+      { "url": "https://agritech.tnau.ac.in/expert_system/paddy/cpdisblast.html", "httpStatus": 200, "role": "primary source for tnau_rice_blast AND tnau_rice_blast_treatment (symptoms, favourable conditions, cultural/preventive/chemical management, all doses)" },
+      { "url": "https://agritech.tnau.ac.in/crop_protection/rice_diseases/rice_1.html", "httpStatus": 200, "role": "pathogen name (Magnaporthe oryzae, syn. P. grisea) + leaf/node/neck blast symptoms; carries no dose and no neem/Trichoderma recommendation" },
+      { "url": "https://agritech.tnau.ac.in/crop_protection/rice_diseases/another%20methods_rice_1.html", "httpStatus": 200, "role": "pathogen synonym (perfect state M. grisea) + favourable conditions + management (corroboration only)" },
+      { "url": "https://agritech.tnau.ac.in/pdf/8.pdf", "httpStatus": 200, "role": "TNAU CPPS, Dept. Plant Pathology — 'Management of diseases of important Agriculture Crops of Tamil Nadu'. Downloaded (325,652 bytes) and text-extracted. Corroborates formulation strengths: 'Tricyclozole 75 WP @ 1g/l', 'Carbendazim 50WP @ 1g/l', 'Remove collateral weed hosts from bunds and channels'." },
+      { "url": "https://agritech.tnau.ac.in/expert_system/paddy/nurserymgmt.html", "httpStatus": 200, "role": "nursery management corroboration: Tricyclazole 1 g/lit, Pseudomonas 10 g/kg seed (corroboration only)" }
+    ],
+    "results": {
+      "tnau_rice_blast": {
+        "outcome": "verified + activated (Phase 3E.1)",
+        "claimsSupported": "all stored claims after one source-backed correction",
+        "correction": "Removed the single unsupported variety 'Swarna' from the resistant-varieties list (official TNAU blast pages list IR-64 and Jaya; no official TNAU page found listing Swarna as blast-tolerant). No other content changed."
+      },
+      "tnau_rice_blast_treatment": {
+        "outcome": "verified + activated (Phase 3E.2) — first dose-bearing record in the KB with verified=true",
+        "gateCheck": {
+          "everyDosageClaimAuthoritative": true,
+          "everyApplicationMethodAuthoritative": true,
+          "everyHighRiskClaimAuthoritative": true,
+          "sourceUrlPresent": true,
+          "sourceOrganizationAuthoritative": true,
+          "notSynthetic": true,
+          "notQuarantined": true,
+          "validatorPassesWithZeroErrors": true,
+          "diseaseIdResolvesTo": "tnau_rice_blast",
+          "provenanceSurvivesNormalization": true,
+          "cropScopedEvidenceEnforced": true,
+          "unsupportedDosagesRemoved": true
+        },
+        "claimAudit": [
+          {
+            "claim": "A. Tricyclazole dose",
+            "staged": "Tricyclazole 75% WP @ 0.6g/liter water",
+            "verdict": "headline dose NOT supported — conflict with source",
+            "authoritativeEvidence": "cpdisblast.html: 'Spraying of Tricyclazole at 1g/lit of water'; 'Panicle initiation to booting ... Tricyclazole @ 1.0 gm/lit'; 'Flowering and after ... Tricyclazole @ 1 g /lit of water'. pdf/8.pdf: 'Tricyclozole 75 WP @ 1g/l'.",
+            "resolution": "corrected to @1g/liter; formulation '75% WP' retained only because the TNAU CPPS publication states it"
+          },
+          {
+            "claim": "A2. Tricyclazole spray stages",
+            "staged": "spray at tillering, booting and flowering stages",
+            "verdict": "supported",
+            "authoritativeEvidence": "cpdisblast.html: 'Pre-Tillering to Mid-Tillering', 'Panicle initiation to booting', 'Flowering and after'; plus '3 to 4 sprays each at nursery, tillering stage and panicle emergence stage'",
+            "resolution": "kept; nursery added in body text (source-supported)"
+          },
+          {
+            "claim": "B. Pseudomonas fluorescens",
+            "staged": "Pseudomonas fluorescens @ 10g/liter spray",
+            "verdict": "method + unit NOT supported — conflict with source",
+            "authoritativeEvidence": "cpdisblast.html: 'Dry seed treatment with Pseudomonas fluorescens talc formulation @10g/kg of seed'; 'Spray P. fluorescens talc formulation @ 0.5% from 45 days after transplanting at 10 day intervals, three times.'",
+            "resolution": "replaced with the source's exact units and methods (10 g/kg seed; 0.5% foliar at the stated timing)"
+          },
+          {
+            "claim": "C. Neem oil @ 5ml/liter as a rice-blast treatment",
+            "staged": "Neem oil spray @ 5ml/liter water",
+            "verdict": "NOT found authoritative for rice blast",
+            "authoritativeEvidence": "cpdisblast.html, rice_1.html, nurserymgmt.html and pdf/8.pdf's Blast sections state no neem oil. TNAU neem-oil recommendations exist only for other purposes/crops (e.g. sheath rot/blight botanicals at 3%; generic pest-control leaflets) — a different disease and a different rate, so they cannot back this claim.",
+            "resolution": "removed from the authoritative record"
+          },
+          {
+            "claim": "D. Trichoderma viride seed treatment for rice blast",
+            "staged": "Trichoderma viride seed treatment",
+            "verdict": "NOT found authoritative for rice blast",
+            "authoritativeEvidence": "TNAU blast pages recommend Pseudomonas for blast, not Trichoderma; TNAU's biocontrol and CPPS pages link Trichoderma to root rot / soil-borne disease, not to Pyricularia/Magnaporthe blast.",
+            "resolution": "removed from the authoritative record"
+          },
+          {
+            "claim": "E. Carbendazim 50% WP @ 1g/liter",
+            "staged": "body only, no front-matter field",
+            "verdict": "supported",
+            "authoritativeEvidence": "cpdisblast.html: 'Carbendazim at 1.0 gm/lit'; pdf/8.pdf: 'Carbendazim 50WP @ 1g/l'",
+            "resolution": "promoted into chemicalControl so the stored claim is explicit and traceable"
+          },
+          {
+            "claim": "F. immediateAction",
+            "staged": "Remove and destroy infected plant parts",
+            "verdict": "NOT found on any official TNAU rice-blast page",
+            "authoritativeEvidence": "cpdisblast.html cultural methods: 'Remove weed hosts from bunds'; preventive methods: 'Burning of straw and stubbles after harvest'. pdf/8.pdf Blast cultural method: 'Remove collateral weed hosts from bunds and channels'. No TNAU blast page says to remove and destroy infected plant parts.",
+            "resolution": "replaced with the source's own blast sanitation instruction ('Remove collateral weed hosts from bunds and channels'), body text additionally quotes the source's straw/stubble burning line"
+          },
+          {
+            "claim": "G. provenance fields",
+            "staged": "sourceUrl absent, verified false, region absent",
+            "verdict": "incomplete provenance — could not satisfy the gate",
+            "authoritativeEvidence": "record derives from a Stack B dataset row whose reference_url was null",
+            "resolution": "sourceUrl set to the content-verified official TNAU blast page (already captured in Phase 3E.1 and used by rice-blast.md); verified set true with verifiedDate 2026-10-06; region deliberately left absent so it stays null (never inferred)"
+          }
+        ]
+      },
+      "tnau_rice_blast (duplicate probe)": {
+        "outcome": "excluded by dedup (same id) — intentionally left in Phase 3D state, never cited"
+      }
+    }
+  },
+  "safety": {
+    "dosageRecordsExpectedBlocked": true,
+    "dosageRecordsAuthorized": ["tnau_rice_blast_treatment"],
+    "dosageAuthorizationRule": "A dose leaves ResponseValidator's blocked path only when the evidence list contains a record with verified=true AND source AND sourceUrl that is ALSO crop-compatible with the question's own crop (Phase 3E.2 `isDosageBacker`): crop-matching query crop => eligible; query crop unknown => a crop-declaring record is NOT eligible; crop-agnostic verified records stay eligible. Cross-crop, missing, and synthetic/quarantined evidence still block. Provenance requirements are unchanged; the evidence list itself is never filtered (grounding intact).",
+    "syntheticLeakCheck": "pilot source contains no synthetic/quarantined ids",
+    "quarantineActivation": "forbidden"
+  }
+}

@@ -51,9 +51,10 @@ separate flow: Diagnose pages → `enhancedOfflineDiseaseService.detectDisease`
 
 ## 4. Weaknesses & known failure modes
 
-1. **KB is 99.86% synthetic**: 15,021 records, 15,000 quarantined synthetic, 21
-   curated, **0 with source, 0 verified, 2 with dosage (both blocked)**. The
-   local KB can therefore inform but never authorize treatment — correct, but it
+1. **KB is 99.85% synthetic**: 15,022 records, 15,000 quarantined synthetic, 22
+   curated, **1 with source + verified (Phase 3E.1 TNAU pilot record, no
+   dosage), 2 with dosage (both blocked)**. The
+   local KB can inform but still never authorize treatment — correct, but it
    caps answer depth.
 2. **Crop Doctor is narrow + partly non-deterministic**: ONNX covers 6
    classes (tomato/potato/pepper only; 3 map to no KB disease); heuristic
@@ -84,7 +85,7 @@ separate flow: Diagnose pages → `enhancedOfflineDiseaseService.detectDisease`
 | ONNX eval (120 img, 20/class, PlantVillage) | 95%, Wilson [0.895, 0.977] | `models/onnx_eval_results.json` |
 | ONNX public snapshot | 86.7% (30 img — stale) | `public/models/onnx_eval_results.json` |
 | Decision benchmark (17 cases) | A 12/13, builtin 13/13, real-Laya 11/13, policy-gated 13/13; clarif 1–2/2; cand 2/2; real avg 863ms/p95 2121ms; 0 timeouts | `scripts/benchmark-decision.mjs` + 2026-09-30 runs |
-| KB counts | 15,021 total; 21 curated; 0 sourced/verified | `data/kb/v2/manifest.json`, `kbMigration.test.js` |
+| KB counts | 15,022 total; 22 curated; 1 sourced/verified (2026-10-05) | `data/kb/v2/manifest.json`, `kbMigration.test.js` |
 | Laya live probe | load 17s cached; ~0.5s/infer CPU; TA✅ HI✅ Tanglish✅ (0.94) | 2026-09-30 session notes |
 
 ## 6. Missing metrics

@@ -83,7 +83,7 @@ function parseArgs(rawArgs) {
 // ─── Source Discovery ────────────────────────────────────────────
 
 function isIgnoredDir(name) {
-  return SUPPORTED_IGNORE_DIRS.has(name);
+  return IGNORE_DIRS.has(name);
 }
 
 function discoverFiles(sourcePath, format) {
@@ -347,8 +347,12 @@ async function main() {
 
   const validationResults = validateBatch(normalized, knownCropIds, knownDiseaseIds);
   
-  const invalidRecords = validationResults.filter(r => !r.valid);
-  const validRecords = validationResults.filter(r => r.valid);
+  // Pair each normalized record with its validation result (same index order).
+  // The old code filtered ValidationResult objects as if they were records, so
+  // every provenance/dosage count silently read undefined (Phase 3D finding).
+  const paired = normalized.map((record, i) => ({ record, result: validationResults[i] }));
+  const invalidRecords = paired.filter(p => !p.result.valid);
+  const validRecords = paired.filter(p => p.result.valid).map(p => p.record);
   
   if (verbose) {
     console.log(`Valid: ${validRecords.length}, Invalid: ${invalidRecords.length}`);
@@ -399,7 +403,14 @@ async function main() {
   
   const relValidation = validateRelationships(validRecords, knownCropIds, knownDiseaseIds);
   
-  const validRelationships = relValidation.info.length;
+  // Count unique (type, recordId) links so duplicate records cannot inflate
+  // the relationships-created count (Phase 3D pilot report). Only true link
+  // types count — fully_verified entries are provenance, not relationships.
+  const LINK_TYPES = new Set(['crop_disease_link', 'treatment_disease_link']);
+  const uniqueLinks = new Set(
+    relValidation.info.filter(i => LINK_TYPES.has(i.type)).map(i => `${i.type}:${i.recordId}`)
+  );
+  const validRelationships = uniqueLinks.size;
   const brokenRelationships = relValidation.relationshipErrors.length;
   
   if (verbose) {
@@ -413,6 +424,14 @@ async function main() {
   const verifiedRecords = validRecords.filter(r => r.verified).length;
   const unverifiedRecords = validRecords.filter(r => !r.verified).length;
   const highRiskBlocked = highRiskAnalysis.length;
+
+  // Dosage-bearing records (explicit dosage patterns only, Phase 3D pilot report)
+  const DOSAGE_RE = /(\d+(?:\.\d+)?\s*(g\/L|kg\/ha|ml\/L|g\/ha|ppm|%))/i;
+  const dosageBearingRecords = validRecords.filter(r =>
+    [r.chemicalControl, r.organicRemedy, r.biologicalControl, r.immediateAction, r.name]
+      .filter(t => t && typeof t === 'string')
+      .some(t => DOSAGE_RE.test(t))
+  ).length;
   
   // Build the detailed report object
   const report = new IngestionReport();
@@ -428,11 +447,14 @@ async function main() {
     .withMissingProvenance(invalidRecords.length + (verifiedRecords === 0 ? 1 : 0))
     .withBrokenRelationships(brokenRelationships)
     .withByRecordKind(recordKindCounts(validRecords))
-    .withValidationErrors(invalidRecords.map(r => r.errors.join(', ')).filter(Boolean).slice(0, 10))
-    .withValidationWarnings(invalidRecords.map(r => r.warnings.join(', ')).filter(Boolean).slice(0, 10))
+    .withValidationErrors(invalidRecords.map(p => p.result.errors.join(', ')).filter(Boolean).slice(0, 10))
+    .withValidationWarnings(invalidRecords.map(p => p.result.warnings.join(', ')).filter(Boolean).slice(0, 10))
     .withProvenanceDetails({
       recordsWithSource: validRecords.filter(r => r.source).length,
       recordsWithSourceUrl: validRecords.filter(r => r.sourceUrl).length,
+      recordsWithSourceOrganization: validRecords.filter(r => r.sourceOrganization).length,
+      recordsWithRegion: validRecords.filter(r => r.region).length,
+      dosageBearingRecords,
       recordsVerified: verifiedRecords,
       recordsUnverified: unverifiedRecords,
       sourceBreakdown: {} // would need source analysis
@@ -489,6 +511,11 @@ async function main() {
   console.log('Provenance:');
   console.log(`  Verified: ${verifiedRecords}`);
   console.log(`  Unverified: ${unverifiedRecords}`);
+  console.log(`  With source: ${validRecords.filter(r => r.source).length}`);
+  console.log(`  With sourceUrl: ${validRecords.filter(r => r.sourceUrl).length}`);
+  console.log(`  With sourceOrganization: ${validRecords.filter(r => r.sourceOrganization).length}`);
+  console.log(`  With region: ${validRecords.filter(r => r.region).length}`);
+  console.log(`  Dosage-bearing records: ${dosageBearingRecords}`);
   console.log(`  High-risk: ${highRiskBlocked}`);
   console.log('');
   console.log('Relationships:');

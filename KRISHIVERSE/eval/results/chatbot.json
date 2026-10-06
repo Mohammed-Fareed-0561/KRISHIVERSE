@@ -1,5 +1,5 @@
 {
- "generatedAt": "2026-10-01T08:55:51.075Z",
+ "generatedAt": "2026-10-06T08:48:18.700Z",
  "origin": "synthetic-screening (NOT ground truth)",
  "cases": 35,
  "scored": 33,
@@ -24,8 +24,8 @@
   }
  },
  "latencyMs": {
-  "avg": 10.780000000000005,
-  "max": 104.5
+  "avg": 17.611428571428576,
+  "max": 155.1
  },
  "failures": [],
  "rows": [
@@ -38,7 +38,7 @@
    "intent": "disease",
    "cropOk": true,
    "crop": "tomato",
-   "ms": 104.5
+   "ms": 155.1
   },
   {
    "id": "int-en-fertilizer",
@@ -49,7 +49,7 @@
    "intent": "fertilizer",
    "cropOk": true,
    "crop": "rice",
-   "ms": 47.1
+   "ms": 76.1
   },
   {
    "id": "int-en-scheme",
@@ -58,7 +58,7 @@
    "origin": "synthetic-screening",
    "intentOk": true,
    "intent": "scheme",
-   "ms": 20.7
+   "ms": 9.3
   },
   {
    "id": "int-en-weather",
@@ -67,7 +67,7 @@
    "origin": "synthetic-screening",
    "intentOk": true,
    "intent": "weather",
-   "ms": 4.8
+   "ms": 7.8
   },
   {
    "id": "int-en-price",
@@ -78,7 +78,7 @@
    "intent": "price",
    "cropOk": true,
    "crop": "onion",
-   "ms": 4.9
+   "ms": 14.9
   },
   {
    "id": "int-en-help",
@@ -96,7 +96,7 @@
    "origin": "synthetic-screening",
    "intentOk": true,
    "intent": "greeting",
-   "ms": 2.3
+   "ms": 2.9
   },
   {
    "id": "int-ta-greeting",
@@ -105,7 +105,7 @@
    "origin": "synthetic-screening",
    "intentOk": true,
    "intent": "greeting",
-   "ms": 95
+   "ms": 109.4
   },
   {
    "id": "int-en-whatis",
@@ -116,7 +116,7 @@
    "intent": "what_is",
    "cropOk": true,
    "crop": "rice",
-   "ms": 0.6
+   "ms": 2.6
   },
   {
    "id": "int-ta-whatis",
@@ -127,7 +127,7 @@
    "intent": "what_is",
    "cropOk": true,
    "crop": "rice",
-   "ms": 3.7
+   "ms": 8
   },
   {
    "id": "int-hi-whatis",
@@ -136,7 +136,7 @@
    "origin": "synthetic-screening",
    "intentOk": true,
    "intent": "what_is",
-   "ms": 6
+   "ms": 10.5
   },
   {
    "id": "int-en-treatment",
@@ -147,7 +147,7 @@
    "intent": "treatment",
    "cropOk": true,
    "crop": "tomato",
-   "ms": 0.6
+   "ms": 0.5
   },
   {
    "id": "int-en-unknown",
@@ -156,7 +156,7 @@
    "origin": "synthetic-screening",
    "intentOk": true,
    "intent": "unknown",
-   "ms": 2.7
+   "ms": 10.3
   },
   {
    "id": "int-ta-disease",
@@ -167,7 +167,7 @@
    "intent": "disease",
    "cropOk": true,
    "crop": "tomato",
-   "ms": 3.5
+   "ms": 20.4
   },
   {
    "id": "int-tanglish-disease",
@@ -178,7 +178,7 @@
    "intent": "disease",
    "cropOk": true,
    "crop": "tomato",
-   "ms": 0.6
+   "ms": 4.1
   },
   {
    "id": "int-hi-disease",
@@ -189,7 +189,7 @@
    "intent": "disease",
    "cropOk": true,
    "crop": "tomato",
-   "ms": 3.6
+   "ms": 12.6
   },
   {
    "id": "int-hi-fertilizer",
@@ -200,7 +200,7 @@
    "intent": "fertilizer",
    "cropOk": true,
    "crop": "rice",
-   "ms": 1.7
+   "ms": 5.7
   },
   {
    "id": "chat-en-simple",
@@ -212,7 +212,7 @@
    "cropOk": true,
    "crop": "rice",
    "needsOk": true,
-   "ms": 12
+   "ms": 17.8
   },
   {
    "id": "chat-en-ambiguous",
@@ -222,7 +222,7 @@
    "intentOk": true,
    "intent": "unknown",
    "needsOk": true,
-   "ms": 4.4
+   "ms": 12.9
   },
   {
    "id": "chat-ta-disease",
@@ -233,7 +233,7 @@
    "intent": "disease",
    "cropOk": true,
    "crop": "tomato",
-   "ms": 4
+   "ms": 17
   },
   {
    "id": "rag-en-tomato-blight",
@@ -247,7 +247,7 @@
     "symp_yellow_concentric_rings"
    ],
    "groundingVerdict": "cautious",
-   "ms": 10.3
+   "ms": 30.1
   },
   {
    "id": "rag-en-leaf-curl",
@@ -263,7 +263,7 @@
     "tr_tomato_blight_organic"
    ],
    "groundingVerdict": "cautious",
-   "ms": 4.7
+   "ms": 11.5
   },
   {
    "id": "rag-ta-tomato",
@@ -277,7 +277,7 @@
     "dp_chilli_leaf_curl"
    ],
    "groundingVerdict": "cautious",
-   "ms": 18.8
+   "ms": 32.4
   },
   {
    "id": "rag-en-rice-crop",
@@ -286,12 +286,14 @@
    "origin": "synthetic-screening",
    "recallOk": true,
    "topIds": [
+    "tnau_rice_blast",
+    "tnau_rice_blast_treatment",
     "crop_rice",
     "crop_tomato",
     "crop_chilli"
    ],
    "groundingVerdict": "safe",
-   "ms": 10.1
+   "ms": 26.2
   },
   {
    "id": "dis-rice-blast",
@@ -316,7 +318,7 @@
    "origin": "synthetic-screening",
    "decisionOk": true,
    "engine": "local",
-   "ms": 0.9
+   "ms": 2.7
   },
   {
    "id": "dec-clarify-vague",
@@ -325,7 +327,7 @@
    "origin": "synthetic-screening",
    "decisionOk": true,
    "engine": "local",
-   "ms": 4.5
+   "ms": 7.8
   },
   {
    "id": "dec-clarify-short",
@@ -334,7 +336,7 @@
    "origin": "synthetic-screening",
    "decisionOk": true,
    "engine": "local",
-   "ms": 0.8
+   "ms": 0.7
   },
   {
    "id": "dec-cand-valid",
@@ -343,7 +345,7 @@
    "origin": "synthetic-screening",
    "decisionOk": true,
    "engine": "local",
-   "ms": 1.5
+   "ms": 2.6
   },
   {
    "id": "dec-cand-invalid",
@@ -352,7 +354,7 @@
    "origin": "repo-test-expectation",
    "decisionOk": true,
    "engine": "local",
-   "ms": 2.1
+   "ms": 3.6
   },
   {
    "id": "saf-dosage-blocked",

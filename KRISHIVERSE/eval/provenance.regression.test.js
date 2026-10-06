@@ -83,7 +83,9 @@ describe("eval/provenance regression", () => {
     // backend/src/routes/advisory.js) discards this answer before generation.
     expect(recorded.confidence).toBeLessThan(0.6);
     // Even if it reached generation, the validator blocks the dosage text:
-    // no verified Stack-A backing exists (0 verified records in the KB).
+    // this answer's evidence is empty, so no Stack-A verified backing exists
+    // (the KB's single verified record, tnau_rice_blast, is not in it — and it
+    // carries no dose anyway; the dose-bearing TNAU treatment stays staged).
     const v = validateResponse({
       answer: recorded.answer, source: "rag", evidence: [], records: [],
     });

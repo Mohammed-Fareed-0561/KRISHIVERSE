@@ -20,11 +20,13 @@ export const KNOWN_CURATED = {
     "symp_stunted_growth",
     "symp_thick_veins",
   ]),
-  diseasePests: new Set(["dp_tomato_early_blight", "dp_chilli_leaf_curl"]),
+  diseasePests: new Set(["dp_tomato_early_blight", "dp_chilli_leaf_curl", "tnau_rice_blast"]),
   treatments: new Set([
     "tr_tomato_blight_organic",
     "tr_tomato_blight_chem",
     "tr_chilli_curl_control",
+    // Phase 3E.2 — activated TNAU dose-bearing treatment (full provenance).
+    "tnau_rice_blast_treatment",
   ]),
   edges: new Set([]),
 };
@@ -68,12 +70,19 @@ export function metadataFor(kind, rec = {}) {
   // Provenance preservation (Phase 3B): existing source fields survive
   // normalization — a future sourced ingest must not lose provenance here.
   // verified stays strictly boolean (only an explicit `true` verifies).
+  // Phase 3E.1 hardening: a synthetic record can NEVER be authoritative, so
+  // verified is forced false for synthetic regardless of any flag on the input
+  // (it is also quarantined + searchable:false — belt and braces).
   return {
     source: rec.source ?? null,
     sourceUrl: rec.sourceUrl ?? null,
-    verified: rec.verified === true,
-    verifiedBy: rec.verifiedBy ?? null,
-    verifiedDate: rec.verifiedDate ?? null,
+    // Optional provenance fields (Phase 3D): preserved through IndexedDB
+    // normalization only when present on the record. Never inferred.
+    sourceOrganization: rec.sourceOrganization ?? null,
+    region: rec.region ?? null,
+    verified: synthetic ? false : rec.verified === true,
+    verifiedBy: synthetic ? null : rec.verifiedBy ?? null,
+    verifiedDate: synthetic ? null : rec.verifiedDate ?? null,
     lastUpdated: rec.lastUpdated ?? null,
     confidence: synthetic ? 0 : null,
     recordKind: kind,
@@ -367,6 +376,20 @@ export function migrateDataset(raw) {
   }
 
   const coverage = computeCoverage(stores);
+  // Dosage provenance (Phase 3E.2). Until now no dose-bearing record had ever
+  // earned full provenance, so these two counters were hard-coded to
+  // verified=0 / unverified=all. Phase 3E.2 activates the first record that
+  // DOES earn it, so the counters are now derived from the records themselves:
+  // a dosage counts as verified only with verified===true AND source AND
+  // sourceUrl (the same contract the validator enforces). Nothing is ever
+  // fabricated — a record with partial provenance still counts as unverified.
+  const dosageRecords = highRisk
+    .filter((h) => h.dosage)
+    .map((h) => stores.treatments.find((t) => t.id === h.id))
+    .filter(Boolean);
+  const verifiedDosage = dosageRecords.filter(
+    (t) => t.verified === true && Boolean(t.source) && Boolean(t.sourceUrl)
+  ).length;
   const counts = {
     total: Object.values(stores).reduce((a, l) => a + l.length, 0),
     curated: 0,
@@ -394,9 +417,9 @@ export function migrateDataset(raw) {
     withDiseaseId: stores.treatments.filter((r) => r.diseaseId).length,
     orphanTreatments: stores.treatments.filter((r) => !r.diseaseId).length,
     ...linkReport,
-    recordsWithDosage: highRisk.filter((h) => h.dosage).length,
-    verifiedDosage: 0,
-    unverifiedDosage: highRisk.filter((h) => h.dosage).length,
+    recordsWithDosage: dosageRecords.length,
+    verifiedDosage,
+    unverifiedDosage: dosageRecords.length - verifiedDosage,
     englishCoverage: coverage.counts.en,
     tamilCoverage: coverage.counts.ta,
     hindiCoverage: coverage.counts.hi,

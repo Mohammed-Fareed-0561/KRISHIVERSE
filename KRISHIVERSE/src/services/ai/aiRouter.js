@@ -6,7 +6,7 @@ import {
   isWebGpuSupported,
   isOnDeviceChatReady,
 } from "./onDeviceChatEngine";
-import { parseQuery, fastSearch } from "./AgriculturalNLP";
+import { parseQuery, fastSearch, normalizeCrop } from "./AgriculturalNLP";
 import { validateResponse } from "./ResponseValidator";
 import { getConnectivityState, probeConnectivity, CONNECTIVITY_STATES } from "./connectivity";
 import DecisionEngine, { shouldInvokeLaya } from "./decision/DecisionEngine";
@@ -64,9 +64,36 @@ function getLocalAnswerText(localResult) {
 
 // Evidence used by the validator to ground LLM answers: the top KB records that
 // match the current question.
-function getEvidenceRecords(question) {
+//
+// Crop scoping (Phase 3E.1): when the question resolves to a specific crop,
+// evidence is limited to records for that crop or records with no crop tag.
+// The validator treats ANY verified evidence record as backing for the whole
+// answer (ResponseValidator: verifiedBacking), so an irrelevant verified
+// record — e.g. a rice record answering a tomato question — would otherwise
+// unlock chemical doses that no record relevant to the answer has verified.
+// Filtering here keeps ResponseValidator semantics unchanged while ensuring
+// provenance can never back a claim from a different crop's record.
+// Exported for targeted tests (Phase 3E.1): crop-scoping must be provable
+// without booting the full router.
+export function recordMatchesQueryCrop(record, crop) {
+  if (!crop) return true;
+  const raw = record?.cropId ?? record?.crop ?? null;
+  if (!raw) return true; // crop-agnostic records stay eligible evidence
+  const recCrop = String(raw).toLowerCase().replace(/^crop_/, "");
+  const wanted = String(crop).toLowerCase();
+  if (recCrop === wanted) return true;
+  const normRec = normalizeCrop(recCrop);
+  const normWant = normalizeCrop(wanted);
+  return Boolean(normRec && normWant && normRec === normWant);
+}
+
+function getEvidenceRecords(question, parsed) {
   try {
-    return fastSearch(question, { limit: 5 }).records.map((r) => r.record);
+    const crop = parsed?.crop || null;
+    return fastSearch(question, { limit: 5 })
+      .records
+      .map((r) => r.record)
+      .filter((rec) => recordMatchesQueryCrop(rec, crop));
   } catch {
     return [];
   }
@@ -122,7 +149,7 @@ export async function routeFreeTextQuestion({ question, context = {}, language =
 
   const parsed = parseQuery(question);
   const intent = parsed.intent;
-  const evidence = getEvidenceRecords(question);
+  const evidence = getEvidenceRecords(question, parsed);
 
   // Optional structured-decision layer (Laya OR local fallback).
   // Task-specific: only ambiguous queries consult it; simple queries keep the

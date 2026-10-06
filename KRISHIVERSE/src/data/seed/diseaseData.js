@@ -18,6 +18,27 @@ export const DISEASE_PESTS = [
     type: "viral",
     symptoms: ["symp_curled_leaves", "symp_stunted_growth", "symp_thick_veins"],
     dangerLevel: "High"
+  },
+  {
+    // Phase 3E.1 — first verified TNAU activation. Content mirrors
+    // knowledge/tnau-pilot/rice-blast.md after claim-by-claim verification
+    // against the official TNAU Agritech pages (see pilot config `verification`).
+    // No region (never inferred), no translations (enrichment flags them),
+    // no dangerLevel (source does not assign one).
+    id: "tnau_rice_blast",
+    name: "Rice Blast (Blast Disease)",
+    cropId: "crop_rice",
+    type: "fungal",
+    cause: "Magnaporthe oryzae (fungus)",
+    description: "Symptoms: diamond-shaped lesions with gray centers and brown margins on leaves; whitish-gray spots with brown edges; neck blast blackening the neck and dropping the panicle; node blast blackening nodes. Crop: Rice. Favorable conditions: high humidity, prolonged leaf wetness, heavy nitrogen.",
+    prevention: "Use resistant varieties (IR-64, Jaya); balanced fertilization — avoid excess nitrogen; proper water management; seed treatment; maintain field hygiene.",
+    symptoms: [],
+    source: "TNAU",
+    sourceOrganization: "TNAU",
+    sourceUrl: "https://agritech.tnau.ac.in/expert_system/paddy/cpdisblast.html",
+    region: null,
+    verified: true,
+    verifiedDate: "2026-10-05"
   }
 ];
 

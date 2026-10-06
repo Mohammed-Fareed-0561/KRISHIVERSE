@@ -203,6 +203,11 @@ function normalizeRecord(rawRecord, rawRecordKind, source = 'unknown') {
     // Source provenance (CRITICAL: never mark verified without traceable source)
     source: rawRecord.source || source || null,
     sourceUrl: rawRecord.sourceUrl || null,
+    // Optional provenance fields (Phase 3D): preserved only when explicitly
+    // provided by the source record. Never inferred, never defaulted to a value,
+    // and never a factor in verified — null/unknown is the correct state.
+    sourceOrganization: rawRecord.sourceOrganization || null,
+    region: rawRecord.region || null,
     verified: rawRecord.verified,
     // NOTE: verified is ONLY set to true if the caller explicitly provides it.
     // This normalizer NEVER sets verified = true on its own.
@@ -212,10 +217,6 @@ function normalizeRecord(rawRecord, rawRecordKind, source = 'unknown') {
 
     // Confidence score
     confidence: typeof rawRecord.confidence === 'number' ? rawRecord.confidence : (base.confidence || 0),
-
-    // Source metadata
-    recordKind: kind,
-    // kind is already set above
   };
 
   // Ensure aliases is always an array

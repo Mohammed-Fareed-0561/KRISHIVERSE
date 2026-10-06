@@ -1,5 +1,5 @@
 {
- "generatedAt": "2026-10-01T08:56:19.590Z",
+ "generatedAt": "2026-10-06T08:48:50.312Z",
  "origin": "synthetic-screening trace (substring only — NOT semantic entailment)",
  "queries": 4,
  "scored": 4,
@@ -34,12 +34,14 @@
   },
   {
    "query": "paddy rice crop information",
-   "type": "crop_info",
+   "type": "disease_info",
    "names": [
-    "paddy (rice)"
+    "rice blast (blast disease)",
+    "tricyclazole 75% wp @ 1g/liter for rice blast"
    ],
    "matched": [
-    "paddy (rice)"
+    "rice blast (blast disease)",
+    "tricyclazole 75% wp @ 1g/liter for rice blast"
    ],
    "grounded": true
   },

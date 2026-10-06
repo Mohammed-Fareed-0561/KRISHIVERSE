@@ -1,0 +1,48 @@
+{
+  "documentsImported": 4,
+  "recordsCreated": 3,
+  "recordsUpdated": 0,
+  "recordsSkipped": 1,
+  "duplicates": 1,
+  "invalidRecords": 0,
+  "unverifiedRecords": 3,
+  "verifiedRecords": 0,
+  "highRiskRecords": 0,
+  "missingProvenance": 1,
+  "brokenRelationships": 0,
+  "details": {
+    "byRecordKind": {
+      "unknown": 3
+    },
+    "bySource": {},
+    "validation": {
+      "errors": [],
+      "warnings": [
+        "0 unverified high-risk records detected - ResponseValidator will block at UI"
+      ],
+      "infos": []
+    },
+    "dedup": {
+      "exactDuplicates": 1,
+      "cropDiseaseDuplicates": 0,
+      "cropPestDuplicates": 0,
+      "diseaseSymptomDuplicates": 0,
+      "nearNameDuplicates": 0
+    },
+    "provenance": {
+      "recordsWithSource": 0,
+      "recordsWithSourceUrl": 0,
+      "recordsVerified": 0,
+      "recordsUnverified": 3,
+      "sourceBreakdown": {},
+      "recordsWithSourceOrganization": 0,
+      "recordsWithRegion": 0,
+      "dosageBearingRecords": 0
+    },
+    "relationships": {
+      "totalChecked": 3,
+      "validRelationships": 0,
+      "brokenRelationships": 0
+    }
+  }
+}

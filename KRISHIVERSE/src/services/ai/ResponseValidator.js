@@ -7,14 +7,16 @@
  * Rules enforced:
  *  - Never allow the assistant to present an exact chemical/pesticide/fertilizer
  *    dosage, spray interval, or waiting period unless a verified (curated or
- *    source-tagged) local record backs the claim.
+ *    source-tagged) local record backs the claim AND that record is scoped to
+ *    the question's own crop (Phase 3E.2; see `isDosageBacker`). Crop-agnostic
+ *    verified records remain eligible; provenance requirements are unchanged.
  *  - If evidence is insufficient, do NOT fabricate: return a safe limitation
  *    message and/or a contextual clarification question instead.
  *  - Confidence ladder: HIGH / MEDIUM / LOW / VERY_LOW with documented,
  *    configurable weights.
  */
 
-import { getSourcePriority, isVerifiedRecord } from "./AgriculturalNLP";
+import { getSourcePriority, isVerifiedRecord, normalizeCrop } from "./AgriculturalNLP";
 
 // ─── Confidence ladder ────────────────────────────────────────────────────────
 export const CONFIDENCE_THRESHOLDS = {
@@ -125,6 +127,36 @@ export function extractHighRiskClaims(text) {
   return [...new Set(claims)].slice(0, 5);
 }
 
+// ─── Dosage backing (crop-scoped) ─────────────────────────────────────────────
+/**
+ * Can this record authorize an exact dose/high-risk claim?
+ *
+ * Phase 3E.2: `isVerifiedRecord` alone is NOT enough. A verified record that
+ * declares a crop only backs a dose when the question's own crop is known and
+ * matches it — otherwise (a) a cropless question like "spray schedule" could
+ * borrow a rice record to unlock a tomato dose, and (b) a different-crop
+ * question could do the same. Crop-agnostic verified records (no cropId/crop)
+ * stay eligible, because they make no crop claim of their own.
+ *
+ * This restriction is deliberately scoped to dosage/high-risk authorization:
+ * the evidence list itself is NOT filtered here (grounding, confidence and
+ * recommendation reasons keep using `isVerifiedRecord` as before), and
+ * provenance requirements are untouched.
+ */
+export function isDosageBacker(record, queryCrop) {
+  if (!isVerifiedRecord(record)) return false;
+  const raw = record?.cropId ?? record?.crop ?? null;
+  if (!raw) return true; // crop-agnostic evidence never over-filters
+  const q = String(queryCrop ?? "").trim().toLowerCase().replace(/^crop_/, "");
+  if (!q) return false; // question never established the crop — not provable
+  const rec = String(raw).toLowerCase().replace(/^crop_/, "");
+  if (rec === q) return true;
+  const recCrop = normalizeCrop(rec);
+  const want = normalizeCrop(q);
+  if (!recCrop || !want) return false;
+  return recCrop === want;
+}
+
 // ─── Clarification questions ──────────────────────────────────────────────────
 export const CLARIFICATION_OPTIONS = {
   crop: ["Rice", "Tomato", "Maize", "Groundnut", "Chilli", "Other"],
@@ -198,6 +230,10 @@ export function validateResponse({
   const recType = classifyRecommendationType(answer);
   const allEvidence = [...(records || []), ...(evidence || [])].filter(Boolean);
   const verifiedBacking = allEvidence.some(isVerifiedRecord);
+  // Dosage backing is crop-scoped: evidence still lists everything (grounding
+  // and confidence unchanged), but only crop-compatible verified records can
+  // unlock an exact dose/high-risk claim.
+  const doseBacking = allEvidence.some((rec) => isDosageBacker(rec, parsed?.crop));
   const sourcePriority = allEvidence.reduce((max, rec) => Math.max(max, getSourcePriority(rec)), 0);
 
   const conf = computeConfidence({
@@ -213,8 +249,9 @@ export function validateResponse({
   const reasons = [];
   const highRiskClaims = extractHighRiskClaims(answer);
 
-  if (recType === "high_risk" && !verifiedBacking) {
+  if (recType === "high_risk" && !doseBacking) {
     reasons.push("high_risk_without_verified_source");
+    if (verifiedBacking) reasons.push("high_risk_verified_evidence_crop_ineligible");
   }
   if (recType === "recommendation" && !verifiedBacking) {
     reasons.push("recommendation_without_verified_source");
@@ -225,9 +262,9 @@ export function validateResponse({
 
   const clarification = buildClarification({ parsed, intent });
 
-  // BLOCKED: unverified high-risk claims, or very-low confidence on a
-  // non-informational answer. Never fabricate.
-  if (recType === "high_risk" && !verifiedBacking) {
+  // BLOCKED: high-risk claims without crop-compatible verified backing, or
+  // very-low confidence on a non-informational answer. Never fabricate.
+  if (recType === "high_risk" && !doseBacking) {
     return {
       verdict: "blocked",
       level: conf.level,

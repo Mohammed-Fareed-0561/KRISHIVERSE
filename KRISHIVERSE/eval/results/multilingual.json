@@ -1,5 +1,5 @@
 {
- "generatedAt": "2026-10-01T08:55:55.690Z",
+ "generatedAt": "2026-10-06T08:48:23.281Z",
  "origin": "synthetic-screening (NOT language-support evidence)",
  "note": "Small screening set. Do not claim Tamil/Hindi/Tanglish support from these counts; see docs/evaluation-report.md for gaps.",
  "perLanguage": {
@@ -20,7 +20,7 @@
    "symptomAcc": 0,
    "clarifyAcc": 1,
    "retrievalAcc": 1,
-   "avgMs": 16.9
+   "avgMs": 15.726666666666667
   },
   "ta": {
    "n": 5,
@@ -39,7 +39,7 @@
    "symptomAcc": null,
    "clarifyAcc": null,
    "retrievalAcc": 1,
-   "avgMs": 22.84
+   "avgMs": 22.82
   },
   "hi": {
    "n": 3,
@@ -58,7 +58,7 @@
    "symptomAcc": null,
    "clarifyAcc": null,
    "retrievalAcc": null,
-   "avgMs": 3.733333333333333
+   "avgMs": 5.566666666666666
   },
   "tanglish": {
    "n": 1,
@@ -77,7 +77,7 @@
    "symptomAcc": null,
    "clarifyAcc": null,
    "retrievalAcc": null,
-   "avgMs": 0.7
+   "avgMs": 0.6
   }
  }
 }

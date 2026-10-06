@@ -265,6 +265,12 @@ function validateRelationships(records, knownCropIds, knownDiseaseIds) {
           value: record.cropId,
           message: `Disease references unknown crop: ${record.cropId}`,
         });
+      } else {
+        info.push({
+          type: 'crop_disease_link',
+          recordId: record.id,
+          message: `Disease linked to known crop: ${record.cropId}`,
+        });
       }
     }
 
@@ -277,6 +283,12 @@ function validateRelationships(records, knownCropIds, knownDiseaseIds) {
           field: 'diseaseId',
           value: record.diseaseId,
           message: `Treatment references unknown disease: ${record.diseaseId}`,
+        });
+      } else {
+        info.push({
+          type: 'treatment_disease_link',
+          recordId: record.id,
+          message: `Treatment linked to known disease: ${record.diseaseId}`,
         });
       }
     }
