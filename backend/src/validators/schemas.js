@@ -20,16 +20,38 @@ export const registerSchema = Joi.object({
   name:     Joi.string().trim().min(2).max(60).required(),
   email:    Joi.string().email().lowercase().required(),
   password: Joi.string().min(6).max(100).required(),
-  language: Joi.string().valid('ta', 'en', 'hi').default('ta'),
+  language: Joi.string().valid('ta', 'en', 'hi', 'tanglish').default('ta'),
   location: Joi.object({
     district: Joi.string().max(60),
     state:    Joi.string().default('Tamil Nadu'),
   }).optional(),
 })
- 
+
 export const loginSchema = Joi.object({
   email:    Joi.string().email().lowercase().required(),
   password: Joi.string().required(),
+})
+
+// ─── Verification & password recovery ─────────────────────────────────────────
+// Codes and tokens are opaque: validation only bounds their shape so a wrong
+// value is always rejected as invalid, never as malformed input.
+export const verifyRequestSchema = Joi.object({
+  email: Joi.string().email().lowercase().required(),
+})
+
+export const verifyConfirmSchema = Joi.object({
+  email: Joi.string().email().lowercase().required(),
+  code:  Joi.string().pattern(/^\d{6}$/).required()
+    .messages({ 'string.pattern.base': 'code must be a 6-digit number' }),
+})
+
+export const forgotPasswordSchema = Joi.object({
+  email: Joi.string().email().lowercase().required(),
+})
+
+export const resetPasswordSchema = Joi.object({
+  token:    Joi.string().min(16).max(128).required(),
+  password: Joi.string().min(6).max(100).required(),
 })
  
 // ─── Advisory schemas ─────────────────────────────────────────────────────────

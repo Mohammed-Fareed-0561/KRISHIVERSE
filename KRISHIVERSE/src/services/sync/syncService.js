@@ -9,6 +9,47 @@ import { apiClient } from "../api/apiClient";
 // mobile DB: reads always hit IndexedDB; writes are queued and merged later.
 
 const SYNC_ENDPOINT = "/advisory/sync";
+const PROFILE_SYNC_ENDPOINT = "/users/profile/sync";
+
+/**
+ * Which API each store's outbox entries belong to. Anything not listed keeps
+ * riding the advisory sync endpoint, so existing stores behave exactly as
+ * before. The farmer profile store posts to the profile sync API, which
+ * resolves conflicts server-side (server-wins-if-newer).
+ */
+const STORE_ROUTES = {
+  [DB_STORES.farmers]: PROFILE_SYNC_ENDPOINT,
+};
+
+/**
+ * Collapse a device's queued profile edits into one server write.
+ * Later edits merge over earlier ones (each may touch a different field) and
+ * the highest baseRevision wins — it reflects the freshest server state the
+ * device had seen, so the conflict check stays honest.
+ *
+ * @param {Array<object>} entries outbox entries for DB_STORES.farmers
+ * @returns {Array<{baseRevision:number, profile:object, onboarding?:object}>}
+ */
+export function collapseProfileEntries(entries) {
+  const byUser = new Map();
+  for (const entry of entries) {
+    const payload = entry?.payload || {};
+    const key = payload.id || "me";
+    const current = byUser.get(key);
+    if (!current) {
+      byUser.set(key, {
+        baseRevision: Number.isFinite(payload.baseRevision) ? payload.baseRevision : 0,
+        profile: { ...(payload.profile || {}) },
+        ...(payload.onboarding ? { onboarding: payload.onboarding } : {}),
+      });
+      continue;
+    }
+    current.baseRevision = Math.max(current.baseRevision, Number.isFinite(payload.baseRevision) ? payload.baseRevision : 0);
+    current.profile = { ...current.profile, ...(payload.profile || {}) };
+    if (payload.onboarding) current.onboarding = payload.onboarding;
+  }
+  return [...byUser.values()];
+}
 
 export function now() {
   return Date.now();
@@ -58,24 +99,40 @@ export async function getPendingSyncEntries() {
 export async function flushSync(opts = {}) {
   const batchSize = opts.batchSize ?? 50;
   const post = opts.post ?? ((url, body) => apiClient.post(url, body));
-  const endpoint = opts.endpoint ?? SYNC_ENDPOINT;
+  const fallback = opts.endpoint ?? SYNC_ENDPOINT;
 
   const pending = await getPendingSyncEntries();
   const batch = pending.slice(0, batchSize);
   if (batch.length === 0) return { pushed: 0, pending: pending.length, offline: false };
 
-  try {
-    await post(endpoint, { batch });
-  } catch (err) {
-    const isOffline = !!err?.isOffline || err?.code === "NETWORK_ERROR";
-    return { pushed: 0, pending: pending.length, offline: isOffline };
+  // Group entries by destination so each store talks to its own API.
+  const groups = new Map();
+  for (const entry of batch) {
+    const url = STORE_ROUTES[entry.storeName] || fallback;
+    if (!groups.has(url)) groups.set(url, []);
+    groups.get(url).push(entry);
   }
 
-  // Server accepted the batch — mark entries synced.
-  for (const entry of batch) {
-    await dbPut(DB_STORES.syncQueue, { ...entry, status: "synced", syncedAt: now() });
+  let pushed = 0;
+  let offline = false;
+  try {
+    for (const [url, entries] of groups) {
+      const body = url === PROFILE_SYNC_ENDPOINT
+        ? { batch: collapseProfileEntries(entries) }
+        : { batch: entries };
+      await post(url, body);
+      // Mark only the entries this destination accepted, so a failure on one
+      // endpoint never discards another endpoint's queued work.
+      for (const entry of entries) {
+        await dbPut(DB_STORES.syncQueue, { ...entry, status: "synced", syncedAt: now() });
+        pushed += 1;
+      }
+    }
+  } catch (err) {
+    offline = !!err?.isOffline || err?.code === "NETWORK_ERROR";
   }
-  return { pushed: batch.length, pending: pending.length - batch.length, offline: false };
+
+  return { pushed, pending: pending.length - pushed, offline };
 }
 
 let listenerAttached = false;
@@ -114,5 +171,7 @@ export default {
   getPendingSyncEntries,
   flushSync,
   initSyncListener,
+  collapseProfileEntries,
   SYNC_ENDPOINT,
+  PROFILE_SYNC_ENDPOINT,
 };

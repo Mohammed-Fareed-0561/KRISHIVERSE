@@ -61,6 +61,35 @@ const ROUTE_META = {
     description:
       "Complete a quick onboarding flow so KrishiVerse can personalize weather, crop, and advisory experiences.",
   },
+  "/welcome": {
+    title: "Welcome to KrishiVerse",
+    description:
+      "Create a KrishiVerse account for personalised crop advice and offline sync, or keep exploring signed out.",
+  },
+  "/login": {
+    title: "Sign In | KrishiVerse",
+    description: "Sign in to your KrishiVerse account to sync your farm profile across devices.",
+  },
+  "/register": {
+    title: "Create Account | KrishiVerse",
+    description: "Create a free KrishiVerse account to save your village, crops, and preferences.",
+  },
+  "/verify": {
+    title: "Verify Email | KrishiVerse",
+    description: "Enter the verification code we sent you to confirm your KrishiVerse email address.",
+  },
+  "/forgot": {
+    title: "Forgot Password | KrishiVerse",
+    description: "Reset your KrishiVerse account password securely by email.",
+  },
+  "/reset": {
+    title: "New Password | KrishiVerse",
+    description: "Choose a new password for your KrishiVerse account.",
+  },
+  "/profile": {
+    title: "My Profile | KrishiVerse",
+    description: "Manage your KrishiVerse profile — village, farm size, crops, language, and account security.",
+  },
 };
 
 function getActiveMeta(pathname) {

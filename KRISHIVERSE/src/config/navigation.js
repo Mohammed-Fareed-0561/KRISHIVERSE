@@ -41,4 +41,5 @@ export const MORE_NAV = [
 
 export const SIDEBAR_NAV = [...MAIN_NAV, ...MORE_NAV];
 
-export const AUTH_ROUTES = ['/login', '/register', '/onboarding'];
+// Routes rendered without the app header/bottom nav (full-screen auth flow).
+export const AUTH_ROUTES = ['/welcome', '/login', '/register', '/onboarding', '/verify', '/forgot', '/reset'];

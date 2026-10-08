@@ -1,10 +1,17 @@
 import React from 'react';
 import { NavLink, useNavigate } from 'react-router-dom';
-import { Leaf, Bell, Gear } from '@phosphor-icons/react';
+import { Leaf, Bell, Gear, UserCircle } from '@phosphor-icons/react';
 import { SIDEBAR_NAV } from '../../config/navigation';
+import { useAuthStore } from '../../store/authStore';
 
 const AppHeader = ({ notificationCount = 0 }) => {
   const navigate = useNavigate();
+  const { isAuthenticated, user } = useAuthStore();
+  // Signed out farmers still get the whole app — the entry just leads to /welcome.
+  const accountPath = isAuthenticated ? '/profile' : '/welcome';
+  const accountLabel = isAuthenticated
+    ? user?.name || 'Profile'
+    : 'Sign in';
 
   return (
     <>
@@ -22,7 +29,17 @@ const AppHeader = ({ notificationCount = 0 }) => {
           </span>
         </div>
 
-        <div className="flex items-center gap-2">
+        <div className="flex items-center gap-1">
+          <button
+            onClick={() => navigate(accountPath)}
+            className="h-9 max-w-[132px] px-2.5 rounded-full bg-[var(--kv-off-white)] flex items-center gap-1.5 border border-[var(--kv-divider)] active:bg-[var(--kv-divider)]"
+            aria-label={accountLabel}
+          >
+            <UserCircle size={18} weight="fill" className="text-[var(--kv-green)] shrink-0" />
+            <span className="text-[12px] font-bold text-[var(--kv-grey-dark)] truncate">
+              {accountLabel}
+            </span>
+          </button>
           <button
             onClick={() => navigate('/notifications')}
             className="relative w-10 h-10 rounded-full flex items-center justify-center text-[var(--kv-grey-dark)] active:bg-[var(--kv-off-white)] transition-colors"
@@ -79,6 +96,19 @@ const AppHeader = ({ notificationCount = 0 }) => {
         </nav>
 
         <div className="p-3 border-t border-[var(--kv-divider)] space-y-1">
+          <NavLink
+            to={accountPath}
+            className={({ isActive }) =>
+              `flex items-center gap-3 px-3 py-2.5 rounded-xl text-[14px] font-semibold transition-colors ${
+                isActive
+                  ? 'bg-[var(--kv-green-light)] text-[var(--kv-green)]'
+                  : 'text-[var(--kv-grey-dark)] hover:bg-[var(--kv-off-white)]'
+              }`
+            }
+          >
+            <UserCircle size={22} weight={isAuthenticated ? 'fill' : 'regular'} />
+            <span className="truncate">{accountLabel}</span>
+          </NavLink>
           <NavLink
             to="/notifications"
             className={({ isActive }) =>

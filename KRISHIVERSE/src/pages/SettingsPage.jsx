@@ -1,7 +1,7 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import { useTranslation } from "react-i18next";
 import { useLanguage } from "../hooks/useLanguage";
-import { CheckCircle, Info, Trash, Bell, Globe, Ruler, CaretRight, Warning } from "@phosphor-icons/react";
+import { CheckCircle, Info, Trash, Bell, Globe, Ruler, Warning } from "@phosphor-icons/react";
 import { enableMockPushAlerts, disableMockPushAlerts, requestNotificationPermission } from "../services/notificationsService";
 
 export default function SettingsPage() {
@@ -55,7 +55,13 @@ export default function SettingsPage() {
           const cacheKeys = await caches.keys();
           await Promise.all(cacheKeys.map((key) => caches.delete(key)));
         }
-        localStorage.clear();
+        // Targeted wipe: clear offline app data but keep the signed-in session
+        // (kv_token/kv_user), the UI language, and the preference toggles above.
+        const preserved = ["kv_token", "kv_user", "i18nextLng", "krishiverse_units", "krishiverse_notifications"];
+        const keys = [];
+        for (let i = 0; i < localStorage.length; i += 1) keys.push(localStorage.key(i));
+        keys.filter((key) => !preserved.includes(key)).forEach((key) => localStorage.removeItem(key));
+
         localStorage.setItem("krishiverse_units", units);
         localStorage.setItem("krishiverse_notifications", JSON.stringify(notifications));
         localStorage.setItem("i18nextLng", language);
@@ -67,12 +73,6 @@ export default function SettingsPage() {
       }
     }
   };
-
-  const currentLang = language?.startsWith("ta")
-    ? "en"
-    : language?.startsWith("hi")
-      ? "en"
-      : "en";
 
   return (
     <div className="flex flex-col gap-6 pb-20 pt-2 h-full">
@@ -101,10 +101,12 @@ export default function SettingsPage() {
                  </div>
                  <select
                    className="kv-input !w-auto !min-w-[120px] !h-10 !text-[13px] bg-[var(--kv-off-white)] border-transparent"
-                  value="en"
-                  onChange={() => setLanguage("en")}
-                 >
-                   <option value="en">English</option>
+                  value={language}
+                  onChange={(e) => setLanguage(e.target.value)}
+                >
+                  <option value="en">English</option>
+                  <option value="ta">தமிழ்</option>
+                  <option value="hi">हिन्दी</option>
                  </select>
               </div>
 

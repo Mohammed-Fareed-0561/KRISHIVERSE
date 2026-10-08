@@ -8,6 +8,7 @@ import InstallBanner from "./components/common/InstallBanner";
 import ServiceWorkerUpdate from "./components/common/ServiceWorkerUpdate";
 import PageTransition from "./components/common/PageTransition";
 import Seo from "./components/common/Seo";
+import ProtectedRoute from "./components/common/ProtectedRoute";
 import { AUTH_ROUTES } from "./config/navigation";
 
 // ─── Lazy-loaded pages — each page becomes its own JS chunk ──────────────────
@@ -22,6 +23,11 @@ const DronePage    = lazy(() => import("./pages/DronePage"));
 const SettingsPage = lazy(() => import("./pages/SettingsPage"));
 const LoginPage    = lazy(() => import("./pages/LoginPage"));
 const RegisterPage = lazy(() => import("./pages/RegisterPage"));
+const WelcomePage  = lazy(() => import("./pages/WelcomePage"));
+const ForgotPasswordPage = lazy(() => import("./pages/ForgotPasswordPage"));
+const ResetPasswordPage  = lazy(() => import("./pages/ResetPasswordPage"));
+const VerifyEmailPage    = lazy(() => import("./pages/VerifyEmailPage"));
+const ProfilePage        = lazy(() => import("./pages/ProfilePage"));
 const OnboardingPage = lazy(() => import("./pages/OnboardingPage"));
 const NotFoundPage = lazy(() => import("./pages/NotFoundPage"));
 const CalendarPage = lazy(() => import("./pages/CalendarPage"));
@@ -33,6 +39,10 @@ const NotificationsPage = lazy(() => import("./pages/NotificationsPage"));
 const HelplinePage    = lazy(() => import("./pages/HelplinePage"));
 
 const TestComponent = lazy(() => import("./components/Test/TestComponent"));
+
+// Admin observability surface — code-split so it never lands in the farmer bundle.
+const AdminApp = lazy(() => import("./admin/AdminApp"));
+const AdminBoundary = lazy(() => import("./admin/AdminBoundary"));
 
 // ─── Minimal page-level loading fallback ─────────────────────────────────────
 function PageLoader() {
@@ -132,7 +142,8 @@ function AppContent() {
     };
   }, []);
 
-  const isAuthPage = AUTH_ROUTES.includes(location.pathname);
+  const isAdminRoute = location.pathname.startsWith("/admin");
+  const isAuthPage = AUTH_ROUTES.includes(location.pathname) || isAdminRoute;
 
   return (
     <div {...handlers}>
@@ -169,12 +180,41 @@ function AppContent() {
               <Route path="/helpline" element={<HelplinePage />} />
               <Route path="/drone" element={<DronePage />} />
               <Route path="/settings" element={<SettingsPage />} />
+              {/* Auth flow — full-screen, chrome hidden via AUTH_ROUTES */}
+              <Route path="/welcome" element={<WelcomePage />} />
               <Route path="/login" element={<LoginPage />} />
               <Route path="/register" element={<RegisterPage />} />
-              <Route path="/onboarding" element={<OnboardingPage />} />
+              <Route path="/forgot" element={<ForgotPasswordPage />} />
+              <Route path="/reset" element={<ResetPasswordPage />} />
+              {/* Verification works from an emailed link with no session, and
+                  never blocks login — so it stays public. */}
+              <Route path="/verify" element={<VerifyEmailPage />} />
+              <Route
+                path="/onboarding"
+                element={
+                  <ProtectedRoute requireOnboarding={false}>
+                    <OnboardingPage />
+                  </ProtectedRoute>
+                }
+              />
+              <Route
+                path="/profile"
+                element={
+                  <ProtectedRoute>
+                    <ProfilePage />
+                  </ProtectedRoute>
+                }
+              />
               <Route path="/notifications" element={<NotificationsPage />} />
               <Route path="/test" element={<TestComponent />} />
-              {/* Protected routes — require login */}
+              <Route
+                path="/admin/*"
+                element={
+                  <AdminBoundary>
+                    <AdminApp />
+                  </AdminBoundary>
+                }
+              />
               <Route path="*" element={<NotFoundPage />} />
             </Routes>
           </Suspense>

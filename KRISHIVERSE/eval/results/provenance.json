@@ -1,0 +1,69 @@
+{
+ "generatedAt": "2026-10-08T08:15:18.092Z",
+ "origin": "Provenance invariants re-checked against AgriculturalNLP/ResponseValidator + KB manifest report — not an expert-labelled dataset.",
+ "limitation": "Coverage percentages come from the KB build manifest (source + sourceUrl present); most KB records still carry no provenance fields.",
+ "total": 7,
+ "passed": 7,
+ "failed": 0,
+ "passRate": 100,
+ "recordsWithFullProvenance": 2,
+ "provenanceCoveragePct": 0.013,
+ "checks": [
+  {
+   "id": "prov-01",
+   "language": "en",
+   "topic": "priority",
+   "category": "source-priority-order",
+   "pass": true,
+   "rank": null
+  },
+  {
+   "id": "prov-02",
+   "language": "en",
+   "topic": "priority",
+   "category": "priority-resolution",
+   "pass": true,
+   "rank": null
+  },
+  {
+   "id": "prov-03",
+   "language": "en",
+   "topic": "normalization",
+   "category": "normalization-no-invented-verification",
+   "pass": true,
+   "rank": null
+  },
+  {
+   "id": "prov-04",
+   "language": "en",
+   "topic": "verification",
+   "category": "id-prefix-never-verifies",
+   "pass": true,
+   "rank": null
+  },
+  {
+   "id": "prov-05",
+   "language": "en",
+   "topic": "dosage",
+   "category": "unsourced-dosage-blocked",
+   "pass": true,
+   "rank": null
+  },
+  {
+   "id": "prov-06",
+   "language": "en",
+   "topic": "quarantine",
+   "category": "quarantined-excluded-from-evidence",
+   "pass": true,
+   "rank": null
+  },
+  {
+   "id": "prov-07",
+   "language": "en",
+   "topic": "stack-b",
+   "category": "low-confidence-gate-and-dosage-blocked",
+   "pass": true,
+   "rank": null
+  }
+ ]
+}

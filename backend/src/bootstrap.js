@@ -11,6 +11,9 @@ import { MongoMemoryServer } from 'mongodb-memory-server'
 import { createLogger }  from './utils/logger.js'
 import { errorHandler }  from './middleware/errorHandler.js'
 import { routes }        from './routes/index.js'
+import { adminRouter }   from './routes/admin/index.js'
+import { requestTelemetry } from './admin/middleware/requestTelemetry.js'
+import { provisionAdmin }   from './admin/provisionAdmin.js'
  
 const log = createLogger('bootstrap')
  
@@ -81,8 +84,16 @@ export function buildApp() {
     )
   }
 
+  // Passive, fire-and-forget observer for farmer-facing API traffic.
+  // It never awaits anything and can never change a farmer response.
+  app.use(`/api/${API_VERSION}`, requestTelemetry())
+
   // Routes
   app.use(`/api/${API_VERSION}`, routes)
+
+  // Admin observability surface — separate mount, separate limiter, own error
+  // handler. A failing dashboard endpoint cannot fail a farmer request.
+  app.use('/api/admin', adminRouter)
 
   // Error handler must be last
   app.use(errorHandler)
@@ -93,6 +104,7 @@ export function buildApp() {
 // ─── Entry point ──────────────────────────────────────────────────────────────
 async function main() {
   await connectDb()
+  await provisionAdmin()
 
   const app = buildApp()
 

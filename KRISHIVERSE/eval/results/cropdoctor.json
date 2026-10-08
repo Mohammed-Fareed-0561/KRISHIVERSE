@@ -1,10 +1,10 @@
 {
- "generatedAt": "2026-10-06T08:48:17.171Z",
+ "generatedAt": "2026-10-08T08:15:20.563Z",
  "origin": "synthetic-screening + real file inventory + recorded eval rows (NOT expert ground truth)",
  "rows": [
   {
    "id": "text-rice-blast",
-   "ms": 1.9,
+   "ms": 1.8,
    "error": null,
    "top1": "rice_blast",
    "top3": [

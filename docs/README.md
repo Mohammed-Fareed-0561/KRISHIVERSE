@@ -18,6 +18,9 @@ Project docs live here, grouped by area. The two landing READMEs stay in place:
 | `project/` | Phase status, MSME documentation, documentation index |
 | `frontend/` | Frontend optimisation notes |
 | `evaluation/` | AI architecture audit, evaluation report, Laya integration |
+| `auth/` | Farmer authentication: architecture, routes, sessions, offline profile sync, security controls |
+| `onboarding/` | Six-step pilot onboarding wizard, offline progress, funnel telemetry |
+| `admin/` | Admin observability: architecture, telemetry schema, metrics catalog, security, farmer analytics, runbook |
 
 Note: `KRISHIVERSE/tests/fixtures/kb-ingestion/diseases.md` is a test fixture
 and stays with the tests. `plans/` (planning tool state) is untouched.

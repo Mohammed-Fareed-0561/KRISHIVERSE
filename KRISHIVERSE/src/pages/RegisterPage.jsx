@@ -1,69 +1,166 @@
-import React from "react";
-import { Link } from "react-router-dom";
-import { IconLeaf, IconArrowRight } from "@tabler/icons-react";
+import React, { useEffect, useState } from "react";
+import { Link, Navigate, useNavigate } from "react-router-dom";
+import { ArrowRight, EnvelopeSimple, LockKey, MapPin, User as UserIcon } from "@phosphor-icons/react";
+import { useTranslation } from "react-i18next";
+import { useAuthStore } from "../store/authStore";
+import { useLanguage } from "../hooks/useLanguage";
+import AuthShell, { Field, SubmitButton, TextInput } from "../components/auth/AuthShell";
+
+const EMAIL_RE = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+const LANGUAGES = [
+  { value: "ta", label: "தமிழ்" },
+  { value: "tanglish", label: "Tanglish" },
+  { value: "en", label: "English" },
+  { value: "hi", label: "हिन्दी" },
+];
 
 export default function RegisterPage() {
+  const { t } = useTranslation();
+  const navigate = useNavigate();
+  const { setLanguage } = useLanguage();
+  const { register, loading, error, clearError, isAuthenticated, isOnboardingRequired } = useAuthStore();
+
+  const [form, setForm] = useState({ name: "", email: "", password: "", language: "ta", district: "" });
+  const [fieldErr, setFieldErr] = useState({});
+
+  useEffect(() => () => clearError(), [clearError]);
+
+  if (isAuthenticated) {
+    return <Navigate to={isOnboardingRequired ? "/onboarding" : "/"} replace />;
+  }
+
+  function update(key, value) {
+    setForm((prev) => ({ ...prev, [key]: value }));
+    if (error) clearError();
+    if (fieldErr[key]) setFieldErr((prev) => ({ ...prev, [key]: "" }));
+  }
+
+  function validate() {
+    const next = {};
+    if (form.name.trim().length < 2) next.name = t("auth.error.name", "Enter your name (at least 2 characters)");
+    if (!EMAIL_RE.test(form.email.trim())) next.email = t("auth.error.email", "Enter a valid email address");
+    if (form.password.length < 6) next.password = t("auth.error.passwordShort", "Use at least 6 characters");
+    setFieldErr(next);
+    return Object.keys(next).length === 0;
+  }
+
+  async function handleSubmit(event) {
+    event.preventDefault();
+    if (!validate()) return;
+    try {
+      await register({
+        name: form.name.trim(),
+        email: form.email.trim().toLowerCase(),
+        password: form.password,
+        language: form.language,
+        ...(form.district.trim() ? { location: { district: form.district.trim() } } : {}),
+      });
+      if (["en", "ta", "hi"].includes(form.language)) await setLanguage(form.language);
+      navigate("/onboarding", { replace: true });
+    } catch {
+      /* rendered from the store error slot */
+    }
+  }
+
   return (
-    <div className="min-h-screen bg-gradient-to-br from-success/5 via-base-100 to-primary/5 flex items-center justify-center p-4">
-      <div className="w-full max-w-md">
-        {/* Logo */}
-        <div className="text-center mb-10">
-          <div className="inline-flex items-center justify-center w-20 h-20 bg-primary rounded-3xl mb-6 shadow-xl relative overflow-hidden group">
-            <div className="absolute inset-0 bg-white/20 scale-x-0 group-hover:scale-x-100 transition-transform origin-left duration-500"></div>
-            <IconLeaf size={42} className="text-white relative z-10" />
+    <AuthShell
+      title={t("auth.register.title", "Create your account")}
+      subtitle={t("auth.register.subtitle", "A quick setup so KrishiVerse can tailor advice to your farm")}
+      error={error}
+      wide
+      footer={
+        <p className="text-center text-[11px] text-[var(--kv-grey-mid)] font-medium leading-relaxed max-w-[280px] mx-auto">
+          {t("auth.register.privacy", "We only ask for what the pilot needs. No Aadhaar, bank or financial details.")}
+        </p>
+      }
+    >
+      <form onSubmit={handleSubmit} className="space-y-5" noValidate>
+        <Field label={t("auth.field.name", "Full name")} htmlFor="reg-name" error={fieldErr.name}>
+          <UserIcon size={20} className="text-[var(--kv-grey-mid)] shrink-0" weight="bold" />
+          <TextInput
+            id="reg-name"
+            autoComplete="name"
+            autoFocus
+            placeholder={t("auth.placeholder.name", "Your name")}
+            value={form.name}
+            disabled={loading}
+            onChange={(event) => update("name", event.target.value)}
+          />
+        </Field>
+
+        <Field label={t("auth.field.email", "Email")} htmlFor="reg-email" error={fieldErr.email}>
+          <EnvelopeSimple size={20} className="text-[var(--kv-grey-mid)] shrink-0" weight="bold" />
+          <TextInput
+            id="reg-email"
+            type="email"
+            inputMode="email"
+            autoComplete="email"
+            placeholder="farmer@example.com"
+            value={form.email}
+            disabled={loading}
+            onChange={(event) => update("email", event.target.value)}
+          />
+        </Field>
+
+        <Field label={t("auth.field.password", "Password")} htmlFor="reg-password" error={fieldErr.password}>
+          <LockKey size={20} className="text-[var(--kv-grey-mid)] shrink-0" weight="fill" />
+          <TextInput
+            id="reg-password"
+            type="password"
+            autoComplete="new-password"
+            placeholder={t("auth.placeholder.password", "At least 6 characters")}
+            value={form.password}
+            disabled={loading}
+            onChange={(event) => update("password", event.target.value)}
+          />
+        </Field>
+
+        <div className="grid grid-cols-2 gap-3">
+          <div className="flex flex-col gap-2">
+            <label htmlFor="reg-language" className="text-[13px] font-bold text-[var(--kv-grey-dark)] ml-1">
+              {t("auth.field.language", "Language")}
+            </label>
+            <select
+              id="reg-language"
+              className="kv-input h-[56px] rounded-[16px]"
+              value={form.language}
+              disabled={loading}
+              onChange={(event) => update("language", event.target.value)}
+            >
+              {LANGUAGES.map((option) => (
+                <option key={option.value} value={option.value}>
+                  {option.label}
+                </option>
+              ))}
+            </select>
           </div>
-          <h1 className="text-4xl font-black tracking-tight text-base-content mb-2">
-            Krishi<span className="text-primary">Verse</span>
-          </h1>
-          <p className="text-base-content/60 font-medium">Join the intelligent farming revolution</p>
+
+          <Field label={t("auth.field.district", "District")} htmlFor="reg-district" error={fieldErr.district}>
+            <MapPin size={20} className="text-[var(--kv-grey-mid)] shrink-0" weight="bold" />
+            <TextInput
+              id="reg-district"
+              placeholder={t("auth.placeholder.district", "Optional")}
+              value={form.district}
+              disabled={loading}
+              onChange={(event) => update("district", event.target.value)}
+            />
+          </Field>
         </div>
 
-        <div className="card bg-base-100 shadow-2xl border border-base-200 overflow-hidden">
-          <div className="card-body p-8 gap-6">
-            <div className="space-y-4">
-              <h2 className="text-2xl font-bold text-center">Ready to grow?</h2>
-              <p className="text-center text-base-content/60 text-sm leading-relaxed">
-                Joining KrishiVerse is simple. We use your mobile number to keep your account secure and connected to local market intel.
-              </p>
-            </div>
+        <SubmitButton loading={loading}>
+          {t("auth.register.submit", "Create account")}
+          <ArrowRight size={20} weight="bold" />
+        </SubmitButton>
+      </form>
 
-            <div className="space-y-3 pt-4">
-              <Link 
-                to="/login" 
-                className="btn btn-primary btn-lg w-full rounded-2xl group flex justify-between px-6"
-              >
-                <span>Get Started with OTP</span>
-                <IconArrowRight size={20} className="group-hover:translate-x-1 transition-transform" />
-              </Link>
-              
-              <div className="text-center">
-                <span className="text-xs text-base-content/40 font-medium uppercase tracking-wider">
-                  No passwords to remember • Simple & Secure
-                </span>
-              </div>
-            </div>
-
-            <div className="pt-4 border-t border-dashed border-base-300">
-              <p className="text-center text-xs text-base-content/40">
-                Already have an account? <Link to="/login" className="text-primary font-bold hover:underline">Sign In</Link>
-              </p>
-            </div>
-          </div>
-        </div>
-
-        <div className="mt-12 text-center space-y-4">
-          <div className="flex justify-center gap-4 text-xs font-semibold text-base-content/30 uppercase tracking-widest">
-            <span>Market Intel</span>
-            <span>•</span>
-            <span>Smart Forecasts</span>
-            <span>•</span>
-            <span>Direct Sales</span>
-          </div>
-          <p className="text-xs text-base-content/40 italic">
-            "Empowering South Indian farmers with the power of AI."
-          </p>
-        </div>
+      <div className="mt-6 text-center">
+        <p className="text-[14px] text-[var(--kv-grey-dark)]">
+          {t("auth.register.haveAccount", "Already have an account?")}{" "}
+          <Link to="/login" className="text-[var(--kv-green)] font-bold">
+            {t("auth.register.signIn", "Sign in")}
+          </Link>
+        </p>
       </div>
-    </div>
+    </AuthShell>
   );
 }

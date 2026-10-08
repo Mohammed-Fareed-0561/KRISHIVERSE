@@ -1,5 +1,5 @@
 {
- "generatedAt": "2026-10-06T08:48:24.162Z",
+ "generatedAt": "2026-10-08T08:15:44.825Z",
  "origin": "synthetic-screening on 13 curated records (NOT ground truth, small-n)",
  "uncoveredTopics": [
   "fertilizer",
@@ -74,8 +74,8 @@
   }
  },
  "latencyMs": {
-  "avg": 3.7840909090909096,
-  "max": 13.4
+  "avg": 3.168181818181817,
+  "max": 9.6
  },
  "failures": [],
  "rows": [
@@ -87,7 +87,7 @@
    "recallAt1": true,
    "recallAt3": true,
    "recallAt5": true,
-   "ms": 4.3
+   "ms": 3.6
   },
   {
    "id": "ret-crop-tomato-ta",
@@ -97,7 +97,7 @@
    "recallAt1": true,
    "recallAt3": true,
    "recallAt5": true,
-   "ms": 2.9
+   "ms": 2.4
   },
   {
    "id": "ret-crop-tomato-hi",
@@ -107,7 +107,7 @@
    "recallAt1": true,
    "recallAt3": true,
    "recallAt5": true,
-   "ms": 2.8
+   "ms": 2.4
   },
   {
    "id": "ret-crop-tomato-alias",
@@ -117,7 +117,7 @@
    "recallAt1": false,
    "recallAt3": true,
    "recallAt5": true,
-   "ms": 2.5
+   "ms": 2.3
   },
   {
    "id": "ret-crop-rice-en",
@@ -127,7 +127,7 @@
    "recallAt1": false,
    "recallAt3": true,
    "recallAt5": true,
-   "ms": 3
+   "ms": 2.3
   },
   {
    "id": "ret-crop-rice-ta",
@@ -137,7 +137,7 @@
    "recallAt1": false,
    "recallAt3": true,
    "recallAt5": true,
-   "ms": 2.9
+   "ms": 3.7
   },
   {
    "id": "ret-crop-rice-hi",
@@ -157,7 +157,7 @@
    "recallAt1": false,
    "recallAt3": true,
    "recallAt5": true,
-   "ms": 3.2
+   "ms": 2.5
   },
   {
    "id": "ret-crop-chilli-en",
@@ -167,7 +167,7 @@
    "recallAt1": true,
    "recallAt3": true,
    "recallAt5": true,
-   "ms": 2.6
+   "ms": 6.4
   },
   {
    "id": "ret-crop-chilli-ta",
@@ -177,7 +177,7 @@
    "recallAt1": true,
    "recallAt3": true,
    "recallAt5": true,
-   "ms": 2.5
+   "ms": 2.1
   },
   {
    "id": "ret-crop-chilli-hi",
@@ -187,7 +187,7 @@
    "recallAt1": true,
    "recallAt3": true,
    "recallAt5": true,
-   "ms": 9.1
+   "ms": 2.3
   },
   {
    "id": "ret-crop-chilli-alias",
@@ -197,7 +197,7 @@
    "recallAt1": false,
    "recallAt3": true,
    "recallAt5": true,
-   "ms": 4.6
+   "ms": 2.1
   },
   {
    "id": "ret-dis-eb-en",
@@ -207,7 +207,7 @@
    "recallAt1": true,
    "recallAt3": true,
    "recallAt5": true,
-   "ms": 4.9
+   "ms": 9.1
   },
   {
    "id": "ret-dis-eb-ta",
@@ -217,7 +217,7 @@
    "recallAt1": true,
    "recallAt3": true,
    "recallAt5": true,
-   "ms": 2.6
+   "ms": 2.1
   },
   {
    "id": "ret-dis-eb-hi",
@@ -227,7 +227,7 @@
    "recallAt1": true,
    "recallAt3": true,
    "recallAt5": true,
-   "ms": 2.5
+   "ms": 2
   },
   {
    "id": "ret-dis-eb-symptom",
@@ -237,7 +237,7 @@
    "recallAt1": false,
    "recallAt3": true,
    "recallAt5": true,
-   "ms": 6.4
+   "ms": 2.1
   },
   {
    "id": "ret-dis-curl-en",
@@ -247,7 +247,7 @@
    "recallAt1": true,
    "recallAt3": true,
    "recallAt5": true,
-   "ms": 5.5
+   "ms": 2.8
   },
   {
    "id": "ret-dis-curl-ta",
@@ -257,7 +257,7 @@
    "recallAt1": true,
    "recallAt3": true,
    "recallAt5": true,
-   "ms": 4.8
+   "ms": 9.6
   },
   {
    "id": "ret-dis-curl-hi",
@@ -267,7 +267,7 @@
    "recallAt1": true,
    "recallAt3": true,
    "recallAt5": true,
-   "ms": 2.3
+   "ms": 2.7
   },
   {
    "id": "ret-dis-curl-symptom",
@@ -277,7 +277,7 @@
    "recallAt1": false,
    "recallAt3": true,
    "recallAt5": true,
-   "ms": 3.3
+   "ms": 5.6
   },
   {
    "id": "ret-sym-rings-en",
@@ -287,7 +287,7 @@
    "recallAt1": true,
    "recallAt3": true,
    "recallAt5": true,
-   "ms": 9.3
+   "ms": 3.1
   },
   {
    "id": "ret-sym-rings-ta",
@@ -297,7 +297,7 @@
    "recallAt1": true,
    "recallAt3": true,
    "recallAt5": true,
-   "ms": 2.6
+   "ms": 7.6
   },
   {
    "id": "ret-sym-rings-hi",
@@ -307,7 +307,7 @@
    "recallAt1": true,
    "recallAt3": true,
    "recallAt5": true,
-   "ms": 2.9
+   "ms": 2.1
   },
   {
    "id": "ret-sym-lower-en",
@@ -317,7 +317,7 @@
    "recallAt1": false,
    "recallAt3": true,
    "recallAt5": true,
-   "ms": 2.9
+   "ms": 2
   },
   {
    "id": "ret-sym-lower-ta",
@@ -327,7 +327,7 @@
    "recallAt1": true,
    "recallAt3": true,
    "recallAt5": true,
-   "ms": 3
+   "ms": 2
   },
   {
    "id": "ret-sym-lower-hi",
@@ -337,7 +337,7 @@
    "recallAt1": true,
    "recallAt3": true,
    "recallAt5": true,
-   "ms": 2.5
+   "ms": 2
   },
   {
    "id": "ret-sym-curl-en",
@@ -347,7 +347,7 @@
    "recallAt1": false,
    "recallAt3": true,
    "recallAt5": true,
-   "ms": 2.4
+   "ms": 2.1
   },
   {
    "id": "ret-sym-curl-ta",
@@ -357,7 +357,7 @@
    "recallAt1": true,
    "recallAt3": true,
    "recallAt5": true,
-   "ms": 2.5
+   "ms": 2
   },
   {
    "id": "ret-sym-curl-hi",
@@ -367,7 +367,7 @@
    "recallAt1": true,
    "recallAt3": true,
    "recallAt5": true,
-   "ms": 3.3
+   "ms": 2
   },
   {
    "id": "ret-sym-stunt-en",
@@ -377,7 +377,7 @@
    "recallAt1": true,
    "recallAt3": true,
    "recallAt5": true,
-   "ms": 2.4
+   "ms": 2.1
   },
   {
    "id": "ret-sym-stunt-ta",
@@ -387,7 +387,7 @@
    "recallAt1": true,
    "recallAt3": true,
    "recallAt5": true,
-   "ms": 2.5
+   "ms": 2.2
   },
   {
    "id": "ret-sym-stunt-hi",
@@ -397,7 +397,7 @@
    "recallAt1": true,
    "recallAt3": true,
    "recallAt5": true,
-   "ms": 10.7
+   "ms": 2.3
   },
   {
    "id": "ret-sym-veins-en",
@@ -407,7 +407,7 @@
    "recallAt1": false,
    "recallAt3": true,
    "recallAt5": true,
-   "ms": 2.4
+   "ms": 2
   },
   {
    "id": "ret-sym-veins-ta",
@@ -417,7 +417,7 @@
    "recallAt1": true,
    "recallAt3": true,
    "recallAt5": true,
-   "ms": 2.3
+   "ms": 2
   },
   {
    "id": "ret-sym-veins-hi",
@@ -427,7 +427,7 @@
    "recallAt1": true,
    "recallAt3": true,
    "recallAt5": true,
-   "ms": 2.4
+   "ms": 8.2
   },
   {
    "id": "ret-tx-neem-en",
@@ -437,7 +437,7 @@
    "recallAt1": true,
    "recallAt3": true,
    "recallAt5": true,
-   "ms": 2.6
+   "ms": 2.2
   },
   {
    "id": "ret-tx-neem-ta",
@@ -447,7 +447,7 @@
    "recallAt1": true,
    "recallAt3": true,
    "recallAt5": true,
-   "ms": 2.5
+   "ms": 2.1
   },
   {
    "id": "ret-tx-neem-hi",
@@ -457,7 +457,7 @@
    "recallAt1": true,
    "recallAt3": true,
    "recallAt5": true,
-   "ms": 2.5
+   "ms": 2.2
   },
   {
    "id": "ret-tx-copper-en",
@@ -467,7 +467,7 @@
    "recallAt1": false,
    "recallAt3": true,
    "recallAt5": true,
-   "ms": 2.5
+   "ms": 2.2
   },
   {
    "id": "ret-tx-copper-ta",
@@ -477,7 +477,7 @@
    "recallAt1": true,
    "recallAt3": true,
    "recallAt5": true,
-   "ms": 2.4
+   "ms": 2.2
   },
   {
    "id": "ret-tx-copper-hi",
@@ -487,7 +487,7 @@
    "recallAt1": true,
    "recallAt3": true,
    "recallAt5": true,
-   "ms": 2.4
+   "ms": 2.3
   },
   {
    "id": "ret-tx-whitefly-en",
@@ -497,7 +497,7 @@
    "recallAt1": true,
    "recallAt3": true,
    "recallAt5": true,
-   "ms": 2.4
+   "ms": 6.7
   },
   {
    "id": "ret-tx-whitefly-ta",
@@ -507,7 +507,7 @@
    "recallAt1": true,
    "recallAt3": true,
    "recallAt5": true,
-   "ms": 13.4
+   "ms": 2.2
   },
   {
    "id": "ret-tx-whitefly-hi",
@@ -517,7 +517,7 @@
    "recallAt1": true,
    "recallAt3": true,
    "recallAt5": true,
-   "ms": 6.5
+   "ms": 3
   }
  ]
 }
