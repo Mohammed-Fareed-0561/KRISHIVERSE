@@ -416,7 +416,7 @@ describe("12. dosage/high-risk safety behavior remains unchanged", () => {
   });
 
   it("crop scoping keeps same-crop and crop-agnostic evidence eligible (no over-filtering)", () => {
-    const riceVerified = { id: "tnau_rice_blast", cropId: "crop_rice", verified: true, source: "TNAU" };
+    const riceVerified = { id: "tnau_rice_blast", cropId: "crop_rice", verified: true, source: "TNAU", method: "Tricyclazole 1g/L spray at tillering." };
     expect(recordMatchesQueryCrop(riceVerified, "rice")).toBe(true);
     expect(recordMatchesQueryCrop(riceVerified, "paddy")).toBe(true); // alias → rice
     expect(recordMatchesQueryCrop({ id: "faq_1" }, "tomato")).toBe(true); // crop-agnostic

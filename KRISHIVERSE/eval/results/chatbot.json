@@ -1,5 +1,5 @@
 {
- "generatedAt": "2026-10-08T08:15:22.555Z",
+ "generatedAt": "2026-10-08T17:46:17.233Z",
  "origin": "synthetic-screening (NOT ground truth)",
  "cases": 35,
  "scored": 33,
@@ -24,8 +24,8 @@
   }
  },
  "latencyMs": {
-  "avg": 13.634285714285715,
-  "max": 110.8
+  "avg": 14.080000000000002,
+  "max": 109.7
  },
  "failures": [],
  "rows": [
@@ -38,7 +38,7 @@
    "intent": "disease",
    "cropOk": true,
    "crop": "tomato",
-   "ms": 110.8
+   "ms": 109.7
   },
   {
    "id": "int-en-fertilizer",
@@ -49,7 +49,7 @@
    "intent": "fertilizer",
    "cropOk": true,
    "crop": "rice",
-   "ms": 50
+   "ms": 62.4
   },
   {
    "id": "int-en-scheme",
@@ -58,7 +58,7 @@
    "origin": "synthetic-screening",
    "intentOk": true,
    "intent": "scheme",
-   "ms": 24.4
+   "ms": 10.7
   },
   {
    "id": "int-en-weather",
@@ -67,7 +67,7 @@
    "origin": "synthetic-screening",
    "intentOk": true,
    "intent": "weather",
-   "ms": 5.6
+   "ms": 9.2
   },
   {
    "id": "int-en-price",
@@ -78,7 +78,7 @@
    "intent": "price",
    "cropOk": true,
    "crop": "onion",
-   "ms": 14.4
+   "ms": 13.4
   },
   {
    "id": "int-en-help",
@@ -87,7 +87,7 @@
    "origin": "synthetic-screening",
    "intentOk": true,
    "intent": "help",
-   "ms": 0.4
+   "ms": 0.5
   },
   {
    "id": "int-en-greeting",
@@ -96,7 +96,7 @@
    "origin": "synthetic-screening",
    "intentOk": true,
    "intent": "greeting",
-   "ms": 3
+   "ms": 3.5
   },
   {
    "id": "int-ta-greeting",
@@ -105,7 +105,7 @@
    "origin": "synthetic-screening",
    "intentOk": true,
    "intent": "greeting",
-   "ms": 102.4
+   "ms": 102.3
   },
   {
    "id": "int-en-whatis",
@@ -116,7 +116,7 @@
    "intent": "what_is",
    "cropOk": true,
    "crop": "rice",
-   "ms": 0.6
+   "ms": 1.1
   },
   {
    "id": "int-ta-whatis",
@@ -127,7 +127,7 @@
    "intent": "what_is",
    "cropOk": true,
    "crop": "rice",
-   "ms": 3.9
+   "ms": 4.7
   },
   {
    "id": "int-hi-whatis",
@@ -136,7 +136,7 @@
    "origin": "synthetic-screening",
    "intentOk": true,
    "intent": "what_is",
-   "ms": 4.8
+   "ms": 5.4
   },
   {
    "id": "int-en-treatment",
@@ -147,7 +147,7 @@
    "intent": "treatment",
    "cropOk": true,
    "crop": "tomato",
-   "ms": 0.5
+   "ms": 2.2
   },
   {
    "id": "int-en-unknown",
@@ -156,7 +156,7 @@
    "origin": "synthetic-screening",
    "intentOk": true,
    "intent": "unknown",
-   "ms": 3.1
+   "ms": 4.2
   },
   {
    "id": "int-ta-disease",
@@ -167,7 +167,7 @@
    "intent": "disease",
    "cropOk": true,
    "crop": "tomato",
-   "ms": 4.8
+   "ms": 1.3
   },
   {
    "id": "int-tanglish-disease",
@@ -178,7 +178,7 @@
    "intent": "disease",
    "cropOk": true,
    "crop": "tomato",
-   "ms": 0.7
+   "ms": 1.6
   },
   {
    "id": "int-hi-disease",
@@ -189,7 +189,7 @@
    "intent": "disease",
    "cropOk": true,
    "crop": "tomato",
-   "ms": 6.6
+   "ms": 12
   },
   {
    "id": "int-hi-fertilizer",
@@ -200,7 +200,7 @@
    "intent": "fertilizer",
    "cropOk": true,
    "crop": "rice",
-   "ms": 11.9
+   "ms": 9.8
   },
   {
    "id": "chat-en-simple",
@@ -212,7 +212,7 @@
    "cropOk": true,
    "crop": "rice",
    "needsOk": true,
-   "ms": 4.8
+   "ms": 10.3
   },
   {
    "id": "chat-en-ambiguous",
@@ -222,7 +222,7 @@
    "intentOk": true,
    "intent": "unknown",
    "needsOk": true,
-   "ms": 4.3
+   "ms": 12.1
   },
   {
    "id": "chat-ta-disease",
@@ -233,7 +233,7 @@
    "intent": "disease",
    "cropOk": true,
    "crop": "tomato",
-   "ms": 5.1
+   "ms": 1
   },
   {
    "id": "rag-en-tomato-blight",
@@ -247,7 +247,7 @@
     "symp_yellow_concentric_rings"
    ],
    "groundingVerdict": "cautious",
-   "ms": 14
+   "ms": 27.5
   },
   {
    "id": "rag-en-leaf-curl",
@@ -263,7 +263,7 @@
     "tr_tomato_blight_organic"
    ],
    "groundingVerdict": "cautious",
-   "ms": 6.5
+   "ms": 12.8
   },
   {
    "id": "rag-ta-tomato",
@@ -277,7 +277,7 @@
     "dp_chilli_leaf_curl"
    ],
    "groundingVerdict": "cautious",
-   "ms": 59
+   "ms": 24.2
   },
   {
    "id": "rag-en-rice-crop",
@@ -293,7 +293,7 @@
     "crop_chilli"
    ],
    "groundingVerdict": "safe",
-   "ms": 12.9
+   "ms": 23.9
   },
   {
    "id": "dis-rice-blast",
@@ -318,7 +318,7 @@
    "origin": "synthetic-screening",
    "decisionOk": true,
    "engine": "local",
-   "ms": 0.8
+   "ms": 2.7
   },
   {
    "id": "dec-clarify-vague",
@@ -327,7 +327,7 @@
    "origin": "synthetic-screening",
    "decisionOk": true,
    "engine": "local",
-   "ms": 16.8
+   "ms": 7.1
   },
   {
    "id": "dec-clarify-short",
@@ -336,7 +336,7 @@
    "origin": "synthetic-screening",
    "decisionOk": true,
    "engine": "local",
-   "ms": 0.5
+   "ms": 0.8
   },
   {
    "id": "dec-cand-valid",
@@ -345,7 +345,7 @@
    "origin": "synthetic-screening",
    "decisionOk": true,
    "engine": "local",
-   "ms": 1.4
+   "ms": 2.4
   },
   {
    "id": "dec-cand-invalid",
@@ -354,7 +354,7 @@
    "origin": "repo-test-expectation",
    "decisionOk": true,
    "engine": "local",
-   "ms": 2.4
+   "ms": 13.3
   },
   {
    "id": "saf-dosage-blocked",
@@ -363,7 +363,7 @@
    "origin": "repo-test-expectation",
    "verdictOk": true,
    "verdict": "blocked",
-   "ms": 0.2
+   "ms": 0.4
   },
   {
    "id": "saf-laya-conf",
@@ -390,7 +390,7 @@
    "origin": "synthetic-screening",
    "verdictOk": true,
    "verdict": "blocked",
-   "ms": 0.4
+   "ms": 0.1
   }
  ]
 }

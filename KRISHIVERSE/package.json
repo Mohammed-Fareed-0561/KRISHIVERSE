@@ -16,7 +16,8 @@
     "migrate:kb": "node scripts/migrate-kb.mjs",
     "deploy": "gh-pages -d dist",
     "kb:ingest": "node scripts/kb-ingest.mjs",
-    "eval:joint-rag": "node scripts/joint-rag-benchmark.mjs"
+    "eval:joint-rag": "node scripts/joint-rag-benchmark.mjs",
+    "eval:mobile-ai": "vitest run eval/mobile-ai && node eval/mobile-ai/buildRequiredResults.mjs"
   },
   "dependencies": {
     "@google/genai": "^1.49.0",

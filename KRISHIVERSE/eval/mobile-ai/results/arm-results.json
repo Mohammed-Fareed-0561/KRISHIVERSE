@@ -1,0 +1,894 @@
+{
+ "dataClass": "benchmark-evaluation",
+ "title": "Arm results: chatbot arms A..P over the rice screening set (spec §3)",
+ "runMeta": {
+  "benchmarkId": "rice-chatbot-arms-v1",
+  "date": "2026-10-08T17:53:45.537Z",
+  "gitCommit": "1a0a85b0d40ea1e390a984480b0f29222f1f022a",
+  "gitDirty": true,
+  "seed": 20261008,
+  "runtime": "node v22.21.0",
+  "device": {
+   "node": "v22.21.0",
+   "os": "Windows_NT 10.0.26200",
+   "arch": "x64",
+   "cpuModel": "Intel(R) Core(TM) i7-8650U CPU @ 1.90GHz",
+   "cpuCount": 8,
+   "totalMemMB": 16227,
+   "deviceClass": "desktop-reference",
+   "browser": "not-applicable (node benchmark harness)"
+  },
+  "kb": {
+   "version": 2,
+   "generatedAt": "2026-10-06T08:09:58.882Z",
+   "recordCount": 15023,
+   "path": "KRISHIVERSE/src/data/kb/v2/manifest.json",
+   "hash": "e64a35c8a7c9bad204d6a7b04f2d65f94861c0be43a6bdd06bc4a6f166a2aadb"
+  },
+  "models": {
+   "public/models/efficientnet_b0_plantvillage.onnx": {
+    "bytes": 16050931,
+    "sha256": "fab0a1dbf5a5fb582ddef6d941ab0ed8b3f5a6666d088c44022f4429af857e0f"
+   },
+   "public/models/efficientnet_b0_plantvillage.onnx.data": {
+    "bytes": 16056320,
+    "sha256": "54ca55a6dcacf5cef4de8bc805b5f03a5a67b6f466794a88435511df33058399"
+   },
+   "public/models/labels.json": {
+    "bytes": 334,
+    "sha256": "549fd59a89d58fc69205d7dd0a9bf1a742f287dbb3b97611cfad1339fca361d9"
+   },
+   "../models/onnx_eval_results.json": {
+    "bytes": 22672,
+    "sha256": "a2aaf880005cdfc1edea6f60127c4d9a658b472c1933c3068efe1863514335d3"
+   }
+  },
+  "datasetHashes": {
+   "eval/mobile-ai/datasets/riceChatbotCases.js": "382c5747c2bab2a92b4737d23906ebf34d407bc7f0e363b0248bc42b2cdb4227"
+  },
+  "configuration": {
+   "harness": "KRISHIVERSE/eval/mobile-ai (isolated)",
+   "telemetry": "none — benchmark harness performs no network calls unless an adapter explicitly opts in via env",
+   "needleTelemetry": "NEEDLE_TELEMETRY=0 DO_NOT_TRACK=1 mandated for any Needle execution (see docs/ai/needle-evaluation.md)",
+   "arms": "A-P per spec §3",
+   "seed": "fixed (deterministic rules, no sampling)"
+  }
+ },
+ "dataset": {
+  "total": 36,
+  "groundTruth": 0,
+  "byLanguage": {
+   "en": 22,
+   "ta": 7,
+   "tanglish": 7
+  },
+  "note": "0 expert-labelled cases. Rice screening set — pass rates are NOT accuracy.",
+  "origin": "synthetic-screening (0 expert-labelled cases)",
+  "path": "KRISHIVERSE/eval/mobile-ai/datasets/riceChatbotCases.js"
+ },
+ "arms": [
+  {
+   "id": "A-baseline",
+   "label": "A. Baseline: current KrishiVerse local tier (rules + AgriculturalNLP + KB lexical retrieval + local decision, production snapshot)",
+   "state": "measured",
+   "metrics": {
+    "overall": {
+     "n": 95,
+     "ok": 95,
+     "passRate": 1
+    },
+    "byTask": {
+     "language-identification": {
+      "n": 23,
+      "ok": 23,
+      "passRate": 1
+     },
+     "intent-classification": {
+      "n": 23,
+      "ok": 23,
+      "passRate": 1
+     },
+     "crop-extraction": {
+      "n": 23,
+      "ok": 23,
+      "passRate": 1
+     },
+     "symptom-extraction": {
+      "n": 11,
+      "ok": 11,
+      "passRate": 1
+     },
+     "plant-part-extraction": {
+      "n": 0,
+      "ok": 0,
+      "passRate": null
+     },
+     "clarification-selection": {
+      "n": 9,
+      "ok": 9,
+      "passRate": 1
+     },
+     "farmer-context-extraction": {
+      "n": 0,
+      "ok": 0,
+      "passRate": null
+     },
+     "kb-retrieval": {
+      "n": 6,
+      "ok": 6,
+      "passRate": 1
+     },
+     "safety": {
+      "n": 0,
+      "ok": 0,
+      "passRate": null
+     }
+    },
+    "byLanguage": {
+     "en": {
+      "n": 51,
+      "ok": 51,
+      "passRate": 1
+     },
+     "ta": {
+      "n": 20,
+      "ok": 20,
+      "passRate": 1
+     },
+     "tanglish": {
+      "n": 24,
+      "ok": 24,
+      "passRate": 1
+     }
+    },
+    "failures": []
+   },
+   "latencyMs": {
+    "n": 36,
+    "avg": 13.04,
+    "p95": 94.51,
+    "max": 149.22
+   },
+   "capabilities": [
+    "language-identification",
+    "intent-classification",
+    "crop-extraction",
+    "symptom-extraction",
+    "kb-retrieval",
+    "clarification-selection"
+   ]
+  },
+  {
+   "id": "B-nlp",
+   "label": "B. NLP only (AgriculturalNLP parse pipeline; no retrieval, no decision engine)",
+   "state": "measured",
+   "metrics": {
+    "overall": {
+     "n": 57,
+     "ok": 57,
+     "passRate": 1
+    },
+    "byTask": {
+     "intent-classification": {
+      "n": 23,
+      "ok": 23,
+      "passRate": 1
+     },
+     "crop-extraction": {
+      "n": 23,
+      "ok": 23,
+      "passRate": 1
+     },
+     "symptom-extraction": {
+      "n": 11,
+      "ok": 11,
+      "passRate": 1
+     },
+     "plant-part-extraction": {
+      "n": 0,
+      "ok": 0,
+      "passRate": null
+     },
+     "farmer-context-extraction": {
+      "n": 0,
+      "ok": 0,
+      "passRate": null
+     },
+     "safety": {
+      "n": 0,
+      "ok": 0,
+      "passRate": null
+     }
+    },
+    "byLanguage": {
+     "en": {
+      "n": 29,
+      "ok": 29,
+      "passRate": 1
+     },
+     "ta": {
+      "n": 12,
+      "ok": 12,
+      "passRate": 1
+     },
+     "tanglish": {
+      "n": 16,
+      "ok": 16,
+      "passRate": 1
+     }
+    },
+    "failures": []
+   },
+   "latencyMs": {
+    "n": 36,
+    "avg": 3.76,
+    "p95": 12.51,
+    "max": 25.73
+   },
+   "capabilities": [
+    "intent-classification",
+    "crop-extraction",
+    "symptom-extraction"
+   ]
+  },
+  {
+   "id": "C-nlp-kb",
+   "label": "C. NLP + local KB (production lexical fastSearch; no decision engine)",
+   "state": "measured",
+   "metrics": {
+    "overall": {
+     "n": 86,
+     "ok": 86,
+     "passRate": 1
+    },
+    "byTask": {
+     "language-identification": {
+      "n": 23,
+      "ok": 23,
+      "passRate": 1
+     },
+     "intent-classification": {
+      "n": 23,
+      "ok": 23,
+      "passRate": 1
+     },
+     "crop-extraction": {
+      "n": 23,
+      "ok": 23,
+      "passRate": 1
+     },
+     "symptom-extraction": {
+      "n": 11,
+      "ok": 11,
+      "passRate": 1
+     },
+     "plant-part-extraction": {
+      "n": 0,
+      "ok": 0,
+      "passRate": null
+     },
+     "farmer-context-extraction": {
+      "n": 0,
+      "ok": 0,
+      "passRate": null
+     },
+     "kb-retrieval": {
+      "n": 6,
+      "ok": 6,
+      "passRate": 1
+     },
+     "safety": {
+      "n": 0,
+      "ok": 0,
+      "passRate": null
+     }
+    },
+    "byLanguage": {
+     "en": {
+      "n": 45,
+      "ok": 45,
+      "passRate": 1
+     },
+     "ta": {
+      "n": 18,
+      "ok": 18,
+      "passRate": 1
+     },
+     "tanglish": {
+      "n": 23,
+      "ok": 23,
+      "passRate": 1
+     }
+    },
+    "failures": []
+   },
+   "latencyMs": {
+    "n": 36,
+    "avg": 4.39,
+    "p95": 14.21,
+    "max": 23.18
+   },
+   "capabilities": [
+    "language-identification",
+    "intent-classification",
+    "crop-extraction",
+    "symptom-extraction",
+    "kb-retrieval"
+   ]
+  },
+  {
+   "id": "D-nlp-rag",
+   "label": "D. NLP + RAG (alias-expanded query + RRF hybrid retrieval; no decision engine)",
+   "state": "measured",
+   "metrics": {
+    "overall": {
+     "n": 86,
+     "ok": 86,
+     "passRate": 1
+    },
+    "byTask": {
+     "language-identification": {
+      "n": 23,
+      "ok": 23,
+      "passRate": 1
+     },
+     "intent-classification": {
+      "n": 23,
+      "ok": 23,
+      "passRate": 1
+     },
+     "crop-extraction": {
+      "n": 23,
+      "ok": 23,
+      "passRate": 1
+     },
+     "symptom-extraction": {
+      "n": 11,
+      "ok": 11,
+      "passRate": 1
+     },
+     "plant-part-extraction": {
+      "n": 0,
+      "ok": 0,
+      "passRate": null
+     },
+     "farmer-context-extraction": {
+      "n": 0,
+      "ok": 0,
+      "passRate": null
+     },
+     "kb-retrieval": {
+      "n": 6,
+      "ok": 6,
+      "passRate": 1
+     },
+     "safety": {
+      "n": 0,
+      "ok": 0,
+      "passRate": null
+     }
+    },
+    "byLanguage": {
+     "en": {
+      "n": 45,
+      "ok": 45,
+      "passRate": 1
+     },
+     "ta": {
+      "n": 18,
+      "ok": 18,
+      "passRate": 1
+     },
+     "tanglish": {
+      "n": 23,
+      "ok": 23,
+      "passRate": 1
+     }
+    },
+    "failures": []
+   },
+   "latencyMs": {
+    "n": 36,
+    "avg": 5.08,
+    "p95": 17.83,
+    "max": 24.03
+   },
+   "capabilities": [
+    "language-identification",
+    "intent-classification",
+    "crop-extraction",
+    "symptom-extraction",
+    "kb-retrieval"
+   ]
+  },
+  {
+   "id": "E-nlp-kb-rag",
+   "label": "E. NLP + KB + RAG (RRF fusion of production lexical and alias-expanded hybrid lists; no decision engine)",
+   "state": "measured",
+   "metrics": {
+    "overall": {
+     "n": 86,
+     "ok": 86,
+     "passRate": 1
+    },
+    "byTask": {
+     "language-identification": {
+      "n": 23,
+      "ok": 23,
+      "passRate": 1
+     },
+     "intent-classification": {
+      "n": 23,
+      "ok": 23,
+      "passRate": 1
+     },
+     "crop-extraction": {
+      "n": 23,
+      "ok": 23,
+      "passRate": 1
+     },
+     "symptom-extraction": {
+      "n": 11,
+      "ok": 11,
+      "passRate": 1
+     },
+     "plant-part-extraction": {
+      "n": 0,
+      "ok": 0,
+      "passRate": null
+     },
+     "farmer-context-extraction": {
+      "n": 0,
+      "ok": 0,
+      "passRate": null
+     },
+     "kb-retrieval": {
+      "n": 6,
+      "ok": 6,
+      "passRate": 1
+     },
+     "safety": {
+      "n": 0,
+      "ok": 0,
+      "passRate": null
+     }
+    },
+    "byLanguage": {
+     "en": {
+      "n": 45,
+      "ok": 45,
+      "passRate": 1
+     },
+     "ta": {
+      "n": 18,
+      "ok": 18,
+      "passRate": 1
+     },
+     "tanglish": {
+      "n": 23,
+      "ok": 23,
+      "passRate": 1
+     }
+    },
+    "failures": []
+   },
+   "latencyMs": {
+    "n": 36,
+    "avg": 5.55,
+    "p95": 17.7,
+    "max": 18.94
+   },
+   "capabilities": [
+    "language-identification",
+    "intent-classification",
+    "crop-extraction",
+    "symptom-extraction",
+    "kb-retrieval"
+   ]
+  },
+  {
+   "id": "F-nlp-kb-decision",
+   "label": "F. NLP + KB + Decision engine (candidate composition; identical to A in the current codebase — baseline already ships this stack)",
+   "state": "measured",
+   "metrics": {
+    "overall": {
+     "n": 95,
+     "ok": 95,
+     "passRate": 1
+    },
+    "byTask": {
+     "language-identification": {
+      "n": 23,
+      "ok": 23,
+      "passRate": 1
+     },
+     "intent-classification": {
+      "n": 23,
+      "ok": 23,
+      "passRate": 1
+     },
+     "crop-extraction": {
+      "n": 23,
+      "ok": 23,
+      "passRate": 1
+     },
+     "symptom-extraction": {
+      "n": 11,
+      "ok": 11,
+      "passRate": 1
+     },
+     "plant-part-extraction": {
+      "n": 0,
+      "ok": 0,
+      "passRate": null
+     },
+     "clarification-selection": {
+      "n": 9,
+      "ok": 9,
+      "passRate": 1
+     },
+     "farmer-context-extraction": {
+      "n": 0,
+      "ok": 0,
+      "passRate": null
+     },
+     "kb-retrieval": {
+      "n": 6,
+      "ok": 6,
+      "passRate": 1
+     },
+     "safety": {
+      "n": 0,
+      "ok": 0,
+      "passRate": null
+     }
+    },
+    "byLanguage": {
+     "en": {
+      "n": 51,
+      "ok": 51,
+      "passRate": 1
+     },
+     "ta": {
+      "n": 20,
+      "ok": 20,
+      "passRate": 1
+     },
+     "tanglish": {
+      "n": 24,
+      "ok": 24,
+      "passRate": 1
+     }
+    },
+    "failures": []
+   },
+   "latencyMs": {
+    "n": 36,
+    "avg": 5.3,
+    "p95": 15.74,
+    "max": 33.25
+   },
+   "capabilities": [
+    "language-identification",
+    "intent-classification",
+    "crop-extraction",
+    "symptom-extraction",
+    "kb-retrieval",
+    "clarification-selection"
+   ]
+  },
+  {
+   "id": "G-f-laya",
+   "label": "G. F + Laya (base composition runs local; live Laya decision sub-arm requires KV_BENCH_API)",
+   "state": "measured",
+   "metrics": {
+    "overall": {
+     "n": 95,
+     "ok": 95,
+     "passRate": 1
+    },
+    "byTask": {
+     "language-identification": {
+      "n": 23,
+      "ok": 23,
+      "passRate": 1
+     },
+     "intent-classification": {
+      "n": 23,
+      "ok": 23,
+      "passRate": 1
+     },
+     "crop-extraction": {
+      "n": 23,
+      "ok": 23,
+      "passRate": 1
+     },
+     "symptom-extraction": {
+      "n": 11,
+      "ok": 11,
+      "passRate": 1
+     },
+     "plant-part-extraction": {
+      "n": 0,
+      "ok": 0,
+      "passRate": null
+     },
+     "clarification-selection": {
+      "n": 9,
+      "ok": 9,
+      "passRate": 1
+     },
+     "farmer-context-extraction": {
+      "n": 0,
+      "ok": 0,
+      "passRate": null
+     },
+     "kb-retrieval": {
+      "n": 6,
+      "ok": 6,
+      "passRate": 1
+     },
+     "safety": {
+      "n": 0,
+      "ok": 0,
+      "passRate": null
+     }
+    },
+    "byLanguage": {
+     "en": {
+      "n": 51,
+      "ok": 51,
+      "passRate": 1
+     },
+     "ta": {
+      "n": 20,
+      "ok": 20,
+      "passRate": 1
+     },
+     "tanglish": {
+      "n": 24,
+      "ok": 24,
+      "passRate": 1
+     }
+    },
+    "failures": []
+   },
+   "latencyMs": {
+    "n": 36,
+    "avg": 4.95,
+    "p95": 16.32,
+    "max": 29.53
+   },
+   "capabilities": [
+    "language-identification",
+    "intent-classification",
+    "crop-extraction",
+    "symptom-extraction",
+    "kb-retrieval",
+    "clarification-selection"
+   ]
+  },
+  {
+   "id": "G-laya-live",
+   "label": "G live-Laya sub-arm",
+   "state": "skipped",
+   "skipReason": "set KV_BENCH_API=<backend origin> to run the live Laya arm (requires Laya deployment + network)",
+   "howToRun": "KV_BENCH_API=http://localhost:5000 npx vitest run eval/mobile-ai/benchmarks/decision.benchmark.test.js"
+  },
+  {
+   "id": "H-nlp-needle",
+   "label": "H. Needle only (structured extraction / intent / clarification)",
+   "state": "skipped",
+   "skipReason": "python package 'cactus-needle' not installed",
+   "howToRun": "pip install cactus-needle   # then: NEEDLE_MODEL_PATH=<path/needle3.cact> KV_BENCH_NEEDLE=1 npx vitest run eval/mobile-ai",
+   "capabilities": [
+    "language-identification",
+    "intent-classification",
+    "crop-extraction",
+    "symptom-extraction",
+    "disease-extraction",
+    "plant-part-extraction",
+    "farmer-context-extraction",
+    "clarification-selection"
+   ]
+  },
+  {
+   "id": "I-h-kb",
+   "label": "I. Needle + local KB",
+   "state": "skipped",
+   "skipReason": "requires arm H: python package 'cactus-needle' not installed",
+   "howToRun": "pip install cactus-needle   # then: NEEDLE_MODEL_PATH=<path/needle3.cact> KV_BENCH_NEEDLE=1 npx vitest run eval/mobile-ai",
+   "capabilities": [
+    "language-identification",
+    "intent-classification",
+    "crop-extraction",
+    "symptom-extraction",
+    "kb-retrieval",
+    "plant-part-extraction",
+    "farmer-context-extraction",
+    "clarification-selection"
+   ]
+  },
+  {
+   "id": "J-i-rag",
+   "label": "J. Needle + KB + RAG",
+   "state": "skipped",
+   "skipReason": "requires arm I: python package 'cactus-needle' not installed",
+   "howToRun": "pip install cactus-needle   # then: NEEDLE_MODEL_PATH=<path/needle3.cact> KV_BENCH_NEEDLE=1 npx vitest run eval/mobile-ai",
+   "capabilities": [
+    "language-identification",
+    "intent-classification",
+    "crop-extraction",
+    "symptom-extraction",
+    "kb-retrieval",
+    "plant-part-extraction",
+    "farmer-context-extraction",
+    "clarification-selection"
+   ]
+  },
+  {
+   "id": "K-h-kb-decision",
+   "label": "K. Needle + KB + Decision engine (clarification/decision composition)",
+   "state": "skipped",
+   "skipReason": "requires arm H: python package 'cactus-needle' not installed",
+   "howToRun": "pip install cactus-needle   # then: NEEDLE_MODEL_PATH=<path/needle3.cact> KV_BENCH_NEEDLE=1 npx vitest run eval/mobile-ai",
+   "capabilities": [
+    "language-identification",
+    "intent-classification",
+    "crop-extraction",
+    "symptom-extraction",
+    "kb-retrieval",
+    "clarification-selection",
+    "plant-part-extraction",
+    "farmer-context-extraction"
+   ]
+  },
+  {
+   "id": "L-k-rag",
+   "label": "L. K + RAG",
+   "state": "skipped",
+   "skipReason": "requires arm K: python package 'cactus-needle' not installed",
+   "howToRun": "pip install cactus-needle   # then: NEEDLE_MODEL_PATH=<path/needle3.cact> KV_BENCH_NEEDLE=1 npx vitest run eval/mobile-ai",
+   "capabilities": [
+    "language-identification",
+    "intent-classification",
+    "crop-extraction",
+    "symptom-extraction",
+    "kb-retrieval",
+    "clarification-selection",
+    "plant-part-extraction",
+    "farmer-context-extraction"
+   ]
+  },
+  {
+   "id": "M-l-laya",
+   "label": "M. L + Laya (Needle stack + KB/Decision + live Laya)",
+   "state": "skipped",
+   "skipReason": "requires arm L (Needle stack): needle[python package 'cactus-needle' not installed] laya[set KV_BENCH_API=<backend origin> to run the live Laya arm (requires Laya deployment + network)]",
+   "howToRun": "pip install cactus-needle   # then: NEEDLE_MODEL_PATH=<path/needle3.cact> KV_BENCH_NEEDLE=1 npx vitest run eval/mobile-ai",
+   "capabilities": [
+    "language-identification",
+    "intent-classification",
+    "crop-extraction",
+    "symptom-extraction",
+    "kb-retrieval",
+    "clarification-selection"
+   ]
+  },
+  {
+   "id": "N-best-webllm",
+   "label": "N. Best measured arm + Qwen/WebLLM in-browser LLM",
+   "state": "skipped",
+   "skipReason": "WebLLM/Qwen requires a WebGPU browser session; not executable from the node harness",
+   "howToRun": "open the KrishiVerse PWA in a WebGPU browser with VITE_ENABLE_ONDEVICE_LLM=auto, or serve the model via an OpenAI-compatible endpoint and set KV_BENCH_LLM_URL to reuse the same adapter",
+   "capabilities": [
+    "answer-generation",
+    "intent-classification"
+   ]
+  },
+  {
+   "id": "O-best-small-llm",
+   "label": "O. Best measured arm + smallest local LLM (OpenAI-compatible local server)",
+   "state": "skipped",
+   "skipReason": "KV_BENCH_LLM_URL not set (no local OpenAI-compatible server configured)",
+   "howToRun": "cactus serve <model> --host 127.0.0.1 --port 8080 --no-cloud-handoff  # then KV_BENCH_LLM_URL=http://127.0.0.1:8080/v1",
+   "capabilities": [
+    "answer-generation",
+    "intent-classification",
+    "language-identification"
+   ]
+  },
+  {
+   "id": "P-best-mobile-offline",
+   "label": "P. Best mobile/offline architecture (assigned after arms A..O produce results)",
+   "state": "not-applicable",
+   "skipReason": "assigned after arms A..O produce results (eval/mobile-ai/buildComparison.mjs)"
+  }
+ ],
+ "taskBreakdown": {
+  "measured": [
+   "language-identification",
+   "intent-classification",
+   "crop-extraction",
+   "symptom-extraction",
+   "plant-part-extraction",
+   "farmer-context-extraction",
+   "query-normalization",
+   "kb-retrieval",
+   "clarification-selection"
+  ],
+  "notMeasuredHere": {
+   "disease-extraction": "no expert-labelled disease-entity targets in the rice set; Needle extract arm reports when available",
+   "answer-generation": "requires arm N/O (WebGPU browser or local LLM server)",
+   "grounding": "see grounding.benchmark.test.js (GroundingGuard)",
+   "safety": "shared ResponseValidator layer — see grounding.benchmark.test.js",
+   "unknown-query-handling": "answer-level scoring requires answer-generation arms"
+  }
+ },
+ "rowAggregates": {
+  "overallByArm": {
+   "A-baseline": {
+    "n": 95,
+    "ok": 95,
+    "passRate": 1
+   },
+   "B-nlp": {
+    "n": 57,
+    "ok": 57,
+    "passRate": 1
+   },
+   "C-nlp-kb": {
+    "n": 86,
+    "ok": 86,
+    "passRate": 1
+   },
+   "D-nlp-rag": {
+    "n": 86,
+    "ok": 86,
+    "passRate": 1
+   },
+   "E-nlp-kb-rag": {
+    "n": 86,
+    "ok": 86,
+    "passRate": 1
+   },
+   "F-nlp-kb-decision": {
+    "n": 95,
+    "ok": 95,
+    "passRate": 1
+   },
+   "G-f-laya": {
+    "n": 95,
+    "ok": 95,
+    "passRate": 1
+   }
+  },
+  "byLanguage": {
+   "en": {
+    "n": 317,
+    "ok": 317,
+    "passRate": 1
+   },
+   "ta": {
+    "n": 126,
+    "ok": 126,
+    "passRate": 1
+   },
+   "tanglish": {
+    "n": 157,
+    "ok": 157,
+    "passRate": 1
+   }
+  }
+ },
+ "limitations": [
+  "Screening set: 0 expert-labelled cases — pass rates are pipeline screening signals, never accuracy.",
+  "Arms H–M skipped in this environment (cactus-needle not installed); N/O skipped (WebGPU session or KV_BENCH_LLM_URL) — see howToRun.",
+  "Wall-clock latency measured on a desktop reference (node), not on a low-end Android device.",
+  "Tamil/Tanglish expectations are word-level; agronomic correctness is governed by the KB, not by this set."
+ ],
+ "derivedFrom": [
+  "eval/mobile-ai/results/chatbot-arms.json"
+ ],
+ "generatedAt": "2026-10-08T17:56:09.807Z"
+}

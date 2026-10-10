@@ -98,6 +98,27 @@ describe("LocalDecisionEngine (offline-first)", () => {
   it("rejects invalid tasks", async () => {
     await expect(LocalDecisionEngine.decide({ task: "free_chat", state: {} })).rejects.toThrow();
   });
+  it("clarifies a differential query naming two diseases (Phase 2)", async () => {
+    const d = await LocalDecisionEngine.decide({
+      task: "clarification",
+      state: { query: "nel la blast ah brown spot ah epdi theriyum?" },
+    });
+    expect(d.needsClarification).toBe(true);
+    expect(d.clarification?.question).toBeTruthy();
+  });
+  it("does not clarify a clear single-symptom query once the index is warm", async () => {
+    const { buildInvertedIndex, resetIndex } = await import("../AgriculturalNLP");
+    const { CROPS } = await import("../../../data/seed/cropData");
+    const { DISEASE_PESTS, SYMPTOMS } = await import("../../../data/seed/diseaseData");
+    const { TREATMENTS } = await import("../../../data/seed/treatmentData");
+    resetIndex();
+    buildInvertedIndex({ crops: CROPS, symptoms: SYMPTOMS, diseases: DISEASE_PESTS, treatments: TREATMENTS, edges: [] });
+    const d = await LocalDecisionEngine.decide({
+      task: "clarification",
+      state: { query: "What is rice blast?" },
+    });
+    expect(d.needsClarification).toBe(false);
+  });
 });
 
 describe("invocation rules (Phase 6)", () => {

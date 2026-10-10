@@ -17,6 +17,7 @@ const LanguageSection = lazy(() => import("./sections/LanguageSection"));
 const CoverageSection = lazy(() => import("./sections/LanguageSection").then((module) => ({ default: module.CoverageSection })));
 const SourcesSection = lazy(() => import("./sections/SourcesSection"));
 const EvaluationSection = lazy(() => import("./sections/EvaluationSection"));
+const BenchmarkSection = lazy(() => import("./sections/BenchmarkSection"));
 const FailureSection = lazy(() => import("./sections/FailureSection"));
 const BackupSection = lazy(() => import("./sections/BackupSection"));
 const VersionSection = lazy(() => import("./sections/BackupSection").then((module) => ({ default: module.VersionSection })));
@@ -38,6 +39,7 @@ const NAV = [
   { to: "/admin/failures", label: "Failures & incidents", group: "Monitoring" },
   { to: "/admin/farmers", label: "Farmers", group: "Analysis" },
   { to: "/admin/evaluation", label: "Evaluation", group: "Analysis" },
+  { to: "/admin/benchmarks", label: "AI benchmarks", group: "Analysis" },
   { to: "/admin/backups", label: "Backups", group: "Operations" },
   { to: "/admin/versions", label: "Versions & changes", group: "Operations" },
   { to: "/admin/audit", label: "Audit & logs", group: "Operations" },
@@ -187,6 +189,7 @@ export default function AdminApp() {
                 <Route path="coverage" element={<CoverageSection />} />
                 <Route path="sources" element={<SourcesSection />} />
                 <Route path="evaluation" element={<EvaluationSection />} />
+                <Route path="benchmarks" element={<BenchmarkSection />} />
                 <Route path="failures" element={<FailureSection />} />
                 <Route path="farmers" element={<FarmersSection />} />
                 <Route path="backups" element={<BackupSection />} />

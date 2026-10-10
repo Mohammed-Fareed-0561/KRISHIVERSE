@@ -1,0 +1,288 @@
+{
+ "dataClass": "benchmark-evaluation",
+ "title": "Image-quality gate benchmark (procedural synthetic images)",
+ "runMeta": {
+  "benchmarkId": "rice-image-quality-v1",
+  "date": "2026-10-08T17:53:48.418Z",
+  "gitCommit": "1a0a85b0d40ea1e390a984480b0f29222f1f022a",
+  "gitDirty": true,
+  "seed": 20261008,
+  "runtime": "node v22.21.0",
+  "device": {
+   "node": "v22.21.0",
+   "os": "Windows_NT 10.0.26200",
+   "arch": "x64",
+   "cpuModel": "Intel(R) Core(TM) i7-8650U CPU @ 1.90GHz",
+   "cpuCount": 8,
+   "totalMemMB": 16227,
+   "deviceClass": "desktop-reference",
+   "browser": "not-applicable (node benchmark harness)"
+  },
+  "kb": {
+   "version": 2,
+   "generatedAt": "2026-10-06T08:09:58.882Z",
+   "recordCount": 15023,
+   "path": "KRISHIVERSE/src/data/kb/v2/manifest.json",
+   "hash": "e64a35c8a7c9bad204d6a7b04f2d65f94861c0be43a6bdd06bc4a6f166a2aadb"
+  },
+  "models": {
+   "public/models/efficientnet_b0_plantvillage.onnx": {
+    "bytes": 16050931,
+    "sha256": "fab0a1dbf5a5fb582ddef6d941ab0ed8b3f5a6666d088c44022f4429af857e0f"
+   },
+   "public/models/efficientnet_b0_plantvillage.onnx.data": {
+    "bytes": 16056320,
+    "sha256": "54ca55a6dcacf5cef4de8bc805b5f03a5a67b6f466794a88435511df33058399"
+   },
+   "public/models/labels.json": {
+    "bytes": 334,
+    "sha256": "549fd59a89d58fc69205d7dd0a9bf1a742f287dbb3b97611cfad1339fca361d9"
+   },
+   "../models/onnx_eval_results.json": {
+    "bytes": 22672,
+    "sha256": "a2aaf880005cdfc1edea6f60127c4d9a658b472c1933c3068efe1863514335d3"
+   }
+  },
+  "datasetHashes": {
+   "eval/mobile-ai/datasets/imageQualityCases.js": "093d9557ab70e9225a60b2b14520ee72facc8d900b80f2f48c867ef5f5b0b6c3"
+  },
+  "configuration": {
+   "harness": "KRISHIVERSE/eval/mobile-ai (isolated)",
+   "telemetry": "none — benchmark harness performs no network calls unless an adapter explicitly opts in via env",
+   "needleTelemetry": "NEEDLE_TELEMETRY=0 DO_NOT_TRACK=1 mandated for any Needle execution (see docs/ai/needle-evaluation.md)",
+   "generator": "seeded mulberry32, 160x160 RGBA",
+   "thresholds": "eval/mobile-ai/imagequality/imageQualityGuard.js"
+  }
+ },
+ "dataset": {
+  "total": 8,
+  "groundTruth": 0,
+  "origin": "synthetic-screening (procedural, seeded)",
+  "note": "procedural synthetic images (seeded). Gate behaviour on constructed signals only — NOT field images.",
+  "path": "KRISHIVERSE/eval/mobile-ai/datasets/imageQualityCases.js"
+ },
+ "arms": [
+  {
+   "id": "deterministic-quality-gate",
+   "label": "Deterministic image-quality gate (prototype)",
+   "state": "measured",
+   "metrics": {
+    "cases": 8,
+    "verdictCorrect": 8,
+    "flagsCorrect": 8,
+    "detectionRate": 1,
+    "falseBlockRateOnControls": 0,
+    "failures": []
+   },
+   "latencyMs": {
+    "n": 8,
+    "avg": 9.51,
+    "p95": 38.48,
+    "max": 38.48
+   }
+  },
+  {
+   "id": "occlusion-multobject-detection",
+   "label": "Heavy occlusion / multiple-object detection",
+   "state": "not-applicable",
+   "skipReason": "not reliably detectable by a deterministic pixel gate — requires a content model; documented as a limitation, not a silent gap"
+  }
+ ],
+ "taskBreakdown": {
+  "measured": [
+   "image-quality gating (blur/dark/bright/size/plant/background)"
+  ]
+ },
+ "rows": [
+  {
+   "id": "iq-sharp-leaf",
+   "origin": "synthetic-screening",
+   "expectedVerdict": "usable",
+   "actualVerdict": "usable",
+   "expectedFlags": [],
+   "actualFlags": [],
+   "verdictOk": true,
+   "flagsOk": true,
+   "ok": true,
+   "scores": {
+    "blurVariance": 3144.35,
+    "brightness": 107.89,
+    "contrast": 18.03,
+    "plantRatio": 0.3265,
+    "centerPlantRatio": 0.9783
+   },
+   "ms": 38.591
+  },
+  {
+   "id": "iq-blurred",
+   "origin": "synthetic-screening",
+   "expectedVerdict": "unusable",
+   "actualVerdict": "unusable",
+   "expectedFlags": [
+    "blurry"
+   ],
+   "actualFlags": [
+    "blurry",
+    "flat_low_contrast"
+   ],
+   "verdictOk": true,
+   "flagsOk": true,
+   "ok": true,
+   "scores": {
+    "blurVariance": 0.46,
+    "brightness": 107.9,
+    "contrast": 4.14,
+    "plantRatio": 0.3409,
+    "centerPlantRatio": 0.9862
+   },
+   "ms": 10.723
+  },
+  {
+   "id": "iq-dark",
+   "origin": "synthetic-screening",
+   "expectedVerdict": "unusable",
+   "actualVerdict": "unusable",
+   "expectedFlags": [
+    "too_dark"
+   ],
+   "actualFlags": [
+    "too_dark",
+    "flat_low_contrast"
+   ],
+   "verdictOk": true,
+   "flagsOk": true,
+   "ok": true,
+   "scores": {
+    "blurVariance": 151.24,
+    "brightness": 23.75,
+    "contrast": 3.96,
+    "plantRatio": 0.3265,
+    "centerPlantRatio": 0.9783
+   },
+   "ms": 5.196
+  },
+  {
+   "id": "iq-bright",
+   "origin": "synthetic-screening",
+   "expectedVerdict": "unusable",
+   "actualVerdict": "unusable",
+   "expectedFlags": [
+    "too_bright"
+   ],
+   "actualFlags": [
+    "too_bright",
+    "flat_low_contrast"
+   ],
+   "verdictOk": true,
+   "flagsOk": true,
+   "ok": true,
+   "scores": {
+    "blurVariance": 1414.89,
+    "brightness": 224.7,
+    "contrast": 11,
+    "plantRatio": 0.2539,
+    "centerPlantRatio": 0.7675
+   },
+   "ms": 4.499
+  },
+  {
+   "id": "iq-tiny-leaf",
+   "origin": "synthetic-screening",
+   "expectedVerdict": "unusable",
+   "actualVerdict": "unusable",
+   "expectedFlags": [
+    "leaf_too_small"
+   ],
+   "actualFlags": [
+    "flat_low_contrast",
+    "leaf_too_small"
+   ],
+   "verdictOk": true,
+   "flagsOk": true,
+   "ok": true,
+   "scores": {
+    "blurVariance": 1045.7,
+    "brightness": 104.88,
+    "contrast": 7.25,
+    "plantRatio": 0.0157,
+    "centerPlantRatio": 0.0627
+   },
+   "ms": 3.49
+  },
+  {
+   "id": "iq-no-plant",
+   "origin": "synthetic-screening",
+   "expectedVerdict": "unusable",
+   "actualVerdict": "unusable",
+   "expectedFlags": [
+    "no_plant_or_leaf"
+   ],
+   "actualFlags": [
+    "no_plant_or_leaf"
+   ],
+   "verdictOk": true,
+   "flagsOk": true,
+   "ok": true,
+   "scores": {
+    "blurVariance": 5967.66,
+    "brightness": 146.12,
+    "contrast": 17.35,
+    "plantRatio": 0,
+    "centerPlantRatio": 0
+   },
+   "ms": 3.535
+  },
+  {
+   "id": "iq-non-leaf",
+   "origin": "synthetic-screening",
+   "expectedVerdict": "unusable",
+   "actualVerdict": "unusable",
+   "expectedFlags": [
+    "no_plant_or_leaf"
+   ],
+   "actualFlags": [
+    "no_plant_or_leaf"
+   ],
+   "verdictOk": true,
+   "flagsOk": true,
+   "ok": true,
+   "scores": {
+    "blurVariance": 9159.13,
+    "brightness": 188.51,
+    "contrast": 57.32,
+    "plantRatio": 0,
+    "centerPlantRatio": 0
+   },
+   "ms": 3.468
+  },
+  {
+   "id": "iq-background-heavy",
+   "origin": "synthetic-screening",
+   "expectedVerdict": "unusable",
+   "actualVerdict": "unusable",
+   "expectedFlags": [
+    "excessive_background"
+   ],
+   "actualFlags": [
+    "flat_low_contrast",
+    "excessive_background"
+   ],
+   "verdictOk": true,
+   "flagsOk": true,
+   "ok": true,
+   "scores": {
+    "blurVariance": 1070.91,
+    "brightness": 103.6,
+    "contrast": 7.35,
+    "plantRatio": 0.2662,
+    "centerPlantRatio": 0
+   },
+   "ms": 6.988
+  }
+ ],
+ "limitations": [
+  "Procedural synthetic images only — detection rates do NOT transfer to field photos.",
+  "'Reduces false diagnoses' is NOT measured: that requires running the ONNX model with/without the gate on real images.",
+  "Heavy occlusion and multi-object confusion are out of scope for the deterministic gate (arm recorded not-applicable)."
+ ]
+}

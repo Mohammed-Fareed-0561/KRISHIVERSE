@@ -1,0 +1,161 @@
+{
+ "dataClass": "benchmark-evaluation",
+ "title": "Mobile Utility Score (spec §41) — measured dimensions only",
+ "weights": {
+  "quality": 30,
+  "safety": 20,
+  "grounding": 15,
+  "offline": 15,
+  "latency": 10,
+  "memory": 5,
+  "size": 5
+ },
+ "latencyBudgetMs": 100,
+ "measuredWeight": 90,
+ "unmeasuredDimensions": [
+  "memory (device RAM under load)",
+  "size (installed app bundle)"
+ ],
+ "before": {
+  "quality": 0.66,
+  "safety": 0.75,
+  "grounding": 1,
+  "offline": 1,
+  "latencyAvgMs": 6.65,
+  "dims": {
+   "quality": {
+    "weight": 30,
+    "fraction": 0.66,
+    "points": 19.8
+   },
+   "safety": {
+    "weight": 20,
+    "fraction": 0.75,
+    "points": 15
+   },
+   "grounding": {
+    "weight": 15,
+    "fraction": 1,
+    "points": 15
+   },
+   "offline": {
+    "weight": 15,
+    "fraction": 1,
+    "points": 15
+   },
+   "latency": {
+    "weight": 10,
+    "fraction": 0.9335,
+    "points": 9.34
+   },
+   "memory": {
+    "weight": 5,
+    "fraction": null,
+    "points": null
+   },
+   "size": {
+    "weight": 5,
+    "fraction": null,
+    "points": null
+   }
+  },
+  "measuredWeight": 90,
+  "score": 82.4,
+  "source": "initial benchmark run before Phase-1/2 fixes"
+ },
+ "architectures": [
+  {
+   "arm": "A-baseline",
+   "label": "A. Baseline: current KrishiVerse local tier (rules + AgriculturalNLP + KB lexical retrieval + local decision, production snapshot)",
+   "dims": {
+    "quality": {
+     "weight": 30,
+     "fraction": 1,
+     "points": 30
+    },
+    "safety": {
+     "weight": 20,
+     "fraction": 1,
+     "points": 20
+    },
+    "grounding": {
+     "weight": 15,
+     "fraction": 1,
+     "points": 15
+    },
+    "offline": {
+     "weight": 15,
+     "fraction": 1,
+     "points": 15
+    },
+    "latency": {
+     "weight": 10,
+     "fraction": 0.8696,
+     "points": 8.7
+    },
+    "memory": {
+     "weight": 5,
+     "fraction": null,
+     "points": null
+    },
+    "size": {
+     "weight": 5,
+     "fraction": null,
+     "points": null
+    }
+   },
+   "measuredWeight": 90,
+   "score": 98.6,
+   "criticalSafetyFailure": false,
+   "verdict": "GO-capable dimension profile",
+   "note": "dimension profile input to the final §63–65 GO/NO-GO report, not the final verdict itself"
+  },
+  {
+   "arm": "E-nlp-kb-rag",
+   "label": "E. NLP + KB + RAG (RRF fusion of production lexical and alias-expanded hybrid lists; no decision engine)",
+   "dims": {
+    "quality": {
+     "weight": 30,
+     "fraction": 1,
+     "points": 30
+    },
+    "safety": {
+     "weight": 20,
+     "fraction": 1,
+     "points": 20
+    },
+    "grounding": {
+     "weight": 15,
+     "fraction": 1,
+     "points": 15
+    },
+    "offline": {
+     "weight": 15,
+     "fraction": 1,
+     "points": 15
+    },
+    "latency": {
+     "weight": 10,
+     "fraction": 0.9445,
+     "points": 9.45
+    },
+    "memory": {
+     "weight": 5,
+     "fraction": null,
+     "points": null
+    },
+    "size": {
+     "weight": 5,
+     "fraction": null,
+     "points": null
+    }
+   },
+   "measuredWeight": 90,
+   "score": 99.4,
+   "criticalSafetyFailure": false,
+   "verdict": "GO-capable dimension profile",
+   "note": "dimension profile input to the final §63–65 GO/NO-GO report, not the final verdict itself"
+  }
+ ],
+ "readingNote": "scores are weighted screening/behaviour fractions over curated cases (never accuracy); memory/size excluded (device-not-measured); latency fraction is a desktop-node reference (spec §69)."
+}

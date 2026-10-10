@@ -1,5 +1,5 @@
 {
- "generatedAt": "2026-10-08T08:15:20.563Z",
+ "generatedAt": "2026-10-08T17:46:10.410Z",
  "origin": "synthetic-screening + real file inventory + recorded eval rows (NOT expert ground truth)",
  "rows": [
   {
@@ -26,7 +26,7 @@
   },
   {
    "id": "text-unknown-crop",
-   "ms": 0.4,
+   "ms": 0.5,
    "error": null,
    "top1": null,
    "top3": [],

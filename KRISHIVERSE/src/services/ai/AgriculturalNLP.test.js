@@ -3,6 +3,7 @@ import {
   tokenize,
   normalizeCrop,
   normalizeSymptom,
+  distinctSymptoms,
   classifyIntent,
   parseQuery,
   buildInvertedIndex,
@@ -48,6 +49,12 @@ describe('AgriculturalNLP', () => {
       expect(normalizeCrop('आलू')).toBe('potato');
     });
 
+    it('maps Tanglish aliases (Phase 2: nel gap regression)', () => {
+      expect(normalizeCrop('nel')).toBe('rice');
+      expect(normalizeCrop('nellu')).toBe('rice');
+    });
+
+
     it('returns null for unknown tokens', () => {
       expect(normalizeCrop('dragonfruit')).toBeNull();
     });
@@ -56,9 +63,29 @@ describe('AgriculturalNLP', () => {
   describe('normalizeSymptom', () => {
     it('maps aliases to canonical symptom', () => {
       expect(normalizeSymptom('yellow')).toBe('yellowing');
-      expect(normalizeSymptom('मञ्जल' === 'x' ? 'x' : 'पीला')).toBe('yellowing');
+      expect(normalizeSymptom('पीला')).toBe('yellowing');
       expect(normalizeSymptom('wilting')).toBe('wilting');
       expect(normalizeSymptom('spot')).toBe('brown spots');
+    });
+
+    it('matches Tamil inflections (Phase 2: prefix + virama case-suffix)', () => {
+      expect(normalizeSymptom('புள்ளிகள்')).toBe('brown spots');
+      expect(normalizeSymptom('மஞ்சளாகிறது')).toBe('yellowing');
+      expect(normalizeSymptom('இலை')).toBeNull(); // leaf is an intent kw, not a symptom
+    });
+
+    it('keeps Latin aliases token-exact (no substring leakage)', () => {
+      expect(normalizeSymptom('respite')).toBeNull();
+    });
+  });
+
+  describe('distinctSymptoms (differential clarification input)', () => {
+    it('collects two distinct diseases from a differential query', () => {
+      expect(distinctSymptoms('nel la blast ah brown spot ah epdi theriyum?').size).toBe(2);
+    });
+    it('collects one symptom from a clear query', () => {
+      expect(distinctSymptoms('What is rice blast?').size).toBe(1);
+      expect(distinctSymptoms('rice problem').size).toBe(0);
     });
   });
 
@@ -121,6 +148,32 @@ describe('AgriculturalNLP', () => {
     it('does not match तना inside कितना (boundary-aware)', () => {
       expect(classifyIntent('धान के लिए खाद कितना')).toBe('fertilizer');
     });
+
+    it('routes Latin misspellings to disease via symptom anchor (Phase 2)', () => {
+      expect(classifyIntent('rice blsat disese')).toBe('disease');
+      expect(classifyIntent('pddy lves yelow')).toBe('disease');
+      expect(classifyIntent('My rice leaves are turning yellow.')).toBe('disease');
+      expect(classifyIntent('What are the symptoms of brown spot in rice?')).toBe('disease');
+      expect(classifyIntent('padiy ilai yeelow aguthu')).toBe('disease');
+    });
+
+    it('recognizes inflected Tamil disease queries (Phase 2)', () => {
+      expect(classifyIntent('நெல் நோயை எப்படி கண்டுபிடிப்பது?')).toBe('disease');
+      expect(classifyIntent('நெல் பிரச்சனை')).toBe('disease');
+      expect(classifyIntent('தக்காளி இலைகளில் புள்ளிகள்')).toBe('disease');
+    });
+
+    it('symptom anchor cannot outscore phrase/meta intents (Phase 2 guard)', () => {
+      expect(classifyIntent('hello')).toBe('greeting');
+      expect(classifyIntent('rain forecast this week')).toBe('weather');
+      expect(classifyIntent('how much urea for paddy')).toBe('fertilizer');
+      expect(classifyIntent('What is rice blast?')).toBe('what_is');
+      expect(classifyIntent('qwerty xyz')).toBe('unknown');
+    });
+
+    it('routes request-form information queries to what_is, not price (Phase 2)', () => {
+      expect(classifyIntent('tell me a stock market tip for rice companies')).toBe('what_is');
+    });
   });
 
   describe('parseQuery', () => {
@@ -135,6 +188,16 @@ describe('AgriculturalNLP', () => {
       const parsed = parseQuery('நெல் மஞ்சள் புள்ளி');
       expect(parsed.crop).toBe('rice');
       expect(parsed.symptom).toBe('yellowing');
+    });
+
+    it('extracts crop from Tanglish "nel" queries (alias, not fuzzy)', () => {
+      const parsed = parseQuery('nel ilaila brown spots iruku');
+      expect(parsed.crop).toBe('rice');
+      expect(parsed.symptom).toBe('brown spots');
+      expect(parsed.intent).toBe('disease');
+      const short = parseQuery('nel ku eno disease maari iruku');
+      expect(short.crop).toBe('rice');
+      expect(short.intent).toBe('disease');
     });
 
     it('prefers exact crop match over fuzzy false positive', () => {

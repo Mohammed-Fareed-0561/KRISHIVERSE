@@ -9,6 +9,7 @@ import { telemetryRoutes } from './telemetry.routes.js'
 import { monitoringRoutes } from './monitoring.routes.js'
 import { farmersRoutes } from './farmers.routes.js'
 import { evaluationRoutes } from './evaluation.routes.js'
+import { benchmarkRoutes } from './benchmark.routes.js'
 import { opsRoutes } from './ops.routes.js'
 
 export const adminRouter = Router()
@@ -44,6 +45,7 @@ adminRouter.use(adminLimiter({ max: 300, scope: 'read' }))
 adminRouter.use('/', monitoringRoutes)
 adminRouter.use('/', farmersRoutes)
 adminRouter.use('/evaluation', evaluationRoutes)
+adminRouter.use('/benchmarks', benchmarkRoutes)
 adminRouter.use('/', opsRoutes)
 
 adminRouter.use((req, res) => {

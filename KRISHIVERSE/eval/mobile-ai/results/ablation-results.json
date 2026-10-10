@@ -1,0 +1,747 @@
+{
+ "dataClass": "benchmark-evaluation",
+ "title": "Ablation results: one local component removed at a time (spec §40)",
+ "runMeta": {
+  "benchmarkId": "rice-ablation-v1",
+  "date": "2026-10-08T17:53:49.787Z",
+  "gitCommit": "1a0a85b0d40ea1e390a984480b0f29222f1f022a",
+  "gitDirty": true,
+  "seed": 20261008,
+  "runtime": "node v22.21.0",
+  "device": {
+   "node": "v22.21.0",
+   "os": "Windows_NT 10.0.26200",
+   "arch": "x64",
+   "cpuModel": "Intel(R) Core(TM) i7-8650U CPU @ 1.90GHz",
+   "cpuCount": 8,
+   "totalMemMB": 16227,
+   "deviceClass": "desktop-reference",
+   "browser": "not-applicable (node benchmark harness)"
+  },
+  "kb": {
+   "version": 2,
+   "generatedAt": "2026-10-06T08:09:58.882Z",
+   "recordCount": 15023,
+   "path": "KRISHIVERSE/src/data/kb/v2/manifest.json",
+   "hash": "e64a35c8a7c9bad204d6a7b04f2d65f94861c0be43a6bdd06bc4a6f166a2aadb"
+  },
+  "models": {
+   "public/models/efficientnet_b0_plantvillage.onnx": {
+    "bytes": 16050931,
+    "sha256": "fab0a1dbf5a5fb582ddef6d941ab0ed8b3f5a6666d088c44022f4429af857e0f"
+   },
+   "public/models/efficientnet_b0_plantvillage.onnx.data": {
+    "bytes": 16056320,
+    "sha256": "54ca55a6dcacf5cef4de8bc805b5f03a5a67b6f466794a88435511df33058399"
+   },
+   "public/models/labels.json": {
+    "bytes": 334,
+    "sha256": "549fd59a89d58fc69205d7dd0a9bf1a742f287dbb3b97611cfad1339fca361d9"
+   },
+   "../models/onnx_eval_results.json": {
+    "bytes": 22672,
+    "sha256": "a2aaf880005cdfc1edea6f60127c4d9a658b472c1933c3068efe1863514335d3"
+   }
+  },
+  "datasetHashes": {
+   "eval/mobile-ai/datasets/riceChatbotCases.js": "382c5747c2bab2a92b4737d23906ebf34d407bc7f0e363b0248bc42b2cdb4227"
+  },
+  "configuration": {
+   "harness": "KRISHIVERSE/eval/mobile-ai (isolated)",
+   "telemetry": "none — benchmark harness performs no network calls unless an adapter explicitly opts in via env",
+   "needleTelemetry": "NEEDLE_TELEMETRY=0 DO_NOT_TRACK=1 mandated for any Needle execution (see docs/ai/needle-evaluation.md)",
+   "components": "AgriculturalNLP parse,KB retrieval,Local decision engine,language identification,rule extractors (plant-part, farmer-context)",
+   "seed": "fixed (deterministic rules)"
+  }
+ },
+ "dataset": {
+  "total": 36,
+  "origin": "synthetic-screening (0 expert-labelled)",
+  "path": "KRISHIVERSE/eval/mobile-ai/benchmarks/ablation.benchmark.test.js"
+ },
+ "arms": [
+  {
+   "id": "ablation-00-full",
+   "label": "Baseline: full local composition (NLP + langId + KB + decision + extractors)",
+   "state": "measured",
+   "removed": null,
+   "metrics": {
+    "overall": {
+     "n": 101,
+     "ok": 101,
+     "passRate": 1
+    },
+    "byTask": {
+     "language-identification": {
+      "n": 23,
+      "ok": 23,
+      "passRate": 1
+     },
+     "intent-classification": {
+      "n": 23,
+      "ok": 23,
+      "passRate": 1
+     },
+     "crop-extraction": {
+      "n": 23,
+      "ok": 23,
+      "passRate": 1
+     },
+     "symptom-extraction": {
+      "n": 11,
+      "ok": 11,
+      "passRate": 1
+     },
+     "plant-part-extraction": {
+      "n": 4,
+      "ok": 4,
+      "passRate": 1
+     },
+     "clarification-selection": {
+      "n": 9,
+      "ok": 9,
+      "passRate": 1
+     },
+     "farmer-context-extraction": {
+      "n": 2,
+      "ok": 2,
+      "passRate": 1
+     },
+     "kb-retrieval": {
+      "n": 6,
+      "ok": 6,
+      "passRate": 1
+     },
+     "safety": {
+      "n": 0,
+      "ok": 0,
+      "passRate": null
+     }
+    },
+    "byLanguage": {
+     "en": {
+      "n": 54,
+      "ok": 54,
+      "passRate": 1
+     },
+     "ta": {
+      "n": 21,
+      "ok": 21,
+      "passRate": 1
+     },
+     "tanglish": {
+      "n": 26,
+      "ok": 26,
+      "passRate": 1
+     }
+    },
+    "failures": []
+   },
+   "latencyMs": {
+    "n": 36,
+    "avg": 10.42,
+    "p95": 65.83,
+    "max": 112.45
+   }
+  },
+  {
+   "id": "ablation-01-no-nlp",
+   "label": "−NLP: parse stubbed (intent unknown, no crop/symptom)",
+   "state": "measured",
+   "removed": "AgriculturalNLP parse",
+   "metrics": {
+    "overall": {
+     "n": 101,
+     "ok": 45,
+     "passRate": 0.446
+    },
+    "byTask": {
+     "language-identification": {
+      "n": 23,
+      "ok": 23,
+      "passRate": 1
+     },
+     "intent-classification": {
+      "n": 23,
+      "ok": 0,
+      "passRate": 0
+     },
+     "crop-extraction": {
+      "n": 23,
+      "ok": 3,
+      "passRate": 0.13
+     },
+     "symptom-extraction": {
+      "n": 11,
+      "ok": 0,
+      "passRate": 0
+     },
+     "plant-part-extraction": {
+      "n": 4,
+      "ok": 4,
+      "passRate": 1
+     },
+     "clarification-selection": {
+      "n": 9,
+      "ok": 7,
+      "passRate": 0.778
+     },
+     "farmer-context-extraction": {
+      "n": 2,
+      "ok": 2,
+      "passRate": 1
+     },
+     "kb-retrieval": {
+      "n": 6,
+      "ok": 6,
+      "passRate": 1
+     },
+     "safety": {
+      "n": 0,
+      "ok": 0,
+      "passRate": null
+     }
+    },
+    "byLanguage": {
+     "en": {
+      "n": 54,
+      "ok": 27,
+      "passRate": 0.5
+     },
+     "ta": {
+      "n": 21,
+      "ok": 8,
+      "passRate": 0.381
+     },
+     "tanglish": {
+      "n": 26,
+      "ok": 10,
+      "passRate": 0.385
+     }
+    },
+    "failures": [
+     "rice-en-whatis-blast:intent-classification",
+     "rice-en-whatis-blast:crop-extraction",
+     "rice-en-brownspot-symptoms:intent-classification",
+     "rice-en-brownspot-symptoms:crop-extraction",
+     "rice-en-brownspot-symptoms:symptom-extraction",
+     "rice-en-paddy-brownspots:intent-classification",
+     "rice-en-paddy-brownspots:crop-extraction",
+     "rice-en-paddy-brownspots:symptom-extraction",
+     "rice-en-distinguish:intent-classification",
+     "rice-en-yellowing:intent-classification",
+     "rice-en-yellowing:crop-extraction",
+     "rice-en-yellowing:symptom-extraction",
+     "rice-en-after-rain:intent-classification",
+     "rice-ta-brownspots:intent-classification",
+     "rice-ta-brownspots:crop-extraction",
+     "rice-ta-brownspots:symptom-extraction",
+     "rice-ta-yellowing:intent-classification",
+     "rice-ta-yellowing:crop-extraction",
+     "rice-ta-yellowing:symptom-extraction",
+     "rice-ta-diagnose-how:intent-classification",
+     "rice-ta-diagnose-how:crop-extraction",
+     "rice-ta-blast-what:intent-classification",
+     "rice-ta-blast-what:crop-extraction",
+     "rice-tg-brownspots:intent-classification",
+     "rice-tg-brownspots:crop-extraction",
+     "rice-tg-brownspots:symptom-extraction",
+     "rice-en-context-location:intent-classification",
+     "rice-en-context-location:crop-extraction",
+     "rice-en-context-location:symptom-extraction",
+     "rice-tg-context-season:intent-classification",
+     "rice-tg-context-season:crop-extraction",
+     "rice-tg-context-season:symptom-extraction",
+     "rice-tg-yellowing:intent-classification",
+     "rice-tg-yellowing:crop-extraction",
+     "rice-tg-yellowing:symptom-extraction",
+     "rice-tg-differential:intent-classification",
+     "rice-tg-differential:crop-extraction",
+     "rice-en-typo-blast:intent-classification",
+     "rice-en-typo-blast:crop-extraction",
+     "rice-en-typo-paddy:intent-classification",
+     "rice-en-typo-paddy:crop-extraction",
+     "rice-en-typo-paddy:symptom-extraction",
+     "rice-tg-typo:intent-classification",
+     "rice-tg-typo:crop-extraction",
+     "rice-tg-typo:symptom-extraction",
+     "rice-en-short:intent-classification",
+     "rice-en-short:crop-extraction",
+     "rice-en-short:clarification-selection",
+     "rice-ta-short:intent-classification",
+     "rice-ta-short:crop-extraction",
+     "rice-ta-short:clarification-selection",
+     "rice-tg-colloquial:intent-classification",
+     "rice-tg-colloquial:crop-extraction",
+     "rice-en-astro:intent-classification",
+     "rice-en-stock:intent-classification",
+     "rice-en-stock:crop-extraction"
+    ]
+   },
+   "latencyMs": {
+    "n": 36,
+    "avg": 0.59,
+    "p95": 1.87,
+    "max": 4.25
+   }
+  },
+  {
+   "id": "ablation-02-no-retrieval",
+   "label": "−Retrieval: retrieve returns empty list",
+   "state": "measured",
+   "removed": "KB retrieval",
+   "metrics": {
+    "overall": {
+     "n": 101,
+     "ok": 95,
+     "passRate": 0.941
+    },
+    "byTask": {
+     "language-identification": {
+      "n": 23,
+      "ok": 23,
+      "passRate": 1
+     },
+     "intent-classification": {
+      "n": 23,
+      "ok": 23,
+      "passRate": 1
+     },
+     "crop-extraction": {
+      "n": 23,
+      "ok": 23,
+      "passRate": 1
+     },
+     "symptom-extraction": {
+      "n": 11,
+      "ok": 11,
+      "passRate": 1
+     },
+     "plant-part-extraction": {
+      "n": 4,
+      "ok": 4,
+      "passRate": 1
+     },
+     "clarification-selection": {
+      "n": 9,
+      "ok": 9,
+      "passRate": 1
+     },
+     "farmer-context-extraction": {
+      "n": 2,
+      "ok": 2,
+      "passRate": 1
+     },
+     "kb-retrieval": {
+      "n": 6,
+      "ok": 0,
+      "passRate": 0
+     },
+     "safety": {
+      "n": 0,
+      "ok": 0,
+      "passRate": null
+     }
+    },
+    "byLanguage": {
+     "en": {
+      "n": 54,
+      "ok": 50,
+      "passRate": 0.926
+     },
+     "ta": {
+      "n": 21,
+      "ok": 20,
+      "passRate": 0.952
+     },
+     "tanglish": {
+      "n": 26,
+      "ok": 25,
+      "passRate": 0.962
+     }
+    },
+    "failures": [
+     "rice-en-blast-treatment:kb-retrieval",
+     "rice-en-blast-info:kb-retrieval",
+     "rice-ta-blast-info:kb-retrieval",
+     "rice-tg-blast-info:kb-retrieval",
+     "rice-en-tricyclazole:kb-retrieval",
+     "rice-en-brownspot-nokb:kb-retrieval"
+    ]
+   },
+   "latencyMs": {
+    "n": 36,
+    "avg": 2.28,
+    "p95": 8.45,
+    "max": 10.69
+   }
+  },
+  {
+   "id": "ablation-03-no-decision",
+   "label": "−Decision: decide stubbed (never clarifies, intent unknown)",
+   "state": "measured",
+   "removed": "Local decision engine",
+   "metrics": {
+    "overall": {
+     "n": 101,
+     "ok": 94,
+     "passRate": 0.931
+    },
+    "byTask": {
+     "language-identification": {
+      "n": 23,
+      "ok": 23,
+      "passRate": 1
+     },
+     "intent-classification": {
+      "n": 23,
+      "ok": 23,
+      "passRate": 1
+     },
+     "crop-extraction": {
+      "n": 23,
+      "ok": 23,
+      "passRate": 1
+     },
+     "symptom-extraction": {
+      "n": 11,
+      "ok": 11,
+      "passRate": 1
+     },
+     "plant-part-extraction": {
+      "n": 4,
+      "ok": 4,
+      "passRate": 1
+     },
+     "clarification-selection": {
+      "n": 9,
+      "ok": 2,
+      "passRate": 0.222
+     },
+     "farmer-context-extraction": {
+      "n": 2,
+      "ok": 2,
+      "passRate": 1
+     },
+     "kb-retrieval": {
+      "n": 6,
+      "ok": 6,
+      "passRate": 1
+     },
+     "safety": {
+      "n": 0,
+      "ok": 0,
+      "passRate": null
+     }
+    },
+    "byLanguage": {
+     "en": {
+      "n": 54,
+      "ok": 49,
+      "passRate": 0.907
+     },
+     "ta": {
+      "n": 21,
+      "ok": 20,
+      "passRate": 0.952
+     },
+     "tanglish": {
+      "n": 26,
+      "ok": 25,
+      "passRate": 0.962
+     }
+    },
+    "failures": [
+     "rice-en-distinguish:clarification-selection",
+     "rice-en-after-rain:clarification-selection",
+     "rice-tg-differential:clarification-selection",
+     "rice-en-short:clarification-selection",
+     "rice-ta-short:clarification-selection",
+     "rice-dec-ambiguous:clarification-selection",
+     "rice-dec-candidate:clarification-selection"
+    ]
+   },
+   "latencyMs": {
+    "n": 36,
+    "avg": 2.03,
+    "p95": 6.26,
+    "max": 12.31
+   }
+  },
+  {
+   "id": "ablation-04-no-langid",
+   "label": "−LangId: language stubbed to en",
+   "state": "measured",
+   "removed": "language identification",
+   "metrics": {
+    "overall": {
+     "n": 101,
+     "ok": 90,
+     "passRate": 0.891
+    },
+    "byTask": {
+     "language-identification": {
+      "n": 23,
+      "ok": 12,
+      "passRate": 0.522
+     },
+     "intent-classification": {
+      "n": 23,
+      "ok": 23,
+      "passRate": 1
+     },
+     "crop-extraction": {
+      "n": 23,
+      "ok": 23,
+      "passRate": 1
+     },
+     "symptom-extraction": {
+      "n": 11,
+      "ok": 11,
+      "passRate": 1
+     },
+     "plant-part-extraction": {
+      "n": 4,
+      "ok": 4,
+      "passRate": 1
+     },
+     "clarification-selection": {
+      "n": 9,
+      "ok": 9,
+      "passRate": 1
+     },
+     "farmer-context-extraction": {
+      "n": 2,
+      "ok": 2,
+      "passRate": 1
+     },
+     "kb-retrieval": {
+      "n": 6,
+      "ok": 6,
+      "passRate": 1
+     },
+     "safety": {
+      "n": 0,
+      "ok": 0,
+      "passRate": null
+     }
+    },
+    "byLanguage": {
+     "en": {
+      "n": 54,
+      "ok": 54,
+      "passRate": 1
+     },
+     "ta": {
+      "n": 21,
+      "ok": 16,
+      "passRate": 0.762
+     },
+     "tanglish": {
+      "n": 26,
+      "ok": 20,
+      "passRate": 0.769
+     }
+    },
+    "failures": [
+     "rice-ta-brownspots:language-identification",
+     "rice-ta-yellowing:language-identification",
+     "rice-ta-diagnose-how:language-identification",
+     "rice-ta-blast-what:language-identification",
+     "rice-tg-brownspots:language-identification",
+     "rice-tg-context-season:language-identification",
+     "rice-tg-yellowing:language-identification",
+     "rice-tg-differential:language-identification",
+     "rice-tg-typo:language-identification",
+     "rice-ta-short:language-identification",
+     "rice-tg-colloquial:language-identification"
+    ]
+   },
+   "latencyMs": {
+    "n": 36,
+    "avg": 2.71,
+    "p95": 8.15,
+    "max": 12.46
+   }
+  },
+  {
+   "id": "ablation-05-no-extractors",
+   "label": "−Extractors: plantPart/farmerContext stubbed to null",
+   "state": "measured",
+   "removed": "rule extractors (plant-part, farmer-context)",
+   "metrics": {
+    "overall": {
+     "n": 101,
+     "ok": 95,
+     "passRate": 0.941
+    },
+    "byTask": {
+     "language-identification": {
+      "n": 23,
+      "ok": 23,
+      "passRate": 1
+     },
+     "intent-classification": {
+      "n": 23,
+      "ok": 23,
+      "passRate": 1
+     },
+     "crop-extraction": {
+      "n": 23,
+      "ok": 23,
+      "passRate": 1
+     },
+     "symptom-extraction": {
+      "n": 11,
+      "ok": 11,
+      "passRate": 1
+     },
+     "plant-part-extraction": {
+      "n": 4,
+      "ok": 0,
+      "passRate": 0
+     },
+     "clarification-selection": {
+      "n": 9,
+      "ok": 9,
+      "passRate": 1
+     },
+     "farmer-context-extraction": {
+      "n": 2,
+      "ok": 0,
+      "passRate": 0
+     },
+     "kb-retrieval": {
+      "n": 6,
+      "ok": 6,
+      "passRate": 1
+     },
+     "safety": {
+      "n": 0,
+      "ok": 0,
+      "passRate": null
+     }
+    },
+    "byLanguage": {
+     "en": {
+      "n": 54,
+      "ok": 51,
+      "passRate": 0.944
+     },
+     "ta": {
+      "n": 21,
+      "ok": 20,
+      "passRate": 0.952
+     },
+     "tanglish": {
+      "n": 26,
+      "ok": 24,
+      "passRate": 0.923
+     }
+    },
+    "failures": [
+     "rice-en-paddy-brownspots:plant-part-extraction",
+     "rice-ta-brownspots:plant-part-extraction",
+     "rice-tg-brownspots:plant-part-extraction",
+     "rice-en-context-location:plant-part-extraction",
+     "rice-en-context-location:farmer-context-extraction",
+     "rice-tg-context-season:farmer-context-extraction"
+    ]
+   },
+   "latencyMs": {
+    "n": 36,
+    "avg": 2.08,
+    "p95": 6.56,
+    "max": 9.64
+   }
+  }
+ ],
+ "ablationTable": [
+  {
+   "removed": "AgriculturalNLP parse",
+   "arm": "ablation-01-no-nlp",
+   "passRate": 0.446,
+   "n": 101,
+   "deltaPassRate": 0.554,
+   "extraFailures": 56,
+   "failedTasks": [
+    "intent-classification (0/23)",
+    "crop-extraction (3/23)",
+    "symptom-extraction (0/11)",
+    "clarification-selection (7/9)"
+   ]
+  },
+  {
+   "removed": "KB retrieval",
+   "arm": "ablation-02-no-retrieval",
+   "passRate": 0.941,
+   "n": 101,
+   "deltaPassRate": 0.059,
+   "extraFailures": 6,
+   "failedTasks": [
+    "kb-retrieval (0/6)"
+   ]
+  },
+  {
+   "removed": "Local decision engine",
+   "arm": "ablation-03-no-decision",
+   "passRate": 0.931,
+   "n": 101,
+   "deltaPassRate": 0.069,
+   "extraFailures": 7,
+   "failedTasks": [
+    "clarification-selection (2/9)"
+   ]
+  },
+  {
+   "removed": "language identification",
+   "arm": "ablation-04-no-langid",
+   "passRate": 0.891,
+   "n": 101,
+   "deltaPassRate": 0.109,
+   "extraFailures": 11,
+   "failedTasks": [
+    "language-identification (12/23)"
+   ]
+  },
+  {
+   "removed": "rule extractors (plant-part, farmer-context)",
+   "arm": "ablation-05-no-extractors",
+   "passRate": 0.941,
+   "n": 101,
+   "deltaPassRate": 0.059,
+   "extraFailures": 6,
+   "failedTasks": [
+    "plant-part-extraction (0/4)",
+    "farmer-context-extraction (0/2)"
+   ]
+  }
+ ],
+ "baseline": {
+  "n": 101,
+  "ok": 101,
+  "passRate": 1
+ },
+ "totalMs": 731.7,
+ "taskBreakdown": {
+  "measured": [
+   "language-identification",
+   "intent-classification",
+   "crop-extraction",
+   "symptom-extraction",
+   "kb-retrieval",
+   "clarification-selection",
+   "plant-part-extraction",
+   "farmer-context-extraction"
+  ]
+ },
+ "limitations": [
+  "Screening set — pass rates are pipeline screening signals, never accuracy.",
+  "Stubbed components are benchmark-local (src/ untouched); interactions between components are not decomposed further.",
+  "Component removal changes which rows are scoreable only via behaviour (all rows stay scored via stubs)."
+ ],
+ "derivedFrom": [
+  "eval/mobile-ai/results/ablation.json"
+ ],
+ "generatedAt": "2026-10-08T17:56:09.806Z"
+}

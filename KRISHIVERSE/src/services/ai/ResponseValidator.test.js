@@ -125,7 +125,8 @@ describe("ResponseValidator", () => {
       const result = validateResponse({
         answer: "Spray Copper Oxychloride 3g per litre.",
         confidence: 0.8,
-        evidence: [{ id: "t1", name: "Copper Oxychloride", source: "TNAU" }],
+        // KB treatment records carry the dose in `method` (content backing).
+        evidence: [{ id: "t1", name: "Copper Oxychloride", source: "TNAU", method: "Copper Oxychloride (3g/L) spray." }],
         parsed: { crop: "tomato" },
         intent: "disease",
       });
@@ -216,6 +217,137 @@ describe("ResponseValidator", () => {
       });
       expect(v.type).toBe("high_risk");
       expect(v.verdict).toBe("blocked");
+    });
+  });
+
+  describe("Phase 3E.3: dose/schedule content backing (rice wrong-dose regression)", () => {
+    const riceEvidence = [{
+      id: "tnau_rice_blast_treatment",
+      cropId: "crop_rice",
+      verified: true,
+      source: "TNAU",
+      sourceUrl: "https://agritech.tnau.ac.in",
+      text: "Tricyclazole 75% WP @ 1g/liter for rice blast",
+    }];
+
+    it("REGRESSION: verified rice evidence must not authorize a different dose number", () => {
+      const v = validateResponse({
+        answer: "Apply Mancozeb 75% WP at 2 g per liter of water on rice every week.",
+        source: "eval",
+        records: riceEvidence,
+        evidence: riceEvidence,
+        parsed: { crop: "rice" },
+        intent: "disease",
+      });
+      expect(v.verdict).toBe("blocked");
+      expect(v.safeAnswer).toContain("can't safely give");
+      expect(v.reasons.join(" ")).toContain("dose_not_backed_by_evidence:2g");
+      expect(v.reasons.join(" ")).toContain("dose_contradicts_evidence:2g");
+    });
+
+    it("allows the exact dose the evidence contains (content + crop + provenance)", () => {
+      const v = validateResponse({
+        answer: "For rice blast, TNAU recommends Tricyclazole 75% WP at 1 g per liter of water.",
+        source: "eval",
+        records: riceEvidence,
+        evidence: riceEvidence,
+        parsed: { crop: "rice" },
+        intent: "disease",
+      });
+      expect(v.verdict).toBe("safe");
+    });
+
+    it("wrong crop: rice evidence never authorizes a tomato dose (identical number)", () => {
+      const v = validateResponse({
+        answer: "Spray Tricyclazole 75% WP at 1 g per liter on tomato.",
+        source: "eval",
+        records: riceEvidence,
+        evidence: riceEvidence,
+        parsed: { crop: "tomato" },
+        intent: "disease",
+      });
+      expect(v.verdict).toBe("blocked");
+      expect(v.reasons).toContain("high_risk_verified_evidence_crop_ineligible");
+    });
+
+    it("missing crop + crop-declaring evidence blocks; crop-agnostic evidence can back", () => {
+      const cropless = validateResponse({
+        answer: "Spray Tricyclazole 75% WP at 1 g per liter.",
+        source: "eval", records: riceEvidence, evidence: riceEvidence,
+        parsed: {}, intent: "disease",
+      });
+      expect(cropless.verdict).toBe("blocked");
+
+      const agnostic = validateResponse({
+        answer: "Spray Copper Oxychloride 3g per litre.",
+        source: "eval",
+        confidence: 0.8,
+        records: [{ id: "gen", source: "TNAU", method: "Copper Oxychloride (3g/L) spray." }],
+        evidence: [], parsed: {}, intent: "disease",
+      });
+      expect(agnostic.verdict).not.toBe("blocked"); // crop-agnostic + content-backed
+      expect(agnostic.verdict).toBe("safe");
+    });
+
+    it("verified record without the dose number cannot back it (unsupported dosage)", () => {
+      const v = validateResponse({
+        answer: "Spray Copper Oxychloride 3g per litre.",
+        source: "eval",
+        evidence: [{ id: "t1", name: "Copper Oxychloride", source: "TNAU" }],
+        parsed: { crop: "tomato" }, intent: "disease",
+      });
+      expect(v.verdict).toBe("blocked");
+      expect(v.reasons.join(" ")).toContain("dose_not_backed_by_evidence:3g");
+    });
+
+    it("unsupported numeric agricultural claim (%/yield) blocks without backing", () => {
+      const v = validateResponse({
+        answer: "Rice blast reduces yield by 40 percent in every affected field.",
+        source: "eval", records: riceEvidence, evidence: riceEvidence,
+        parsed: { crop: "rice" }, intent: "disease",
+      });
+      expect(v.verdict).toBe("blocked");
+      expect(v.reasons.join(" ")).toContain("dose_not_backed_by_evidence:40%");
+    });
+
+    it("unsupported spray schedule blocks even with verified backing", () => {
+      const v = validateResponse({
+        answer: "Spray neem oil on rice every 7 days.",
+        source: "eval",
+        records: [{ id: "tr", cropId: "crop_rice", verified: true, method: "Neem oil spray at tillering." }],
+        evidence: [], parsed: { crop: "rice" }, intent: "disease",
+      });
+      expect(v.verdict).toBe("blocked");
+      expect(v.reasons.join(" ")).toContain("spray_schedule_not_backed_by_evidence");
+    });
+
+    it("schedule present in evidence is backed", () => {
+      const v = validateResponse({
+        answer: "Repeat the spray after 15 days.",
+        source: "eval",
+        records: [{ id: "tr", cropId: "crop_rice", verified: true, method: "Spray at tillering; repeat after 15 days." }],
+        evidence: [], parsed: { crop: "rice" }, intent: "disease",
+      });
+      expect(v.verdict).not.toBe("blocked");
+    });
+
+    it("insufficient evidence → blocked safe limitation WITH clarification (abstain)", () => {
+      const v = validateResponse({
+        answer: "Apply 5 g per liter.",
+        source: "eval", records: [], evidence: [],
+        parsed: { crop: "rice" }, intent: "disease",
+      });
+      expect(v.verdict).toBe("blocked");
+      expect(v.safeAnswer).toContain("can't safely give");
+      expect(v.clarification).toBeTruthy();
+    });
+
+    it("informational answers without schedules are untouched", () => {
+      const v = validateResponse({
+        answer: "Rice is grown across the Cauvery delta.",
+        source: "local-knowledge-base", evidence: [],
+      });
+      expect(v.verdict).toBe("safe");
     });
   });
 });

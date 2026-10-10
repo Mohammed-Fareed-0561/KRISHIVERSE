@@ -1,0 +1,190 @@
+{
+ "dataClass": "benchmark-evaluation",
+ "title": "Mobile/low-end resource benchmark — DESKTOP REFERENCE ONLY (no Android device available)",
+ "runMeta": {
+  "benchmarkId": "rice-mobile-resources-v1",
+  "date": "2026-10-08T17:53:43.491Z",
+  "gitCommit": "1a0a85b0d40ea1e390a984480b0f29222f1f022a",
+  "gitDirty": true,
+  "seed": 20261008,
+  "runtime": "node v22.21.0",
+  "device": {
+   "node": "v22.21.0",
+   "os": "Windows_NT 10.0.26200",
+   "arch": "x64",
+   "cpuModel": "Intel(R) Core(TM) i7-8650U CPU @ 1.90GHz",
+   "cpuCount": 8,
+   "totalMemMB": 16227,
+   "deviceClass": "desktop-reference",
+   "browser": "not-applicable (node benchmark harness)"
+  },
+  "kb": {
+   "version": 2,
+   "generatedAt": "2026-10-06T08:09:58.882Z",
+   "recordCount": 15023,
+   "path": "KRISHIVERSE/src/data/kb/v2/manifest.json",
+   "hash": "e64a35c8a7c9bad204d6a7b04f2d65f94861c0be43a6bdd06bc4a6f166a2aadb"
+  },
+  "models": {
+   "public/models/efficientnet_b0_plantvillage.onnx": {
+    "bytes": 16050931,
+    "sha256": "fab0a1dbf5a5fb582ddef6d941ab0ed8b3f5a6666d088c44022f4429af857e0f"
+   },
+   "public/models/efficientnet_b0_plantvillage.onnx.data": {
+    "bytes": 16056320,
+    "sha256": "54ca55a6dcacf5cef4de8bc805b5f03a5a67b6f466794a88435511df33058399"
+   },
+   "public/models/labels.json": {
+    "bytes": 334,
+    "sha256": "549fd59a89d58fc69205d7dd0a9bf1a742f287dbb3b97611cfad1339fca361d9"
+   },
+   "../models/onnx_eval_results.json": {
+    "bytes": 22672,
+    "sha256": "a2aaf880005cdfc1edea6f60127c4d9a658b472c1933c3068efe1863514335d3"
+   }
+  },
+  "datasetHashes": {
+   "eval/mobile-ai/datasets/riceChatbotCases.js": "382c5747c2bab2a92b4737d23906ebf34d407bc7f0e363b0248bc42b2cdb4227"
+  },
+  "configuration": {
+   "harness": "KRISHIVERSE/eval/mobile-ai (isolated)",
+   "telemetry": "none — benchmark harness performs no network calls unless an adapter explicitly opts in via env",
+   "needleTelemetry": "NEEDLE_TELEMETRY=0 DO_NOT_TRACK=1 mandated for any Needle execution (see docs/ai/needle-evaluation.md)",
+   "measurementHost": {
+    "node": "v22.21.0",
+    "os": "Windows_NT 10.0.26200",
+    "arch": "x64",
+    "cpuModel": "Intel(R) Core(TM) i7-8650U CPU @ 1.90GHz",
+    "cpuCount": 8,
+    "totalMemMB": 16227,
+    "deviceClass": "desktop-reference",
+    "browser": "not-applicable (node benchmark harness)"
+   }
+  }
+ },
+ "dataset": {
+  "total": 0,
+  "origin": "n/a (resource measurement)"
+ },
+ "arms": [
+  {
+   "id": "desktop-reference",
+   "label": "Desktop reference (Intel(R) Core(TM) i7-8650U CPU @ 1.90GHz, 16227 MB RAM, Windows_NT 10.0.26200)",
+   "state": "measured",
+   "metrics": {
+    "kbIndexBuildMs": 8.4,
+    "kbIndexHeapDeltaMB": 1.71,
+    "chatbotSimpleQueryMs": {
+     "n": 50,
+     "avg": 6.61,
+     "p95": 13.9,
+     "max": 86.9
+    },
+    "chatbotComplexQueryMs": {
+     "n": 50,
+     "avg": 10.27,
+     "p95": 23.98,
+     "max": 48.56
+    },
+    "cropDoctorTextPathMs": {
+     "n": 4,
+     "avg": 0.65,
+     "max": 1.8,
+     "scope": "deterministic text/rule path (node)"
+    },
+    "storage": {
+     "onnxModel": [
+      {
+       "path": "public/models/efficientnet_b0_plantvillage.onnx",
+       "bytes": 16050931
+      },
+      {
+       "path": "public/models/efficientnet_b0_plantvillage.onnx.data",
+       "bytes": 16056320
+      },
+      {
+       "path": "public/models/labels.json",
+       "bytes": 334
+      }
+     ],
+     "onnxWasmRuntimeBytes": 40378480,
+     "kbV2": [
+      {
+       "path": "src/data/kb/v2/crops.json",
+       "bytes": 429749
+      },
+      {
+       "path": "src/data/kb/v2/diseasePests.json",
+       "bytes": 2433850
+      },
+      {
+       "path": "src/data/kb/v2/symptoms.json",
+       "bytes": 1785804
+      },
+      {
+       "path": "src/data/kb/v2/treatments.json",
+       "bytes": 3017888
+      },
+      {
+       "path": "src/data/kb/v2/edges.json",
+       "bytes": 3260950
+      },
+      {
+       "path": "src/data/kb/v2/manifest.json",
+       "bytes": 54971
+      }
+     ],
+     "kbV2TotalBytes": 10983212,
+     "distBundleBytes": 95885043
+    }
+   },
+   "latencyMs": {
+    "n": 50,
+    "avg": 6.61,
+    "p95": 13.9,
+    "max": 86.9
+   }
+  },
+  {
+   "id": "low-end-android",
+   "label": "Low-end Android (physical device)",
+   "state": "skipped",
+   "skipReason": "NO physical Android device available in this environment — numbers deliberately NOT invented",
+   "howToRun": "adb-connected device or Play-store build: record first app load, KB load, model load, query latency via chrome://inspect / adb shell dumpsys meminfo; enter results into eval/mobile-ai/results/mobile-resources.json under a new arm"
+  },
+  {
+   "id": "mid-range-android",
+   "label": "Mid-range Android (physical device)",
+   "state": "skipped",
+   "skipReason": "NO physical Android device available in this environment",
+   "howToRun": "same procedure as low-end arm"
+  },
+  {
+   "id": "battery-thermal",
+   "label": "Battery/thermal observations",
+   "state": "skipped",
+   "skipReason": "not measurable without physical hardware (adb batterystats / thermal zones)",
+   "howToRun": "adb shell dumpsys batterystats + thermal HAL readings during a 10-query session"
+  }
+ ],
+ "taskBreakdown": {
+  "measured": [
+   "desktop resource baseline"
+  ]
+ },
+ "notMeasured": [
+  "first app load (PWA cold start on device)",
+  "on-device model load (WebLLM/WebGPU) time and RAM",
+  "ONNX WASM inference latency and RAM on device",
+  "IndexedDB size on device after KB migration",
+  "CPU % sustained on low-end SoC",
+  "battery drain / thermal throttling",
+  "offline reliability across real radio transitions",
+  "uncertain-connectivity behaviour with real network stacks"
+ ],
+ "limitations": [
+  "Desktop node measurements are a REFERENCE ONLY — do not quote them as mobile performance.",
+  "dist bundle bytes reflect the last local `npm run build` (null when dist/ absent).",
+  "Heap deltas are indicative (node V8), not Android RSS."
+ ]
+}

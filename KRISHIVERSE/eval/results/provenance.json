@@ -1,5 +1,5 @@
 {
- "generatedAt": "2026-10-08T08:15:18.092Z",
+ "generatedAt": "2026-10-08T17:46:07.650Z",
  "origin": "Provenance invariants re-checked against AgriculturalNLP/ResponseValidator + KB manifest report — not an expert-labelled dataset.",
  "limitation": "Coverage percentages come from the KB build manifest (source + sourceUrl present); most KB records still carry no provenance fields.",
  "total": 7,

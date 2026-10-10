@@ -8,6 +8,7 @@ export const REPO_ROOT       = process.env.REPO_ROOT ? resolve(process.env.REPO_
 export const FRONTEND_DIR    = process.env.FRONTEND_DIR ? resolve(process.env.FRONTEND_DIR) : resolve(REPO_ROOT, 'KRISHIVERSE')
 export const BACKEND_DIR     = resolve(REPO_ROOT, 'backend')
 export const EVAL_RESULTS_DIR = process.env.EVAL_RESULTS_DIR ? resolve(process.env.EVAL_RESULTS_DIR) : resolve(FRONTEND_DIR, 'eval', 'results')
+export const MOBILE_AI_RESULTS_DIR = process.env.MOBILE_AI_RESULTS_DIR ? resolve(process.env.MOBILE_AI_RESULTS_DIR) : resolve(FRONTEND_DIR, 'eval', 'mobile-ai', 'results')
 export const KB_MANIFEST_PATH = process.env.KB_MANIFEST_PATH ? resolve(process.env.KB_MANIFEST_PATH) : resolve(FRONTEND_DIR, 'src', 'data', 'kb', 'v2', 'manifest.json')
 export const PILOT_CONFIG_PATH = process.env.PILOT_CONFIG_PATH ? resolve(process.env.PILOT_CONFIG_PATH) : resolve(FRONTEND_DIR, '.pilot-config.json')
 export const BACKUP_DIR      = process.env.ADMIN_BACKUP_DIR ? resolve(process.env.ADMIN_BACKUP_DIR) : resolve(BACKEND_DIR, 'backups')

@@ -10,6 +10,12 @@
  *    source-tagged) local record backs the claim AND that record is scoped to
  *    the question's own crop (Phase 3E.2; see `isDosageBacker`). Crop-agnostic
  *    verified records remain eligible; provenance requirements are unchanged.
+ *  - CONTENT BACKING (rice wrong-dose regression fix): crop scope alone is NOT
+ *    enough — every numeric dose and spray schedule in the answer must appear
+ *    in an eligible backer's own text. Verified rice evidence ("1g/liter") can
+ *    no longer authorize a different number ("2 g per liter") or an unsupported
+ *    interval ("every week"). Missing → blocked; same unit/different value →
+ *    blocked as contradiction. See `extractDoseClaims` / `extractScheduleClaims`.
  *  - If evidence is insufficient, do NOT fabricate: return a safe limitation
  *    message and/or a contextual clarification question instead.
  *  - Confidence ladder: HIGH / MEDIUM / LOW / VERY_LOW with documented,
@@ -157,6 +163,80 @@ export function isDosageBacker(record, queryCrop) {
   return recCrop === want;
 }
 
+// ─── Dose & schedule content backing ─────────────────────────────────────────
+/**
+ * Numeric dose claims (value + unit), Latin/Tamil/Hindi units, incl. % strength
+ * and simple ranges ("4-6 kg" yields both 4kg and 6kg). Units are canonicalized
+ * so "3 g", "3gm", "3கி" and "3 ग्राम" all compare as "3g".
+ */
+const DOSE_CLAIM_RE = /(\d+(?:[.,]\d+)?)\s*(?:[-–]\s*(\d+(?:[.,]\d+)?)\s*|\s+to\s+)?(kg|quintal|qtl|hectare|ha|acre|gm|gms|gram|grams|g|ml|cc|ltr|litre|liter|l|%|per\s?cent|கி|கிராம்|மில்லி|லி|லிட்டர்|ஏக்கர்|சதவீதம்|ग्राम|किलो|मिली|लीटर|एकड़|हेक्टेयर|प्रतिशत)(?![\p{L}\p{N}])/giu;
+
+const DOSE_UNIT_CANON = {
+  kg: "kg", கிலோ: "kg", किलो: "kg",
+  quintal: "quintal", qtl: "quintal",
+  g: "g", gm: "g", gms: "g", gram: "g", grams: "g", கி: "g", கிராம்: "g", ग्राम: "g",
+  ml: "ml", மி: "ml", மில்லி: "ml", मिली: "ml",
+  l: "l", ltr: "l", litre: "l", liter: "l", லி: "l", லிட்டர்: "l", लीटर: "l",
+  cc: "cc", acre: "acre", ஏக்கர்: "acre", एकड़: "acre",
+  hectare: "hectare", ha: "hectare", हेक्टेयर: "hectare",
+  "%": "%", percent: "%", சதவீதம்: "%", प्रतिशत: "%",
+};
+
+/** Extract normalized dose claims ("1g", "75%", "4kg", "6kg") from text. */
+export function extractDoseClaims(text) {
+  const out = [];
+  const s = String(text || "");
+  DOSE_CLAIM_RE.lastIndex = 0;
+  let m;
+  while ((m = DOSE_CLAIM_RE.exec(s)) !== null) {
+    const canon = DOSE_UNIT_CANON[(m[3] || "").toLowerCase().replace(/\s+/g, "")];
+    if (!canon) continue;
+    for (const raw of [m[1], m[2]]) {
+      if (!raw) continue;
+      const n = Number(String(raw).replace(",", "."));
+      if (Number.isFinite(n)) out.push(`${String(n)}${canon}`);
+    }
+  }
+  return [...new Set(out)];
+}
+
+/** Evidence fields that can carry a dose/schedule (KB treatment shapes). */
+function evidenceText(rec) {
+  if (!rec) return "";
+  return [rec.text, rec.name, rec.description, rec.method, rec.method_ta, rec.method_hi,
+    rec.treatment, rec.chemicalControl, rec.organicRemedy, rec.immediateAction,
+    rec.dosage, rec.dose, rec.body].filter(Boolean).join(" ");
+}
+
+const SCHEDULE_CLAIM_RE = /\b(?:every|each|after|within)\s+\d+\s*(?:day|days|week|weeks|hour|hours)\b|\b(?:once|twice|thrice)\s+(?:a|per)\s+(?:day|week|month)\b|\b(?:every|each)\s+(?:day|week|month)\b|\b(?:daily|weekly|fortnightly|biweekly)\b/gi;
+const ACTION_VERBS = /\b(spray|sprays|spraying|apply|applies|applying|applied|drench|drenching|treat|treats|treatment|treating|dose|dosing|seed[- ]treat|waiting\s*period|re[- ]entry)\b/i;
+
+/** Extract normalized spray-schedule claims ("every 7 days", "weekly"). */
+export function extractScheduleClaims(text) {
+  const s = String(text || "");
+  SCHEDULE_CLAIM_RE.lastIndex = 0;
+  const out = [];
+  let m;
+  while ((m = SCHEDULE_CLAIM_RE.exec(s)) !== null) {
+    out.push(m[0].toLowerCase().replace(/\s+/g, " ").trim());
+  }
+  return [...new Set(out)];
+}
+
+function scheduleBackedBy(claim, backerText) {
+  const hay = String(backerText || "").toLowerCase().replace(/\s+/g, " ");
+  if (!hay) return false;
+  if (hay.includes(claim)) return true;
+  // "every 7 days" is backed by "…after 7 days…" — strip the leading quantifier
+  // (digit-bearing claims only; digitless "day" would over-match).
+  const stripped = claim.replace(/^(?:every|each)\s+/, "");
+  if (/^\d/.test(stripped)) {
+    const re = new RegExp(`\\b${stripped.replace(/[.*+?^${}()|[\]\\]/g, "\\$&")}\\b`);
+    if (re.test(hay)) return true;
+  }
+  return false;
+}
+
 // ─── Clarification questions ──────────────────────────────────────────────────
 export const CLARIFICATION_OPTIONS = {
   crop: ["Rice", "Tomato", "Maize", "Groundnut", "Chilli", "Other"],
@@ -236,6 +316,27 @@ export function validateResponse({
   const doseBacking = allEvidence.some((rec) => isDosageBacker(rec, parsed?.crop));
   const sourcePriority = allEvidence.reduce((max, rec) => Math.max(max, getSourcePriority(rec)), 0);
 
+  // CONTENT BACKING: the eligible backer must also contain the exact numbers
+  // the answer claims (rice wrong-dose regression). Same unit + different value
+  // is reported as a contradiction; absent value as unsupported.
+  const doseClaims = extractDoseClaims(answer);
+  const eligibleBackers = allEvidence.filter((rec) => isDosageBacker(rec, parsed?.crop));
+  const backerDoses = eligibleBackers.map((rec) => extractDoseClaims(evidenceText(rec)));
+  const backerUnits = new Set(backerDoses.flatMap((list) => list.map((d) => d.replace(/^\d+(?:\.\d+)?/, ""))));
+  const missingDoses = doseClaims.filter((claim) => !backerDoses.some((list) => list.includes(claim)));
+  const contradictedDoses = missingDoses.filter((claim) => backerUnits.has(claim.replace(/^\d+(?:\.\d+)?/, "")));
+  const doseContentBacked = missingDoses.length === 0;
+
+  // Spray schedules ("every 7 days", "weekly") need the same content backing
+  // whenever the answer is actionable — an unsupported interval never reaches
+  // the farmer.
+  const scheduleClaims = extractScheduleClaims(answer);
+  const actionable = recType !== "informational" || ACTION_VERBS.test(answer);
+  const missingSchedules = actionable
+    ? scheduleClaims.filter((claim) => !eligibleBackers.some((rec) => scheduleBackedBy(claim, evidenceText(rec))))
+    : [];
+  const scheduleContentBacked = missingSchedules.length === 0;
+
   const conf = computeConfidence({
     retrievalScore: typeof confidence === "number" ? confidence : 0,
     cropMatch: Boolean(parsed?.crop),
@@ -253,6 +354,13 @@ export function validateResponse({
     reasons.push("high_risk_without_verified_source");
     if (verifiedBacking) reasons.push("high_risk_verified_evidence_crop_ineligible");
   }
+  if (recType === "high_risk" && doseBacking && !doseContentBacked) {
+    reasons.push(`dose_not_backed_by_evidence:${missingDoses.join(",")}`);
+    if (contradictedDoses.length) reasons.push(`dose_contradicts_evidence:${contradictedDoses.join(",")}`);
+  }
+  if (!scheduleContentBacked) {
+    reasons.push(`spray_schedule_not_backed_by_evidence:${missingSchedules.join(",")}`);
+  }
   if (recType === "recommendation" && !verifiedBacking) {
     reasons.push("recommendation_without_verified_source");
   }
@@ -262,9 +370,22 @@ export function validateResponse({
 
   const clarification = buildClarification({ parsed, intent });
 
-  // BLOCKED: high-risk claims without crop-compatible verified backing, or
-  // very-low confidence on a non-informational answer. Never fabricate.
-  if (recType === "high_risk" && !doseBacking) {
+  // BLOCKED: high-risk claims without crop-compatible verified backing, without
+  // content backing, or unsupported spray schedules. Never fabricate.
+  if (recType === "high_risk" && (!doseBacking || !doseContentBacked)) {
+    return {
+      verdict: "blocked",
+      level: conf.level,
+      safeAnswer: SAFE_LIMITATION_MESSAGE,
+      clarification,
+      reasons,
+      confidence: conf,
+      source,
+      type: recType,
+    };
+  }
+
+  if (!scheduleContentBacked) {
     return {
       verdict: "blocked",
       level: conf.level,
@@ -325,6 +446,8 @@ export default {
   computeConfidence,
   classifyRecommendationType,
   extractHighRiskClaims,
+  extractDoseClaims,
+  extractScheduleClaims,
   buildClarification,
   buildSafeLimitationMessage,
   validateResponse,

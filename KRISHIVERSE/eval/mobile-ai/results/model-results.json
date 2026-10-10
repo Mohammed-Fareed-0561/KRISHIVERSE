@@ -1,0 +1,375 @@
+{
+ "dataClass": "benchmark-evaluation",
+ "title": "Model results: candidate catalog + measured/skipped model arms (sizes from files, never vendor tables)",
+ "runMeta": {
+  "benchmarkId": "rice-cropdoctor-v1",
+  "date": "2026-10-08T17:53:42.541Z",
+  "gitCommit": "1a0a85b0d40ea1e390a984480b0f29222f1f022a",
+  "gitDirty": true,
+  "seed": 20261008,
+  "runtime": "node v22.21.0",
+  "device": {
+   "node": "v22.21.0",
+   "os": "Windows_NT 10.0.26200",
+   "arch": "x64",
+   "cpuModel": "Intel(R) Core(TM) i7-8650U CPU @ 1.90GHz",
+   "cpuCount": 8,
+   "totalMemMB": 16227,
+   "deviceClass": "desktop-reference",
+   "browser": "not-applicable (node benchmark harness)"
+  },
+  "kb": {
+   "version": 2,
+   "generatedAt": "2026-10-06T08:09:58.882Z",
+   "recordCount": 15023,
+   "path": "KRISHIVERSE/src/data/kb/v2/manifest.json",
+   "hash": "e64a35c8a7c9bad204d6a7b04f2d65f94861c0be43a6bdd06bc4a6f166a2aadb"
+  },
+  "models": {
+   "public/models/efficientnet_b0_plantvillage.onnx": {
+    "bytes": 16050931,
+    "sha256": "fab0a1dbf5a5fb582ddef6d941ab0ed8b3f5a6666d088c44022f4429af857e0f"
+   },
+   "public/models/efficientnet_b0_plantvillage.onnx.data": {
+    "bytes": 16056320,
+    "sha256": "54ca55a6dcacf5cef4de8bc805b5f03a5a67b6f466794a88435511df33058399"
+   },
+   "public/models/labels.json": {
+    "bytes": 334,
+    "sha256": "549fd59a89d58fc69205d7dd0a9bf1a742f287dbb3b97611cfad1339fca361d9"
+   },
+   "../models/onnx_eval_results.json": {
+    "bytes": 22672,
+    "sha256": "a2aaf880005cdfc1edea6f60127c4d9a658b472c1933c3068efe1863514335d3"
+   }
+  },
+  "datasetHashes": {
+   "../models/onnx_eval_results.json": "a2aaf880005cdfc1edea6f60127c4d9a658b472c1933c3068efe1863514335d3",
+   "eval/results/cropdoctor.json": "e78af54f4437efbd97e69a10dae5c86c52e6b520cedb9753986d7c428cba2c14"
+  },
+  "configuration": {
+   "harness": "KRISHIVERSE/eval/mobile-ai (isolated)",
+   "telemetry": "none — benchmark harness performs no network calls unless an adapter explicitly opts in via env",
+   "needleTelemetry": "NEEDLE_TELEMETRY=0 DO_NOT_TRACK=1 mandated for any Needle execution (see docs/ai/needle-evaluation.md)",
+   "modelHash": "fab0a1dbf5a5fb582ddef6d941ab0ed8b3f5a6666d088c44022f4429af857e0f",
+   "inference": "recorded ONNX run (2026-08-27) — no re-inference in this environment"
+  }
+ },
+ "dataset": {
+  "total": 120,
+  "origin": "plantvillage-eval (120-image hold-out: 6 classes × 20; Tomato/Potato/Pepper — NO rice classes)",
+  "path": "backend/eval/dataset/manifest.json",
+  "groundTruthNote": "public benchmark labels; performance on PlantVillage ≠ field accuracy"
+ },
+ "arms": [
+  {
+   "id": "current-onnx-efficientnet-b0",
+   "label": "Current production ONNX (EfficientNet-B0, PlantVillage 6-class)",
+   "state": "measured",
+   "metrics": {
+    "accuracy": 0.95,
+    "top1": 0.95,
+    "wilsonCi95": [
+     0.8952,
+     0.9769
+    ],
+    "macroF1": 0.9505,
+    "perClass": {
+     "Pepper__bell___Bacterial_spot": {
+      "n": 20,
+      "precision": 1,
+      "recall": 1,
+      "f1": 1
+     },
+     "Potato___Early_blight": {
+      "n": 20,
+      "precision": 1,
+      "recall": 0.95,
+      "f1": 0.974
+     },
+     "Potato___Late_blight": {
+      "n": 20,
+      "precision": 1,
+      "recall": 1,
+      "f1": 1
+     },
+     "Tomato___Early_blight": {
+      "n": 20,
+      "precision": 0.818,
+      "recall": 0.9,
+      "f1": 0.857
+     },
+     "Tomato___Late_blight": {
+      "n": 20,
+      "precision": 0.895,
+      "recall": 0.85,
+      "f1": 0.872
+     },
+     "Tomato___healthy": {
+      "n": 20,
+      "precision": 1,
+      "recall": 1,
+      "f1": 1
+     }
+    },
+    "confusion": {
+     "Pepper__bell___Bacterial_spot": {
+      "Pepper__bell___Bacterial_spot": 20,
+      "Potato___Early_blight": 0,
+      "Potato___Late_blight": 0,
+      "Tomato___Early_blight": 0,
+      "Tomato___Late_blight": 0,
+      "Tomato___healthy": 0
+     },
+     "Potato___Early_blight": {
+      "Pepper__bell___Bacterial_spot": 0,
+      "Potato___Early_blight": 19,
+      "Potato___Late_blight": 0,
+      "Tomato___Early_blight": 1,
+      "Tomato___Late_blight": 0,
+      "Tomato___healthy": 0
+     },
+     "Potato___Late_blight": {
+      "Pepper__bell___Bacterial_spot": 0,
+      "Potato___Early_blight": 0,
+      "Potato___Late_blight": 20,
+      "Tomato___Early_blight": 0,
+      "Tomato___Late_blight": 0,
+      "Tomato___healthy": 0
+     },
+     "Tomato___Early_blight": {
+      "Pepper__bell___Bacterial_spot": 0,
+      "Potato___Early_blight": 0,
+      "Potato___Late_blight": 0,
+      "Tomato___Early_blight": 18,
+      "Tomato___Late_blight": 2,
+      "Tomato___healthy": 0
+     },
+     "Tomato___Late_blight": {
+      "Pepper__bell___Bacterial_spot": 0,
+      "Potato___Early_blight": 0,
+      "Potato___Late_blight": 0,
+      "Tomato___Early_blight": 3,
+      "Tomato___Late_blight": 17,
+      "Tomato___healthy": 0
+     },
+     "Tomato___healthy": {
+      "Pepper__bell___Bacterial_spot": 0,
+      "Potato___Early_blight": 0,
+      "Potato___Late_blight": 0,
+      "Tomato___Early_blight": 0,
+      "Tomato___Late_blight": 0,
+      "Tomato___healthy": 20
+     }
+    },
+    "recordedCorrect": 114,
+    "recordedTotal": 120
+   },
+   "latencyMs": {
+    "n": 4,
+    "avg": 0.65,
+    "max": 1.8,
+    "note": "deterministic text/rule path latency in node; ONNX WASM latency measured in-browser (not available here)"
+   },
+   "modelBytes": 32107251
+  },
+  {
+   "id": "quantized-variant",
+   "label": "Quantized variant (INT8 dynamic) of current ONNX",
+   "state": "skipped",
+   "skipReason": "requires onnxruntime + python export pipeline run (not executed in this environment)",
+   "howToRun": "python backend/eval/export_and_eval.py --help  # re-export from checkpoint; add dynamic_quantize step, then re-run this benchmark",
+   "latencyMs": null
+  },
+  {
+   "id": "mobilenet-family-candidate",
+   "label": "Small MobileNet-family candidate",
+   "state": "skipped",
+   "skipReason": "no rice-capable lightweight checkpoint is committed to the repo; training/export required",
+   "howToRun": "train MobileNetV3-Small on the agreed rice dataset (Phase 2), export ONNX, add rows here",
+   "latencyMs": null
+  },
+  {
+   "id": "other-lightweight-vision",
+   "label": "Other lightweight vision candidates (EfficientNet-lite, ResNet-18)",
+   "state": "skipped",
+   "skipReason": "candidate selection deferred to Rice Phase 2 dataset availability",
+   "howToRun": "same export/eval pipeline as backend/eval/export_and_eval.py",
+   "latencyMs": null
+  },
+  {
+   "id": "H-nlp-needle",
+   "label": "H. Needle only (structured extraction / intent / clarification)",
+   "state": "skipped",
+   "skipReason": "python package 'cactus-needle' not installed",
+   "howToRun": "pip install cactus-needle   # then: NEEDLE_MODEL_PATH=<path/needle3.cact> KV_BENCH_NEEDLE=1 npx vitest run eval/mobile-ai",
+   "capabilities": [
+    "language-identification",
+    "intent-classification",
+    "crop-extraction",
+    "symptom-extraction",
+    "disease-extraction",
+    "plant-part-extraction",
+    "farmer-context-extraction",
+    "clarification-selection"
+   ]
+  },
+  {
+   "id": "N-best-webllm",
+   "label": "N. Best measured arm + Qwen/WebLLM in-browser LLM",
+   "state": "skipped",
+   "skipReason": "WebLLM/Qwen requires a WebGPU browser session; not executable from the node harness",
+   "howToRun": "open the KrishiVerse PWA in a WebGPU browser with VITE_ENABLE_ONDEVICE_LLM=auto, or serve the model via an OpenAI-compatible endpoint and set KV_BENCH_LLM_URL to reuse the same adapter",
+   "capabilities": [
+    "answer-generation",
+    "intent-classification"
+   ]
+  },
+  {
+   "id": "O-best-small-llm",
+   "label": "O. Best measured arm + smallest local LLM (OpenAI-compatible local server)",
+   "state": "skipped",
+   "skipReason": "KV_BENCH_LLM_URL not set (no local OpenAI-compatible server configured)",
+   "howToRun": "cactus serve <model> --host 127.0.0.1 --port 8080 --no-cloud-handoff  # then KV_BENCH_LLM_URL=http://127.0.0.1:8080/v1",
+   "capabilities": [
+    "answer-generation",
+    "intent-classification",
+    "language-identification"
+   ]
+  }
+ ],
+ "limitations": [
+  "6-class PlantVillage hold-out only; NO rice classes exist — no rice accuracy claim can be made.",
+  "Metrics re-derived from recorded predictions (models/onnx_eval_results.json), not a fresh inference run.",
+  "Top-3, ECE, quantized/MobileNet variants: not measured — commands recorded above.",
+  "Mobile latency/RAM: requires device run (see mobile.benchmark limitations).",
+  "Screening set: 0 expert-labelled cases — pass rates are pipeline screening signals, never accuracy.",
+  "Arms H–M skipped in this environment (cactus-needle not installed); N/O skipped (WebGPU session or KV_BENCH_LLM_URL) — see howToRun.",
+  "Wall-clock latency measured on a desktop reference (node), not on a low-end Android device.",
+  "Tamil/Tanglish expectations are word-level; agronomic correctness is governed by the KB, not by this set.",
+  "Desktop node measurements are a REFERENCE ONLY — do not quote them as mobile performance.",
+  "dist bundle bytes reflect the last local `npm run build` (null when dist/ absent).",
+  "Heap deltas are indicative (node V8), not Android RSS."
+ ],
+ "derivedFrom": [
+  "eval/mobile-ai/results/cropdoctor-benchmark.json",
+  "eval/mobile-ai/results/chatbot-arms.json",
+  "eval/mobile-ai/results/mobile-resources.json"
+ ],
+ "generatedAt": "2026-10-08T17:56:09.804Z",
+ "modelCatalog": {
+  "smallLlmCandidates": [
+   {
+    "id": "qwen2.5-0.5b-instruct",
+    "params": "0.5B",
+    "license": "Apache-2.0 / Qwen license",
+    "runtime": "WebLLM (WebGPU) — already in production",
+    "browser": true,
+    "webgpu": true,
+    "tamil": "unmeasured",
+    "note": "current KrishiVerse on-device model (lowest RAM tier)"
+   },
+   {
+    "id": "qwen2.5-1.5b-instruct",
+    "params": "1.5B",
+    "license": "Apache-2.0 / Qwen license",
+    "runtime": "WebLLM (WebGPU) — already in production",
+    "browser": true,
+    "webgpu": true,
+    "tamil": "unmeasured",
+    "note": "current KrishiVerse mid RAM tier"
+   },
+   {
+    "id": "qwen3-1.7b",
+    "params": "1.7B",
+    "license": "Apache-2.0",
+    "runtime": "cactus / llama.cpp / WebLLM",
+    "browser": "partial",
+    "webgpu": "partial",
+    "tamil": "unmeasured",
+    "note": "Cactus lists Qwen family as tested; measured 155 tok/s decode on M5 Max per cactus README"
+   },
+   {
+    "id": "lfm2.5-450m",
+    "params": "450M",
+    "license": "Liquid AI community license",
+    "runtime": "cactus",
+    "browser": "unmeasured",
+    "webgpu": "unmeasured",
+    "tamil": "unmeasured",
+    "note": "Liquid LFM2.5 small; Cactus reports 472 tok/s for the VL-450m variant on M5 Max"
+   },
+   {
+    "id": "smollm2-135m/360m",
+    "params": "135M/360M",
+    "license": "Apache-2.0",
+    "runtime": "WebLLM/llama.cpp",
+    "browser": true,
+    "webgpu": "partial",
+    "tamil": "weak-unmeasured",
+    "note": "very small general models; Tamil expected weak — must be measured, not assumed"
+   },
+   {
+    "id": "gemma-3-270m/1b",
+    "params": "270M/1B",
+    "license": "Gemma license (Google)",
+    "runtime": "cactus (tested family)",
+    "browser": "partial",
+    "webgpu": "partial",
+    "tamil": "unmeasured",
+    "note": "Cactus default test family; redistribution terms differ from Apache-2.0 — check before bundling"
+   }
+  ],
+  "onDeviceWebGpuTiers": [
+   "0.5b (Qwen2.5-0.5B-Instruct)",
+   "1.5b (Qwen2.5-1.5B-Instruct)",
+   "3b (Qwen2.5-3B-Instruct)"
+  ],
+  "assetFootprint": {
+   "onnxModel": [
+    {
+     "path": "public/models/efficientnet_b0_plantvillage.onnx",
+     "bytes": 16050931
+    },
+    {
+     "path": "public/models/efficientnet_b0_plantvillage.onnx.data",
+     "bytes": 16056320
+    },
+    {
+     "path": "public/models/labels.json",
+     "bytes": 334
+    }
+   ],
+   "onnxWasmRuntimeBytes": 40378480,
+   "kbV2": [
+    {
+     "path": "src/data/kb/v2/crops.json",
+     "bytes": 429749
+    },
+    {
+     "path": "src/data/kb/v2/diseasePests.json",
+     "bytes": 2433850
+    },
+    {
+     "path": "src/data/kb/v2/symptoms.json",
+     "bytes": 1785804
+    },
+    {
+     "path": "src/data/kb/v2/treatments.json",
+     "bytes": 3017888
+    },
+    {
+     "path": "src/data/kb/v2/edges.json",
+     "bytes": 3260950
+    },
+    {
+     "path": "src/data/kb/v2/manifest.json",
+     "bytes": 54971
+    }
+   ],
+   "kbV2TotalBytes": 10983212,
+   "distBundleBytes": 95885043
+  },
+  "note": "candidate sizes/licenses are from public sources (2026-08); measured metrics only from runs against these arms"
+ }
+}

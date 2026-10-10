@@ -28,8 +28,8 @@ const STOP_WORDS = new Set([
 export const CROP_ALIASES = {
   // Rice
   rice: "rice", paddy: "rice", dhan: "rice", "धान": "rice", chawal: "rice",
-  "cha'wal": "rice", nellu: "rice", "நெல்": "rice", "நெல்லு": "rice",
-  "धान": "rice", sali: "rice", "oryza": "rice", kharif: "rice",
+  "cha'wal": "rice", nellu: "rice", nel: "rice", "நெல்": "rice", "நெல்லு": "rice",
+  sali: "rice", "oryza": "rice", kharif: "rice",
   // Wheat
   wheat: "wheat", gehun: "wheat", gehu: "wheat", "गेहूं": "wheat",
   "गेहूँ": "wheat", godhi: "wheat", "கோதுமை": "wheat", triticum: "wheat",
@@ -159,11 +159,6 @@ export const INTENT_ALIASES = {
   help:       ["help","உதவி","udhavi","uthavi","मदद","madad",
                 "help me","how can you help","can you help","please help",
                 "எனக்கு உதவுங்கள்"],
-  about:      ["what can you do","what you can do","tell me about yourself",
-                "who are you","what are you","your capabilities",
-                "features","capabilities","about you","introduce yourself",
-                "what is this","kya kar sakte ho","tum kaun ho",
-                "நீங்கள் என்ன செய்ய முடியும்","உங்களைப் பற்றி"],
   what_is:    ["என்ன","enna","क्या","kya",
                 "what is","what are","what does","tell me about",
                 "what do you mean","என்றால் என்ன"],
@@ -172,7 +167,7 @@ export const INTENT_ALIASES = {
                 "mold","mildew","curl","pest","insect","fungus","virus","attack","damage",
                 "kida","keeda","mara","bimari","rog","बीमारी","रोग","kharab","पत्ता","patta",
                 "पीला","पीले","धब्बा","धब्बे","मुरझा","झुलसा",
-                "நோய்","புள்ளி","மஞ்சள்","வாடல்","பூச்சி","இலை","கருகல்",
+                "நோய்","பிரச்சனை","புள்ளி","மஞ்சள்","வாடல்","பூச்சி","இலை","கருகல்",
                 "leaf","plant","fasal","फसल","तना","stem","root","jad","बीज"],
   fertilizer: ["fertilizer","manure","npk","urea","dap","nutrient","dose",
                 "nitrogen","phosphorus","potassium","deficiency","khad","खाद",
@@ -210,8 +205,12 @@ export const INTENT_ALIASES = {
 const INTENT_PHRASE_BONUS = {
   help: ["help me","how can you help","can you help","please help"],
   about: ["what can you do","who are you","introduce yourself"],
-  what_is: ["what is","what are","what does","tell me about"],
+  what_is: ["what is","what are","what does","tell me about","tell me a"],
   greeting: ["good morning","good evening"],
+  // Symptom-seeking questions are disease questions even when phrased as
+  // what-are ("What are the symptoms of brown spot in rice?") — otherwise the
+  // what_is phrase bonus ties/wins and the query routes to the wrong handler.
+  disease: ["symptoms of","signs of"],
 };
 
 // Tie-break priority: meta/advice-seeking intents win ties so "help" can never
@@ -393,12 +392,63 @@ export function tokenize(text) {
 }
 
 // ─── ALIAS NORMALIZER ─────────────────────────────────────────────────────────
-export function normalizeCrop(token) {
-  return CROP_ALIASES[token.toLowerCase()] || null;
+/**
+ * Non-Latin keyword/alias matcher (Tamil + Devanagari).
+ *
+ * Rules, in order:
+ *  1. whole-token or token-PREFIX match — never substring, so the तना⊂कितना
+ *     class of collisions stays impossible for token starts;
+ *  2. case-suffix virama swap: a kw ending in virama (நோய், வாடல்) mutates when
+ *     a case suffix attaches (நோய் + ஐ → நோயை, codepoints …baf/bcd → …baf/bc8),
+ *     so kw-stem + dependent-vowel-sign also matches.
+ */
+const DEPENDENT_VOWEL_SIGN = /[\u0BBE-\u0BC8\u093E-\u0948]/;
+const TAMIL_VIRAMA = "\u0BCD";
+const DEVANAGARI_VIRAMA = "\u094D";
+function matchesNonLatin(token, kw) {
+  if (token === kw || token.startsWith(kw)) return true;
+  if (kw.length > 2 && (kw.endsWith(TAMIL_VIRAMA) || kw.endsWith(DEVANAGARI_VIRAMA))) {
+    const stem = kw.slice(0, -1);
+    return token.startsWith(stem) && DEPENDENT_VOWEL_SIGN.test(token.charAt(stem.length));
+  }
+  return false;
 }
 
+export function normalizeCrop(token) {
+  return CROP_ALIASES[String(token || "").toLowerCase()] || null;
+}
+
+/**
+ * Latin aliases stay token-exact (short words must never substring-match);
+ * non-Latin aliases match whole tokens, token prefixes, and case-suffix
+ * mutations (புள்ளிகள் ⊃ புள்ளி, மஞ்சளாகிறது ⊃ மஞ்சள்) — the same morphology
+ * the intent classifier already accepts.
+ */
 export function normalizeSymptom(token) {
-  return SYMPTOM_ALIASES[token.toLowerCase()] || null;
+  const t = String(token || "").toLowerCase();
+  const exact = SYMPTOM_ALIASES[t];
+  if (exact) return exact;
+  if (!t) return null;
+  for (const [alias, canonical] of Object.entries(SYMPTOM_ALIASES)) {
+    if (isNonLatin(alias) && matchesNonLatin(t, alias)) return canonical;
+  }
+  return null;
+}
+
+/**
+ * Distinct canonical symptoms present in a query (exact/prefix match, no
+ * fuzzy). The generic "general" bucket (problem/issue/trouble) is excluded —
+ * "a problem" is not a competing disease. Used by the decision engine's
+ * differential-ambiguity rule: two or more distinct symptoms in one query =
+ * ask which one, never pick one.
+ */
+export function distinctSymptoms(text) {
+  const out = new Set();
+  for (const tok of tokenize(text)) {
+    const s = normalizeSymptom(tok);
+    if (s && s !== "general") out.add(s);
+  }
+  return out;
 }
 
 // ─── INTENT CLASSIFIER ────────────────────────────────────────────────────────
@@ -411,7 +461,7 @@ function containsBoundedPhrase(text, phrase) {
   return new RegExp(`(^|[^\\p{L}\\p{N}])${esc}($|[^\\p{L}\\p{N}])`, "iu").test(text);
 }
 
-const isNonLatin = (s) => /[^\u0000-\u007f]/.test(s);
+const isNonLatin = (s) => [...String(s)].some((c) => c.codePointAt(0) > 0x7f);
 
 export function classifyIntent(text) {
   const t = String(text || "").toLowerCase();
@@ -432,13 +482,35 @@ export function classifyIntent(text) {
       if (kw.includes(" ")) {
         if (containsBoundedPhrase(t, kw)) hit(intent, 1);
       } else if (isNonLatin(kw)) {
-        if (tokens.some((tok) => tok === kw || tok.startsWith(kw))) hit(intent, 1);
+        if (tokens.some((tok) => matchesNonLatin(tok, kw))) hit(intent, 1);
       } else if (kw.length < 3) {
         if (tokens.includes(kw)) hit(intent, 1);
       } else if (t.includes(kw)) {
         hit(intent, 1);
       }
     }
+  }
+
+  // Phase 2: symptom-anchored disease reinforcement. A canonical symptom found
+  // in the query — exact alias, Tamil/Hindi inflection (normalizeSymptom), or a
+  // Latin misspelling within edit distance 1 (4-5 chars) / 2 (6+) — strengthens
+  // ONLY the disease intent, capped at +1 total: enough to break a tie with
+  // what_is (+2 phrase), never enough to dominate a phrase intent. This is what
+  // lets "yeelow"/"blsat"/"yellow" route to disease offline without any LLM.
+  {
+    const seen = new Set();
+    for (const tok of tokens) {
+      let canon = normalizeSymptom(tok);
+      if (!canon && /^[a-z0-9]+$/.test(tok) && tok.length >= 4) {
+        const maxD = tok.length >= 6 ? 2 : 1;
+        for (const [alias, canonical] of Object.entries(SYMPTOM_ALIASES)) {
+          if (!/^[a-z0-9]+$/.test(alias) || Math.abs(alias.length - tok.length) > maxD) continue;
+          if (osaDistance(tok, alias) <= maxD) { canon = canonical; break; }
+        }
+      }
+      if (canon) seen.add(canon);
+    }
+    if (seen.size) hit("disease", 1);
   }
 
   const order = [
@@ -582,6 +654,29 @@ function editDistance(a, b) {
   return dp[m][n];
 }
 
+/**
+ * Optimal string alignment distance: Levenshtein + adjacent transpositions
+ * counted as 1 (blsat↔blast, teh↔the). Used only by the intent symptom
+ * anchor — crop/symptom parse fuzzy keeps plain editDistance (unchanged
+ * production behaviour).
+ */
+export function osaDistance(a, b) {
+  if (a === b) return 0;
+  const m = a.length, n = b.length;
+  const d = Array.from({ length: m + 1 }, (_, i) => [i, ...Array(n).fill(0)]);
+  for (let j = 0; j <= n; j++) d[0][j] = j;
+  for (let i = 1; i <= m; i++) {
+    for (let j = 1; j <= n; j++) {
+      const cost = a[i - 1] === b[j - 1] ? 0 : 1;
+      d[i][j] = Math.min(d[i - 1][j] + 1, d[i][j - 1] + 1, d[i - 1][j - 1] + cost);
+      if (i > 1 && j > 1 && a[i - 1] === b[j - 2] && a[i - 2] === b[j - 1]) {
+        d[i][j] = Math.min(d[i][j], d[i - 2][j - 2] + 1);
+      }
+    }
+  }
+  return d[m][n];
+}
+
 // ─── QUERY PARSER ─────────────────────────────────────────────────────────────
 /**
  * Extracts structured intent, crop, and symptom from ANY farmer text.
@@ -622,4 +717,4 @@ export function parseQuery(text) {
   return { intent, crop, symptom, tokens };
 }
 
-export default { tokenize, buildInvertedIndex, fastSearch, parseQuery, classifyIntent, CROP_ALIASES, SYMPTOM_ALIASES, INTENT_ALIASES, INTENT_PRIORITY, SOURCE_PRIORITY, getSourcePriority, isVerifiedRecord, isQuarantined, resetIndex };
+export default { tokenize, buildInvertedIndex, fastSearch, parseQuery, classifyIntent, normalizeCrop, normalizeSymptom, distinctSymptoms, CROP_ALIASES, SYMPTOM_ALIASES, INTENT_ALIASES, INTENT_PRIORITY, SOURCE_PRIORITY, getSourcePriority, isVerifiedRecord, isQuarantined, resetIndex };

@@ -14,6 +14,7 @@ import {
   fastSearch,
   normalizeCrop,
   normalizeSymptom,
+  distinctSymptoms,
 } from "../AgriculturalNLP";
 import { buildClarification } from "../ResponseValidator";
 import { normalizeDecision, validateDecisionRequest } from "./decisionSchemas";
@@ -82,10 +83,17 @@ function decideClarification(state = {}) {
   }
   // Enough evidence: known crop + (known symptom for disease OR non-disease intent)
   const hasCrop = Boolean(parsed.crop || normalizeCrop(query.split(/\s+/)[0] || ""));
-  const hasSymptom = Boolean(parsed.symptom);
+  // The "general" symptom bucket (problem/issue/trouble) means the farmer has
+  // NOT named a symptom — a disease query without a concrete symptom must
+  // clarify, never fall through to KB hits.
+  const hasSymptom = Boolean(parsed.symptom && parsed.symptom !== "general");
   let needed = false;
   if (!hasCrop) needed = true;
-  else if (intent === "disease" && !hasSymptom) needed = true;
+  else if (distinctSymptoms(query).size >= 2) {
+    // Differential: the query names two or more distinct symptoms/diseases
+    // ("blast or brown spot?"). Never pick one — ask which the farmer means.
+    needed = true;
+  } else if (intent === "disease" && !hasSymptom) needed = true;
   else {
     try {
       const hits = fastSearch(query, { limit: 3 });

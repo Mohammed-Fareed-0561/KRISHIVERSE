@@ -1,0 +1,198 @@
+{
+ "dataClass": "benchmark-evaluation",
+ "title": "Rice AI mobile benchmark — file manifest (checksums for reproducibility)",
+ "generatedAt": "2026-10-08T17:56:09.827Z",
+ "files": [
+  {
+   "path": "eval/mobile-ai/results/ablation-results.json",
+   "sha256": "bf11ca4416847167155f190cd81536c1ce34afa172cf4b0e988734df83d972f3",
+   "bytes": 17235
+  },
+  {
+   "path": "eval/mobile-ai/results/ablation.json",
+   "sha256": "4c03c2846f3f56fb79376fccaa375664588916e21abd1886fec84573bb1ba09b",
+   "bytes": 17134
+  },
+  {
+   "path": "eval/mobile-ai/results/arm-results.json",
+   "sha256": "a8c4bfabe1c8380fd77c44b5dc0c3d70750702336b0610c188426f0184016e24",
+   "bytes": 20250
+  },
+  {
+   "path": "eval/mobile-ai/results/chatbot-arms.json",
+   "sha256": "8b82f3819a1f770b8e3e469473a0a953ede48b08937e40b943b7f2678537fbf1",
+   "bytes": 20134
+  },
+  {
+   "path": "eval/mobile-ai/results/comparison.json",
+   "sha256": "b675d1986f3ed97088d95774074b0f59d6d89906b3eaa2d37f97b8e262dcd683",
+   "bytes": 28906
+  },
+  {
+   "path": "eval/mobile-ai/results/cropdoctor-benchmark.json",
+   "sha256": "d2bc67ebb7ad30c343623fa0a16c0b3f4b0f1ae45a6b8e688cdbcadecf1d1dc0",
+   "bytes": 8194
+  },
+  {
+   "path": "eval/mobile-ai/results/decision-benchmark.json",
+   "sha256": "88a28ebd94425f67ecff930d6400e270e6141f7b685af05d7e5bde2ff34b4000",
+   "bytes": 4759
+  },
+  {
+   "path": "eval/mobile-ai/results/decision-matrix.json",
+   "sha256": "4c6a309ee19763c0e1c5f57f94a204ef9e7b835a89c2045d1723dadd82135097",
+   "bytes": 9894
+  },
+  {
+   "path": "eval/mobile-ai/results/decision-results.json",
+   "sha256": "bb2b1382d18309b7450e41fda0c06c84a772e897589cc3272613d6c76d8a302f",
+   "bytes": 4883
+  },
+  {
+   "path": "eval/mobile-ai/results/grounding-guard.json",
+   "sha256": "9e7299679c04c9324490470881b8828ed1ca76a5f4e2e83b02820c7192a6dc19",
+   "bytes": 10688
+  },
+  {
+   "path": "eval/mobile-ai/results/grounding-results.json",
+   "sha256": "e1b58d128959e43402498e5fa8d7372f75f0715e97a7a380b63e7fa07cea33af",
+   "bytes": 10809
+  },
+  {
+   "path": "eval/mobile-ai/results/image-quality.json",
+   "sha256": "d5ea13c12edb546a43cc220fbe994549f23ec3077befa83f9a50171f3be4a69c",
+   "bytes": 7248
+  },
+  {
+   "path": "eval/mobile-ai/results/latency-results.json",
+   "sha256": "ed929c56d88c257ae7737be97dd84371669f520cc90bbcaecc81045be0e99d25",
+   "bytes": 15130
+  },
+  {
+   "path": "eval/mobile-ai/results/memory-results.json",
+   "sha256": "a89ac605809090a24526b90afc08add818ddc7b2fa2cbdcf80e56784e45e9a5c",
+   "bytes": 3397
+  },
+  {
+   "path": "eval/mobile-ai/results/mobile-resources.json",
+   "sha256": "2b103ba6905df9ee2982fc546519c8c7931e35f5e212ac3e0bf305002b06d790",
+   "bytes": 5864
+  },
+  {
+   "path": "eval/mobile-ai/results/mobile-results.json",
+   "sha256": "eccd2596d3e33fdec2fe4144f89ba51e68cef63c9c51c7ee7639b33d5b497d01",
+   "bytes": 9549
+  },
+  {
+   "path": "eval/mobile-ai/results/mobile-utility-score.json",
+   "sha256": "515be48bbfe36acd106022e0897f706f74fe3909471a9a94f0276408e9cb4df1",
+   "bytes": 3391
+  },
+  {
+   "path": "eval/mobile-ai/results/model-results.json",
+   "sha256": "3b2e1163dbcfbde979a10332cc27126651c789eccf076a1fc1e3c0360b943e8c",
+   "bytes": 12448
+  },
+  {
+   "path": "eval/mobile-ai/results/offline-benchmark.json",
+   "sha256": "9806b806abbfaf7180f8eca5d0139368169211dde8b018a57d417d70f381b630",
+   "bytes": 10932
+  },
+  {
+   "path": "eval/mobile-ai/results/offline-results.json",
+   "sha256": "a17028f0d6b3a0612d970c17f461e4110683114963906c2daa2cf24ae9ee6087",
+   "bytes": 11057
+  },
+  {
+   "path": "eval/mobile-ai/results/rag-benchmark.json",
+   "sha256": "25a777a39e445480a74f1eece89848b7dbb33204e1eee47df50f6a675af719a8",
+   "bytes": 6842
+  },
+  {
+   "path": "eval/mobile-ai/results/rag-conditional.json",
+   "sha256": "88e0be9232867f729709e161efcf00da850386bcb1d18c626f25eac05d852359",
+   "bytes": 5689
+  },
+  {
+   "path": "eval/mobile-ai/results/retrieval-results.json",
+   "sha256": "d8bcba30616873c6251b0c99a47dbefadd8bb454677133b0a6bb0dee2fcd799b",
+   "bytes": 9051
+  },
+  {
+   "path": "eval/mobile-ai/results/safety-results.json",
+   "sha256": "064216a5070a86dd0183f3f453d78ebf6f8ea2c3e7d52971e9f9ba3e845e8336",
+   "bytes": 6827
+  },
+  {
+   "path": "docs/ai/chatbot-arm-comparison.md",
+   "sha256": "2712ea5d7cf58c5b8f8f98916bd831e851f30e71d5e8d281bb3f2917180a085d",
+   "bytes": 3846
+  },
+  {
+   "path": "docs/ai/cropdoctor-mobile-benchmark.md",
+   "sha256": "7b647d26285fbea76fd958ace6082dd5096761ec75a0f47ab3b5bed4b16e09db",
+   "bytes": 2751
+  },
+  {
+   "path": "docs/ai/final-rice-mobile-ai-benchmark-report.md",
+   "sha256": "eac7a318ef598f54d7b668459e4a8b5907e0186edc4fe759dc88a06095910d72",
+   "bytes": 12405
+  },
+  {
+   "path": "docs/ai/grounding-guard.md",
+   "sha256": "8867e937abe127fe5aea06a2bab2c689357043cefa4c887aea570ae4565f6523",
+   "bytes": 3576
+  },
+  {
+   "path": "docs/ai/laya-evaluation.md",
+   "sha256": "e96b81707a7108250e37ec092d67f6129bf139319bb14d633e47a88531bc48f7",
+   "bytes": 2623
+  },
+  {
+   "path": "docs/ai/mobile-architecture.md",
+   "sha256": "eb8bfb604b9d79de329b9f85783a98e39d9fac985f0b1aee6767182a30b6a954",
+   "bytes": 4798
+  },
+  {
+   "path": "docs/ai/mobile-benchmark.md",
+   "sha256": "ca8d2c82e97b1dd0113998a2a78c2163436a8480f2b8c3856ee37c1a4f1eac9d",
+   "bytes": 6464
+  },
+  {
+   "path": "docs/ai/mobile-performance.md",
+   "sha256": "1354db39a493fa1bf08e4594af744375cd17da57a6ca8d7bcd9d49f2b7521e13",
+   "bytes": 3456
+  },
+  {
+   "path": "docs/ai/model-selection.md",
+   "sha256": "da334a404c28fe42629fd38955da0c9926fd8008cfba959fecd4212bb4418649",
+   "bytes": 4289
+  },
+  {
+   "path": "docs/ai/needle-evaluation.md",
+   "sha256": "9d23f8330bb5325485080aa5cf161bbfadf179a39e47f2051f922b0aed89333c",
+   "bytes": 3132
+  },
+  {
+   "path": "docs/ai/offline-architecture.md",
+   "sha256": "eae3318cc3a2bd8104c7017bfef4435977187b5aa4fcb5de7b4c254d0c567a6f",
+   "bytes": 4336
+  },
+  {
+   "path": "docs/ai/rice-ai-baseline.md",
+   "sha256": "85acec623dece0fa0300663fc6c1de79c65f1be93211242134f53b1eaf7655c0",
+   "bytes": 5678
+  },
+  {
+   "path": "docs/ai/rice-mobile-ai-benchmark-report.md",
+   "sha256": "5fe9a79581ce7982fd0f27c8138cf696cdc010ba5aa95bc1b973a91f88404698",
+   "bytes": 6659
+  },
+  {
+   "path": "docs/ai/small-model-evaluation.md",
+   "sha256": "a1d341ac08b1a2ed98b53177913fbe05fb7091b60cc4be0b8e3c989cf6616cf1",
+   "bytes": 2858
+  }
+ ],
+ "note": "Manifest itself is excluded; regenerate with `node eval/mobile-ai/buildComparison.mjs` after benchmarks/docs change."
+}
