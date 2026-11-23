@@ -636,3 +636,13 @@ KrishiVerse is built for the small-holder farmer — as a companion that walks w
 ---
 
 > **A note on honesty in this README:** benchmark numbers are screening pass rates over curated, mostly synthetic cases — they are not farmer-facing accuracy. Crop Doctor's shipped model does not cover rice and abstains rather than guesses. Mobile numbers are pending real-device measurement, and three offline behaviours (OFF-18/19/20) are known gaps. Every claim here maps to a result file under `KRISHIVERSE/eval/`.
+
+---
+
+## GrowthX Off Campus — Student Builder Application
+
+**Event:** GrowthX Off Campus 2026  
+**Builder:** Mohammed Fareed C  
+**Project:** KrishiVerse — AI-powered, offline-first agricultural advisory platform  
+**Off Campus Code:** `R3GWMP`
+
