@@ -139,13 +139,13 @@ python app.py
 ### Frontend (.env)
 ```
 # Online AI goes through the backend proxy — no Groq key lives in the browser.
-VITE_OPENWEATHER_API_KEY=284fb14b95a0636efeee744281b7d5a9
+VITE_OPENWEATHER_API_KEY=YOUR_OPENWEATHER_API_KEY
 ```
 
 ### Backend (.env)
 ```
 GROQ_API_KEY=your_groq_api_key_here
-OPENWEATHER_API_KEY=284fb14b95a0636efeee744281b7d5a9
+OPENWEATHER_API_KEY=YOUR_OPENWEATHER_API_KEY
 ```
 
 ## Support Resources
