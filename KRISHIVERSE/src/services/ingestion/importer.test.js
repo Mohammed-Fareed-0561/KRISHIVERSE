@@ -33,6 +33,12 @@ describe("ingestion importer (Phase 3C repair)", () => {
     expect(out2.data[0].verified).toBe(true);
   });
 
+  it("parses CRLF YAML front matter and preserves boolean types", () => {
+    const out = parseMarkdown("---\r\nid: x1\r\nverified: true\r\n---\r\n\r\nBody");
+    expect(out.data).toHaveLength(1);
+    expect(out.data[0].verified).toBe(true);
+  });
+
   it("preserves a real document source over the markdown placeholder", () => {
     const out = parseMarkdown("---\nid: x1\nsource: TNAU Test\n---\n\nBody");
     expect(out.data[0].source).toBe("TNAU Test");
