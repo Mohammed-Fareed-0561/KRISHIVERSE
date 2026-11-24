@@ -9,7 +9,7 @@ error: OPENWEATHER_API_KEY not configured — add it to your .env
 ## Root Cause
 The `.env` file **DOES** contain the API key:
 ```
-OPENWEATHER_API_KEY=284fb14b95a0636efeee744281b7d5a9
+OPENWEATHER_API_KEY=YOUR_OPENWEATHER_API_KEY
 ```
 
 However, the Node.js backend was started **before** this key was added or hasn't reloaded the environment variables. Node.js caches `process.env` on startup.
@@ -29,7 +29,7 @@ type .env | findstr OPENWEATHER_API_KEY
 
 **Expected output:**
 ```
-OPENWEATHER_API_KEY=284fb14b95a0636efeee744281b7d5a9
+OPENWEATHER_API_KEY=YOUR_OPENWEATHER_API_KEY
 ```
 
 ✅ If you see this, the key is present. Continue to Step 3.
@@ -93,7 +93,7 @@ If you don't want to use the OpenWeatherMap API, you can remove the key from `.e
 
 **To use mock data:**
 1. Edit `backend/.env`
-2. Comment out or remove: `OPENWEATHER_API_KEY=...`
+2. Comment out or remove: `OPENWEATHER_API_KEY=YOUR_OPENWEATHER_API_KEY`
 3. Restart backend
 4. Weather endpoints will return realistic mock data
 
@@ -102,7 +102,7 @@ If you don't want to use the OpenWeatherMap API, you can remove the key from `.e
 ## Verification Checklist
 
 - [ ] Backend stopped (Ctrl+C)
-- [ ] `.env` file contains `OPENWEATHER_API_KEY=284fb14b95a0636efeee744281b7d5a9`
+- [ ] `.env` file contains `OPENWEATHER_API_KEY=YOUR_OPENWEATHER_API_KEY`
 - [ ] Backend restarted (`npm start`)
 - [ ] No `OPENWEATHER_API_KEY` errors in logs
 - [ ] Weather endpoint returns data successfully
@@ -146,11 +146,11 @@ If the error persists after restart:
 5. **Check for extra spaces:**
    Open `backend/.env` in a text editor and ensure there are no extra spaces:
    ```
-   OPENWEATHER_API_KEY=284fb14b95a0636efeee744281b7d5a9
+   OPENWEATHER_API_KEY=YOUR_OPENWEATHER_API_KEY
    ```
    NOT:
    ```
-   OPENWEATHER_API_KEY = 284fb14b95a0636efeee744281b7d5a9  (spaces = bad)
+   OPENWEATHER_API_KEY = YOUR_OPENWEATHER_API_KEY  (spaces = bad)
    ```
 
 ---
