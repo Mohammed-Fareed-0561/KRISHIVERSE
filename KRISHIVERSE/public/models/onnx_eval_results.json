@@ -1,0 +1,249 @@
+{
+  "runAt": "2026-08-19T14:48:40Z",
+  "model": "efficientnet_b0_plantvillage.onnx",
+  "correct": 26,
+  "total": 30,
+  "accuracy": 0.8666666666666667,
+  "rows": [
+    {
+      "class": "Tomato___Early_blight",
+      "file": "img1.jpg",
+      "gt": 0,
+      "pred": 0,
+      "pred_class": "Tomato___Early_blight",
+      "correct": true
+    },
+    {
+      "class": "Tomato___Early_blight",
+      "file": "img2.jpg",
+      "gt": 0,
+      "pred": 0,
+      "pred_class": "Tomato___Early_blight",
+      "correct": true
+    },
+    {
+      "class": "Tomato___Early_blight",
+      "file": "img3.jpg",
+      "gt": 0,
+      "pred": 0,
+      "pred_class": "Tomato___Early_blight",
+      "correct": true
+    },
+    {
+      "class": "Tomato___Early_blight",
+      "file": "img4.jpg",
+      "gt": 0,
+      "pred": 2,
+      "pred_class": "Tomato___healthy",
+      "correct": false
+    },
+    {
+      "class": "Tomato___Early_blight",
+      "file": "img5.jpg",
+      "gt": 0,
+      "pred": 0,
+      "pred_class": "Tomato___Early_blight",
+      "correct": true
+    },
+    {
+      "class": "Tomato___Late_blight",
+      "file": "img1.jpg",
+      "gt": 1,
+      "pred": 1,
+      "pred_class": "Tomato___Late_blight",
+      "correct": true
+    },
+    {
+      "class": "Tomato___Late_blight",
+      "file": "img2.jpg",
+      "gt": 1,
+      "pred": 1,
+      "pred_class": "Tomato___Late_blight",
+      "correct": true
+    },
+    {
+      "class": "Tomato___Late_blight",
+      "file": "img3.jpg",
+      "gt": 1,
+      "pred": 1,
+      "pred_class": "Tomato___Late_blight",
+      "correct": true
+    },
+    {
+      "class": "Tomato___Late_blight",
+      "file": "img4.jpg",
+      "gt": 1,
+      "pred": 0,
+      "pred_class": "Tomato___Early_blight",
+      "correct": false
+    },
+    {
+      "class": "Tomato___Late_blight",
+      "file": "img5.jpg",
+      "gt": 1,
+      "pred": 1,
+      "pred_class": "Tomato___Late_blight",
+      "correct": true
+    },
+    {
+      "class": "Tomato___healthy",
+      "file": "img1.jpg",
+      "gt": 2,
+      "pred": 2,
+      "pred_class": "Tomato___healthy",
+      "correct": true
+    },
+    {
+      "class": "Tomato___healthy",
+      "file": "img2.jpg",
+      "gt": 2,
+      "pred": 2,
+      "pred_class": "Tomato___healthy",
+      "correct": true
+    },
+    {
+      "class": "Tomato___healthy",
+      "file": "img3.jpg",
+      "gt": 2,
+      "pred": 2,
+      "pred_class": "Tomato___healthy",
+      "correct": true
+    },
+    {
+      "class": "Tomato___healthy",
+      "file": "img4.jpg",
+      "gt": 2,
+      "pred": 2,
+      "pred_class": "Tomato___healthy",
+      "correct": true
+    },
+    {
+      "class": "Tomato___healthy",
+      "file": "img5.jpg",
+      "gt": 2,
+      "pred": 2,
+      "pred_class": "Tomato___healthy",
+      "correct": true
+    },
+    {
+      "class": "Potato___Early_blight",
+      "file": "img1.jpg",
+      "gt": 3,
+      "pred": 3,
+      "pred_class": "Potato___Early_blight",
+      "correct": true
+    },
+    {
+      "class": "Potato___Early_blight",
+      "file": "img2.jpg",
+      "gt": 3,
+      "pred": 3,
+      "pred_class": "Potato___Early_blight",
+      "correct": true
+    },
+    {
+      "class": "Potato___Early_blight",
+      "file": "img3.jpg",
+      "gt": 3,
+      "pred": 5,
+      "pred_class": "Pepper__bell___Bacterial_spot",
+      "correct": false
+    },
+    {
+      "class": "Potato___Early_blight",
+      "file": "img4.jpg",
+      "gt": 3,
+      "pred": 0,
+      "pred_class": "Tomato___Early_blight",
+      "correct": false
+    },
+    {
+      "class": "Potato___Early_blight",
+      "file": "img5.jpg",
+      "gt": 3,
+      "pred": 3,
+      "pred_class": "Potato___Early_blight",
+      "correct": true
+    },
+    {
+      "class": "Potato___Late_blight",
+      "file": "img1.jpg",
+      "gt": 4,
+      "pred": 4,
+      "pred_class": "Potato___Late_blight",
+      "correct": true
+    },
+    {
+      "class": "Potato___Late_blight",
+      "file": "img2.jpg",
+      "gt": 4,
+      "pred": 4,
+      "pred_class": "Potato___Late_blight",
+      "correct": true
+    },
+    {
+      "class": "Potato___Late_blight",
+      "file": "img3.jpg",
+      "gt": 4,
+      "pred": 4,
+      "pred_class": "Potato___Late_blight",
+      "correct": true
+    },
+    {
+      "class": "Potato___Late_blight",
+      "file": "img4.jpg",
+      "gt": 4,
+      "pred": 4,
+      "pred_class": "Potato___Late_blight",
+      "correct": true
+    },
+    {
+      "class": "Potato___Late_blight",
+      "file": "img5.jpg",
+      "gt": 4,
+      "pred": 4,
+      "pred_class": "Potato___Late_blight",
+      "correct": true
+    },
+    {
+      "class": "Pepper__bell___Bacterial_spot",
+      "file": "img1.jpg",
+      "gt": 5,
+      "pred": 5,
+      "pred_class": "Pepper__bell___Bacterial_spot",
+      "correct": true
+    },
+    {
+      "class": "Pepper__bell___Bacterial_spot",
+      "file": "img2.jpg",
+      "gt": 5,
+      "pred": 5,
+      "pred_class": "Pepper__bell___Bacterial_spot",
+      "correct": true
+    },
+    {
+      "class": "Pepper__bell___Bacterial_spot",
+      "file": "img3.jpg",
+      "gt": 5,
+      "pred": 5,
+      "pred_class": "Pepper__bell___Bacterial_spot",
+      "correct": true
+    },
+    {
+      "class": "Pepper__bell___Bacterial_spot",
+      "file": "img4.jpg",
+      "gt": 5,
+      "pred": 5,
+      "pred_class": "Pepper__bell___Bacterial_spot",
+      "correct": true
+    },
+    {
+      "class": "Pepper__bell___Bacterial_spot",
+      "file": "img5.jpg",
+      "gt": 5,
+      "pred": 5,
+      "pred_class": "Pepper__bell___Bacterial_spot",
+      "correct": true
+    }
+  ]
+}

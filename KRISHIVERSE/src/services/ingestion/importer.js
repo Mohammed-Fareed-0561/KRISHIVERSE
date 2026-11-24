@@ -120,7 +120,7 @@ function parseCSV(content) {
  * @returns {{format: 'markdown', data: Array<object>}}
  */
 function parseMarkdown(content) {
-  const lines = content.split('\n');
+  const lines = content.replaceAll(String.fromCharCode(13), '').split('\n');
   const records = [];
   let i = 0;
 

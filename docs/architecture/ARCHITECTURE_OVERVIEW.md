@@ -58,7 +58,7 @@
 │  • GET  /market/prices            → Market prices              │
 │                                                                 │
 │  External APIs:                                                 │
-│  • OpenWeather API (284fb14b95a0636efeee744281b7d5a9)         │
+│  • OpenWeather API (YOUR_OPENWEATHER_API_KEY)         │
 │  • Groq AI (backend proxy, key in server env)                  │
 │                    │                                            │
 └────────────────────┼────────────────────────────────────────────┘

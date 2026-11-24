@@ -26,7 +26,7 @@ cd "C:\Users\Administrator\OneDrive\documents\krishiverse version 2.0 - Final_v2
 
 # 3. Verify .env has the key
 type .env | findstr OPENWEATHER_API_KEY
-# Should show: OPENWEATHER_API_KEY=284fb14b95a0636efeee744281b7d5a9
+# Should show: OPENWEATHER_API_KEY=YOUR_OPENWEATHER_API_KEY
 
 # 4. Restart backend
 npm start

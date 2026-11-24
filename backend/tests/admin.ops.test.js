@@ -42,7 +42,7 @@ describe('Admin operations (backup, restore, audit, registries)', () => {
     expect(paths.join(' ')).to.not.contain('.env"')
     for (const asset of res.body.backup.assets) {
       expect(asset.sha256).to.match(/^[a-f0-9]{64}$/)
-      const onDisk = join(BACKUP_DIR, res.body.backup.backupId, 'assets', asset.path.split('/').join('\\'))
+      const onDisk = join(BACKUP_DIR, res.body.backup.backupId, 'assets', ...asset.path.split('/'))
       expect(existsSync(onDisk), asset.path).to.equal(true)
     }
 
