@@ -29,7 +29,7 @@ cd backend
 findstr OPENWEATHER .env
 
 # Should show:
-# OPENWEATHER_API_KEY=284fb14b95a0636efeee744281b7d5a9
+# OPENWEATHER_API_KEY=YOUR_OPENWEATHER_API_KEY
 ```
 
 ---
@@ -100,7 +100,7 @@ dir .env
 type .env
 
 # Should contain:
-# OPENWEATHER_API_KEY=284fb14b95a0636efeee744281b7d5a9
+# OPENWEATHER_API_KEY=YOUR_OPENWEATHER_API_KEY
 ```
 
 ---

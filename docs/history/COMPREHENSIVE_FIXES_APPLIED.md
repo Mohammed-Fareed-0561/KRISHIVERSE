@@ -51,7 +51,7 @@ Returns: "Detected: Tungro Disease (85% confidence)
 **Problem:** Weather page stuck on skeleton loading, API key missing
 
 **Solution:**
-- Added `VITE_OPENWEATHER_API_KEY=284fb14b95a0636efeee744281b7d5a9` to `krishiverse/.env`
+- Added `VITE_OPENWEATHER_API_KEY=YOUR_OPENWEATHER_API_KEY` to `krishiverse/.env`
 - This matches the backend key, ensuring consistent weather data
 
 **Files Modified:**
@@ -294,7 +294,7 @@ cd krishiverse
 npm run dev
 # Open browser console, type:
 console.log(import.meta.env.VITE_OPENWEATHER_API_KEY)
-# Should show: 284fb14b95a0636efeee744281b7d5a9
+# Should show: YOUR_OPENWEATHER_API_KEY
 
 # If undefined, restart Vite dev server:
 # Ctrl+C to stop

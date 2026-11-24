@@ -36,7 +36,7 @@
 
 **3. Weather API Key**
 - **File:** `krishiverse/.env`
-- **Fix:** Added `VITE_OPENWEATHER_API_KEY=284fb14b95a0636efeee744281b7d5a9`
+- **Fix:** Added `VITE_OPENWEATHER_API_KEY=YOUR_OPENWEATHER_API_KEY`
 - **Result:** Weather component loads real data
 
 **4. Expanded Disease Database**

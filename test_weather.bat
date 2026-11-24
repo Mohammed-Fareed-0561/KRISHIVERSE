@@ -13,7 +13,7 @@ echo.
 echo [2/4] Testing OpenWeather API directly...
 echo (Testing with Coimbatore coordinates: 11.0168, 76.9558)
 echo.
-curl -s "https://api.openweathermap.org/data/2.5/weather?lat=11.0168&lon=76.9558&appid=284fb14b95a0636efeee744281b7d5a9&units=metric" > temp_weather.json
+curl -s "https://api.openweathermap.org/data/2.5/weather?lat=11.0168&lon=76.9558&appid=YOUR_OPENWEATHER_API_KEY&units=metric" > temp_weather.json
 
 findstr "name" temp_weather.json
 findstr "temp" temp_weather.json

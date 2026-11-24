@@ -210,7 +210,7 @@ pause
 
 Based on the command output, your **frontend .env is correctly configured**:
 ```
-VITE_OPENWEATHER_API_KEY=284fb14b95a0636efeee744281b7d5a9
+VITE_OPENWEATHER_API_KEY=YOUR_OPENWEATHER_API_KEY
 ```
 
 **Next Steps:**

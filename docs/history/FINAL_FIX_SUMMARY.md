@@ -89,7 +89,7 @@ Detected: Tungro Disease (85% confidence)
 - ✅ Real-time weather data
 - ✅ Current conditions displayed
 - ✅ 7-day forecast working
-- ✅ API key: `284fb14b95a0636efeee744281b7d5a9` added to `.env`
+- ✅ API key: `YOUR_OPENWEATHER_API_KEY` added to `.env`
 
 **File Modified:** `krishiverse/.env`
 

@@ -51,7 +51,7 @@ After:  "Tungro Disease (85% confidence) + full treatment guide"
 **What Changed:**
 ```diff
 + # OpenWeather API Key (for weather features)
-+ VITE_OPENWEATHER_API_KEY=284fb14b95a0636efeee744281b7d5a9
++ VITE_OPENWEATHER_API_KEY=YOUR_OPENWEATHER_API_KEY
 ```
 
 **Result:**
